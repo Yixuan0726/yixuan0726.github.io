@@ -1,6 +1,52 @@
 {
   "loaderUrl": "Build/keepdribbling.loader.js",
-  "dataUrl": "Build/keepdribbling.data.unityweb",
   "frameworkUrl": "Build/keepdribbling.framework.js.unityweb",
-  "codeUrl": "Build/keepdribbling.wasm.unityweb"
+  "codeUrl": "Build/keepdribbling.wasm.unityweb",
+  "dataChunks": [
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-000.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-001.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-002.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-003.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-004.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-005.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-006.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-007.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-008.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-009.part",
+      "size": 8388608
+    },
+    {
+      "url": "Build/data-b79c0fb73e5fccc2-010.part",
+      "size": 2004246
+    }
+  ],
+  "dataSize": 85890326
 }
