@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="500" viewBox="0 0 560 500" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">A curious little creative creature</title>
+  <desc id="desc">A cobalt blue dough-shaped character with wide eyes, waving among lime stars and a floating sketch.</desc>
+  <g stroke="#20201e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M213 342c-3 38-14 55-40 69l-19 8"/><path d="m166 408-17 10 20 5"/>
+    <path d="M341 335c7 36 27 61 60 67l21 4"/><path d="m408 395 17 11-20 8"/>
+    <path d="M160 226c-41 5-55-12-62-41l-5-27"/><path d="m92 159-10-16m11 17 3-21m-2 22 14-15"/>
+    <path d="M395 231c40 6 59-6 67-36l5-26"/><path d="m467 170-9-17m10 15 7-20m-7 21 17-12"/>
+  </g>
+  <path d="M165 120c23-32 62-22 96-31 37-10 68-21 102-4 36 17 42 52 49 92 7 41 28 80 12 116-17 39-55 42-96 54-42 12-80 34-118 15-36-18-37-57-47-98-11-45-27-102 2-144Z" fill="#3e50ed"/>
+  <ellipse cx="242" cy="192" rx="37" ry="48" transform="rotate(-9 242 192)" fill="#f6f5ef"/>
+  <ellipse cx="326" cy="177" rx="37" ry="48" transform="rotate(-9 326 177)" fill="#f6f5ef"/>
+  <ellipse cx="252" cy="199" rx="14" ry="21" transform="rotate(-9 252 199)" fill="#20201e"/>
+  <ellipse cx="336" cy="184" rx="14" ry="21" transform="rotate(-9 336 184)" fill="#20201e"/>
+  <circle cx="256" cy="192" r="4" fill="#f6f5ef"/><circle cx="340" cy="177" r="4" fill="#f6f5ef"/>
+  <path d="M268 262c15 13 35 10 47-8" stroke="#20201e" stroke-width="4" stroke-linecap="round"/>
+  <path d="m433 55 9 26 28 2-23 17 7 27-23-16-24 16 8-27-22-18 28-1 12-26Z" fill="#dfff78" stroke="#20201e" stroke-width="2"/>
+  <path d="m91 284 9 19 21 3-15 15 3 22-19-11-19 10 4-21-15-16 22-2 9-19Z" fill="#dfff78"/>
+  <path d="m482 312 3 13 13 3-13 4-3 13-4-13-13-4 13-3 4-13Z" fill="#20201e"/>
+  <circle cx="151" cy="70" r="4" fill="#20201e"/>
+  <path d="m129 114-25-9m29-7-12-20" stroke="#20201e" stroke-width="2" stroke-linecap="round"/>
+  <g transform="translate(408 332) rotate(13)">
+    <path d="M0 0h77v84H0Z" fill="#f6f5ef" stroke="#20201e" stroke-width="2"/>
+    <path d="m13 55 17-25 11 14 10-8 13 19H13Z" fill="#ffcce7"/>
+    <circle cx="55" cy="22" r="7" fill="#dfff78" stroke="#20201e" stroke-width="1.5"/>
+    <path d="M13 67h31m-31 6h49" stroke="#20201e" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <path d="M197 444c49 9 104 8 145-3" stroke="#20201e" stroke-opacity=".16" stroke-width="2" stroke-linecap="round"/>
+</svg>

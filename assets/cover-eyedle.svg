@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">EyeDle — concept illustration</title>
+  <desc id="desc">A softly closed sage-green eye rests among a few quiet stars on an olive charcoal field.</desc>
+  <rect width="640" height="420" fill="#272c25"/>
+  <ellipse cx="318" cy="335" rx="103" ry="9" fill="#1d211c"/>
+  <g transform="rotate(-9 320 207)">
+    <path d="M139 208c40-70 101-106 181-106s141 36 181 106c-40 70-101 106-181 106s-141-36-181-106Z" fill="#aabf8b"/>
+    <path d="M139 208c40-70 101-106 181-106s141 36 181 106c-62 38-113 53-181 53s-119-15-181-53Z" fill="#c7d8a5"/>
+    <path d="M171 221c42 29 91 44 149 44s107-15 149-44" stroke="#293126" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="m212 245-12 19m64-3-6 22m62-18v23m56-27 6 22m46-38 12 19" stroke="#293126" stroke-width="4" stroke-linecap="round"/>
+    <path d="M242 145c24-12 50-18 77-18" stroke="#e1eac9" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="m132 103 5 17 17 5-17 5-5 17-5-17-17-5 17-5 5-17Z" fill="#c7d8a5"/>
+  <path d="m486 283 3 12 12 3-12 3-3 12-3-12-12-3 12-3 3-12Z" fill="#8a9b75"/>
+  <path d="M468 77a19 19 0 0 0 28 24 20 20 0 1 1-28-24Z" fill="#d7dfbd"/>
+  <circle cx="521" cy="176" r="2.5" fill="#91a47b"/>
+  <circle cx="108" cy="278" r="2.5" fill="#91a47b"/>
+  <path d="M287 65c20-6 43-6 63-1" stroke="#6b775e" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

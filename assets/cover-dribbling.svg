@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">KeepDribbling — concept illustration</title>
+  <desc id="desc">A vivid orange basketball suspended mid-bounce over a spare charcoal court.</desc>
+  <rect width="640" height="420" fill="#2b2724"/>
+  <path d="M-56 402c109-82 527-115 752-5" stroke="#51463d" stroke-width="1.5"/>
+  <path d="M131 420c41-36 117-56 222-56 88 0 159 13 205 38" stroke="#51463d" stroke-width="1.5"/>
+  <ellipse cx="348" cy="331" rx="76" ry="10" fill="#1b1918"/>
+  <path d="M169 272c-26-115 4-185 84-190" stroke="#998472" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 8"/>
+  <path d="m246 75 10 6-7 9" stroke="#998472" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="rotate(-22 342 183)">
+    <circle cx="342" cy="183" r="108" fill="#ed8754"/>
+    <path d="M238 211c47 65 145 77 195 13-14 43-56 67-91 67-49 0-88-32-104-80Z" fill="#ce6841"/>
+    <circle cx="342" cy="183" r="106.5" stroke="#201d1a" stroke-width="3"/>
+    <path d="M234 183h216M342 75v216M271 102c99 22 99 140 0 162M413 102c-99 22-99 140 0 162" stroke="#29231e" stroke-width="3.5"/>
+    <path d="M279 122c9-10 18-17 31-23" stroke="#f5b38a" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g stroke="#d6b99c" stroke-width="2" stroke-linecap="round">
+    <path d="m444 278 21 10m-34 8 16 14m-33-5 8 18"/>
+    <path d="m284 334-17 10m139-10 17 10"/>
+  </g>
+  <path d="m477 87 4 14 14 4-14 4-4 14-4-14-14-4 14-4 4-14Z" fill="#decda8"/>
+  <circle cx="124" cy="177" r="3" fill="#decda8"/>
+  <circle cx="511" cy="246" r="2" fill="#897667"/>
+</svg>

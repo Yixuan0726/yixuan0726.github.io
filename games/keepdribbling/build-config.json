@@ -1,0 +1,6 @@
+{
+  "loaderUrl": "Build/keepdribbling.loader.js",
+  "dataUrl": "Build/keepdribbling.data.unityweb",
+  "frameworkUrl": "Build/keepdribbling.framework.js.unityweb",
+  "codeUrl": "Build/keepdribbling.wasm.unityweb"
+}

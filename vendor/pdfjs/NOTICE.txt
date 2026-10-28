@@ -1,0 +1,9 @@
+PDF.js 5.6.205
+Copyright Mozilla Foundation and individual contributors.
+Distributed under the Apache License, Version 2.0 (see LICENSE).
+https://mozilla.github.io/pdf.js/
+
+Vendored from the installed pdfjs-dist package, version 5.6.205.
+The minified ES module files were renamed from .mjs to .js for static hosting.
+The library code is otherwise unmodified.
+The viewer interface is implemented separately in ../../pdf-reader.js.
