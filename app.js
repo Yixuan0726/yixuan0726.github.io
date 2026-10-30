@@ -1,7 +1,9 @@
 import { portfolio } from './content.js';
-import { mascotArt } from './mascot-art.js';
+import { aboutMarkup, mountAbout } from './about.js';
 import { mountPdfReader } from './pdf-reader.js';
 import { gamePlayerMarkup, mountGamePlayer } from './game-player.js';
+import { eyedlePage, mountEyeDle } from './eyedle.js';
+import { mountCoverMotion } from './cover-motion.js';
 
 const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -18,9 +20,11 @@ const validEmail = portfolio.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(portfoli
 const resourceLink = (url, label) => '<a class="text-link" href="' + escapeHTML(safeURL(url)) + '" target="_blank" rel="noopener noreferrer">' + escapeHTML(label) + '<span aria-hidden="true">↗</span></a>';
 
 function projectCard(project) {
+  const coverVideo = safeURL(project.coverVideo);
   return `<article class="project-card" data-color="${escapeHTML(project.color)}" data-cover="${escapeHTML(project.coverType || 'illustration')}" aria-labelledby="title-${escapeHTML(project.id)}">
-    <a class="project-art" href="${projectURL(project)}" data-route aria-label="View ${escapeHTML(project.name)}">
+    <a class="project-art" href="${projectURL(project)}" data-route aria-label="View ${escapeHTML(project.name)}" ${coverVideo ? 'data-cover-motion' : ''}>
       <img src="${escapeHTML(safeURL(project.cover))}" alt="${escapeHTML(project.coverAlt)}" width="${project.coverWidth || 640}" height="${project.coverHeight || 420}" loading="lazy">
+      ${coverVideo ? '<video data-cover-video data-src="' + escapeHTML(coverVideo) + '" poster="' + escapeHTML(safeURL(project.cover)) + '" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>' : ''}
       ${project.coverType === 'screenshot' ? '' : '<span class="cover-label">Concept illustration</span>'}<span class="art-arrow" aria-hidden="true">↗</span>
     </a>
     <div class="project-copy">
@@ -33,16 +37,6 @@ function projectCard(project) {
   </article>`;
 }
 
-function character() {
-  return `<div class="character-stage">
-    <button class="character-button" type="button" aria-label="Say hello to the little character" aria-describedby="character-hint">
-      ${mascotArt}
-    </button>
-    <p class="character-status" role="status" aria-live="polite" aria-atomic="true"></p>
-    <p class="character-hint" id="character-hint">A little curious. Say hello.</p>
-  </div>`;
-}
-
 function projectGroup(collaboration, title) {
   const projects = portfolio.projects.filter(project => project.collaboration === collaboration);
   if (!projects.length) return '';
@@ -53,10 +47,13 @@ function projectGroup(collaboration, title) {
 }
 
 function resumeCard() {
+  const pdf = safeURL(portfolio.resume);
+  const word = safeURL(portfolio.resumeWord);
   return `<section class="resume-card" id="resume" aria-labelledby="resume-title">
     <svg class="resume-icon" viewBox="0 0 40 48" fill="none" aria-hidden="true"><path d="M8 3h16l10 10v32H8z" stroke="currentColor" stroke-width="1.5"/><path d="M24 3v11h10M15 23h12M15 30h12M15 37h8" stroke="currentColor" stroke-width="1.5"/></svg>
     <div><h3 id="resume-title">Résumé</h3><p>Experience, education & skills.</p>
-    ${safeURL(portfolio.resume) ? resourceLink(portfolio.resume, 'View résumé') : '<span class="resume-status">PDF coming soon</span>'}</div>
+      ${pdf || word ? `<div class="resume-resources">${pdf ? resourceLink(pdf, 'View CV (PDF)') : ''}${word ? `<a class="text-link" href="${escapeHTML(word)}" download="Yixuan_Yu_CV.docx">Download CV (Word) <span aria-hidden="true">↓</span></a>` : ''}</div>` : '<span class="resume-status">CV coming soon</span>'}
+    </div>
   </section>`;
 }
 
@@ -65,101 +62,16 @@ function homePage() {
   return `<section class="hero" aria-labelledby="intro-title">
       <div class="hero-copy"><p class="eyebrow">${escapeHTML(portfolio.role)}</p>
         <h1 id="intro-title">Hi, I’m <span>${escapeHTML(portfolio.name)}.</span></h1>
-        <p class="hero-description">${escapeHTML(portfolio.introduction)}</p>
-        <div class="hero-actions"><a class="primary-link" href="./#work" data-route>View my work <span aria-hidden="true">↓</span></a></div>
-      </div>${character()}
+      </div>
+      <div class="hero-summary"><p class="hero-description">${escapeHTML(portfolio.introduction)}</p>
+        <div class="hero-actions"><a class="primary-link" href="#work" data-section>View my work <span aria-hidden="true">↓</span></a><a class="hero-about-link" href="#about" data-section>About me ↘</a></div>
+      </div>
     </section>
     <div id="work">${projectGroup('solo', 'Solo Projects')}${projectGroup('team', 'Team Projects')}</div>` +
-    '<section class="about-section" id="about" aria-labelledby="about-title"><div><p class="about-kicker">About me</p><h2 id="about-title">My approach<br><span>to game design.</span></h2></div>' +
-      '<div class="about-copy">' + portfolio.about.map(paragraph => '<p>' + escapeHTML(paragraph) + '</p>').join('') +
-      (contacts ? '<div class="contact-links">' + contacts + '</div>' : '') + resumeCard() + '</div></section>';
+    aboutMarkup({ paragraphs: portfolio.about, contacts, resume: resumeCard() });
 }
 
-let disposeCharacter = () => {};
-
-function initCharacter() {
-  disposeCharacter();
-  const stage = $('.character-stage');
-  if (!stage) return;
-  const button = stage.querySelector('.character-button');
-  const status = stage.querySelector('[role="status"]');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const controller = new AbortController();
-  const { signal } = controller;
-  let frame = 0;
-  let greetingTimer = 0;
-  let visible = true;
-  let pointer = null;
-  let greetings = 0;
-  const setPose = (x, y) => {
-    stage.style.setProperty('--character-x', `${x * 12}px`);
-    stage.style.setProperty('--character-y', `${y * 6}px`);
-    stage.style.setProperty('--character-tilt', `${x * 4}deg`);
-    stage.style.setProperty('--face-x', `${x * 3}px`);
-    stage.style.setProperty('--face-y', `${y * 2}px`);
-    stage.style.setProperty('--pupil-x', `${x * 7}px`);
-    stage.style.setProperty('--pupil-y', `${y * 5}px`);
-  };
-  const reset = () => {
-    cancelAnimationFrame(frame);
-    frame = 0;
-    pointer = null;
-    setPose(0, 0);
-  };
-  const follow = () => {
-    frame = 0;
-    if (!pointer || reduced.matches || !visible) return;
-    const bounds = button.getBoundingClientRect();
-    const centerX = bounds.left + bounds.width / 2;
-    const centerY = bounds.top + bounds.height * .48;
-    const clamp = value => Math.max(-1, Math.min(1, value));
-    setPose(clamp((pointer.x - centerX) / 250), clamp((pointer.y - centerY) / 200));
-  };
-  const queueFollow = () => {
-    if (!frame && pointer && visible && !reduced.matches) frame = requestAnimationFrame(follow);
-  };
-  document.addEventListener('pointermove', event => {
-    if (event.pointerType === 'touch' || reduced.matches || !visible) return;
-    pointer = { x: event.clientX, y: event.clientY };
-    queueFollow();
-  }, { passive: true, signal });
-  document.addEventListener('pointerout', event => {
-    if (!event.relatedTarget) reset();
-  }, { signal });
-  window.addEventListener('blur', reset, { signal });
-  window.addEventListener('scroll', queueFollow, { passive: true, signal });
-  window.addEventListener('resize', queueFollow, { passive: true, signal });
-  reduced.addEventListener('change', () => {
-    reset();
-    button.classList.remove('is-greeting');
-  }, { signal });
-  button.addEventListener('click', () => {
-    greetings += 1;
-    const replies = ['Oh, hi!', 'Nice to see you.', 'Still here :)'];
-    status.textContent = replies[(greetings - 1) % replies.length];
-    clearTimeout(greetingTimer);
-    button.classList.remove('is-greeting');
-    if (!reduced.matches) {
-      // Restart the blink and wave on repeated clicks, including keyboard activation.
-      void button.offsetWidth;
-      button.classList.add('is-greeting');
-      greetingTimer = setTimeout(() => button.classList.remove('is-greeting'), 950);
-    }
-  }, { signal });
-  const observer = new IntersectionObserver(entries => {
-    visible = entries[0].isIntersecting;
-    if (!visible) reset();
-  });
-  observer.observe(stage);
-  disposeCharacter = () => {
-    controller.abort();
-    observer.disconnect();
-    cancelAnimationFrame(frame);
-    clearTimeout(greetingTimer);
-    button.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
-    disposeCharacter = () => {};
-  };
-}
+let disposeAbout = () => {};
 
 function caseStudySection(section) {
   const picture = section.image && safeURL(section.image.src) ? `<figure class="case-image"><a href="${escapeHTML(safeURL(section.image.src))}" target="_blank" rel="noopener noreferrer" aria-label="Open image: ${escapeHTML(section.image.alt)}"><img src="${escapeHTML(safeURL(section.image.src))}" alt="${escapeHTML(section.image.alt)}" width="1920" height="1080" loading="lazy"></a><figcaption>${escapeHTML(section.image.caption)}</figcaption></figure>` : '';
@@ -193,6 +105,9 @@ function documentReader(project) {
 }
 
 function detailPage(project) {
+  if (project.id === 'eyedle') {
+    return eyedlePage(project, portfolio.projects[(portfolio.projects.indexOf(project) + 1) % portfolio.projects.length]);
+  }
   const resources = [
     { url: project.projectPage, label: project.projectPageLabel || 'Project page' },
     { url: project.documentPreview ? null : project.documentation, label: 'Project document' },
@@ -238,9 +153,14 @@ function moveToContent() {
 
 let disposeDocument = () => {};
 let disposeGame = () => {};
+let disposeEyeDle = () => {};
+let disposeCoverMotion = () => {};
 function render({ navigate = false } = {}) {
   disposeDocument();
+  disposeAbout();
   disposeGame();
+  disposeEyeDle();
+  disposeCoverMotion();
   const id = new URLSearchParams(location.search).get('project');
   const project = portfolio.projects.find(item => item.id === id);
   if (id && !project) {
@@ -256,9 +176,11 @@ function render({ navigate = false } = {}) {
     else link.removeAttribute('aria-current');
   });
   if (navigate) moveToContent();
-  initCharacter();
+  disposeAbout = mountAbout(document.querySelector('[data-about]'));
   disposeDocument = mountPdfReader(document.querySelector('[data-pdf]'));
   disposeGame = mountGamePlayer(document.querySelector('[data-game-player]'));
+  disposeEyeDle = mountEyeDle(document.querySelector('.eyedle-detail'));
+  disposeCoverMotion = mountCoverMotion(document.querySelector('#page-content'));
 }
 
 document.querySelectorAll('[data-name]').forEach(element => { element.textContent = portfolio.name; });

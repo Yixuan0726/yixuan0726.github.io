@@ -1,0 +1,66 @@
+.portrait-stage { display: grid; justify-items: center; gap: 25px; min-width: 0; }
+.portrait-card { position: relative; isolation: isolate; width: min(100%, 336px); aspect-ratio: 4 / 5; overflow: visible; border: 1px solid #ffffff17; border-radius: 18px; background: var(--surface); box-shadow: 0 16px 42px #00000020; }
+.portrait-front { position: absolute; inset: 0; }
+.portrait-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 17px; }
+.portrait-front-shade { position: absolute; inset: 0; border-radius: 17px; pointer-events: none; background: linear-gradient(transparent 65%, #00000020); opacity: 0; transition: opacity .22s ease; }
+.portrait-card:hover .portrait-front-shade, .portrait-card:focus-within .portrait-front-shade { opacity: 1; }
+.portrait-court-button { position: absolute; z-index: 2; right: -12px; bottom: -10px; display: grid; place-items: center; width: 88px; height: 88px; min-height: 44px; border: 4px solid #fff0cf; border-radius: 50%; padding: 0; color: #ff982f; background: radial-gradient(circle at 32% 24%, #ffca78, #ee7620); box-shadow: 0 0 0 5px #17181c, 0 8px 0 #9d481b, 0 14px 24px #00000070; cursor: pointer; transition: box-shadow .2s ease, transform .25s ease; }
+.portrait-court-button::before { content: ''; position: absolute; inset: -10px; border: 2px solid #ffbb73; border-radius: 50%; pointer-events: none; animation: portrait-ball-ring 3.6s ease-out .7s infinite; }
+.portrait-court-arrow { position: absolute; right: -3px; bottom: -3px; display: grid; place-items: center; width: 28px; height: 28px; border: 2px solid #17181c; border-radius: 50%; background: #fff0cf; color: #272019; font: 700 21px/1 Arial, sans-serif; pointer-events: none; }
+.portrait-ball-icon { display: block; width: 100%; height: 100%; }
+.portrait-court-button .portrait-ball-icon { transition: transform .2s ease; }
+.portrait-court-button:hover, .portrait-court-button:focus-visible { transform: translateY(-7px) rotate(-8deg) scale(1.08); box-shadow: 0 0 0 5px #17181c, 0 10px 0 #9d481b, 0 18px 30px #00000080, 0 0 28px #ffb66b60; }
+.portrait-court-button:hover .portrait-ball-icon { transform: rotate(16deg) scale(1.04); }
+.portrait-court-button:active .portrait-ball-icon { transform: scale(.93); }
+.portrait-court-button:focus-visible { outline: 2px solid #fff5e8; outline-offset: 3px; border-radius: 50%; }
+.portrait-hint { color: var(--muted); font-size: 11px; letter-spacing: .25px; text-align: center; }
+
+.portrait-court { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; border-radius: 17px; padding: 16px; background: #202227; }
+.portrait-court-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-shrink: 0; }
+.portrait-back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 13px; border: 1px solid #ffffff15; border-radius: 24px; background: #ffffff06; font-size: 12px; cursor: pointer; }
+.portrait-back:hover { background: #ffffff0e; border-color: #ffffff35; }
+.portrait-eyebrow { color: var(--muted); font: 9px/1.5 Consolas, monospace; letter-spacing: 1px; text-transform: uppercase; }
+.portrait-court-content { position: relative; display: grid; flex: 1; min-height: 0; padding-top: 18px; }
+.portrait-empty { position: relative; align-self: center; display: grid; justify-items: center; gap: 13px; padding: 30px 5px 52px; text-align: center; }
+.portrait-empty::before { content: ''; position: absolute; z-index: -1; width: 190px; height: 190px; top: 0; left: 50%; transform: translateX(-50%); border: 1px solid #f2b18510; border-radius: 50%; }
+.portrait-empty .portrait-ball-icon { width: 40px; height: 40px; color: var(--orange); margin-bottom: 4px; }
+.portrait-empty h2 { font: 500 27px/1.2 Arial, sans-serif; letter-spacing: -.7px; }
+.portrait-empty p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.portrait-media { display: flex; flex-direction: column; min-height: 0; gap: 10px; }
+.portrait-media img, .portrait-media video { display: block; flex: 1; min-height: 0; width: 100%; height: 100%; object-fit: contain; border-radius: 8px; background: #15161a; }
+.portrait-media figcaption { flex-shrink: 0; color: var(--muted); font-size: 11px; line-height: 1.6; max-height: 54px; overflow: auto; }
+.portrait-media-error { align-self: center; padding: 15px; color: var(--muted); font-size: 13px; }
+.portrait-media-controls { display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; margin-top: 12px; }
+.portrait-media-controls button { min-width: 44px; min-height: 44px; border: 1px solid #ffffff1f; border-radius: 50%; background: transparent; cursor: pointer; }
+.portrait-media-controls button:hover { background: #ffffff0d; }
+.portrait-media-controls span { color: var(--muted); font: 11px/1.4 Consolas, monospace; }
+
+.portrait-court-button { animation: portrait-ball-invite 3.6s ease-in-out .7s infinite; }
+.portrait-court-button:hover, .portrait-court-button:focus-visible { animation: none; }
+@keyframes portrait-ball-invite {
+  0%, 22%, 40%, 100% { transform: translateY(0) rotate(0); }
+  10% { transform: translateY(-18px) rotate(-10deg); }
+  30% { transform: translateY(-7px) rotate(5deg); }
+}
+@keyframes portrait-ball-ring {
+  0%, 12% { transform: scale(.9); opacity: 0; }
+  22% { opacity: .7; }
+  60%, 100% { transform: scale(1.2); opacity: 0; }
+}
+@media (max-width: 760px) {
+  .portrait-card { width: min(100%, 300px); }
+  .portrait-stage { gap: 25px; padding-inline: 14px; }
+  .portrait-court-button { width: 80px; height: 80px; right: -9px; bottom: -10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-court-button, .portrait-court-button::before { animation: none; }
+  .portrait-court-button::before { opacity: 0; }
+  .portrait-front-shade, .portrait-court-button, .portrait-court-button .portrait-ball-icon { transition: none; }
+  .portrait-court-button, .portrait-card:hover .portrait-court-button, .portrait-card:focus-within .portrait-court-button, .portrait-court-button:hover .portrait-ball-icon, .portrait-court-button:active .portrait-ball-icon { transform: none; }
+}
+@media (forced-colors: active) {
+  .portrait-card, .portrait-court-button, .portrait-back, .portrait-media-controls button { border: 1px solid ButtonText; }
+  .portrait-court-button { background: Canvas; filter: none; color: ButtonText; }
+  .portrait-court-button .portrait-ball-icon { forced-color-adjust: none; color: #f3ad6f; }
+  .portrait-court-button:focus-visible { outline-color: Highlight; }
+}

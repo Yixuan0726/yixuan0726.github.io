@@ -1,0 +1,89 @@
+/* The opening introduces the work; personal photos live in About. */
+.hero { padding-block: 64px 60px; }
+.hero-summary { max-width: 430px; justify-self: end; }
+.hero-summary .hero-description { margin-top: 0; max-width: none; }
+.hero-about-link { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: 13px; }
+.hero-about-link:hover { color: var(--ink); }
+.about-section { display: block; padding-block: 72px 80px; }
+.about-intro { display: grid; grid-template-columns: minmax(240px, 330px) minmax(0, 1fr); align-items: start; gap: 80px; }
+.about-section .portrait-stage { width: 100%; padding-inline: 0; gap: 26px; }
+.about-section .portrait-card { width: min(100%, 310px); }
+.about-section .portrait-photo { display: block; }
+.about-copy { padding-top: 0; max-width: 650px; }
+.about-copy .about-kicker { margin: 0 0 14px; }
+.about-bio { margin-top: 24px; }
+.about-interests-nav { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 18px; }
+.about-interests-nav a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 12px; }
+.about-interests-nav a:hover { color: var(--accent); border-color: var(--accent); }
+.about-interests-nav span { color: var(--accent); }
+.about-copy .resume-card { margin-top: 26px; padding: 18px 22px; }
+.personal-stories { padding-top: 40px; margin-top: 64px; border-top: 1px solid var(--line); }
+.personal-stories-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+.personal-stories-heading h3 { font: 500 24px/1.4 Arial, sans-serif; letter-spacing: -.6px; }
+.personal-stories-heading p { color: var(--muted); font-size: 12px; }
+.personal-stories-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px; }
+.personal-story { min-width: 0; scroll-margin-top: 30px; }
+.personal-story-photo { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; padding: 0; background: #111215; border: 1px solid var(--line); border-radius: 12px; cursor: zoom-in; transition: border-color .2s; }
+.personal-story-photo img { width: 100%; height: 100%; object-fit: contain; }
+.personal-story-photo:hover { border-color: var(--accent); }
+.photo-enlarge { position: absolute; right: 12px; bottom: 12px; padding: 7px 11px; border: 1px solid #ffffff25; border-radius: 24px; color: #fff; background: #17181cda; font-size: 11px; pointer-events: none; transition: background .2s; }
+.personal-story-photo:hover .photo-enlarge { background: #333540; }
+.personal-story-copy { padding: 23px 2px 0; }
+.personal-story-copy .personal-story-label { margin: 0 0 8px; color: var(--orange); font: 10px/1.5 Consolas, monospace; letter-spacing: 1.4px; text-transform: uppercase; }
+#volunteer-teaching .personal-story-label { color: var(--teal); }
+.personal-story-copy h4 { margin: 0; font: 500 26px/1.3 Arial, sans-serif; letter-spacing: -.6px; }
+.personal-story-copy .personal-story-detail { margin-top: 8px; color: #d3d3dc; font-size: 11px; }
+.personal-story-copy > p:last-child { margin-top: 17px; color: var(--muted); font-size: 14px; line-height: 1.85; }
+.photo-is-open { overflow: hidden; scrollbar-gutter: stable; }
+.personal-photo-dialog { width: min(1120px, calc(100% - 32px)); max-height: 94dvh; padding: 0; border: 1px solid #555762; border-radius: 12px; background: var(--bg); color: var(--ink); box-shadow: 0 20px 100px #0008; }
+.personal-photo-dialog::backdrop { background: #08090ce8; }
+.personal-photo-dialog header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 12px 18px; }
+.about-section .personal-photo-dialog h2 { max-width: none; font: 500 18px/1.5 Arial, sans-serif; letter-spacing: -.3px; }
+.personal-photo-dialog header button { display: grid; place-items: center; min-width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); background: var(--surface); font-size: 28px; cursor: pointer; }
+.personal-photo-dialog header button:hover { background: #353740; }
+.personal-photo-dialog figure { margin: 0; }
+.personal-photo-dialog figure img { display: block; width: auto; max-width: 100%; height: auto; max-height: min(73dvh, 850px); margin-inline: auto; object-fit: contain; background: #101114; }
+.personal-photo-dialog figcaption { padding: 14px 18px; color: var(--muted); font-size: 12px; }
+@media (min-width: 1450px) { .hero { padding-block: 72px 68px; } }
+@media (max-width: 1050px) { .about-intro { grid-template-columns: minmax(220px, 280px) minmax(0, 1fr); gap: 48px; } }
+@media (max-width: 760px) {
+  .hero { gap: 26px; padding-block: 46px 42px; }
+  .hero-summary { justify-self: start; }
+  .hero-summary .hero-description { font-size: 16px; }
+  .hero-actions { flex-wrap: wrap; gap: 12px 24px; margin-top: 22px; }
+  .about-section { padding-block: 44px 50px; }
+  .about-intro { grid-template-columns: 1fr; gap: 38px; }
+  .about-section .portrait-stage { order: 2; max-width: 310px; margin: 0 auto; }
+  .about-section .portrait-card { width: min(100%, 280px); }
+  .about-copy { max-width: none; }
+  .about-bio { margin-top: 20px; }
+  .about-copy .resume-card { padding: 18px; }
+  .personal-stories { margin-top: 44px; padding-top: 28px; }
+  .personal-stories-heading { display: block; margin-bottom: 23px; }
+  .personal-stories-heading h3 { font-size: 23px; }
+  .personal-stories-heading p { margin-top: 8px; }
+  .personal-stories-grid { grid-template-columns: 1fr; gap: 38px; }
+  .personal-story-copy { padding-top: 20px; }
+  .personal-story-copy h4 { font-size: 25px; }
+  .personal-story-copy > p:last-child { margin-top: 14px; }
+  .personal-photo-dialog { width: calc(100% - 20px); max-height: 95dvh; }
+  .personal-photo-dialog header { padding: 10px 12px; }
+  .personal-photo-dialog figure img { max-height: 65dvh; }
+}
+
+
+/* Basketball photos rotate only while visible and pause for inspection. */
+.personal-story-gallery { min-width: 0; }
+.personal-story-photo .story-slide { position: absolute; inset: 0; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
+.personal-story-photo .story-slide.is-active { opacity: 1; }
+.personal-story-photo .photo-enlarge { z-index: 1; }
+.story-gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.story-gallery-steps { display: flex; align-items: center; gap: 5px; }
+.story-gallery-controls button, .personal-photo-nav button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 44px; min-height: 44px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; color: #d1d1da; background: var(--surface); cursor: pointer; font-size: 12px; }
+.story-gallery-controls button:hover, .personal-photo-nav button:hover { border-color: var(--accent); color: var(--ink); }
+.story-gallery-steps > span, .personal-photo-nav > span { min-width: 42px; color: var(--muted); text-align: center; font: 11px/1.5 Consolas, monospace; }
+.story-gallery-toggle { min-width: 84px !important; }
+.personal-photo-nav { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 0 18px 16px; }
+@media (prefers-reduced-motion: reduce) { .personal-story-photo .story-slide { transition: none; } }
+
+.resume-resources { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; }

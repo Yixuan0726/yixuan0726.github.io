@@ -298,3 +298,12 @@ figure, h1, h2, h3, p { margin: 0; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .project-art:hover img, .project-card:hover, .project-card:focus-within, .primary-link:hover, .next-project:hover > span { transform: none; }
 }
+
+/* The poster and video use the same first frame, without a hover zoom. */
+.project-art[data-cover-motion] img { transition: none; }
+.project-art[data-cover-motion]:hover img { transform: none; }
+.project-art [data-cover-video] { display: block; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; }
+.project-art.is-playing [data-cover-video] { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .project-art [data-cover-video] { display: none; }
+}

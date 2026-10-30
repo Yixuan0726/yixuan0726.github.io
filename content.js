@@ -8,13 +8,15 @@ export const portfolio = {
   name: 'Yixuan Yu',
   firstName: 'Yixuan',
   role: 'Game designer',
-  introduction: 'I’m a game designer interested in how mechanics and interactions shape the way people play.',
+  introduction: 'I’m a game designer with a background in statistics. I turn personal experiences and abstract ideas into playful systems, exploring how players navigate uncertainty, respond to setbacks, and find their own rhythm through play.',
   about: [
-    'I approach game design from the player’s perspective: what they notice, what they try, and how the game responds.',
-    'I’m interested in creating experiences with clear feedback, meaningful choices, and room for discovery — where players can learn through play and develop their own approach.'
+    "I’m Yixuan Yu, a game designer with a background in statistics. My undergraduate studies at Capital University of Economics and Business in Beijing shape how I think about probability, uncertainty, and decision-making. In game design, I’m interested in making these ideas tangible through the choices players make.",
+    "I’m curious about how people make sense of a game—what they notice, what they try, and how they find their own way to play. I enjoy questioning my assumptions and discovering how small changes in rules or feedback can lead to different experiences.",
+    "Beyond making games, basketball is a big part of my life. I’ve served as captain and starting center of my university’s women’s basketball team. I’ve also spent four summers volunteering in rural schools and children’s programs, teaching lessons and helping organize activities."
   ],
   email: null,
-  resume: null, // Set to 'uploads/yixuan-yu-resume.pdf' when the final PDF is ready.
+  resume: null, // Optional PDF preview; keep the source Word download below.
+  resumeWord: 'uploads/yixuan-yu-cv.docx',
   projects: [
     keepDribbling,
     {
@@ -23,7 +25,10 @@ export const portfolio = {
       category: 'EYE INTERACTION × IDLE', color: 'green',
       tagline: 'A game that gives your eyes a break.',
       description: 'An eye-driven care station exploring a gentler rhythm of play.',
-      cover: 'assets/cover-eyedle.svg', coverAlt: 'Graphic illustration of an eye taking a peaceful break',
+      cover: 'assets/eyedle/cover/cover-poster.png',
+      coverVideo: 'assets/eyedle/cover/cover-loop.mp4',
+      coverWidth: 1200, coverHeight: 750,
+      coverAlt: 'A resting blue droplet in a hand-painted wooden workshop, with mint bottles on a conveyor',
       tags: ['Interaction design', 'Solo project'],
       documentation: null, video: null, playable: null, gallery: []
     },

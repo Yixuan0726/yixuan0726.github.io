@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="980.4" viewBox="0 0 760 490.2" role="img" aria-labelledby="title desc">
+<title id="title">EyeDle care, workshop and exploration loop</title>
+<desc id="desc">Formal care earns Care Energy for production. Bottle sales and optional Search earn coins. Eight hours after formal care ends, care is available again; earlier returns require one minute of rest. Completion requires both 24 cumulative care routines and all upgrades maxed.</desc>
+<text x="380" y="18.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#c7e8df">CARE, WORKSHOP AND EXPLORATION</text>
+<rect x="25" y="32.2" width="145" height="48" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="97.5" y="51.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Complete care</text>
+<text x="97.5" y="68.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Four-step routine</text>
+<rect x="210" y="32.2" width="145" height="48" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="282.5" y="51.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Care Energy</text>
+<text x="282.5" y="68.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Earned from care</text>
+<rect x="398" y="32.2" width="145" height="48" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="470.5" y="51.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Production</text>
+<text x="470.5" y="68.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Droplets use energy</text>
+<rect x="585" y="32.2" width="150" height="48" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="660" y="51.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Store &amp; sell</text>
+<text x="660" y="68.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Bottles sold</text>
+<rect x="585" y="144.2" width="150" height="66" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="660" y="162.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Coins</text>
+<text x="660" y="179.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Spend or save</text>
+<text x="660" y="201.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#efbf77">+12 after first care</text>
+<rect x="365" y="162.2" width="178" height="48" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="454" y="181.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Optional upgrades</text>
+<text x="454" y="198.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Mechanize / expand</text>
+<rect x="58" y="162.2" width="240" height="48" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="178" y="181.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Leave and return</text>
+<text x="178" y="198.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Rewards stay available</text>
+<rect x="337" y="94.2" width="218" height="59" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="446" y="112.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Optional Search</text>
+<text x="446" y="129.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">8h / no Care Energy</text>
+<text x="446" y="144.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#e3e4da">Takes droplets off production</text>
+<polyline points="170,56.2 210,56.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="210,56.2 204.804,53.2 204.804,59.2" fill="#86c9bd"/>
+<polyline points="355,56.2 398,56.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="398,56.2 392.804,53.2 392.804,59.2" fill="#86c9bd"/>
+<polyline points="543,56.2 585,56.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="585,56.2 579.804,53.2 579.804,59.2" fill="#86c9bd"/>
+<polyline points="660,80.2 660,144.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="660,144.2 663,139.004 657,139.004" fill="#86c9bd"/>
+<polyline points="585,186.2 543,186.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="543,186.2 548.196,189.2 548.196,183.2" fill="#86c9bd"/>
+<polyline points="365,186.2 298,186.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="298,186.2 303.196,189.2 303.196,183.2" fill="#86c9bd"/>
+<polyline points="470.5,80.2 470.5,94.2" fill="none" stroke="#86c9bd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polygon points="470.5,94.2 473.5,89.0038 467.5,89.0038" fill="#86c9bd"/>
+<polyline points="555,122.2 600,122.2 600,144.2" fill="none" stroke="#86c9bd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polygon points="600,144.2 603,139.004 597,139.004" fill="#86c9bd"/>
+<text x="602" y="108.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="400" fill="#e3e4da">Coins / bottle sales</text>
+<polyline points="337,122.2 178,122.2 178,162.2" fill="none" stroke="#86c9bd" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polygon points="178,162.2 181,157.004 175,157.004" fill="#86c9bd"/>
+<text x="270" y="146.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#e3e4da">Claim on return</text>
+<polyline points="178,210.2 178,236.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="178,236.2 181,231.004 175,231.004" fill="#86c9bd"/>
+<polygon points="178,236.2 240,262.2 178,288.2 116,262.2" fill="#28433c" fill-opacity=".43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="178" y="266.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#c7e8df">8h elapsed?</text>
+<polyline points="116,262.2 12,262.2 12,56.2 25,56.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="25,56.2 19.8038,53.2 19.8038,59.2" fill="#86c9bd"/>
+<text x="65" y="249.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#e3e4da">Yes: care available</text>
+<rect x="288" y="237.2" width="192" height="50" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="384" y="257.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Required 1-min rest</text>
+<text x="384" y="274.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Eyes closed / no reward</text>
+<polyline points="240,262.2 288,262.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="288,262.2 282.804,259.2 282.804,265.2" fill="#86c9bd"/>
+<text x="264" y="249.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#e3e4da">No</text>
+<rect x="545" y="237.2" width="190" height="50" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="640" y="257.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">Workshop access</text>
+<text x="640" y="274.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">View / manage</text>
+<polyline points="480,262.2 545,262.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="545,262.2 539.804,259.2 539.804,265.2" fill="#86c9bd"/>
+<polyline points="640,237.2 640,221.2 454,221.2 454,210.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="454,210.2 451,215.396 457,215.396" fill="#86c9bd"/>
+<text x="380" y="309.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#e3e4da">The 8h interval starts when formal care ends. Short rest does not reset it.</text>
+<text x="380" y="332.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" fill="#e3e4da">Offline production is limited by energy and storage. Search rewards remain available.</text>
+<line x1="25" y1="350.2" x2="735" y2="350.2" stroke="#86c9bd" stroke-opacity=".35" stroke-width=".8"/>
+<text x="380" y="370.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">LONG-TERM GOAL</text>
+<rect x="25" y="389.2" width="198" height="44" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="124" y="406.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">24 care routines</text>
+<text x="124" y="423.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Completed cumulatively</text>
+<text x="248" y="415.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#c7e8df">AND</text>
+<rect x="272" y="389.2" width="198" height="44" rx="7" fill="#28433c" fill-opacity="0.43" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="371" y="406.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#c7e8df">All upgrades maxed</text>
+<text x="371" y="423.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Equipment + workshop</text>
+<polyline points="470,411.2 505,411.2" fill="none" stroke="#86c9bd" stroke-width="1.4"/>
+<polygon points="505,411.2 499.804,408.2 499.804,414.2" fill="#86c9bd"/>
+<rect x="505" y="389.2" width="230" height="44" rx="7" fill="#24746b" fill-opacity="0.94" stroke="#86c9bd" stroke-width="1.2"/>
+<text x="620" y="415.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#fff8eb">CARE CYCLE COMPLETE</text>
+<text x="380" y="467.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#e3e4da">Progress is saved. No consecutive-day streak; missed days do not reset the count.</text>
+</svg>
