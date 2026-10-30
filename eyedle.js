@@ -1,5 +1,5 @@
-import { eyedleDocument } from './eyedle-document-data.js';
-import { eyedleMedia } from './eyedle-media.js';
+import { eyedleDocument } from './eyedle-document-data.js?v=863e3fba277e';
+import { eyedleMedia } from './eyedle-media.js?v=863e3fba277e';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const safeURL = value => {
