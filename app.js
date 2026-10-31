@@ -1,10 +1,10 @@
-import { portfolio } from './content.js?v=ff8d12696b03';
-import { aboutMarkup, mountAbout } from './about.js?v=ff8d12696b03';
-import { mountPdfReader } from './pdf-reader.js?v=ff8d12696b03';
-import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=ff8d12696b03';
-import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=ff8d12696b03';
-import { eyedlePage, mountEyeDle } from './eyedle.js?v=ff8d12696b03';
-import { mountCoverMotion } from './cover-motion.js?v=ff8d12696b03';
+import { portfolio } from './content.js?v=6f3d6a6af7e6';
+import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
+import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
+import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
+import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=6f3d6a6af7e6';
+import { eyedlePage, mountEyeDle } from './eyedle.js?v=6f3d6a6af7e6';
+import { mountCoverMotion } from './cover-motion.js?v=6f3d6a6af7e6';
 
 const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));

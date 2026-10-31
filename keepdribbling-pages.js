@@ -1,4 +1,4 @@
-import { keepDribblingPages } from './keepdribbling-pages-data.js?v=ff8d12696b03';
+import { keepDribblingPages } from './keepdribbling-pages-data.js?v=6f3d6a6af7e6';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const chapters = [

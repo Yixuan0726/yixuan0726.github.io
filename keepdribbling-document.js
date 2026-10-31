@@ -1,4 +1,4 @@
-import { keepDribblingDocument as document } from './keepdribbling-document-data.js?v=ff8d12696b03';
+import { keepDribblingDocument as document } from './keepdribbling-document-data.js?v=6f3d6a6af7e6';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const paragraphs = values => (Array.isArray(values) ? values : [values]).filter(Boolean).map(value => `<p>${escape(value)}</p>`).join('');

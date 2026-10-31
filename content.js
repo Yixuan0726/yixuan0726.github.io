@@ -3,7 +3,7 @@
 // Empty contact, document, video, playable, and gallery fields stay hidden.
 // The résumé slot stays visible; add a PDF path to activate its links.
 // KeepDribbling and The Grand Gamble use real game captures.
-import { keepDribbling } from './keepdribbling.js?v=ff8d12696b03';
+import { keepDribbling } from './keepdribbling.js?v=6f3d6a6af7e6';
 export const portfolio = {
   name: 'Yixuan Yu',
   firstName: 'Yixuan',

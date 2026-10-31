@@ -1,4 +1,4 @@
-import { personalMedia } from './personal-media.js?v=ff8d12696b03';
+import { personalMedia } from './personal-media.js?v=6f3d6a6af7e6';
 
 export function portraitMarkup() {
   const { portrait } = personalMedia;

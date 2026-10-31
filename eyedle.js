@@ -1,5 +1,5 @@
-import { eyedleDocument } from './eyedle-document-data.js?v=ff8d12696b03';
-import { eyedleMedia } from './eyedle-media.js?v=ff8d12696b03';
+import { eyedleDocument } from './eyedle-document-data.js?v=6f3d6a6af7e6';
+import { eyedleMedia } from './eyedle-media.js?v=6f3d6a6af7e6';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const safeURL = value => {
@@ -178,6 +178,7 @@ export function eyedlePage(project, next) {
       continue;
     }
     content.push(block.type === 'table' ? table(block, latestHeading) : paragraph(block));
+    if (level === 1) content.push(extraMedia('project-overview'));
     content.push(extraMedia(block.id));
   }
   if (currentSection) content.push(extraMedia(currentSection));

@@ -15,6 +15,13 @@ export const eyedleMedia = {
   },
   insertions: [
     {
+      id: 'gameplay-walkthrough', after: 'project-overview', type: 'video', wide: true,
+      title: 'Gameplay walkthrough', label: '3:01 · Sound on',
+      src: 'uploads/eyedle/eyedle-gameplay-walkthrough.mp4', poster: 'uploads/eyedle/eyedle-gameplay-walkthrough.jpg',
+      width: 1920, height: 1080, alt: 'EyeDle care interaction and workshop loop, including early-opening feedback, production, sales, and upgrades',
+      caption: 'Guided routines, closed-eye feedback, production, sales, and upgrades. Edited prototype demonstration with simulated sensor input and separately recorded player footage.'
+    },
+    {
       id: 'worker-search-video', after: 'eyedle-block-053', type: 'video',
       title: 'Worker allocation in action', label: '24 seconds · Gameplay excerpt',
       src: 'uploads/eyedle/search-dispatch-focus.mp4', poster: 'uploads/eyedle/search-dispatch-focus.jpg',
