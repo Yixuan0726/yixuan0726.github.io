@@ -1,0 +1,58 @@
+.kd-document {
+  width: min(1600px, calc(100vw - 112px));
+  max-width: none;
+  margin-inline: calc((100% - min(1600px, calc(100vw - 112px))) / 2);
+}
+.kd-document .document-heading { align-items: center; }
+.kd-document .document-heading h2 { font-size: clamp(26px, 3vw, 34px); color: var(--ink); }
+.kd-document .document-links { font-size: 13px; }
+.kd-toc { display: flex; flex-wrap: wrap; gap: 2px 24px; padding: 14px 0; border-block: 1px solid var(--line); color: #c9cad1; font-size: 13px; }
+.kd-toc a { display: inline-flex; align-items: center; min-height: 40px; text-underline-offset: 5px; }
+.kd-toc a:hover { color: var(--orange); text-decoration: underline; }
+.kd-reading-hint { margin: 18px 0 26px; font-size: 13px; color: var(--muted); }
+.kd-page-list { width: 100%; }
+.kd-page { position: relative; margin: 0; scroll-margin-top: 32px; }
+.kd-page + .kd-page { margin-top: 38px; }
+.kd-page-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; scroll-margin-top: 32px; }
+.kd-page-anchor:focus { outline: none; }
+.kd-page-open { display: block; width: 100%; padding: 0; border: 0; border-radius: 3px; background: #27272a; cursor: zoom-in; }
+.kd-page-open img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.kd-page-open:focus-visible { outline-offset: 5px; }
+.kd-page figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding-top: 12px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.kd-page-caption-title { color: #c9cad1; margin-left: 14px; }
+.kd-page-text { top: 0; left: 0; }
+
+.kd-page-viewer { position: fixed; inset: 16px; width: calc(100% - 32px); max-width: none; height: calc(100% - 32px); max-height: none; margin: auto; padding: 0; border: 1px solid #4c4e58; border-radius: 8px; background: #111216; color: var(--ink); overflow: hidden; }
+.kd-page-viewer::backdrop { background: #08090bea; }
+.kd-page-viewer[open] { display: flex; flex-direction: column; }
+.kd-viewer-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px; padding: 14px 18px; background: #202227; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+.kd-viewer-toolbar h3 { margin: 0; font-size: 15px; line-height: 1.5; font-weight: 500; }
+.kd-viewer-controls { display: flex; align-items: center; gap: 8px; }
+.kd-viewer-controls button, .kd-viewer-controls select { min-height: 40px; min-width: 40px; padding: 7px 11px; border: 1px solid #565865; border-radius: 4px; background: #2b2d35; color: var(--ink); font: inherit; font-size: 13px; cursor: pointer; }
+.kd-viewer-controls button:hover:not(:disabled) { border-color: var(--orange); }
+.kd-viewer-controls button:disabled { opacity: .35; cursor: default; }
+.kd-viewer-controls [data-kd-close] { margin-left: 6px; }
+.kd-viewer-hint { flex-shrink: 0; margin: 0; padding: 9px 18px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.kd-viewer-viewport { flex: 1; min-height: 0; min-width: 0; width: 100%; padding: 16px; overflow: auto; overscroll-behavior: contain; }
+.kd-viewer-viewport img { display: block; max-width: none; height: auto; }
+.kd-viewer-status { flex-shrink: 0; min-height: 26px; padding: 3px 18px; margin: 0; color: var(--muted); font-size: 12px; }
+
+@media (max-width: 1050px) {
+  .kd-document { width: 100%; margin-inline: 0; }
+}
+@media (max-width: 680px) {
+  .kd-document .document-heading { align-items: start; flex-direction: column; gap: 18px; }
+  .kd-toc { gap: 0 18px; font-size: 12px; }
+  .kd-reading-hint { font-size: 12px; }
+  .kd-page + .kd-page { margin-top: 26px; }
+  .kd-page figcaption { font-size: 11px; gap: 8px; }
+  .kd-page-caption-title { margin-left: 8px; }
+  .kd-page-viewer { inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); }
+  .kd-viewer-toolbar { padding: 10px; gap: 8px; }
+  .kd-viewer-toolbar h3 { flex-basis: 100%; font-size: 13px; }
+  .kd-viewer-controls { width: 100%; gap: 6px; }
+  .kd-viewer-controls [data-kd-close] { margin-left: auto; }
+  .kd-viewer-controls button, .kd-viewer-controls select { padding-inline: 8px; }
+  .kd-viewer-hint { padding: 8px 10px; font-size: 11px; }
+  .kd-viewer-viewport { padding: 10px; }
+}

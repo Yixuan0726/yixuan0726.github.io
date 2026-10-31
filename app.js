@@ -1,10 +1,10 @@
-import { portfolio } from './content.js?v=f216158be5cb';
-import { aboutMarkup, mountAbout } from './about.js?v=f216158be5cb';
-import { mountPdfReader } from './pdf-reader.js?v=f216158be5cb';
-import { keepDribblingDocumentMarkup } from './keepdribbling-document.js?v=f216158be5cb';
-import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=f216158be5cb';
-import { eyedlePage, mountEyeDle } from './eyedle.js?v=f216158be5cb';
-import { mountCoverMotion } from './cover-motion.js?v=f216158be5cb';
+import { portfolio } from './content.js?v=ff8d12696b03';
+import { aboutMarkup, mountAbout } from './about.js?v=ff8d12696b03';
+import { mountPdfReader } from './pdf-reader.js?v=ff8d12696b03';
+import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=ff8d12696b03';
+import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=ff8d12696b03';
+import { eyedlePage, mountEyeDle } from './eyedle.js?v=ff8d12696b03';
+import { mountCoverMotion } from './cover-motion.js?v=ff8d12696b03';
 
 const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -90,7 +90,7 @@ function caseStudySection(section) {
 }
 
 function documentReader(project) {
-  if (project.id === 'keepdribbling') return keepDribblingDocumentMarkup(project);
+  if (project.id === 'keepdribbling') return keepDribblingPagesMarkup(project);
   return `<section class="document-section" id="project-document" aria-labelledby="document-title">
     <div class="document-heading"><div><p class="case-kicker">Project portfolio</p><h2 id="document-title">The full project, in detail.</h2></div>
       <div class="document-links">${resourceLink(project.documentation, 'Open PDF')}<a class="text-link" href="${escapeHTML(safeURL(project.documentation))}" download="${escapeHTML(project.name)}-Portfolio.pdf">Download PDF <span aria-hidden="true">↓</span></a></div></div>
@@ -154,11 +154,13 @@ function moveToContent() {
 }
 
 let disposeDocument = () => {};
+let disposePortfolioPages = () => {};
 let disposeGame = () => {};
 let disposeEyeDle = () => {};
 let disposeCoverMotion = () => {};
 function render({ navigate = false } = {}) {
   disposeDocument();
+  disposePortfolioPages();
   disposeAbout();
   disposeGame();
   disposeEyeDle();
@@ -180,6 +182,7 @@ function render({ navigate = false } = {}) {
   if (navigate) moveToContent();
   disposeAbout = mountAbout(document.querySelector('[data-about]'));
   disposeDocument = mountPdfReader(document.querySelector('[data-pdf]'));
+  disposePortfolioPages = mountKeepDribblingPages(document.querySelector('[data-kd-pages]'));
   disposeGame = mountGamePlayer(document.querySelector('[data-game-player]'));
   disposeEyeDle = mountEyeDle(document.querySelector('.eyedle-detail'));
   disposeCoverMotion = mountCoverMotion(document.querySelector('#page-content'));
