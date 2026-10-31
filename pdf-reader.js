@@ -185,7 +185,7 @@ export function mountPdfReader(host) {
     setStatus('Loading PDF preview…', true);
     try {
       if (!host.dataset.pdf) throw new Error('Missing PDF URL');
-      const pdfjs = await import('./vendor/pdfjs/pdf.min.js?v=6095c3425a84');
+      const pdfjs = await import('./vendor/pdfjs/pdf.min.js?v=f216158be5cb');
       if (disposed) return;
       pdfjs.GlobalWorkerOptions.workerSrc = new URL('./vendor/pdfjs/pdf.worker.min.js', import.meta.url).href;
       loadingTask = pdfjs.getDocument({

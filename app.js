@@ -1,9 +1,10 @@
-import { portfolio } from './content.js?v=6095c3425a84';
-import { aboutMarkup, mountAbout } from './about.js?v=6095c3425a84';
-import { mountPdfReader } from './pdf-reader.js?v=6095c3425a84';
-import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=6095c3425a84';
-import { eyedlePage, mountEyeDle } from './eyedle.js?v=6095c3425a84';
-import { mountCoverMotion } from './cover-motion.js?v=6095c3425a84';
+import { portfolio } from './content.js?v=f216158be5cb';
+import { aboutMarkup, mountAbout } from './about.js?v=f216158be5cb';
+import { mountPdfReader } from './pdf-reader.js?v=f216158be5cb';
+import { keepDribblingDocumentMarkup } from './keepdribbling-document.js?v=f216158be5cb';
+import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=f216158be5cb';
+import { eyedlePage, mountEyeDle } from './eyedle.js?v=f216158be5cb';
+import { mountCoverMotion } from './cover-motion.js?v=f216158be5cb';
 
 const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -89,6 +90,7 @@ function caseStudySection(section) {
 }
 
 function documentReader(project) {
+  if (project.id === 'keepdribbling') return keepDribblingDocumentMarkup(project);
   return `<section class="document-section" id="project-document" aria-labelledby="document-title">
     <div class="document-heading"><div><p class="case-kicker">Project portfolio</p><h2 id="document-title">The full project, in detail.</h2></div>
       <div class="document-links">${resourceLink(project.documentation, 'Open PDF')}<a class="text-link" href="${escapeHTML(safeURL(project.documentation))}" download="${escapeHTML(project.name)}-Portfolio.pdf">Download PDF <span aria-hidden="true">↓</span></a></div></div>
@@ -124,7 +126,7 @@ function detailPage(project) {
   return '<article class="detail">' +
     '<div class="detail-nav"><a href="./#work" data-route>← All projects</a><span class="detail-index">' + escapeHTML(project.number) + ' / ' + String(portfolio.projects.length).padStart(2, '0') + '</span></div>' +
     '<header class="detail-heading"><p class="project-category">' + escapeHTML(project.category) + '</p><h1>' + escapeHTML(project.name) + '</h1><p class="detail-tagline">' + escapeHTML(project.tagline) + '</p>' +
-      (showDocument ? '<div class="detail-actions"><a class="primary-link" href="#project-document" data-section>View project PDF <span aria-hidden="true">↓</span></a>' + (safeURL(project.videoFile) ? '<a class="text-link" href="#walkthrough" data-section>Watch gameplay <span aria-hidden="true">↓</span></a>' : '') + '</div>' :
+      (showDocument ? '<div class="detail-actions"><a class="primary-link" href="#project-document" data-section>' + (project.id === 'keepdribbling' ? 'Read the project' : 'View project PDF') + ' <span aria-hidden="true">↓</span></a>' + (safeURL(project.videoFile) ? '<a class="text-link" href="#walkthrough" data-section>Watch gameplay <span aria-hidden="true">↓</span></a>' : '') + '</div>' :
         (safeURL(project.videoFile) ? '<div class="detail-actions"><a class="primary-link" href="#walkthrough" data-section>Watch gameplay <span aria-hidden="true">↓</span></a>' + (safeURL(project.download) ? resourceLink(project.download, project.downloadLabel || 'Download game') : '') + '</div>' : '')) + '</header>' +
     (playableCover || '<figure><img class="detail-image" src="' + escapeHTML(safeURL(project.cover)) + '" alt="' + escapeHTML(project.coverAlt) + '" width="' + (project.coverWidth || 640) + '" height="' + (project.coverHeight || 420) + '"><figcaption class="cover-caption">' + escapeHTML(project.coverCaption || 'Portfolio cover illustration') + '</figcaption></figure>') +
     (showDocument ? documentReader(project) : '') +
