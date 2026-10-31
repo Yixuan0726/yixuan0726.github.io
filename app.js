@@ -1,9 +1,9 @@
-import { portfolio } from './content.js?v=863e3fba277e';
-import { aboutMarkup, mountAbout } from './about.js?v=863e3fba277e';
-import { mountPdfReader } from './pdf-reader.js?v=863e3fba277e';
-import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=863e3fba277e';
-import { eyedlePage, mountEyeDle } from './eyedle.js?v=863e3fba277e';
-import { mountCoverMotion } from './cover-motion.js?v=863e3fba277e';
+import { portfolio } from './content.js?v=6095c3425a84';
+import { aboutMarkup, mountAbout } from './about.js?v=6095c3425a84';
+import { mountPdfReader } from './pdf-reader.js?v=6095c3425a84';
+import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=6095c3425a84';
+import { eyedlePage, mountEyeDle } from './eyedle.js?v=6095c3425a84';
+import { mountCoverMotion } from './cover-motion.js?v=6095c3425a84';
 
 const $ = selector => document.querySelector(selector);
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));

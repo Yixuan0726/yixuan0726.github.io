@@ -138,13 +138,60 @@
 }
 
 .eyedle-figures {
+  --eyedle-figure-gap: clamp(12px, 2vw, 20px);
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: var(--group-gap, 2.5%);
   width: min(100%, var(--group-width, 100%));
   min-width: 0;
-  margin: 22px 0 24px;
+  margin: 24px auto 28px;
+}
+
+.eyedle-figure-anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.eyedle-figures[data-kind="screenshots"] {
+  display: grid;
+  grid-template-columns: repeat(var(--figure-columns), minmax(0, 1fr));
+  align-items: start;
+  gap: var(--eyedle-figure-gap);
+  width: 100%;
+}
+
+.eyedle-figures[data-kind="screenshots"][data-count="1"] {
+  max-width: 280px;
+}
+
+.eyedle-figures[data-kind="screenshots"][data-count="2"] {
+  max-width: 560px;
+}
+
+.eyedle-figures[data-kind="screenshots"][data-count="3"] {
+  max-width: 760px;
+}
+
+/* The Search screen and reward illustration need less space between them than in Word. */
+#eyedle-block-053 {
+  align-items: center;
+  gap: clamp(24px, 6vw, 56px);
+  width: min(100%, 560px);
+}
+
+#eyedle-block-053 > .eyedle-picture {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+#eyedle-block-053 > .eyedle-picture:last-child {
+  flex-grow: .72;
 }
 
 .eyedle-picture {
@@ -386,14 +433,15 @@
     width: 100%;
   }
 
-  .eyedle-figures[data-kind="screenshots"][data-count="3"] {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    row-gap: 14px;
+  .eyedle-figures[data-kind="screenshots"]:is([data-count="3"], [data-count="4"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 16px;
   }
 
-  .eyedle-figures[data-kind="screenshots"][data-count="3"] > .eyedle-picture {
-    flex: 0 0 48.75%;
+  .eyedle-figures[data-kind="screenshots"][data-count="3"] > .eyedle-picture:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--eyedle-figure-gap)) / 2);
   }
 
   .eyedle-table-wrap :is(th, td) {

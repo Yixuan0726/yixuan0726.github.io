@@ -1,5 +1,5 @@
-import { personalMedia } from './personal-media.js?v=863e3fba277e';
-import { portraitMarkup } from './portrait.js?v=863e3fba277e';
+import { personalMedia } from './personal-media.js?v=6095c3425a84';
+import { portraitMarkup } from './portrait.js?v=6095c3425a84';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const storyPhotos = story => (story.photos?.length ? story.photos : [story.photo]).filter(photo => photo?.src);

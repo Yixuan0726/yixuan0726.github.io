@@ -1,5 +1,5 @@
-import { eyedleDocument } from './eyedle-document-data.js?v=863e3fba277e';
-import { eyedleMedia } from './eyedle-media.js?v=863e3fba277e';
+import { eyedleDocument } from './eyedle-document-data.js?v=6095c3425a84';
+import { eyedleMedia } from './eyedle-media.js?v=6095c3425a84';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const safeURL = value => {
@@ -37,6 +37,21 @@ function picture(source) {
   const { l, r, t, b } = image.crop;
   const cropStyle = (l || r || t || b) ? `position:absolute;width:${100 / (1 - l - r)}%;height:${100 / (1 - t - b)}%;max-width:none;left:${-100 * l / (1 - l - r)}%;top:${-100 * t / (1 - t - b)}%;` : '';
   return `<a class="eyedle-picture" id="${escape(source.id)}" href="${escape(url)}" target="_blank" rel="noopener noreferrer" aria-label="Open image: ${escape(image.alt)}" style="--picture-flex:${source.displayWidth}"><span class="eyedle-picture-frame" style="aspect-ratio:${image.displayWidth}/${image.displayHeight}"><img src="${escape(url)}" alt="${escape(image.alt)}" width="${Math.round(numeric(image.width, source.width))}" height="${Math.round(numeric(image.height, source.height))}" loading="lazy" decoding="async"${cropStyle ? ` style="${cropStyle}"` : ''}></span></a>`;
+}
+
+function figures(blocks) {
+  const first = blocks[0];
+  const images = blocks.flatMap(block => block.parts.filter(part => part.type === 'image'));
+  const anchors = blocks.slice(1).map(block => `<span class="eyedle-figure-anchor" id="${escape(block.id)}" aria-hidden="true"></span>`).join('');
+  return `<div class="eyedle-figures" id="${escape(first.id)}" data-count="${images.length}" data-kind="${escape(first.kind)}" style="--group-width:${blocks.length > 1 ? 100 : first.groupWidth}%;--group-gap:${first.groupGap ?? 2.5}%;--figure-columns:${images.length}">${anchors}${images.map(picture).join('')}</div>`;
+}
+
+function canJoinScreenshotRows(previous, next, count) {
+  const images = block => block.parts.filter(part => part.type === 'image');
+  const portrait = block => images(block).every(image => image.displayWidth / image.displayHeight < .75);
+  return next?.type === 'images' && previous.kind === 'screenshots' && next.kind === 'screenshots'
+    && count + images(next).length <= 4 && portrait(previous) && portrait(next)
+    && !eyedleMedia.insertions.some(item => item.after === previous.id);
 }
 
 function extraMedia(after) {
@@ -112,8 +127,7 @@ export function mountEyeDle(root) {
 
 function paragraph(block, inTable = false) {
   if (block.type === 'images') {
-    const images = block.parts.filter(part => part.type === 'image');
-    return `<div class="eyedle-figures" id="${block.id}" data-count="${images.length}" data-kind="${block.kind}" style="--group-width:${block.groupWidth}%;--group-gap:${block.groupGap ?? 2.5}%">${images.map(picture).join('')}</div>`;
+    return figures([block]);
   }
   if (!block.text.trim()) return '';
   const level = headingLevel(block);
@@ -143,12 +157,25 @@ export function eyedlePage(project, next) {
   let latestHeading = eyedleDocument.title;
   let currentSection = null;
   const content = [];
-  for (const block of eyedleDocument.blocks) {
+  for (let index = 0; index < eyedleDocument.blocks.length; index++) {
+    const block = eyedleDocument.blocks[index];
     const level = headingLevel(block);
     if (level === 2 || level === 3) {
       if (currentSection) content.push(extraMedia(currentSection));
       currentSection = sectionID(block);
       latestHeading = block.text;
+    }
+    if (block.type === 'images') {
+      const rows = [block];
+      let count = block.parts.filter(part => part.type === 'image').length;
+      while (canJoinScreenshotRows(rows.at(-1), eyedleDocument.blocks[index + 1], count)) {
+        const nextRow = eyedleDocument.blocks[++index];
+        rows.push(nextRow);
+        count += nextRow.parts.filter(part => part.type === 'image').length;
+      }
+      content.push(figures(rows));
+      rows.forEach(row => content.push(extraMedia(row.id)));
+      continue;
     }
     content.push(block.type === 'table' ? table(block, latestHeading) : paragraph(block));
     content.push(extraMedia(block.id));
