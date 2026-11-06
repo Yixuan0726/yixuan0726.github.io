@@ -1,5 +1,6 @@
 import { eyedleDocument } from './eyedle-document-data.js?v=6f3d6a6af7e6';
 import { eyedleMedia } from './eyedle-media.js?v=6f3d6a6af7e6';
+import { eyeDleCaseStudyPage } from './eyedle-case-study.js?v=b1b9e4ee866d';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const safeURL = value => {
@@ -118,10 +119,135 @@ export function mountEyeDle(root) {
   const syncAll = () => states.forEach((state, video) => syncPlayback(video, state));
   document.addEventListener('visibilitychange', syncAll, { signal });
   reducedMotion.addEventListener('change', syncAll, { signal });
+  const disposeReading = mountReadingNavigation(root, signal);
+  const disposeImages = mountImageViewer(root, signal);
   return () => {
+    disposeImages();
+    disposeReading();
     observer.disconnect();
     controller.abort();
     root.querySelectorAll('video').forEach(video => video.pause());
+  };
+}
+
+function mountReadingNavigation(root, signal) {
+  const chapters = [...root.querySelectorAll('[data-chapter]')];
+  const links = [...root.querySelectorAll('[data-chapter-link]')];
+  const progress = root.querySelector('[data-reading-progress]');
+  const documentArea = root.querySelector('.eyedle-document');
+  const navigation = root.querySelector('.eyedle-toc');
+  const navigationLinks = root.querySelector('.eyedle-toc-links');
+  let frame = 0;
+  let previousActive = -1;
+  const update = () => {
+    frame = 0;
+    const offset = (navigation?.offsetHeight || 64) + 40;
+    let active = -1;
+    chapters.forEach((chapter, index) => {
+      if (chapter.getBoundingClientRect().top <= offset) active = index;
+    });
+    links.forEach((link, index) => {
+      if (index === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    if (active !== previousActive && active >= 0 && navigationLinks.scrollWidth > navigationLinks.clientWidth + 1) {
+      const linkBox = links[active].getBoundingClientRect();
+      const navBox = navigationLinks.getBoundingClientRect();
+      if (linkBox.left < navBox.left || linkBox.right > navBox.right) {
+        navigationLinks.scrollTo({
+          left: navigationLinks.scrollLeft + linkBox.left - navBox.left - (navBox.width - linkBox.width) / 2,
+          behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+        });
+      }
+    }
+    previousActive = active;
+    if (progress && documentArea) {
+      const rect = documentArea.getBoundingClientRect();
+      const length = Math.max(1, rect.height - innerHeight + offset);
+      const value = Math.min(1, Math.max(0, (offset - rect.top) / length));
+      progress.style.transform = `scaleX(${value})`;
+    }
+    root.style.setProperty('--eyedle-nav-height', `${navigation?.offsetHeight || 64}px`);
+  };
+  const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+  window.addEventListener('scroll', schedule, { passive: true, signal });
+  window.addEventListener('resize', schedule, { passive: true, signal });
+  const resize = typeof ResizeObserver === 'function' ? new ResizeObserver(schedule) : null;
+  if (resize) { resize.observe(documentArea); resize.observe(navigation); }
+  update();
+  return () => { cancelAnimationFrame(frame); resize?.disconnect(); };
+}
+
+function mountImageViewer(root, signal) {
+  const dialog = root.querySelector('.eyedle-lightbox');
+  if (!dialog || typeof dialog.showModal !== 'function') return () => {};
+  const pictures = [...root.querySelectorAll('.eyedle-picture')];
+  const image = dialog.querySelector('[data-lightbox-image]');
+  const caption = dialog.querySelector('[data-lightbox-caption]');
+  const counter = dialog.querySelector('[data-lightbox-counter]');
+  const original = dialog.querySelector('[data-lightbox-original]');
+  const previous = dialog.querySelector('[data-lightbox-prev]');
+  const next = dialog.querySelector('[data-lightbox-next]');
+  let index = 0;
+  let trigger = null;
+  let oldOverflow = '';
+  let oldPadding = '';
+  let locked = false;
+  let disposed = false;
+  const unlock = () => {
+    if (!locked) return;
+    document.body.style.overflow = oldOverflow;
+    document.body.style.paddingRight = oldPadding;
+    locked = false;
+  };
+  const show = position => {
+    index = Math.min(pictures.length - 1, Math.max(0, position));
+    const picture = pictures[index];
+    image.src = picture.href;
+    image.alt = picture.querySelector('img').alt;
+    caption.textContent = image.alt;
+    counter.textContent = `${index + 1} / ${pictures.length}`;
+    original.href = picture.href;
+    previous.disabled = index === 0;
+    next.disabled = index === pictures.length - 1;
+  };
+  root.addEventListener('click', event => {
+    const picture = event.target.closest('.eyedle-picture');
+    if (!picture || !root.contains(picture) || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    trigger = picture;
+    show(pictures.indexOf(picture));
+    oldOverflow = document.body.style.overflow;
+    oldPadding = document.body.style.paddingRight;
+    const scrollbar = innerWidth - document.documentElement.clientWidth;
+    if (scrollbar > 0) document.body.style.paddingRight = `${parseFloat(getComputedStyle(document.body).paddingRight) + scrollbar}px`;
+    document.body.style.overflow = 'hidden';
+    locked = true;
+    dialog.showModal();
+    dialog.querySelector('[data-lightbox-close]').focus();
+  }, { signal });
+  previous.addEventListener('click', () => show(index - 1), { signal });
+  next.addEventListener('click', () => show(index + 1), { signal });
+  dialog.querySelector('[data-lightbox-close]').addEventListener('click', () => dialog.close(), { signal });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      show(index + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  }, { signal });
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const box = dialog.getBoundingClientRect();
+    if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+  }, { signal });
+  dialog.addEventListener('close', () => {
+    unlock();
+    if (!disposed && trigger?.isConnected) trigger.focus({ preventScroll: true });
+  }, { signal });
+  return () => {
+    disposed = true;
+    if (dialog.open) dialog.close();
+    unlock();
   };
 }
 
@@ -152,24 +278,18 @@ function table(block, label) {
   return `<div class="eyedle-table-wrap" id="${block.id}" role="region" aria-label="${escape(label)} table" tabindex="0"><table><colgroup>${block.columns.map(width => `<col style="width:${100 * width / total}%">`).join('')}</colgroup><thead>${row(block.rows[0], true)}</thead><tbody>${block.rows.slice(1).map(cells => row(cells, false)).join('')}</tbody></table></div>`;
 }
 
-export function eyedlePage(project, next) {
-  const chapters = eyedleDocument.blocks.filter(block => headingLevel(block) === 2);
-  let latestHeading = eyedleDocument.title;
-  let currentSection = null;
+function renderBlocks(blocks, label) {
   const content = [];
-  for (let index = 0; index < eyedleDocument.blocks.length; index++) {
-    const block = eyedleDocument.blocks[index];
-    const level = headingLevel(block);
-    if (level === 2 || level === 3) {
-      if (currentSection) content.push(extraMedia(currentSection));
-      currentSection = sectionID(block);
-      latestHeading = block.text;
-    }
+  let copying = false;
+  const closeCopy = () => { if (copying) { content.push('</div>'); copying = false; } };
+  for (let index = 0; index < blocks.length; index++) {
+    const block = blocks[index];
     if (block.type === 'images') {
+      closeCopy();
       const rows = [block];
       let count = block.parts.filter(part => part.type === 'image').length;
-      while (canJoinScreenshotRows(rows.at(-1), eyedleDocument.blocks[index + 1], count)) {
-        const nextRow = eyedleDocument.blocks[++index];
+      while (canJoinScreenshotRows(rows.at(-1), blocks[index + 1], count)) {
+        const nextRow = blocks[++index];
         rows.push(nextRow);
         count += nextRow.parts.filter(part => part.type === 'image').length;
       }
@@ -177,15 +297,103 @@ export function eyedlePage(project, next) {
       rows.forEach(row => content.push(extraMedia(row.id)));
       continue;
     }
-    content.push(block.type === 'table' ? table(block, latestHeading) : paragraph(block));
-    if (level === 1) content.push(extraMedia('project-overview'));
-    content.push(extraMedia(block.id));
+    if (block.type === 'table') {
+      closeCopy();
+      content.push(table(block, label));
+    } else {
+      const rendered = paragraph(block);
+      if (rendered) {
+        if (/^Level 1Level 2Level 3$/.test(block.text)) {
+          closeCopy();
+          content.push(rendered);
+        } else {
+          if (!copying) { content.push('<div class="eyedle-copy-group">'); copying = true; }
+          content.push(rendered);
+        }
+      }
+    }
+    const inserted = extraMedia(block.id);
+    if (inserted) { closeCopy(); content.push(inserted); }
   }
-  if (currentSection) content.push(extraMedia(currentSection));
-  return `<article class="detail eyedle-detail">
-    <div class="detail-nav"><a href="./#work" data-route>← All projects</a><span class="detail-index">${escape(project.number)} / 04</span></div>
-    <nav class="eyedle-toc" aria-label="EyeDle document chapters">${chapters.map(block => `<a href="#${sectionID(block)}" data-section>${escape(block.text)}</a>`).join('')}</nav>
-    <div class="eyedle-document" aria-labelledby="eyedle-document-title">${content.join('\n')}</div>
+  closeCopy();
+  return content.join('\n');
+}
+
+function splitHeading(block) {
+  const match = block.text.match(/^(\d+)\s+(.+)$/);
+  return match ? `<span class="eyedle-heading-number">${escape(match[1])} </span><span class="eyedle-heading-text">${escape(match[2])}</span>` : inline(block.parts);
+}
+
+export function eyedlePage(project, next) {
+  const currentURL = new URL(location.href);
+  const legacyAnchor = /^#eyedle-(?:section|block|image|media)-/.test(currentURL.hash);
+  if (currentURL.searchParams.get('view') === 'full' || legacyAnchor) return fullEyeDlePage(project, next);
+  const images = eyedleDocument.blocks.flatMap(block => (block.parts || []).filter(part => part.type === 'image'));
+  return eyeDleCaseStudyPage(project, next, {
+    escape,
+    picture: id => { const source = images.find(image => image.id === id); return source ? picture(source) : ''; },
+    media: id => { const source = eyedleMedia.insertions.find(item => item.id === id); return source ? extraMedia(source.after) : ''; }
+  });
+}
+
+function fullEyeDlePage(project, next) {
+  const chapters = [];
+  let chapter;
+  let subsection;
+  for (const block of eyedleDocument.blocks) {
+    const level = headingLevel(block);
+    if (level === 1) continue;
+    if (level === 2) {
+      chapter = { heading: block, blocks: [], sections: [] };
+      chapters.push(chapter);
+      subsection = null;
+    } else if (level === 3) {
+      subsection = { heading: block, blocks: [] };
+      chapter.sections.push(subsection);
+    } else if (chapter) (subsection || chapter).blocks.push(block);
+  }
+  const chapterHTML = chapters.map(item => {
+    const id = sectionID(item.heading);
+    const sections = item.sections.map(section => {
+      const sectionId = sectionID(section.heading);
+      const split = ['eyedle-section-2-2', 'eyedle-section-4-1'].includes(sectionId);
+      return `<section class="eyedle-subsection${split ? ' eyedle-subsection--split' : ''}" aria-labelledby="${sectionId}">
+        ${paragraph(section.heading)}
+        <div class="eyedle-section-body">${renderBlocks(section.blocks, section.heading.text)}${extraMedia(sectionId)}</div>
+      </section>`;
+    }).join('\n');
+    return `<section class="eyedle-chapter" data-chapter aria-labelledby="${id}">
+      <header class="eyedle-chapter-heading"><h2 id="${id}">${splitHeading(item.heading)}</h2></header>
+      <div class="eyedle-chapter-body">${item.blocks.length ? `<div class="eyedle-section-body">${renderBlocks(item.blocks, item.heading.text)}</div>` : ''}${sections}${extraMedia(id)}</div>
+    </section>`;
+  }).join('\n');
+  const title = eyedleDocument.title;
+  const titleName = title.startsWith('EyeDle ') ? `<span class="eyedle-hero-name">EyeDle</span> <span class="eyedle-hero-subtitle">${escape(title.slice(7))}</span>` : escape(title);
+  return `<article class="detail eyedle-detail eyedle-layout">
+    <div class="detail-nav"><a href="?project=eyedle" data-route>← EyeDle case study</a><span class="detail-index">${escape(project.number)} / 04</span></div>
+    <header class="eyedle-hero">
+      <div class="eyedle-hero-copy">
+        <p class="eyedle-hero-category">${escape(project.category)}</p>
+        <h1 id="eyedle-document-title">${titleName}</h1>
+        <p class="eyedle-hero-tagline">${escape(project.tagline)}</p>
+        <a class="eyedle-read-link" href="#eyedle-section-1" data-section>Explore the project <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="eyedle-hero-media">${extraMedia('project-overview')}</div>
+    </header>
+    <nav class="eyedle-toc" aria-label="EyeDle document chapters">
+      <div class="eyedle-toc-links">${chapters.map(item => {
+        const block = item.heading;
+        const parts = block.text.match(/^(\d+)\s+(.+)$/);
+        return `<a href="#${sectionID(block)}" data-section data-chapter-link><span class="eyedle-toc-number">${escape(parts?.[1] || '')}</span> <span class="eyedle-toc-label">${escape(parts?.[2] || block.text)}</span></a>`;
+      }).join('')}</div>
+      <div class="eyedle-reading-track" aria-hidden="true"><span data-reading-progress></span></div>
+    </nav>
+    <div class="eyedle-document" aria-labelledby="eyedle-document-title">${chapterHTML}</div>
+    <dialog class="eyedle-lightbox" aria-label="EyeDle image viewer">
+      <div class="eyedle-lightbox-toolbar"><p data-lightbox-counter aria-live="polite"></p><button type="button" data-lightbox-close aria-label="Close image viewer">Close <span aria-hidden="true">×</span></button></div>
+      <div class="eyedle-lightbox-stage"><button type="button" data-lightbox-prev aria-label="Previous image">←</button><figure><img data-lightbox-image alt=""><figcaption data-lightbox-caption></figcaption></figure><button type="button" data-lightbox-next aria-label="Next image">→</button></div>
+      <div class="eyedle-lightbox-footer"><span>← → to browse · Esc to close</span><a data-lightbox-original target="_blank" rel="noopener noreferrer">Open original ↗</a></div>
+    </dialog>
     <a class="next-project" href="?project=${encodeURIComponent(next.id)}" data-route><div><small>Next project</small><strong>${escape(next.name)}</strong></div><span aria-hidden="true">→</span></a>
   </article>`;
 }
