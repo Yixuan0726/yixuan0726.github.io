@@ -40,7 +40,12 @@ export const portfolio = {
       description: 'A top-down shooter that turns statistical decisions into action.',
       cover: 'assets/cover-stats.svg', coverAlt: 'Graphic illustration of a lavender die and a crosshair',
       tags: ['Systems design', 'Solo project'],
-      documentation: null, video: null, playable: null, gallery: []
+      documentation: null, video: null, playable: null, gallery: [],
+      caseStudy: [
+        { id: 'project-page', nav: 'Project Page', title: 'Project Page', kicker: 'Coming soon' },
+        { id: 'gameplay-video', nav: 'Gameplay Video', title: 'Gameplay Video', kicker: 'Coming soon' },
+        { id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo', kicker: 'Coming soon' }
+      ]
     },
     {
       id: 'the-grand-gamble', number: '04', name: 'The Grand Gamble',

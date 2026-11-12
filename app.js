@@ -1,4 +1,4 @@
-import { portfolio } from './content.js?v=6f3d6a6af7e6';
+import { portfolio } from './content.js?v=ee21ef606620';
 import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
 import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
 import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
