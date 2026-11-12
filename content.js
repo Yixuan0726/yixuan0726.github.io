@@ -3,7 +3,7 @@
 // Empty contact, document, video, playable, and gallery fields stay hidden.
 // The résumé slot stays visible; add a PDF path to activate its links.
 // KeepDribbling and The Grand Gamble use real game captures.
-import { keepDribbling } from './keepdribbling.js?v=6f3d6a6af7e6';
+import { keepDribbling } from './keepdribbling.js?v=391b9dcf29e2';
 export const portfolio = {
   name: 'Yixuan Yu',
   firstName: 'Yixuan',
@@ -18,22 +18,8 @@ export const portfolio = {
   resume: null, // Optional PDF preview; keep the source Word download below.
   resumeWord: 'uploads/yixuan-yu-cv.docx',
   projects: [
-    keepDribbling,
     {
-      id: 'eyedle', number: '02', name: 'EyeDle',
-      collaboration: 'solo',
-      category: 'EYE INTERACTION × IDLE', color: 'green',
-      tagline: 'A game that gives your eyes a break.',
-      description: 'An eye-driven care station exploring a gentler rhythm of play.',
-      cover: 'assets/eyedle/cover/cover-poster.png',
-      coverVideo: 'assets/eyedle/cover/cover-loop.mp4',
-      coverWidth: 1200, coverHeight: 750,
-      coverAlt: 'A resting blue droplet in a hand-painted wooden workshop, with mint bottles on a conveyor',
-      tags: ['Interaction design', 'Solo project'],
-      documentation: null, video: null, playable: null, gallery: []
-    },
-    {
-      id: 'statsshooter', number: '03', name: 'StatsShooter',
+      id: 'statsshooter', number: '01', name: 'StatsShooter',
       collaboration: 'solo',
       category: 'STATISTICS × SHOOTER', color: 'purple',
       tagline: 'The odds are part of the arsenal.',
@@ -47,6 +33,20 @@ export const portfolio = {
         { id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo', kicker: 'Coming soon' }
       ]
     },
+    {
+      id: 'eyedle', number: '02', name: 'EyeDle',
+      collaboration: 'solo',
+      category: 'EYE INTERACTION × IDLE', color: 'green',
+      tagline: 'A game that gives your eyes a break.',
+      description: 'An eye-driven care station exploring a gentler rhythm of play.',
+      cover: 'assets/eyedle/cover/cover-poster.png',
+      coverVideo: 'assets/eyedle/cover/cover-loop.mp4',
+      coverWidth: 1200, coverHeight: 750,
+      coverAlt: 'A resting blue droplet in a hand-painted wooden workshop, with mint bottles on a conveyor',
+      tags: ['Interaction design', 'Solo project'],
+      documentation: null, video: null, playable: null, gallery: []
+    },
+    keepDribbling,
     {
       id: 'the-grand-gamble', number: '04', name: 'The Grand Gamble',
       collaboration: 'team',

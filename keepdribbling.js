@@ -1,7 +1,7 @@
 // Case study assembled from the author's design documents, CV and Unity project.
 // Local source notes and version differences are recorded in README.md.
 export const keepDribbling = {
-  id: 'keepdribbling', number: '01', name: 'KeepDribbling',
+  id: 'keepdribbling', number: '03', name: 'KeepDribbling',
   collaboration: 'solo', category: 'BASKETBALL × NARRATIVE', color: 'orange',
   tagline: 'Fall. Pick it up. Keep going.',
   description: 'A basketball runner about finding your way back after injury.',
