@@ -184,8 +184,12 @@ export function eyedlePage(project, next) {
   if (currentSection) content.push(extraMedia(currentSection));
   return `<article class="detail eyedle-detail">
     <div class="detail-nav"><a href="./#work" data-route>← All projects</a><span class="detail-index">${escape(project.number)} / 04</span></div>
-    <nav class="eyedle-toc" aria-label="EyeDle document chapters">${chapters.map(block => `<a href="#${sectionID(block)}" data-section>${escape(block.text)}</a>`).join('')}</nav>
+    <nav class="eyedle-toc" aria-label="EyeDle document chapters">${chapters.map(block => `<a href="#${sectionID(block)}" data-section>${escape(block.text)}</a>`).join('')}<a href="#playable-demo" data-section>Playable Demo</a></nav>
     <div class="eyedle-document" aria-labelledby="eyedle-document-title">${content.join('\n')}</div>
+    <section class="detail-section" id="playable-demo" aria-labelledby="playable-demo-title">
+      <h2 id="playable-demo-title">Playable Demo</h2>
+      <p class="project-context">Coming soon</p>
+    </section>
     <a class="next-project" href="?project=${encodeURIComponent(next.id)}" data-route><div><small>Next project</small><strong>${escape(next.name)}</strong></div><span aria-hidden="true">→</span></a>
   </article>`;
 }
