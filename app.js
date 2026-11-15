@@ -144,7 +144,9 @@ function detailPage(project) {
 }
 
 function moveToContent() {
-  const hash = location.hash === '#portfolio' ? '#work' : location.hash;
+  const hash = location.hash === '#portfolio' ? '#work'
+    : location.hash === '#eyedle-video' ? '#eyedle-media-gameplay-walkthrough'
+    : location.hash;
   const target = (hash && document.getElementById(hash.slice(1))) || $('#page-content h1');
   if (!target) return;
   target.tabIndex = -1;
