@@ -1,5 +1,5 @@
 import { eyedleDocument } from './eyedle-document-data.js?v=6f3d6a6af7e6';
-import { eyedleMedia } from './eyedle-media.js?v=6f3d6a6af7e6';
+import { eyedleMedia } from './eyedle-media.js?v=eyedle-vimeo-1247032657';
 
 const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const safeURL = value => {
@@ -65,11 +65,17 @@ function extraMedia(after) {
     const videoID = 'eyedle-clip-' + mediaID;
     const titleID = 'eyedle-media-title-' + mediaID;
     const captionID = 'eyedle-media-caption-' + mediaID;
-    const visual = isVideo
+    const vimeoId = item.type === 'vimeo' ? /^https:\/\/vimeo\.com\/(\d+)$/.exec(src)?.[1] : null;
+    if (item.type === 'vimeo' && !vimeoId) return '';
+    const visual = vimeoId
+      ? `<iframe class="gameplay-video" src="https://player.vimeo.com/video/${vimeoId}" title="${label} on Vimeo" loading="lazy" style="border: 0" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>`
+      : isVideo
       ? `<video id="${videoID}" controls playsinline preload="${isLoop ? 'none' : 'metadata'}" aria-label="${label}"${item.caption ? ` aria-describedby="${captionID}"` : ''}${isLoop ? ' muted loop data-eyedle-loop' : ''}${safeURL(item.poster) ? ` poster="${escape(safeURL(item.poster))}"` : ''}${item.width && item.height ? ` width="${numeric(item.width, 1280)}" height="${numeric(item.height, 720)}"` : ''}><source src="${src}" type="video/mp4"></video>`
       : `<img src="${src}" alt="${label}" loading="lazy" decoding="async"${item.width && item.height ? ` width="${numeric(item.width, 1280)}" height="${numeric(item.height, 720)}"` : ''}>`;
     const heading = item.title ? `<header class="eyedle-clip-heading"><h4 id="${titleID}">${escape(item.title)}</h4>${item.label ? `<span>${escape(item.label)}</span>` : ''}</header>` : '';
-    const actions = isVideo ? `<div class="eyedle-clip-actions">${isLoop ? `<button type="button" data-loop-toggle aria-controls="${videoID}" hidden>Play animation</button>` : ''}<a href="${src}" target="_blank" rel="noopener noreferrer" aria-label="View larger: ${label}">View larger <span aria-hidden="true">↗</span></a>${safeURL(item.gif) ? `<a href="${escape(safeURL(item.gif))}" download>Download GIF <span aria-hidden="true">↓</span></a>` : ''}</div>` : '';
+    const actions = vimeoId
+      ? `<div class="eyedle-clip-actions"><a href="${src}" target="_blank" rel="noopener noreferrer">Watch on Vimeo <span aria-hidden="true">↗</span></a></div>`
+      : isVideo ? `<div class="eyedle-clip-actions">${isLoop ? `<button type="button" data-loop-toggle aria-controls="${videoID}" hidden>Play animation</button>` : ''}<a href="${src}" target="_blank" rel="noopener noreferrer" aria-label="View larger: ${label}">View larger <span aria-hidden="true">↗</span></a>${safeURL(item.gif) ? `<a href="${escape(safeURL(item.gif))}" download>Download GIF <span aria-hidden="true">↓</span></a>` : ''}</div>` : '';
     return `<div class="eyedle-extra-media" id="eyedle-media-${mediaID}" data-format="${!item.wide && item.height > item.width ? 'portrait' : 'landscape'}"><figure${item.title ? ` aria-labelledby="${titleID}"` : ''}>${heading}${visual}${item.caption ? `<figcaption id="${captionID}">${escape(item.caption)}</figcaption>` : ''}${actions}</figure></div>`;
   }).join('');
 }

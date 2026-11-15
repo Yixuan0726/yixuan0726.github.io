@@ -15,11 +15,10 @@ export const eyedleMedia = {
   },
   insertions: [
     {
-      id: 'gameplay-walkthrough', after: 'project-overview', type: 'video', wide: true,
-      title: 'Gameplay walkthrough', label: '3:01 · Sound on',
-      src: 'uploads/eyedle/eyedle-gameplay-walkthrough.mp4', poster: 'uploads/eyedle/eyedle-gameplay-walkthrough.jpg',
-      width: 1920, height: 1080, alt: 'EyeDle care interaction and workshop loop, including early-opening feedback, production, sales, and upgrades',
-      caption: 'Guided routines, closed-eye feedback, production, sales, and upgrades. Edited prototype demonstration with simulated sensor input and separately recorded player footage.'
+      id: 'gameplay-walkthrough', after: 'project-overview', type: 'vimeo', wide: true,
+      title: 'EyeDle work sample', label: '1:30 · Sound on',
+      src: 'https://vimeo.com/1247032657',
+      width: 1920, height: 1080, alt: 'EyeDle work sample'
     },
     {
       id: 'worker-search-video', after: 'eyedle-block-053', type: 'video',
