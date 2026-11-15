@@ -1,0 +1,16 @@
+Gaslamp Funworks
+Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+https://creativecommons.org/licenses/by/3.0/
+Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100826
+Original MP3, unchanged. Looped at playback; volume and fades applied in-game.
+
+RPG Town
+Karate Studios / KarateStudios
+CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+Source: https://opengameart.org/content/2-whimsical-rpg-themes
+Original RPG town.flac converted to 16-bit PCM WAV at its original 48000 Hz sample rate.
+Looped at playback; volume and fades applied in-game.
+
+Music attribution is also shown on the in-game pause menu.

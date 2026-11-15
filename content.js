@@ -33,7 +33,13 @@ export const portfolio = {
         {
           id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo',
           kicker: 'Desktop · Keyboard & mouse',
-          playUrl: 'https://g00000.itch.io/statsshooter'
+          browserGame: {
+            id: 'statsshooter', name: 'StatsShooter',
+            webBuild: 'games/statsshooter/index.html',
+            cover: 'games/statsshooter/poster.png', coverWidth: 1672, coverHeight: 941,
+            playUrl: 'https://g00000.itch.io/statsshooter',
+            controls: 'WASD to move · Mouse to aim · Left click to fire · Right click to calibrate'
+          }
         }
       ]
     },

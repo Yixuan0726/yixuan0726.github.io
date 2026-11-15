@@ -16,15 +16,22 @@ function assetURL(value) {
   } catch { return null; }
 }
 
-/** The existing game menu is the poster. No Unity files load before Start. */
+/** No Unity files load before Start. */
 export function gamePlayerMarkup(project) {
   const build = webBuildURL(project.webBuild);
   const cover = assetURL(project.cover);
   if (!build || !cover) return '';
   const download = assetURL(project.download);
-  return `<section class="game-player" data-game-player data-web-build="${escapeHTML(build.href)}" data-game-name="${escapeHTML(project.name)}" aria-label="${escapeHTML(project.name)} browser game">
+  const playUrl = assetURL(project.playUrl);
+  const hasMenuPoster = project.id === 'keepdribbling';
+  const posterActions = hasMenuPoster
+    ? `<button class="game-menu-hotspot game-menu-start" type="button" data-game-start aria-label="Play ${escapeHTML(project.name)} in browser"><span class="visually-hidden">Start game</span></button>
+       <a class="game-menu-hotspot game-menu-exit" href="./#work" data-route aria-label="Exit to all projects"><span class="visually-hidden">Exit to all projects</span></a>`
+    : `<button class="primary-link game-player-start" type="button" data-game-start>Play ${escapeHTML(project.name)} <span aria-hidden="true">▶</span></button>`;
+  return `<section class="game-player${hasMenuPoster ? '' : ' game-player--inline'}" data-game-player data-web-build="${escapeHTML(build.href)}" data-game-name="${escapeHTML(project.name)}" data-game-channel="${escapeHTML(project.id)}" aria-label="${escapeHTML(project.name)} browser game">
     <div class="game-player-toolbar">
-      <p class="game-player-hint">Play in browser · Keyboard required</p>
+      ${hasMenuPoster ? '<p class="game-player-hint">Play in browser · Keyboard required</p>' : ''}
+      ${playUrl ? `<a class="text-link" href="${escapeHTML(playUrl)}" target="_blank" rel="noopener noreferrer">Play on itch.io <span aria-hidden="true">↗</span></a>` : ''}
       <div class="game-player-controls" data-game-controls hidden>
         <button type="button" data-game-close>Close game</button>
         <button type="button" data-game-fullscreen hidden>Fullscreen</button>
@@ -40,13 +47,12 @@ export function gamePlayerMarkup(project) {
     </div>
     <div class="game-player-surface" data-game-surface>
       <div class="game-player-poster" data-game-poster>
-        <img src="${escapeHTML(cover)}" alt="${escapeHTML(project.coverAlt || project.name + ' start screen')}" width="1920" height="1080">
-        <button class="game-menu-hotspot game-menu-start" type="button" data-game-start aria-label="Play ${escapeHTML(project.name)} in browser"><span class="visually-hidden">Start game</span></button>
-        <a class="game-menu-hotspot game-menu-exit" href="./#work" data-route aria-label="Exit to all projects"><span class="visually-hidden">Exit to all projects</span></a>
+        <img src="${escapeHTML(cover)}" alt="${escapeHTML(hasMenuPoster ? project.coverAlt || project.name + ' start screen' : '')}" width="${project.coverWidth || 1920}" height="${project.coverHeight || 1080}" ${hasMenuPoster ? '' : 'loading="lazy"'}>
+        ${posterActions}
       </div>
       <div class="game-player-frame" data-game-frame hidden></div>
     </div>
-    <p class="game-player-instructions">A / D: change lanes · W / S: move to retrieve the ball · Follow the on-screen action prompts.</p>
+    <p class="game-player-instructions">${escapeHTML(project.controls || 'A / D: change lanes · W / S: move to retrieve the ball · Follow the on-screen action prompts.')}</p>
   </section>`;
 }
 
@@ -57,6 +63,7 @@ export function mountGamePlayer(host) {
   const win = doc.defaultView;
   const build = webBuildURL(host.dataset.webBuild, win.location.href);
   if (!build) return () => {};
+  const channel = host.dataset.gameChannel;
   const find = name => host.querySelector(`[data-game-${name}]`);
   const start = find('start');
   const poster = find('poster');
@@ -121,7 +128,7 @@ export function mountGamePlayer(host) {
     reset({ restoreFocus: false });
     feedback.hidden = false;
     fallback.hidden = false;
-    status.textContent = 'The browser game could not start. Try again or use the Windows version.';
+    status.textContent = 'The browser game could not start.';
     detail.textContent = typeof message === 'string' ? message.slice(0, 300) : '';
     detail.hidden = !detail.textContent;
     if (shouldRestoreFocus) retry.focus({ preventScroll: true });
@@ -154,7 +161,7 @@ export function mountGamePlayer(host) {
     close.focus({ preventScroll: true });
     slowTimer = win.setTimeout(() => {
       if (disposed || !frame || ready) return;
-      status.textContent = 'Still loading. You can keep waiting, try again, or use the Windows version.';
+      status.textContent = 'Still loading. You can keep waiting or try again.';
       fallback.hidden = false;
     }, 120000);
   }
@@ -181,7 +188,7 @@ export function mountGamePlayer(host) {
     if (disposed || !frame || event.source !== frame.contentWindow || event.origin !== win.location.origin) return;
     const data = event.data;
     if (!data || typeof data !== 'object') return;
-    if (data.type === 'keepdribbling-ready') {
+    if (data.type === `${channel}-ready`) {
       if (ready) return;
       ready = true;
       win.clearTimeout(slowTimer);
@@ -191,9 +198,9 @@ export function mountGamePlayer(host) {
       fallback.hidden = true;
       fullscreen.hidden = !host.requestFullscreen || doc.fullscreenEnabled === false;
       if (host.contains(doc.activeElement)) frame.focus({ preventScroll: true });
-    } else if (data.type === 'keepdribbling-error') {
+    } else if (data.type === `${channel}-error`) {
       showError(data.message);
-    } else if (data.type === 'keepdribbling-exit') {
+    } else if (data.type === `${channel}-exit`) {
       reset();
     }
   }, { signal });

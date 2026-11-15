@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StatsShooter</title>
+  <link rel="icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <style>
+    body { display: grid; place-items: center; min-height: 100vh; background: #101114; }
+    #unity-container { position: relative; width: min(100vw, 160vh); aspect-ratio: 8 / 5; }
+    #unity-canvas { display: block; width: 100%; height: 100%; }
+    #unity-loading-bar { display: block; pointer-events: none; }
+    #unity-loading-bar[hidden] { display: none; }
+    #unity-warning { width: min(90%, 40rem); box-sizing: border-box; border-radius: 6px; font: 14px/1.5 system-ui, sans-serif; }
+    #unity-warning[data-error] { background: #ffd9d1; }
+  </style>
+</head>
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" width="960" height="600" tabindex="0" aria-label="StatsShooter game"></canvas>
+    <div id="unity-loading-bar" aria-hidden="true">
+      <div id="unity-logo"></div>
+      <div id="unity-progress-bar-empty"><div id="unity-progress-bar-full"></div></div>
+    </div>
+    <div id="unity-warning" role="status"></div>
+  </div>
+  <script>
+    const canvas = document.querySelector('#unity-canvas');
+    const loading = document.querySelector('#unity-loading-bar');
+    const progressBar = document.querySelector('#unity-progress-bar-full');
+    const warning = document.querySelector('#unity-warning');
+    let warningTimer;
+
+    function notifyParent(event, message) {
+      if (window.parent !== window) {
+        window.parent.postMessage({ type: `statsshooter-${event}`, message }, location.origin);
+      }
+    }
+
+    function showBanner(message, type) {
+      clearTimeout(warningTimer);
+      const isError = type === 'error';
+      warning.textContent = message;
+      warning.style.display = 'block';
+      warning.toggleAttribute('data-error', isError);
+      if (isError) {
+        loading.hidden = true;
+        notifyParent('error', String(message));
+      } else {
+        warningTimer = setTimeout(() => { warning.style.display = 'none'; }, 5000);
+      }
+    }
+
+    const config = {
+      arguments: [],
+      dataUrl: 'Build/FinalWebGL.data.unityweb',
+      frameworkUrl: 'Build/FinalWebGL.framework.js.unityweb',
+      codeUrl: 'Build/FinalWebGL.wasm.unityweb',
+      streamingAssetsUrl: 'StreamingAssets',
+      companyName: 'DefaultCompany',
+      productName: 'StatsShooter',
+      productVersion: '1.0',
+      showBanner
+    };
+
+    const loader = document.createElement('script');
+    loader.src = 'Build/FinalWebGL.loader.js';
+    loader.onerror = () => showBanner('Could not download the game loader.', 'error');
+    loader.onload = async () => {
+      try {
+        await createUnityInstance(canvas, config, progress => { progressBar.style.width = `${progress * 100}%`; });
+        loading.hidden = true;
+        notifyParent('ready');
+      } catch (error) {
+        showBanner(String(error), 'error');
+      }
+    };
+    document.body.append(loader);
+  </script>
+</body>
+</html>
