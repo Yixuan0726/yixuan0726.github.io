@@ -29,7 +29,7 @@ export const portfolio = {
       documentation: null, video: null, playable: null, gallery: [],
       caseStudy: [
         { id: 'project-page', nav: 'Project Page', title: 'Project Page', kicker: 'Coming soon' },
-        { id: 'gameplay-video', nav: 'Gameplay Video', title: 'Gameplay Video', kicker: 'Coming soon' },
+        { id: 'gameplay-video', nav: 'Gameplay Video', title: 'Gameplay Video', kicker: '1 min 35 sec', vimeoId: '1246997980' },
         { id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo', kicker: 'Coming soon' }
       ]
     },

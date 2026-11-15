@@ -1,4 +1,4 @@
-import { portfolio } from './content.js?v=99d8d840765b';
+import { portfolio } from './content.js?v=statsshooter-video-1246997980';
 import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
 import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
 import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
@@ -75,6 +75,11 @@ function homePage() {
 let disposeAbout = () => {};
 
 function caseStudySection(section) {
+  const vimeoId = typeof section.vimeoId === 'string' && /^[0-9]+$/.test(section.vimeoId) ? section.vimeoId : null;
+  const video = vimeoId ? `<iframe class="gameplay-video" src="https://player.vimeo.com/video/${vimeoId}"
+    title="${escapeHTML(section.title)} on Vimeo" loading="lazy" style="border: 0"
+    allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <p class="video-caption">${resourceLink('https://vimeo.com/' + vimeoId, 'Watch on Vimeo')}</p>` : '';
   const picture = section.image && safeURL(section.image.src) ? `<figure class="case-image"><a href="${escapeHTML(safeURL(section.image.src))}" target="_blank" rel="noopener noreferrer" aria-label="Open image: ${escapeHTML(section.image.alt)}"><img src="${escapeHTML(safeURL(section.image.src))}" alt="${escapeHTML(section.image.alt)}" width="1920" height="1080" loading="lazy"></a><figcaption>${escapeHTML(section.image.caption)}</figcaption></figure>` : '';
   return `<section class="case-section" id="${escapeHTML(section.id)}" aria-labelledby="${escapeHTML(section.id)}-title">
     <div class="case-label"><p class="case-kicker">${escapeHTML(section.kicker)}</p></div>
@@ -83,6 +88,7 @@ function caseStudySection(section) {
       ${section.steps?.length ? '<ol class="loop-steps">' + section.steps.map(step => '<li><h3>' + escapeHTML(step.title) + '</h3><p>' + escapeHTML(step.text) + '</p></li>').join('') + '</ol>' : ''}
       ${(section.paragraphs || []).map(paragraph => '<p>' + escapeHTML(paragraph) + '</p>').join('')}
       ${picture}
+      ${video}
       ${section.encounters?.length ? '<div class="encounter-list">' + section.encounters.map(encounter => '<article class="encounter"><h3>' + escapeHTML(encounter.name) + '</h3><div><p>' + escapeHTML(encounter.action) + '</p><p class="design-intent"><span>Design intention</span>' + escapeHTML(encounter.meaning) + '</p></div></article>').join('') + '</div>' : ''}
       ${section.endings?.length ? '<details class="ending-disclosure"><summary>Explore the five endings <span>Spoilers ahead</span></summary><div class="ending-list">' + section.endings.map(ending => '<article><h3>' + escapeHTML(ending.name) + '</h3><p class="ending-theme">' + escapeHTML(ending.theme) + '</p><p>' + escapeHTML(ending.condition) + '</p></article>').join('') + '</div>' + (section.note ? '<p class="case-note">' + escapeHTML(section.note) + '</p>' : '') + '</details>' : ''}
     </div>
