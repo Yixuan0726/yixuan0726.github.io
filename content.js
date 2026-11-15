@@ -30,7 +30,11 @@ export const portfolio = {
       caseStudy: [
         { id: 'project-page', nav: 'Project Page', title: 'Project Page', kicker: 'Coming soon' },
         { id: 'gameplay-video', nav: 'Gameplay Video', title: 'Gameplay Video', kicker: '1 min 35 sec', vimeoId: '1246997980' },
-        { id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo', kicker: 'Coming soon' }
+        {
+          id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo',
+          kicker: 'Desktop · Keyboard & mouse',
+          playUrl: 'https://g00000.itch.io/statsshooter'
+        }
       ]
     },
     {

@@ -1,4 +1,4 @@
-import { portfolio } from './content.js?v=statsshooter-video-1246997980';
+import { portfolio } from './content.js?v=statsshooter-playable';
 import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
 import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
 import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
@@ -75,6 +75,7 @@ function homePage() {
 let disposeAbout = () => {};
 
 function caseStudySection(section) {
+  const playUrl = safeURL(section.playUrl);
   const vimeoId = typeof section.vimeoId === 'string' && /^[0-9]+$/.test(section.vimeoId) ? section.vimeoId : null;
   const video = vimeoId ? `<iframe class="gameplay-video" src="https://player.vimeo.com/video/${vimeoId}"
     title="${escapeHTML(section.title)} on Vimeo" loading="lazy" style="border: 0"
@@ -89,6 +90,7 @@ function caseStudySection(section) {
       ${(section.paragraphs || []).map(paragraph => '<p>' + escapeHTML(paragraph) + '</p>').join('')}
       ${picture}
       ${video}
+      ${playUrl ? '<p>' + resourceLink(playUrl, 'Play in Browser') + '</p>' : ''}
       ${section.encounters?.length ? '<div class="encounter-list">' + section.encounters.map(encounter => '<article class="encounter"><h3>' + escapeHTML(encounter.name) + '</h3><div><p>' + escapeHTML(encounter.action) + '</p><p class="design-intent"><span>Design intention</span>' + escapeHTML(encounter.meaning) + '</p></div></article>').join('') + '</div>' : ''}
       ${section.endings?.length ? '<details class="ending-disclosure"><summary>Explore the five endings <span>Spoilers ahead</span></summary><div class="ending-list">' + section.endings.map(ending => '<article><h3>' + escapeHTML(ending.name) + '</h3><p class="ending-theme">' + escapeHTML(ending.theme) + '</p><p>' + escapeHTML(ending.condition) + '</p></article>').join('') + '</div>' + (section.note ? '<p class="case-note">' + escapeHTML(section.note) + '</p>' : '') + '</details>' : ''}
     </div>
