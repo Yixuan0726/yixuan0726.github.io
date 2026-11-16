@@ -1,0 +1,37 @@
+{
+  "loader": "./Build/unity-web-output.loader.js?v=69034122c64e067d",
+  "dataUrl": "./Build/unity-web-output.data?v=69034122c64e067d",
+  "frameworkUrl": "./Build/unity-web-output.framework.js?v=69034122c64e067d",
+  "codeUrl": "./Build/unity-web-output.wasm?v=69034122c64e067d",
+  "streamingAssetsUrl": "./StreamingAssets",
+  "companyName": "DefaultCompany",
+  "productName": "EyeDle",
+  "productVersion": "0.1.0.69034122c64e067d",
+  "buildId": "69034122c64e067d",
+  "chunkedAssets": {
+    "./Build/unity-web-output.data?v=69034122c64e067d": {
+      "parts": [
+        "./Build/unity-web-output.data.part00.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.data.part01.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.data.part02.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.data.part03.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.data.part04.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.data.part05.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.data.part06.bin?v=69034122c64e067d"
+      ],
+      "bytes": 107824827,
+      "sha256": "a936f2edafd4b14280445379188b6e8d3a8cffe0e822ffead7ce6efb2adb5199",
+      "contentType": "application/octet-stream"
+    },
+    "./Build/unity-web-output.wasm?v=69034122c64e067d": {
+      "parts": [
+        "./Build/unity-web-output.wasm.part00.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.wasm.part01.bin?v=69034122c64e067d",
+        "./Build/unity-web-output.wasm.part02.bin?v=69034122c64e067d"
+      ],
+      "bytes": 47372083,
+      "sha256": "9be230ac3b2de7c16ed6ec54e59fbb86d4295fab47faed5df6696774220e982d",
+      "contentType": "application/wasm"
+    }
+  }
+}

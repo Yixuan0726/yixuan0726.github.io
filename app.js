@@ -1,9 +1,9 @@
-import { portfolio } from './content.js?v=statsshooter-continuous-reading';
+import { portfolio } from './content.js?v=eyedle-playable-69034122';
 import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
 import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
 import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
 import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=statsshooter-inline';
-import { eyedlePage, mountEyeDle } from './eyedle.js?v=eyedle-vimeo-1247032657';
+import { eyedlePage, mountEyeDle } from './eyedle.js?v=eyedle-playable-69034122';
 import { mountCoverMotion } from './cover-motion.js?v=6f3d6a6af7e6';
 
 const $ = selector => document.querySelector(selector);

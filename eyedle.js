@@ -194,7 +194,8 @@ export function eyedlePage(project, next) {
     <div class="eyedle-document" aria-labelledby="eyedle-document-title">${content.join('\n')}</div>
     <section class="detail-section" id="playable-demo" aria-labelledby="playable-demo-title">
       <h2 id="playable-demo-title">Playable Demo</h2>
-      <p class="project-context">Coming soon</p>
+      <p class="project-context">Use your camera to play with blinks and eye movements. Camera processing stays on your device.</p>
+      <a class="primary-link" href="${escape(safeURL(project.playable))}" target="_blank" rel="noopener noreferrer">Play EyeDle <span aria-hidden="true">↗</span></a>
     </section>
     <a class="next-project" href="?project=${encodeURIComponent(next.id)}" data-route><div><small>Next project</small><strong>${escape(next.name)}</strong></div><span aria-hidden="true">→</span></a>
   </article>`;

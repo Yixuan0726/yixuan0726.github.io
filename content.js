@@ -60,7 +60,7 @@ export const portfolio = {
       coverWidth: 1200, coverHeight: 750,
       coverAlt: 'A resting blue droplet in a hand-painted wooden workshop, with mint bottles on a conveyor',
       tags: ['Interaction design', 'Solo project'],
-      documentation: null, video: null, playable: null, gallery: []
+      documentation: null, video: null, playable: 'games/eyedle/index.html', gallery: []
     },
     keepDribbling,
     {
