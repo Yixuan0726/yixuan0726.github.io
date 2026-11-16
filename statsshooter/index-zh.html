@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="zh-CN" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StatsShooter 是一款把统计抽样、均值和方差融入战斗与武器构筑的 2D 俯视角射击游戏。">
+  <meta name="theme-color" content="#201d24">
+  <title>StatsShooter · 游戏设计作品集</title>
+  <link rel="alternate" hreflang="en" href="./index.html">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="site-bar wrap">
+      <a class="wordmark" href="#top" aria-label="StatsShooter 首页"><span aria-hidden="true" class="brand-curve"></span>StatsShooter</a>
+      <nav aria-label="项目章节" class="main-nav">
+        <a href="#combat">核心机制</a>
+        <a href="#world">角色与敌人</a>
+        <a href="#builds">武器构筑</a>
+        <a href="#progression">成长路线</a>
+        <a href="#iteration">设计迭代</a>
+      </nav>
+      <nav class="language-switch" aria-label="语言">
+        <a href="./index.html" hreflang="en" lang="en" aria-label="English" data-language-link>EN</a>
+        <span aria-current="page" aria-label="简体中文">中文</span>
+      </nav>
+    </div>
+    <div class="reading-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="project-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><a class="text-link" href="../?project=statsshooter#project-page"><span aria-hidden="true">←</span> 返回作品集</a></p>
+        <h1 id="project-title">StatsShooter<span>.</span></h1>
+        <p class="hero-tagline">让均值决定开火，让方差塑造武器。</p>
+        <p class="hero-description">在这款 2D 俯视角肉鸽射击游戏里，每次命中都会更新一格数据。玩家一边躲避天气敌人，一边校准均值、用卡牌改变取数方式，逐步构筑出不同的武器。</p>
+        <a class="action" href="#combat">探索核心机制 <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="hero-figure figure">
+        <button class="zoomable" type="button" aria-label="放大 StatsShooter 战斗画面">
+          <img src="./assets/combat.webp" alt="小高斯在手绘云层竞技场中对战天气敌人，画面下方显示六格均值与方差" width="1800" height="1013" fetchpriority="high">
+        </button>
+      </figure>
+    </section>
+
+    <section id="combat" class="chapter">
+      <div class="combat-guide" data-combat-guide>
+        <header class="chapter-head combat-guide-heading">
+          <p class="eyebrow">Combat Rules</p>
+          <h2>战斗规则</h2>
+          <p>命中改变样本，均值控制直伤。战斗时，玩家要判断何时继续射击、何时校准。</p>
+        </header>
+        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom">
+          <h3><span aria-hidden="true">1</span>战斗与补给</h3>
+          <p>击败敌人获得金币。补给倒计时结束后，进入商店购买升级。</p>
+        </section>
+        <figure class="figure combat-guide-shot">
+          <div class="combat-guide-image">
+            <button class="zoomable" type="button" aria-label="放大战斗画面">
+              <img src="./assets/combat.webp" alt="战斗画面中，小高斯在六个观测值旁射击。顶部显示补给倒计时，底部显示步枪、均值和方差。" width="1800" height="1013" loading="lazy">
+            </button>
+            <div class="combat-guide-points" aria-hidden="true">
+              <span class="combat-guide-anchor" data-point="flow" style="--x:51.7%;--y:10.9%;--label-x:62%;--label-y:11%">1</span>
+              <span class="combat-guide-anchor" data-point="samples" style="--x:58.3%;--y:25%;--label-x:67%;--label-y:18%">2</span>
+              <span class="combat-guide-anchor" data-point="move" style="--x:48.5%;--y:63.6%;--label-x:38%;--label-y:56%">3</span>
+              <span class="combat-guide-anchor" data-point="mean" style="--x:81.4%;--y:95.4%;--label-x:90%;--label-y:80%">4</span>
+              <span class="combat-guide-anchor" data-point="variance" style="--x:23.8%;--y:89%;--label-x:16%;--label-y:76%">5</span>
+              <span class="combat-guide-anchor" data-point="calibrate" style="--x:52.1%;--y:70.6%;--label-x:62%;--label-y:77%">6</span>
+            </div>
+          </div>
+          <figcaption>战斗界面</figcaption>
+        </figure>
+        <div class="combat-guide-side">
+          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left">
+            <h3><span aria-hidden="true">2</span>六个观测值</h3>
+            <p>每轮命中替换一格观测值，打空时六格保持原样。</p>
+          </section>
+          <section class="note combat-guide-note combat-guide-move" data-callout="move" data-edge="left">
+            <h3><span aria-hidden="true">3</span>移动与射击</h3>
+            <p><kbd>WASD</kbd> 移动，鼠标瞄准，按住<kbd>左键</kbd>射击。</p>
+          </section>
+          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left">
+            <h3><span aria-hidden="true">4</span>均值维持在 18–22</h3>
+            <p>均值是六格观测值的平均。只有在有效区间内，普通射击才有直伤。</p>
+          </section>
+        </div>
+        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top">
+          <h3><span aria-hidden="true">5</span>方差决定武器档位</h3>
+          <p>方差衡量数据有多分散。低方差强化步枪贯穿，高方差扩大霰弹覆盖。</p>
+        </section>
+        <section class="note combat-guide-note combat-guide-calibrate" data-callout="calibrate" data-edge="top">
+          <h3><span aria-hidden="true">6</span>右键校准</h3>
+          <p>按下<kbd>右键</kbd>，系统修正一格，让均值尽量接近 20。</p>
+        </section>
+        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="calibration" data-calibration>
+        <div class="calibration-copy"><h3>试一次校准</h3><p>当 40 替换掉一个 20，六格均值升高约 3.3。选择下面的步骤，观察后续火力如何变化。</p></div>
+        <div class="calibration-demo">
+          <div class="step-controls" role="group" aria-label="校准步骤">
+            <button type="button" data-step="0" aria-pressed="true">射击前</button>
+            <button type="button" data-step="1" aria-pressed="false">命中后</button>
+            <button type="button" data-step="2" aria-pressed="false">右键校准后</button>
+          </div>
+          <div class="calibration-readout" aria-live="polite" aria-atomic="true">
+            <div class="samples" aria-label="六格观测值"><span data-first-sample>20</span><span>20</span><span>20</span><span>20</span><span>20</span><span>20</span></div>
+            <p class="mean-readout">均值 <strong data-mean>20.0</strong></p>
+            <p class="calibration-result" data-calibration-result>均值有效，可以正常射击。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop" class="chapter">
+      <header class="chapter-head">
+        <p class="eyebrow">Upgrade Shop</p>
+        <h2>升级商店</h2>
+        <p>击败敌人获得金币。补给倒计时结束后进入商店，购买卡牌、补给或刷新选项。</p>
+      </header>
+      <div class="annotated" data-annotations>
+        <figure class="figure annotated-figure">
+          <div class="shot">
+            <button class="zoomable" type="button" aria-label="放大升级商店"><img src="./assets/shop.webp" alt="升级商店画面，显示武器进度、待购卡牌、共享构筑槽与属性预测" width="1360" height="756" loading="lazy"></button>
+            <button class="pin shop-tier" type="button" data-annotation="tier" aria-label="武器进度" aria-pressed="true">1</button>
+            <button class="pin shop-preview" type="button" data-annotation="preview" aria-label="购买预览" aria-pressed="false">2</button>
+            <button class="pin shop-slots" type="button" data-annotation="slots" aria-label="四个共享槽位" aria-pressed="false">3</button>
+          </div>
+          <figcaption><span>点击标记查看商店说明</span><span>升级界面</span></figcaption>
+        </figure>
+        <div class="note-stack" aria-label="商店说明">
+          <button class="note note-select" type="button" data-annotation="tier" aria-pressed="true"><span class="note-number">1</span><span><strong>先看武器进度</strong><span>均值有效且实际方差 ≤ 12，步枪进入Ⅱ档，最多贯穿三名敌人。</span></span></button>
+          <button class="note note-select" type="button" data-annotation="preview" aria-pressed="false"><span class="note-number">2</span><span><strong>比较购买预览</strong><span>将八次平均换成六十四次平均，新取数的理论方差从 0.188 降至 0.023，射速也慢约 26%。</span></span></button>
+          <button class="note note-select" type="button" data-annotation="slots" aria-pressed="false"><span class="note-number">3</span><span><strong>四个共享槽位</strong><span>改变取数的数据卡和强化攻击的战斗卡共用四格。满格时要选择替换哪一张。</span></span></button>
+          <a class="text-link" href="#card-upgrades">试一次换卡 <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="card-upgrades" class="chapter" aria-labelledby="card-upgrades-title">
+      <header class="chapter-head">
+        <p class="eyebrow">Statistical Cards</p>
+        <h2 id="card-upgrades-title">四个槽位，换掉哪张？</h2>
+        <p>你的步枪已经是Ⅲ档，四个槽位也满了。要装入「贯穿回响」，你会舍掉压低波动的卡，还是贯穿返金币的卡？</p>
+      </header>
+      <div class="reference-board-grid">
+        <a class="reference-board" href="./assets/statsshooter-cards-overview-zh-4k.png" target="_blank" rel="noopener" aria-label="在新标签页查看全部强化卡牌原图">
+          <span class="reference-board-image" data-board-preview>
+            <img src="./assets/statsshooter-cards-overview-zh-4k.png" alt="强化构筑图，列出通用、低方差和高方差路线的强化与开局武器。" width="3840" height="2160" loading="lazy" decoding="async">
+          </span>
+          <span class="reference-board-caption"><strong>全部强化卡牌</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+        </a>
+        <a class="reference-board" href="./assets/statsshooter-data-cards-zh-4k.png" target="_blank" rel="noopener" aria-label="在新标签页查看数据卡原图">
+          <span class="reference-board-image" data-board-preview>
+            <img src="./assets/statsshooter-data-cards-zh-4k.png" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
+          </span>
+          <span class="reference-board-caption"><strong>数据卡一览</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+        </a>
+      </div>
+      <div class="card-swap" data-card-swap>
+        <div class="swap-shop">
+          <h3>当前卡槽 <span>4 / 4</span></h3>
+          <ul class="swap-loadout" aria-label="当前装备的四张卡">
+            <li>精密采样</li>
+            <li data-swap-slot="average">八次平均</li>
+            <li>中心收缩</li>
+            <li data-swap-slot="bounty">贯穿赏金</li>
+          </ul>
+          <div class="swap-choices" role="group" aria-label="选择要换掉的卡">
+            <button class="swap-choice" type="button" data-swap-choice="average" aria-pressed="false">
+              <strong>换掉八次平均</strong>
+              <span>保留三连贯穿返金币。每轮只取一次样本，预计六格方差 <b>0.156 → 1.25</b>。</span>
+            </button>
+            <button class="swap-choice" type="button" data-swap-choice="bounty" aria-pressed="false">
+              <strong>换掉贯穿赏金</strong>
+              <span>保留八次平均，预计六格方差仍为 <b>0.156</b>。三连贯穿少了额外金币。</span>
+            </button>
+          </div>
+          <p class="swap-forecast-note">预计方差是持续取样的长期参考。换卡后，旧数据会在命中时逐格替换。</p>
+        </div>
+
+        <div class="swap-combat">
+          <div class="swap-combat-head">
+            <div>
+              <h3>步枪 <span data-swap-stage>Ⅲ档</span></h3>
+              <p data-swap-effect>最多贯穿 3 敌，贯穿不减伤</p>
+            </div>
+            <div class="swap-rifle" data-swap-rifle="3" aria-hidden="true"></div>
+          </div>
+          <ol class="swap-samples" aria-label="当前六格观测值">
+            <li><span aria-hidden="true">1</span><strong>19.375</strong></li>
+            <li><span aria-hidden="true">2</span><strong>20.625</strong></li>
+            <li><span aria-hidden="true">3</span><strong>19.75</strong></li>
+            <li><span aria-hidden="true">4</span><strong>20.25</strong></li>
+            <li><span aria-hidden="true">5</span><strong>19.875</strong></li>
+            <li><span aria-hidden="true">6</span><strong>20.125</strong></li>
+          </ol>
+          <div class="swap-stats">
+            <p>当前均值 <strong data-swap-mean>20.00</strong></p>
+            <p>当前方差 <strong data-swap-variance>0.156</strong></p>
+            <p>预计六格方差 <strong data-swap-forecast>0.156</strong></p>
+          </div>
+          <p class="swap-threshold">均值有效区间 18–22。Ⅲ档进入 ≤ 0.30，退出 &gt; 0.45。</p>
+          <p class="swap-status" data-swap-status role="status" aria-atomic="true">选择要换掉的卡。两种换法从同一组六格数据出发。</p>
+          <div class="swap-controls">
+            <button class="swap-step" type="button" data-swap-hit disabled>命中一次</button>
+            <button type="button" data-swap-play disabled>连续演示</button>
+            <button type="button" data-swap-reset disabled>重置数据</button>
+          </div>
+          <p class="swap-replay-note">使用固定取数演示两种换法。每次命中只更新一格。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="world" class="chapter">
+      <header class="chapter-head">
+        <p class="eyebrow">Character &amp; Enemies</p>
+        <h2>小高斯与天气敌人</h2>
+        <p>小高斯的外形让玩家看见分布的变化。天气敌人分别干扰走位、取样与校准时机。</p>
+      </header>
+      <div class="world-layout">
+        <div class="gauss">
+          <h3>方差越大，小高斯越矮宽</h3>
+          <figure class="figure gauss-figure">
+            <img src="./assets/gauss-moving.gif" alt="小高斯持续走位并射击。随着画面右下角的六格方差从 0 升到 400，小高斯由高瘦变为矮宽。" loading="lazy" width="1200" height="675">
+          </figure>
+          <p class="note gauss-note">每次命中会更新六格中的一个观测值。小高斯的身形随方差变宽、变矮，碰撞范围保持一致。</p>
+        </div>
+        <div class="enemies">
+          <h3>天气敌人</h3>
+          <div class="enemy-grid">
+            <figure class="enemy">
+              <img src="./assets/enemy-sun.gif" alt="太阳追上小高斯，贴身攻击使生命从 3 降至 2。" width="840" height="472" loading="lazy" decoding="async">
+              <figcaption class="enemy-copy"><h4>太阳</h4><p>持续追击，让均值出界后的火力中断带来生存压力。</p></figcaption>
+            </figure>
+            <figure class="enemy">
+              <img src="./assets/enemy-wind.gif" alt="风射出阵风，命中后六格均值从 20 降至 17。" width="840" height="472" loading="lazy" decoding="async">
+              <figcaption class="enemy-copy"><h4>风</h4><p>把一格样本推离均值，可能使均值出界，也可能帮助霰弹升档。</p></figcaption>
+            </figure>
+            <figure class="enemy">
+              <img src="./assets/enemy-cloud.gif" alt="雷云向小高斯落雷，短暂封锁右键校准。" width="840" height="472" loading="lazy" decoding="async">
+              <figcaption class="enemy-copy"><h4>雷云</h4><p>短暂锁住校准，玩家需要提前安排修复数据的时机。</p></figcaption>
+            </figure>
+            <figure class="enemy">
+              <img src="./assets/enemy-storm.gif" alt="风暴 Boss 改写一格样本，六格均值从 20 升至 23。" width="840" height="472" loading="lazy" decoding="async">
+              <figcaption class="enemy-copy"><h4>风暴 Boss</h4><p>改写一格数据。玩家要救回均值，同时维持构筑所需的方差。</p></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="builds" aria-labelledby="builds-title">
+      <div class="chapter-head">
+        <span class="eyebrow" lang="en">BUILD DESIGN</span>
+        <h2 id="builds-title">低方差与高方差构筑</h2>
+        <p>均值维持在 18–22 时，六格的实际方差决定武器档位。步枪靠集中取数获得贯穿，霰弹枪靠分散取数扩大火力覆盖。</p>
+      </div>
+      <div class="switcher" data-tabs>
+        <div role="tablist" aria-label="构筑路线">
+          <button type="button" role="tab" aria-selected="true" aria-controls="build-rifle" id="tab-rifle">低方差步枪</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="build-shotgun" id="tab-shotgun" tabindex="-1">高方差霰弹</button>
+        </div>
+        <div id="build-rifle" role="tabpanel" aria-labelledby="tab-rifle" tabindex="0">
+          <div class="feature-grid">
+            <div class="feature-media">
+              <div class="variance-demo" data-weapon-demo="rifle">
+                <figure class="figure weapon-clip" data-clip data-autoplay>
+                  <img id="rifle-clip" src="./assets/rifle-3.webp" data-animation="./assets/rifle-3.gif" alt="Ⅲ档步枪实机贯穿三名敌人" width="840" height="472" loading="lazy">
+                  <figcaption><span data-weapon-caption>Ⅲ档 · 三目标全额贯穿</span><button class="clip-playback" type="button" aria-controls="rifle-clip" hidden>播放动图</button></figcaption>
+                </figure>
+                <div class="variance-controls">
+                  <label for="rifle-variance">调整方差，查看步枪档位</label>
+                  <input id="rifle-variance" class="variance-slider" type="range" min="0" max="3" step="1" value="0" aria-valuetext="方差 0，Ⅲ档">
+                  <div class="variance-values"><span>0</span><output for="rifle-variance" aria-live="polite">示例方差 <strong>0</strong></output><span>100</span></div>
+                </div>
+              </div>
+              <figure class="figure">
+                <button type="button" class="zoomable" aria-label="放大查看步枪四种形态">
+                  <img src="./assets/crop-12.webp" data-full="./assets/image-12.webp" alt="从基础步枪到三级贯穿步枪的四种形态" width="1800" height="368" loading="lazy" decoding="async">
+                </button>
+                <figcaption>基础步枪与Ⅰ、Ⅱ、Ⅲ档形态</figcaption>
+              </figure>
+            </div>
+            <div class="note-stack">
+              <section class="note">
+                <h3>方差降低，贯穿增加</h3>
+                <p>方差降至 <strong>60、12、0.30</strong> 时依次升档。Ⅰ档能打穿两名敌人，Ⅱ档增至三名，Ⅲ档让三名敌人都受到全额伤害。</p>
+              </section>
+              <section class="note">
+                <h3>让取数集中在 20 附近</h3>
+                <p>精密采样收窄范围，八次平均将八个取数合为一个观测，中心收缩将结果到 20 的距离减半。集中校准可在战斗中修复均值并压低当前方差。</p>
+              </section>
+              <section class="note">
+                <h3>稳定性、射速与卡槽</h3>
+                <p>其余卡牌相同时，八次平均换成六十四次平均，新取数的理论方差由 <strong>0.188 降至 0.023</strong>，射速约慢 <strong>26%</strong>。若只带六十四次平均和中心收缩，还可留两个槽位给贯穿赏金和贯穿回响。</p>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div id="build-shotgun" role="tabpanel" aria-labelledby="tab-shotgun" tabindex="0" hidden>
+          <div class="feature-grid">
+            <div class="feature-media">
+              <div class="variance-demo" data-weapon-demo="shotgun">
+                <figure class="figure weapon-clip" data-clip data-autoplay>
+                  <img id="shotgun-clip" src="./assets/shotgun-0.webp" data-animation="./assets/shotgun-0.gif" alt="基础霰弹枪实机五弹扇射" width="840" height="472" loading="lazy">
+                  <figcaption><span data-weapon-caption>基础 · 5 弹扇射</span><button class="clip-playback" type="button" aria-controls="shotgun-clip" hidden>播放动图</button></figcaption>
+                </figure>
+                <div class="variance-controls">
+                  <label for="shotgun-variance">调整方差，查看霰弹档位</label>
+                  <input id="shotgun-variance" class="variance-slider" type="range" min="0" max="3" step="1" value="0" aria-valuetext="方差 40，基础档">
+                  <div class="variance-values"><span>40</span><output for="shotgun-variance" aria-live="polite">示例方差 <strong>40</strong></output><span>400</span></div>
+                </div>
+              </div>
+              <figure class="figure">
+                <button type="button" class="zoomable" aria-label="放大查看霰弹枪四种形态">
+                  <img src="./assets/crop-14.webp" data-full="./assets/image-14.webp" alt="从基础霰弹枪到三级环形霰弹枪的四种形态" width="1800" height="460" loading="lazy" decoding="async">
+                </button>
+                <figcaption>基础霰弹枪与Ⅰ、Ⅱ、Ⅲ档形态</figcaption>
+              </figure>
+            </div>
+            <div class="note-stack">
+              <section class="note">
+                <h3>从扇射到环射</h3>
+                <p>基础为五弹扇射。方差达到 <strong>140、240、360</strong> 时依次升为七弹、九弹、二十五弹，Ⅲ档可向四周环射。</p>
+              </section>
+              <section class="note">
+                <h3>让样本分布在两端</h3>
+                <p>两端采样让观测靠近 0 或 40，尾部概率提高取到端点的机会。保差校准可修复出界的均值，也可在均值有效时拉大方差。</p>
+              </section>
+              <section class="note">
+                <h3>覆盖与集中命中</h3>
+                <p>重心震爆要求一轮命中至少三名敌人，集中重击要求同一目标吃到至少 <strong>60%</strong> 的弹丸。广域散射使Ⅲ档由 <strong>25 增至 37 弹</strong>，集中重击所需命中数随之由 15 增至 23。</p>
+                <p>固定两端采样Ⅱ和尾部概率Ⅲ时，将极值筛选换成广域散射，会使新取数的理论方差由 <strong>399.2 降至 384.7</strong>，Ⅲ档同时多出 12 颗弹丸。</p>
+              </section>
+              <section class="note">
+                <h3>校准触发分身</h3>
+                <p>本局达到过Ⅲ档即可购买同步分身。均值从界外回到有效区间，且方差仍至少为 <strong>350</strong> 时，本体和已有分身各生成一只分身，受容量限制。</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="build-reference">
+        <h3>终局设计</h3>
+        <a class="reference-board" href="./assets/statsshooter-fire-build-zh-4k.png" target="_blank" rel="noopener" aria-label="在新标签页查看燃烧构筑终局设计原图">
+          <span class="reference-board-image" data-board-preview>
+            <img src="./assets/statsshooter-fire-build-zh-4k.png" alt="燃烧构筑图，展示购买前置、余烬控场与分身燃烧两种终局方案。" width="3840" height="2160" loading="lazy" decoding="async">
+          </span>
+          <span class="reference-board-caption"><strong>燃烧构筑</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="overview" aria-labelledby="overview-title">
+      <div class="overview-head"><h2 id="overview-title">相同的均值，两种打法</h2><a class="text-link" href="#builds">查看构筑细节 <span aria-hidden="true">↑</span></a></div>
+      <div class="overview-pair">
+        <figure class="figure overview-figure">
+          <button class="zoomable" type="button" aria-label="放大低方差步枪画面"><img src="./assets/image-01.webp" alt="低方差步枪朝一条直线发射贯穿弹" width="1200" height="675"></button>
+          <figcaption><span><b>低方差</b> · 贯穿步枪</span><span>均值 20 / 方差 0</span></figcaption>
+        </figure>
+        <figure class="figure overview-figure">
+          <button class="zoomable" type="button" aria-label="放大高方差霰弹画面"><img src="./assets/image-02.webp" alt="高方差霰弹枪朝四周打出环形弹幕" width="1200" height="675"></button>
+          <figcaption><span><b>高方差</b> · 环形霰弹</span><span>均值 20 / 方差 400</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="chapter" id="progression" aria-labelledby="progression-title">
+      <div class="chapter-head">
+        <span class="eyebrow" lang="en">PROGRESSION DESIGN</span>
+        <h2 id="progression-title">点燃构筑的成型终局</h2>
+        <p>高方差霰弹和极值分身同时开火。火种在同一敌人身上叠加，留在地面的余烬继续点燃经过的敌人。</p>
+      </div>
+      <div class="feature-grid ignition-endgame">
+        <figure class="figure" data-ignition-clip data-autoplay>
+          <button type="button" class="zoomable" aria-label="放大查看点燃构筑终局">
+            <img id="ignition-endgame-clip" src="./assets/ignition-endgame.webp" data-animation="./assets/ignition-endgame.gif" data-full="./assets/ignition-endgame.gif" alt="成型的点燃构筑在实战中由本体和分身引燃敌群" width="840" height="472" loading="lazy">
+          </button>
+          <figcaption><button class="clip-playback" type="button" aria-controls="ignition-endgame-clip" hidden>播放终局</button></figcaption>
+        </figure>
+        <div class="note-stack">
+          <section class="note">
+            <h3>成型后的打法</h3>
+            <p>先用环射把火带进敌群，再利用地火持续扩散。多个分身打中同一目标时，各自的燃烧独立生效。</p>
+          </section>
+          <section class="note">
+            <h3>终局演示的四槽配置</h3>
+            <p>火花、余烬播撒、余烬复燃和烈性火种各占一格。极值分身单独升级，均值回到有效区间且方差达标时能继续增殖。</p>
+          </section>
+        </div>
+      </div>
+      <div class="ignition-rail" aria-labelledby="ignition-title" data-ignition-rail>
+        <div class="ignition-stage">
+          <div class="ignition-header">
+            <div><h3 id="ignition-title">点燃构筑的四个强化阶段</h3><p class="ignition-hint">向下滚动，或选择一个阶段。</p></div>
+            <div class="ignition-navigation">
+              <div class="ignition-stops" role="group" aria-label="跳转到构筑阶段">
+                <button type="button" data-ignition-stop aria-current="step">点燃</button>
+                <button type="button" data-ignition-stop>铺火</button>
+                <button type="button" data-ignition-stop>扩散</button>
+                <button type="button" data-ignition-stop>叠加</button>
+              </div>
+              <div class="ignition-progress" aria-hidden="true"><span></span></div>
+            </div>
+          </div>
+          <div class="ignition-window">
+            <ol class="ignition-track" aria-label="点燃路线的四个阶段">
+              <li class="ignition-card" data-active>
+                <figure class="figure" data-ignition-clip data-autoplay>
+                  <button type="button" class="zoomable" aria-label="放大查看火花实战">
+                    <img id="ignition-sparks-clip" src="./assets/ignition-sparks.webp" data-animation="./assets/ignition-sparks.gif" data-full="./assets/ignition-sparks.gif" alt="霰弹命中后，敌人身上起火并受到持续伤害" width="840" height="472" loading="lazy">
+                  </button>
+                  <figcaption><div class="ignition-card-heading"><h4>火花</h4><button class="clip-playback" type="button" aria-controls="ignition-sparks-clip" hidden>播放实战</button></div><p>霰弹命中会点燃敌人。均值出界时，已有燃烧继续生效。</p></figcaption>
+                </figure>
+              </li>
+              <li class="ignition-card">
+                <figure class="figure" data-ignition-clip data-autoplay>
+                  <button type="button" class="zoomable" aria-label="放大查看余烬播撒实战">
+                    <img id="ignition-scatter-clip" src="./assets/ignition-scatter.webp" data-animation="./assets/ignition-scatter.gif" data-full="./assets/ignition-scatter.gif" alt="余烬留在战场上，经过的敌人接触地火" width="840" height="472" loading="lazy">
+                  </button>
+                  <figcaption><div class="ignition-card-heading"><h4>余烬播撒</h4><button class="clip-playback" type="button" aria-controls="ignition-scatter-clip" hidden>播放实战</button></div><p>落地弹丸和移动中的燃烧敌人留下地火，经过的敌人也会被点燃。</p></figcaption>
+                </figure>
+              </li>
+              <li class="ignition-card">
+                <figure class="figure" data-ignition-clip data-autoplay>
+                  <button type="button" class="zoomable" aria-label="放大查看余烬复燃实战">
+                    <img id="ignition-rekindle-clip" src="./assets/ignition-rekindle.webp" data-animation="./assets/ignition-rekindle.gif" data-full="./assets/ignition-rekindle.gif" alt="装备余烬复燃后，战场上的地火范围更大并持续更久" width="840" height="472" loading="lazy">
+                  </button>
+                  <figcaption><div class="ignition-card-heading"><h4>余烬复燃</h4><button class="clip-playback" type="button" aria-controls="ignition-rekindle-clip" hidden>播放实战</button></div><p>地火半径从 0.8 扩大到 1.2，持续时间从 2.2 秒延长到 4 秒。</p></figcaption>
+                </figure>
+              </li>
+              <li class="ignition-card">
+                <figure class="figure" data-ignition-clip data-autoplay>
+                  <button type="button" class="zoomable" aria-label="放大查看极值分身实战">
+                    <img id="ignition-stack-clip" src="./assets/ignition-stack.webp" data-animation="./assets/ignition-stack.gif" data-full="./assets/ignition-stack.gif" alt="本体和极值分身打中同一敌人，独立的燃烧效果叠加" width="840" height="472" loading="lazy">
+                  </button>
+                  <figcaption><div class="ignition-card-heading"><h4>极值分身</h4><button class="clip-playback" type="button" aria-controls="ignition-stack-clip" hidden>播放实战</button></div><p>本体和分身可对同一个敌人分别施加火种，让燃烧叠加。</p></figcaption>
+                </figure>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="iteration" aria-labelledby="iteration-title">
+      <div class="chapter-head">
+        <span class="eyebrow" lang="en">DESIGN ITERATION</span>
+        <h2 id="iteration-title">校准、卡槽与玩家选择</h2>
+      </div>
+      <div class="switcher" data-tabs>
+        <div role="tablist" aria-label="设计迭代">
+          <button type="button" role="tab" aria-selected="true" aria-controls="iteration-calibration" id="tab-calibration">校准时机</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="iteration-slots" id="tab-slots" tabindex="-1">四个共享槽位</button>
+        </div>
+        <div id="iteration-calibration" role="tabpanel" aria-labelledby="tab-calibration" tabindex="0">
+          <div class="image-pair">
+            <figure class="figure">
+              <button type="button" class="zoomable" aria-label="放大查看早期手动校准界面">
+                <img src="./assets/crop-17.webp" data-full="./assets/image-17.webp" alt="早期原型在战斗中显示三个手动校准候选" width="1110" height="407" loading="lazy" decoding="async">
+              </button>
+              <figcaption>早期原型 · 需要从三个校准候选中手动选槽</figcaption>
+            </figure>
+            <figure class="figure">
+              <button type="button" class="zoomable" aria-label="放大查看下一发预览界面">
+                <img src="./assets/crop-18.webp" data-full="./assets/image-18.webp" alt="迭代后的界面展示下一发预计写入值、均值与伤害" width="755" height="277" loading="lazy" decoding="async">
+              </button>
+              <figcaption>迭代后 · 射击前可查看预计均值和伤害</figcaption>
+            </figure>
+          </div>
+          <section class="note">
+            <h3>系统选槽，玩家决定时机</h3>
+            <p>首轮试玩中，敌人一多，玩家忙于走位和连射，来不及比较候选。改为自动选槽后，仍有人反复按右键。我加入下一发的预计均值和伤害。自动测试已确认预览与结算一致，玩家能否据此判断校准时机仍待试玩检验。</p>
+          </section>
+        </div>
+        <div id="iteration-slots" role="tabpanel" aria-labelledby="tab-slots" tabindex="0" hidden>
+          <div class="feature-grid">
+            <figure class="figure">
+              <button type="button" class="zoomable" aria-label="放大查看卡槽替换界面">
+                <img src="./assets/crop-19.webp" data-full="./assets/image-19.webp" alt="共享卡槽已满，商店展示装入贯穿回响的四种替换选项" width="928" height="584" loading="lazy" decoding="async">
+              </button>
+              <figcaption>四个槽位已满时，玩家需决定替换哪张卡。</figcaption>
+            </figure>
+            <div class="note-stack">
+              <section class="note">
+                <h3>数据卡和战斗卡共享四槽</h3>
+                <p>装入贯穿回响时，换掉八次平均会让预计六格方差由 <strong>0.156 升至 1.25</strong>。换掉贯穿赏金可以维持原有方差预测，但会失去贯穿返金币的效果。</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="note">
+        <h3>设计反思</h3>
+        <p>从终局反推帮助我明确成型体验，也容易把成长压成一条预设路线。玩家在开局选定稳定或高方差后，后续多在补齐同一套卡，稳定路线成型较快，调整打法的机会更少。统计学习需要进入选牌、换卡和校准这些具体决策。</p>
+      </section>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-bar">
+      <span>StatsShooter · Yixuan Yu</span>
+      <nav class="footer-links" aria-label="页面末尾导航">
+        <a class="catalog-link" href="./cards-zh.html">查看全部强化卡牌 <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="#top">返回顶部 <span aria-hidden="true">↑</span></a>
+      </nav>
+    </div>
+  </footer>
+  <dialog class="lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox-bar"><h2 id="lightbox-title">图片预览</h2><form method="dialog"><button class="lightbox-close" type="submit">关闭 <span aria-hidden="true">×</span></button></form></div>
+    <img alt="">
+  </dialog>
+</body>
+</html>
