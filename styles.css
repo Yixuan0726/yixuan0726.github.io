@@ -187,6 +187,8 @@ figure, h1, h2, h3, p { margin: 0; }
 .case-section { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding: 52px 0; border-bottom: 1px solid var(--line); }
 .case-section--playable { row-gap: 0; }
 .case-section--playable .game-player { grid-column: 1 / -1; }
+.case-section.case-section--design { display: block; padding-block: 24px; }
+.design-frame { display: block; box-sizing: content-box; width: 100%; height: 600px; border: 0; border-radius: 10px; background: #201e25; }
 .case-kicker { color: var(--orange); font: 10px/1.8 Consolas, monospace; text-transform: uppercase; letter-spacing: 1.4px; padding-top: 8px; }
 .case-body { min-width: 0; }
 .case-body h2 { font-size: 29px; font-weight: 500; line-height: 1.3; letter-spacing: -.8px; margin-bottom: 25px; }

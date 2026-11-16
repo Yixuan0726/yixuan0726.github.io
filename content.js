@@ -24,15 +24,16 @@ export const portfolio = {
       category: 'STATISTICS × SHOOTER', color: 'purple',
       tagline: 'The odds are part of the arsenal.',
       description: 'A top-down shooter that turns statistical decisions into action.',
-      cover: 'assets/cover-stats.svg', coverAlt: 'Graphic illustration of a lavender die and a crosshair',
+      cover: 'statsshooter/assets/start-menu-en.webp',
+      coverAlt: 'StatsShooter title screen with Start Game and Settings beside Gauss and the Storm Boss',
+      coverType: 'screenshot', coverWidth: 1440, coverHeight: 900,
+      coverCaption: 'StatsShooter title screen.',
       tags: ['Systems design', 'Solo project'],
       documentation: null, video: null, playable: null, gallery: [],
       caseStudy: [
         {
           id: 'project-page', nav: 'Project Page', title: 'Project Page',
-          kicker: 'Interactive case study',
-          paragraphs: ['Explore how six values shape combat, try a card swap, and compare the low- and high-variance weapon builds.'],
-          link: { href: 'statsshooter/', label: 'Explore the design' }
+          designPage: 'statsshooter/?embed=1'
         },
         { id: 'gameplay-video', nav: 'Gameplay Video', title: 'Gameplay Video', kicker: '1 min 35 sec', vimeoId: '1246997980' },
         {

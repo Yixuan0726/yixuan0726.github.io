@@ -1,4 +1,4 @@
-import { portfolio } from './content.js?v=statsshooter-design';
+import { portfolio } from './content.js?v=statsshooter-continuous-reading';
 import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
 import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
 import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
@@ -75,8 +75,14 @@ function homePage() {
 let disposeAbout = () => {};
 
 function caseStudySection(section) {
+  const designPage = safeURL(section.designPage);
+  if (designPage && new URL(designPage).origin === location.origin) {
+    return `<section class="case-section case-section--design" id="${escapeHTML(section.id)}" aria-labelledby="${escapeHTML(section.id)}-title">
+      <h2 class="visually-hidden" id="${escapeHTML(section.id)}-title">${escapeHTML(section.title)}</h2>
+      <iframe class="design-frame" src="${escapeHTML(designPage)}" title="StatsShooter game design" loading="lazy"></iframe>
+    </section>`;
+  }
   const player = section.browserGame ? gamePlayerMarkup(section.browserGame) : '';
-  const caseLink = safeURL(section.link?.href);
   const vimeoId = typeof section.vimeoId === 'string' && /^[0-9]+$/.test(section.vimeoId) ? section.vimeoId : null;
   const video = vimeoId ? `<iframe class="gameplay-video" src="https://player.vimeo.com/video/${vimeoId}"
     title="${escapeHTML(section.title)} on Vimeo" loading="lazy" style="border: 0"
@@ -89,7 +95,6 @@ function caseStudySection(section) {
       ${section.quote ? '<blockquote>' + escapeHTML(section.quote) + '</blockquote>' : ''}
       ${section.steps?.length ? '<ol class="loop-steps">' + section.steps.map(step => '<li><h3>' + escapeHTML(step.title) + '</h3><p>' + escapeHTML(step.text) + '</p></li>').join('') + '</ol>' : ''}
       ${(section.paragraphs || []).map(paragraph => '<p>' + escapeHTML(paragraph) + '</p>').join('')}
-      ${caseLink ? '<div class="detail-actions"><a class="primary-link" href="' + escapeHTML(caseLink) + '">' + escapeHTML(section.link.label) + ' <span aria-hidden="true">→</span></a></div>' : ''}
       ${picture}
       ${video}
       ${section.encounters?.length ? '<div class="encounter-list">' + section.encounters.map(encounter => '<article class="encounter"><h3>' + escapeHTML(encounter.name) + '</h3><div><p>' + escapeHTML(encounter.action) + '</p><p class="design-intent"><span>Design intention</span>' + escapeHTML(encounter.meaning) + '</p></div></article>').join('') + '</div>' : ''}
@@ -145,7 +150,7 @@ function detailPage(project) {
       (project.context?.length ? '<p class="project-context">' + project.context.map(escapeHTML).join(' · ') + '</p>' : '') +
       (contributions.length ? '<ul class="contribution-list">' + contributions.map(item => '<li>' + escapeHTML(item) + '</li>').join('') + '</ul>' : '') + '</div></section>' : '') +
     '<section class="detail-section" id="overview" aria-labelledby="overview-title"><h2 id="overview-title">Project overview</h2><div class="detail-overview"><p>' + escapeHTML(project.overview || project.description) + '</p>' + projectMeta(project) +
-      (!resources.length ? '<div class="materials-note">Project documentation is being prepared.</div>' : '') + '</div></section>' +
+      (!resources.length && !sections.some(section => section.designPage) ? '<div class="materials-note">Project documentation is being prepared.</div>' : '') + '</div></section>' +
     (resources.length ? '<section class="detail-section" aria-labelledby="materials-title"><h2 id="materials-title">Project materials</h2><div><div class="resource-list">' + resources.map(resource => resourceLink(resource.url, resource.label)).join('') + '</div>' + (project.downloadNote ? '<p class="download-note">' + escapeHTML(project.downloadNote) + '</p>' : '') + '</div></section>' : '') +
     (safeURL(project.videoFile) ? '<section class="walkthrough-section" id="walkthrough" aria-labelledby="walkthrough-title"><div class="walkthrough-heading"><h2 id="walkthrough-title">Gameplay walkthrough</h2><span>Recorded gameplay</span></div><video class="gameplay-video" controls preload="metadata" playsinline poster="' + escapeHTML(safeURL(project.videoPoster || project.cover)) + '" aria-label="' + escapeHTML(project.name) + ' full gameplay walkthrough"><source src="' + escapeHTML(safeURL(project.videoFile)) + '" type="video/mp4">Your browser cannot play this video. ' + resourceLink(project.videoFile, 'Open gameplay video') + '</video><p class="video-caption">' + escapeHTML(project.videoCaption || '') + '</p></section>' : '') +
     sections.map(caseStudySection).join('') +
@@ -170,6 +175,30 @@ let disposePortfolioPages = () => {};
 let disposeGame = () => {};
 let disposeEyeDle = () => {};
 let disposeCoverMotion = () => {};
+let disposeDesignFrame = () => {};
+
+function mountDesignFrame(frame) {
+  if (!frame) return () => {};
+  const observer = new ResizeObserver(entries => {
+    frame.style.height = `${Math.ceil(entries[0].target.getBoundingClientRect().height)}px`;
+  });
+
+  function observeBody() {
+    observer.disconnect();
+    const body = frame.contentDocument?.body;
+    if (!body) return;
+    frame.style.height = `${Math.ceil(body.getBoundingClientRect().height)}px`;
+    observer.observe(body);
+  }
+
+  frame.addEventListener('load', observeBody);
+  if (frame.contentDocument?.readyState === 'complete' && frame.contentDocument.URL !== 'about:blank') observeBody();
+  return () => {
+    observer.disconnect();
+    frame.removeEventListener('load', observeBody);
+  };
+}
+
 function render({ navigate = false } = {}) {
   disposeDocument();
   disposePortfolioPages();
@@ -177,6 +206,7 @@ function render({ navigate = false } = {}) {
   disposeGame();
   disposeEyeDle();
   disposeCoverMotion();
+  disposeDesignFrame();
   const id = new URLSearchParams(location.search).get('project');
   const project = portfolio.projects.find(item => item.id === id);
   if (id && !project) {
@@ -198,6 +228,7 @@ function render({ navigate = false } = {}) {
   disposeGame = mountGamePlayer(document.querySelector('[data-game-player]'));
   disposeEyeDle = mountEyeDle(document.querySelector('.eyedle-detail'));
   disposeCoverMotion = mountCoverMotion(document.querySelector('#page-content'));
+  disposeDesignFrame = mountDesignFrame(document.querySelector('.design-frame'));
 }
 
 document.querySelectorAll('[data-name]').forEach(element => { element.textContent = portfolio.name; });
