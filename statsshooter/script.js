@@ -57,9 +57,9 @@ for (const group of document.querySelectorAll('[data-annotations]')) {
     context.beginPath();
     context.moveTo(startX, startY);
     context.bezierCurveTo(startX + bend, startY, endX - bend, endY, endX, endY);
-    context.strokeStyle = '#e8c495';
+    context.strokeStyle = '#926b36';
     context.lineWidth = 1.4;
-    context.shadowColor = '#271e23';
+    context.shadowColor = 'transparent';
     context.shadowBlur = 2;
     context.stroke();
   }

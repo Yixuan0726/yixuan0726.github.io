@@ -79,7 +79,7 @@ function caseStudySection(section) {
   if (designPage && new URL(designPage).origin === location.origin) {
     return `<section class="case-section case-section--design" id="${escapeHTML(section.id)}" aria-labelledby="${escapeHTML(section.id)}-title">
       <h2 class="visually-hidden" id="${escapeHTML(section.id)}-title">${escapeHTML(section.title)}</h2>
-      <iframe class="design-frame" src="${escapeHTML(designPage)}" title="StatsShooter game design" loading="lazy"></iframe>
+      <iframe class="design-frame" src="${escapeHTML(designPage)}" title="StatsShooter game design" loading="eager" scrolling="no"></iframe>
     </section>`;
   }
   const player = section.browserGame ? gamePlayerMarkup(section.browserGame) : '';
@@ -184,22 +184,31 @@ let disposeDesignFrame = () => {};
 
 function mountDesignFrame(frame) {
   if (!frame) return () => {};
-  const observer = new ResizeObserver(entries => {
-    frame.style.height = `${Math.ceil(entries[0].target.getBoundingClientRect().height)}px`;
-  });
-
+  let pending = 0;
+  function fitContent() {
+    pending = 0;
+    const body = frame.contentDocument?.body;
+    if (!body) return;
+    const height = Math.ceil(Math.max(body.getBoundingClientRect().height, body.scrollHeight));
+    if (height > 0 && frame.clientHeight !== height) frame.style.height = `${height}px`;
+    frame.contentWindow.scrollTo(0, 0);
+  }
+  function scheduleFit() {
+    if (!pending) pending = requestAnimationFrame(fitContent);
+  }
+  const observer = new ResizeObserver(scheduleFit);
   function observeBody() {
     observer.disconnect();
     const body = frame.contentDocument?.body;
     if (!body) return;
-    frame.style.height = `${Math.ceil(body.getBoundingClientRect().height)}px`;
+    fitContent();
     observer.observe(body);
   }
-
   frame.addEventListener('load', observeBody);
   if (frame.contentDocument?.readyState === 'complete' && frame.contentDocument.URL !== 'about:blank') observeBody();
   return () => {
     observer.disconnect();
+    cancelAnimationFrame(pending);
     frame.removeEventListener('load', observeBody);
   };
 }
@@ -214,6 +223,7 @@ function render({ navigate = false } = {}) {
   disposeDesignFrame();
   const id = new URLSearchParams(location.search).get('project');
   const project = portfolio.projects.find(item => item.id === id);
+  document.body.classList.toggle('statsshooter-project', project?.id === 'statsshooter');
   if (id && !project) {
     $('#page-content').innerHTML = '<section class="not-found"><h1>Project not found.</h1><p>Browse the portfolio to find the current projects.</p><a class="text-link" href="./#work" data-route>View all projects <span aria-hidden="true">↗</span></a></section>';
     document.title = 'Project not found — ' + portfolio.name;
