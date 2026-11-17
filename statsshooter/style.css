@@ -69,20 +69,19 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .zoomable img { width: 100%; height: auto; }
 .hero-figure .zoomable { padding: 5px; box-shadow: 0 18px 48px #100d1573; }
 .hero-figure img { width: 100%; height: auto; border-radius: 4px; }
-.is-embedded .site-header { position: static; }
-.is-embedded .hero, .is-embedded .reading-progress { display: none; }
+.is-embedded .site-header { position: static; background: transparent; border-bottom: 0; backdrop-filter: none; }
+.is-embedded .site-header .site-bar { display: flex; justify-content: flex-end; min-height: 0; padding-top: 8px; }
+.is-embedded :is(.wordmark, .main-nav, .reading-progress, .hero-figure, .hero-copy .eyebrow, .hero-tagline) { display: none; }
+.is-embedded .hero { display: block; padding-block: 4px clamp(20px, 3vw, 36px); }
+.is-embedded .hero h1 { font-size: clamp(38px, 5vw, 64px); margin: 0 0 12px; }
+.is-embedded .hero-description { max-width: 64ch; margin-top: 0; }
+.is-embedded #combat { padding-top: clamp(22px, 3vw, 42px); }
 .is-embedded .wrap { width: min(1260px, calc(100% - 32px)); }
-.overview-figure figcaption, .annotated figcaption { display: flex; justify-content: space-between; gap: 8px 16px; }
+.annotated figcaption { display: flex; justify-content: space-between; gap: 8px 16px; }
 figcaption { padding-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.65; }
 figcaption b { color: var(--gold); font-weight: 700; }
-.overview { padding: 0 0 clamp(35px, 5vw, 65px); }
-.overview-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 22px; flex-wrap: wrap; padding: 20px 0 15px; border-top: 1px solid var(--line); }
-.overview h2 { font-size: 19px; font-weight: 650; }
 .text-link { color: var(--gold); font-size: 13px; }
-.overview-pair, .image-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2.2vw, 30px); }
-.overview-figure img { aspect-ratio: 16/9; object-fit: cover; }
-.overview-figure figcaption { color: var(--text); font-size: 13px; }
-.overview-figure figcaption span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; }
+.image-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2.2vw, 30px); }
 
 .chapter { padding-block: clamp(39px, 5.6vw, 78px); border-top: 1px solid var(--line); }
 .chapter-head { margin-bottom: 28px; }
@@ -275,8 +274,6 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .hero { grid-template-columns: 1fr; padding-top: 38px; }
   .hero h1 { font-size: clamp(48px, 12vw, 76px); margin-bottom: 10px; }
   .hero-description { max-width: 48ch; }
-  .overview-figure img { aspect-ratio: 16/9; }
-  .overview-figure figcaption { display: grid; gap: 1px; font-size: 12px; }
   .annotated, .feature-grid, .calibration-stages { grid-template-columns: 1fr; }
   .calibration-stages { gap: 24px; }
   .calibration-stage + .calibration-stage::before { content: "↓" / ""; top: auto; right: calc(50% - 13px); bottom: calc(100% + 5px); transform: none; }

@@ -125,6 +125,12 @@ function detailPage(project) {
   if (project.id === 'eyedle') {
     return eyedlePage(project, portfolio.projects[(portfolio.projects.indexOf(project) + 1) % portfolio.projects.length]);
   }
+  const next = portfolio.projects[(portfolio.projects.indexOf(project) + 1) % portfolio.projects.length];
+  const nextLink = '<a class="next-project" href="' + projectURL(next) + '" data-route><div><small>Next project</small><strong>' + escapeHTML(next.name) + '</strong></div><span aria-hidden="true">→</span></a>';
+  if (project.id === 'statsshooter') {
+    return '<article><h1 class="visually-hidden">' + escapeHTML(project.name) + '</h1>' +
+      project.caseStudy.map(caseStudySection).join('') + nextLink + '</article>';
+  }
   const resources = [
     { url: project.projectPage, label: project.projectPageLabel || 'Project page' },
     { url: project.documentPreview ? null : project.documentation, label: 'Project document' },
@@ -137,7 +143,6 @@ function detailPage(project) {
   const showDocument = project.documentPreview && safeURL(project.documentation);
   const sections = showDocument ? [] : (project.caseStudy || []);
   const playableCover = gamePlayerMarkup(project);
-  const next = portfolio.projects[(portfolio.projects.indexOf(project) + 1) % portfolio.projects.length];
   return '<article class="detail">' +
     '<div class="detail-nav"><a href="./#work" data-route>← All projects</a><span class="detail-index">' + escapeHTML(project.number) + ' / ' + String(portfolio.projects.length).padStart(2, '0') + '</span></div>' +
     '<header class="detail-heading"><p class="project-category">' + escapeHTML(project.category) + '</p><h1>' + escapeHTML(project.name) + '</h1><p class="detail-tagline">' + escapeHTML(project.tagline) + '</p>' +
@@ -155,7 +160,7 @@ function detailPage(project) {
     (safeURL(project.videoFile) ? '<section class="walkthrough-section" id="walkthrough" aria-labelledby="walkthrough-title"><div class="walkthrough-heading"><h2 id="walkthrough-title">Gameplay walkthrough</h2><span>Recorded gameplay</span></div><video class="gameplay-video" controls preload="metadata" playsinline poster="' + escapeHTML(safeURL(project.videoPoster || project.cover)) + '" aria-label="' + escapeHTML(project.name) + ' full gameplay walkthrough"><source src="' + escapeHTML(safeURL(project.videoFile)) + '" type="video/mp4">Your browser cannot play this video. ' + resourceLink(project.videoFile, 'Open gameplay video') + '</video><p class="video-caption">' + escapeHTML(project.videoCaption || '') + '</p></section>' : '') +
     sections.map(caseStudySection).join('') +
     (gallery.length ? '<section class="detail-section" aria-labelledby="gallery-title"><h2 id="gallery-title">' + escapeHTML(project.galleryTitle || 'A closer look') + '</h2><div class="gallery-grid' + (project.galleryType === 'screenshots' ? ' gallery-grid--screenshots' : '') + '">' + gallery.map(item => '<figure><a href="' + escapeHTML(safeURL(item.src)) + '" target="_blank" rel="noopener noreferrer" aria-label="Open image: ' + escapeHTML(item.alt || item.caption || project.name) + '"><img src="' + escapeHTML(safeURL(item.src)) + '" alt="' + escapeHTML(item.alt || item.caption || project.name) + '" loading="lazy"></a>' + (item.caption ? '<figcaption>' + escapeHTML(item.caption) + '</figcaption>' : '') + '</figure>').join('') + '</div></section>' : '') +
-    '<a class="next-project" href="' + projectURL(next) + '" data-route><div><small>Next project</small><strong>' + escapeHTML(next.name) + '</strong></div><span aria-hidden="true">→</span></a></article>';
+    nextLink + '</article>';
 }
 
 function moveToContent() {
