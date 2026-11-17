@@ -318,23 +318,23 @@ figure, h1, h2, h3, p { margin: 0; }
 
 /* StatsShooter owns the viewport; other portfolio routes retain their layout. */
 body.statsshooter-project {
-  --bg: #f6f0e5; --surface: #fffaf1; --ink: #352b3b; --muted: #746976;
-  --line: #d4c9bc; --accent: #86551f; --orange: #86551f;
+  --bg: #eee7f7; --surface: #f8f4fc; --ink: #2c1c40; --muted: #685a76;
+  --line: #d8cbe5; --accent: #633c85; --orange: #633c85;
   --stats-gutter: clamp(20px, 4.4vw, 112px);
   color-scheme: light;
   background: var(--bg); color: var(--ink);
 }
 .statsshooter-project #main.page-width { width: 100%; margin: 0; }
 .statsshooter-project > .site-header { width: 100%; min-height: 74px; padding: 0 var(--stats-gutter); border-bottom: 1px solid var(--line); }
-.statsshooter-project .site-header nav a { color: #584f58; }
+.statsshooter-project .site-header nav a { color: #51445f; }
 .statsshooter-project .site-header nav a:hover { color: var(--accent); }
 .statsshooter-project .case-section--design { padding: 0; border: 0; }
 .statsshooter-project .design-frame { box-sizing: border-box; width: 100%; border: 0; border-radius: 0; background: var(--bg); overflow: hidden; }
 .statsshooter-project .case-section:not(.case-section--design), .statsshooter-project .next-project { margin-inline: var(--stats-gutter); }
-.statsshooter-project .case-body > p { color: #584f58; }
+.statsshooter-project .case-body > p { color: #51445f; }
 .statsshooter-project .case-body h2 { font-weight: 700; }
-.statsshooter-project .primary-link { background: #503957; border-color: #503957; color: #fff4e2; }
-.statsshooter-project .primary-link:hover { background: #684c70; border-color: #684c70; }
+.statsshooter-project .primary-link { background: #513370; border-color: #513370; color: #faf3ff; }
+.statsshooter-project .primary-link:hover { background: #67478a; border-color: #67478a; }
 .statsshooter-project .game-player-feedback { color: var(--ink); }
 .statsshooter-project .gameplay-video { border-radius: 3px; }
 .statsshooter-project > .site-footer { width: 100%; padding-inline: var(--stats-gutter); color: var(--muted); }
