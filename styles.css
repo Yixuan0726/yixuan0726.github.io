@@ -317,7 +317,7 @@ figure, h1, h2, h3, p { margin: 0; }
 }
 
 /* StatsShooter owns the viewport; other portfolio routes retain their layout. */
-body.statsshooter-project { --stats-gutter: clamp(20px, 4.4vw, 112px); }
+body.statsshooter-project { --stats-gutter: max(clamp(22px, (100vw - 740px) / 4, 12.5vw), calc((100% - 1480px) / 2)); }
 .statsshooter-project #main.page-width { width: 100%; margin: 0; }
 .statsshooter-project > .site-header { width: 100%; min-height: 74px; padding: 0 var(--stats-gutter); border-bottom: 1px solid var(--line); }
 .statsshooter-project .case-section--design { padding: 0; border: 0; }
