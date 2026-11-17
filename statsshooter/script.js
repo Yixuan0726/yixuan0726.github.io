@@ -57,9 +57,9 @@ for (const group of document.querySelectorAll('[data-annotations]')) {
     context.beginPath();
     context.moveTo(startX, startY);
     context.bezierCurveTo(startX + bend, startY, endX - bend, endY, endX, endY);
-    context.strokeStyle = '#66428a';
+    context.strokeStyle = '#e4bf9b';
     context.lineWidth = 1.4;
-    context.shadowColor = 'transparent';
+    context.shadowColor = '#221a28';
     context.shadowBlur = 2;
     context.stroke();
   }
@@ -171,11 +171,11 @@ for (const guide of document.querySelectorAll('[data-combat-guide]')) {
       context.beginPath();
       context.moveTo(startX, startY);
       context.bezierCurveTo(startX + bendX, startY + bendY, endX - bendX, endY - bendY, endX, endY);
-      context.lineWidth = 2.8;
-      context.strokeStyle = '#f1e4ff';
+      context.lineWidth = 3.4;
+      context.strokeStyle = '#f0ceab';
       context.stroke();
       context.lineWidth = 1.25;
-      context.strokeStyle = '#503269';
+      context.strokeStyle = '#442943';
       context.stroke();
 
       const angle = Math.atan2(bendY, bendX);
@@ -186,8 +186,8 @@ for (const guide of document.querySelectorAll('[data-combat-guide]')) {
       context.lineTo(endX - headLength * Math.cos(angle + 0.48), endY - headLength * Math.sin(angle + 0.48));
       context.closePath();
       context.lineWidth = 1.1;
-      context.strokeStyle = '#f1e4ff';
-      context.fillStyle = '#503269';
+      context.strokeStyle = '#f0ceab';
+      context.fillStyle = '#442943';
       context.fill();
       context.stroke();
     }
