@@ -8,7 +8,7 @@
   <title>StatsShooter · Game Design Portfolio</title>
   <link rel="alternate" hreflang="zh-CN" href="./index-zh.html">
   <link rel="stylesheet" href="./style.css?v=statsshooter-direct-intro">
-  <link rel="stylesheet" href="./case-study.css?v=statsshooter-reading-width-v1">
+  <link rel="stylesheet" href="./case-study.css?v=statsshooter-clone-finale-v1">
   <script src="./script.js?v=statsshooter-original-v1" defer></script>
 </head>
 <body>
@@ -49,7 +49,6 @@
     <section id="combat" class="chapter">
       <div class="combat-guide" data-combat-guide>
         <header class="chapter-head combat-guide-heading">
-          <p class="eyebrow">Core Mechanics</p>
           <h2>Combat Rules</h2>
           <p>Hits update your data, and the mean determines whether shots deal direct damage. Decide when to keep firing and when to calibrate.</p>
         </header>
@@ -134,7 +133,6 @@
 
     <section id="shop" class="chapter">
       <header class="chapter-head">
-        <p class="eyebrow">Between Waves</p>
         <h2>Upgrade Shop</h2>
         <p>Defeat enemies to earn coins. When the countdown ends, spend them on cards and supplies or reroll the shop.</p>
       </header>
@@ -239,7 +237,6 @@
 
     <section id="world" class="chapter">
       <header class="chapter-head">
-        <p class="eyebrow">Character &amp; Enemies</p>
         <h2>Gauss and the Weather Enemies</h2>
         <p>Gauss changes shape as the distribution changes. Weather enemies disrupt movement, sampling, and calibration.</p>
       </header>
@@ -277,7 +274,6 @@
 
     <section class="chapter" id="builds" aria-labelledby="builds-title">
       <div class="chapter-head">
-        <span class="eyebrow">Build Design</span>
         <h2 id="builds-title">Low- and High-Variance Builds</h2>
         <p>With the mean at 18–22, the variance of the six live values sets the weapon tier. Closely grouped observations improve rifle piercing. A wider spread extends shotgun coverage.</p>
       </div>
@@ -425,25 +421,24 @@
 
     <section class="chapter" id="progression" aria-labelledby="progression-title">
       <div class="chapter-head">
-        <span class="eyebrow">Progression Design</span>
         <h2 id="progression-title">The Ignition Build in the Endgame</h2>
-        <p>Gauss and the Extreme Clones fire high-variance shotguns together. Burns stack on the same enemy, while embers on the ground ignite anyone who crosses them.</p>
+        <p>Repeated calibrations grow the clone army. Their shotgun rings set enemies on fire, and Gauss’s hits can trigger blasts in the crowd.</p>
       </div>
       <div class="feature-grid ignition-endgame">
         <figure class="figure">
           <picture>
-            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-endgame-en.webp">
-            <img src="./assets/ignition-endgame-en.gif" alt="Gauss and the clones set a group of enemies on fire with the completed ignition build." width="840" height="472" loading="lazy" decoding="async">
+            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-finale-burst-en.webp">
+            <img src="./assets/ignition-finale-burst-en.gif" alt="Gauss calibrates to grow the clone army as shotgun volleys set groups of enemies on fire and trigger blasts." width="832" height="468" loading="lazy" decoding="async">
           </picture>
         </figure>
         <div class="note-stack">
           <section class="note">
             <h3>How the Build Plays</h3>
-            <p>Use the shotgun ring to ignite a crowd, then let ground embers spread the fire. When multiple clones hit the same target, each applies a separate burn.</p>
+            <p>Each clone applies its own burn. Gauss’s volley triggers a Centroid Burst when it deals direct damage to at least three enemies. Calibrate back into range to grow the army for the next volley.</p>
           </section>
           <section class="note">
             <h3>Four Cards in the Endgame Demo</h3>
-            <p>Sparks, Ember Sowing, Ember Revival, and Intense Embers each use one slot. Extreme Clone upgrades separately and spawns more clones when the mean returns to range with enough variance.</p>
+            <p>Sparks, Ember Sowing, Centroid Burst, and Intense Embers fill the four slots. Extreme Clone upgrades separately.</p>
           </section>
         </div>
       </div>
@@ -480,10 +475,10 @@
           <li class="ignition-card">
             <figure class="figure">
               <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-stack-en.webp">
-                <img src="./assets/ignition-stack-en.gif" alt="Gauss and the Extreme Clones hit the same enemy, stacking independent burns." width="840" height="472" loading="lazy" decoding="async">
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/extreme-clone-growth.webp">
+                <img src="./assets/extreme-clone-growth.gif" alt="Three right-click calibrations grow the army from one clone to three, then seven, then fifteen." width="960" height="540" loading="lazy" decoding="async">
               </picture>
-              <figcaption><h4>Extreme Clone</h4><p>Gauss and each clone can apply a separate burn to the same target, stacking damage.</p></figcaption>
+              <figcaption><h4>Extreme Clone</h4><p>Three right-click calibrations grow the army from 1 to 3, then 7, then 15 clones. Each can apply its own burn to the same enemy.</p></figcaption>
             </figure>
           </li>
         </ol>

@@ -8,7 +8,7 @@
   <title>StatsShooter · 游戏设计作品集</title>
   <link rel="alternate" hreflang="en" href="./index.html">
   <link rel="stylesheet" href="./style.css?v=statsshooter-direct-intro">
-  <link rel="stylesheet" href="./case-study.css?v=statsshooter-reading-width-v1">
+  <link rel="stylesheet" href="./case-study.css?v=statsshooter-clone-finale-v1">
   <script src="./script.js?v=statsshooter-original-v1" defer></script>
 </head>
 <body>
@@ -49,7 +49,6 @@
     <section id="combat" class="chapter">
       <div class="combat-guide" data-combat-guide>
         <header class="chapter-head combat-guide-heading">
-          <p class="eyebrow">Combat Rules</p>
           <h2>战斗规则</h2>
           <p>命中改变样本，均值控制直伤。战斗时，玩家要判断何时继续射击、何时校准。</p>
         </header>
@@ -134,7 +133,6 @@
 
     <section id="shop" class="chapter">
       <header class="chapter-head">
-        <p class="eyebrow">Upgrade Shop</p>
         <h2>升级商店</h2>
         <p>击败敌人获得金币。补给倒计时结束后进入商店，购买卡牌、补给或刷新选项。</p>
       </header>
@@ -159,7 +157,7 @@
 
     <section id="card-upgrades" class="chapter" aria-labelledby="card-upgrades-title">
       <header class="chapter-head">
-        <p class="eyebrow">Statistical Cards</p>
+        <p class="eyebrow">统计卡牌</p>
         <h2 id="card-upgrades-title">四个槽位，换掉哪张？</h2>
         <p>步枪从Ⅲ档开始，四个槽位已经装满。装入「贯穿回响」时，可以牺牲取数稳定性，也可以放弃三连贯穿奖励的金币。</p>
       </header>
@@ -239,7 +237,6 @@
 
     <section id="world" class="chapter">
       <header class="chapter-head">
-        <p class="eyebrow">Character &amp; Enemies</p>
         <h2>小高斯与天气敌人</h2>
         <p>小高斯的外形让玩家看见分布的变化。天气敌人分别干扰走位、取样与校准时机。</p>
       </header>
@@ -277,7 +274,6 @@
 
     <section class="chapter" id="builds" aria-labelledby="builds-title">
       <div class="chapter-head">
-        <span class="eyebrow" lang="en">BUILD DESIGN</span>
         <h2 id="builds-title">低方差与高方差构筑</h2>
         <p>均值维持在 18–22 时，六格的实际方差决定武器档位。步枪靠集中取数获得贯穿，霰弹枪靠分散取数扩大火力覆盖。</p>
       </div>
@@ -425,25 +421,24 @@
 
     <section class="chapter" id="progression" aria-labelledby="progression-title">
       <div class="chapter-head">
-        <span class="eyebrow" lang="en">PROGRESSION DESIGN</span>
         <h2 id="progression-title">点燃构筑的成型终局</h2>
-        <p>高方差霰弹和极值分身同时开火。火种在同一敌人身上叠加，留在地面的余烬继续点燃经过的敌人。</p>
+        <p>连续校准让分身越打越多。分身的环形霰弹点燃敌群，本体的射击还能在敌群中央引发震爆。</p>
       </div>
       <div class="feature-grid ignition-endgame">
         <figure class="figure">
           <picture>
-            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-endgame.webp">
-            <img src="./assets/ignition-endgame.gif" alt="成型的点燃构筑在实战中由本体和分身引燃敌群" width="840" height="472" loading="lazy" decoding="async">
+            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-finale-burst-zh.webp">
+            <img src="./assets/ignition-finale-burst-zh.gif" alt="高斯连续校准，分身军团逐轮增大。霰弹点燃敌群并触发震爆。" width="832" height="468" loading="lazy" decoding="async">
           </picture>
         </figure>
         <div class="note-stack">
           <section class="note">
             <h3>成型后的打法</h3>
-            <p>先用环射把火带进敌群，再利用地火持续扩散。多个分身打中同一目标时，各自的燃烧独立生效。</p>
+            <p>每个分身都能独立叠加燃烧。本体的一轮射击对至少三个敌人造成直伤时，触发重心震爆。把均值校准回有效区间，下一轮就有更多分身一起开火。</p>
           </section>
           <section class="note">
             <h3>终局演示的四槽配置</h3>
-            <p>火花、余烬播撒、余烬复燃和烈性火种各占一格。极值分身单独升级，均值回到有效区间且方差达标时能继续增殖。</p>
+            <p>火花、余烬播撒、重心震爆和烈性火种各占一格。极值分身单独升级。</p>
           </section>
         </div>
       </div>
@@ -480,10 +475,10 @@
           <li class="ignition-card">
             <figure class="figure">
               <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-stack.webp">
-                <img src="./assets/ignition-stack.gif" alt="本体和极值分身打中同一敌人，独立的燃烧效果叠加" width="840" height="472" loading="lazy" decoding="async">
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/extreme-clone-growth.webp">
+                <img src="./assets/extreme-clone-growth.gif" alt="三次右键校准，分身从一只变成三只、七只，最后增至十五只。" width="960" height="540" loading="lazy" decoding="async">
               </picture>
-              <figcaption><h4>极值分身</h4><p>本体和分身可对同一个敌人分别施加火种，让燃烧叠加。</p></figcaption>
+              <figcaption><h4>极值分身</h4><p>三次右键校准，分身从 1 个增至 3 个、7 个，再到 15 个。每个分身打中同一敌人时，都能独立叠加燃烧。</p></figcaption>
             </figure>
           </li>
         </ol>
@@ -492,7 +487,7 @@
 
     <section class="chapter" id="iteration" aria-labelledby="iteration-title">
       <div class="chapter-head">
-        <span class="eyebrow" lang="en">DESIGN ITERATION</span>
+        <span class="eyebrow">设计迭代</span>
         <h2 id="iteration-title">校准、卡槽与玩家选择</h2>
       </div>
       <div class="iteration-cases">
