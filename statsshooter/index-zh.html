@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#201d24">
   <title>StatsShooter · 游戏设计作品集</title>
   <link rel="alternate" hreflang="en" href="./index.html">
-  <link rel="stylesheet" href="./style.css?v=statsshooter-direct-intro">
+  <link rel="stylesheet" href="./style.css?v=gauss-morph-v1">
   <link rel="stylesheet" href="./case-study.css?v=statsshooter-clone-finale-v1">
   <script src="./script.js?v=statsshooter-original-v1" defer></script>
 </head>
@@ -261,10 +261,13 @@
         <div class="gauss" id="gauss-shape">
           <h3>小高斯的形变</h3>
           <figure class="figure gauss-figure">
-            <picture>
-              <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
-              <img src="./assets/gauss-combat.gif" alt="实战画面与小高斯近景。随着方差增大，角色从高瘦变得矮宽。" width="960" height="432" loading="lazy" decoding="async">
-            </picture>
+            <a class="reference-board-image gauss-motion-link" href="./assets/gauss-live-morph.gif" target="_blank" rel="noopener" aria-label="在新标签页播放小高斯实战形变动图">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
+                <img src="./assets/gauss-live-morph.gif" alt="小高斯边走位边开火，随方差增加，从高瘦变得矮宽。" width="832" height="468" loading="lazy" decoding="async">
+              </picture>
+              <span class="gauss-motion-play" aria-hidden="true">▶</span>
+            </a>
           </figure>
           <p class="note gauss-note">小高斯的造型来自正态分布的钟形曲线。方差越大，身形越矮宽，碰撞范围固定。</p>
         </div>

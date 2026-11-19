@@ -201,6 +201,20 @@ kbd { display: inline-block; padding: 1px 5px; color: var(--gold); background: #
 .world-layout h3 { color: var(--gold); font-size: 18px; margin-bottom: 10px; }
 .gauss-figure { background: #19171d; border-radius: 7px; border: 1px solid #7b6762; overflow: hidden; }
 .gauss-figure img { width: 100%; height: auto; }
+.gauss-motion-play { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .gauss-motion-play {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 6px auto;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--ink);
+    background: var(--panel);
+  }
+}
 .weapon-tiers { display: grid; gap: clamp(20px, 3vw, 40px); }
 .weapon-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 26px); }
 .weapon-tier h3, .weapon-route > h3, .iteration-case > h3, .ignition-stages > h3 { color: var(--gold); font-size: 19px; margin-bottom: 10px; }

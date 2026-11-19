@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#201d24">
   <title>StatsShooter · Game Design Portfolio</title>
   <link rel="alternate" hreflang="zh-CN" href="./index-zh.html">
-  <link rel="stylesheet" href="./style.css?v=statsshooter-direct-intro">
+  <link rel="stylesheet" href="./style.css?v=gauss-morph-v1">
   <link rel="stylesheet" href="./case-study.css?v=statsshooter-clone-finale-v1">
   <script src="./script.js?v=statsshooter-original-v1" defer></script>
 </head>
@@ -261,10 +261,13 @@
         <div class="gauss" id="gauss-shape">
           <h3>How Gauss Changes Shape</h3>
           <figure class="figure gauss-figure">
-            <picture>
-              <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
-              <img src="./assets/gauss-combat.gif" alt="Combat footage and a close-up show Gauss growing shorter and wider as variance rises." width="960" height="432" loading="lazy" decoding="async">
-            </picture>
+            <a class="reference-board-image gauss-motion-link" href="./assets/gauss-live-morph.gif" target="_blank" rel="noopener" aria-label="Play Gauss’s combat transformation in a new tab">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
+                <img src="./assets/gauss-live-morph.gif" alt="Gauss moves and fires in combat while growing shorter and wider as variance rises." width="832" height="468" loading="lazy" decoding="async">
+              </picture>
+              <span class="gauss-motion-play" aria-hidden="true">▶</span>
+            </a>
           </figure>
           <p class="note gauss-note">Gauss takes its shape from the bell curve of a normal distribution. Higher variance makes Gauss shorter and wider, with a fixed collision radius.</p>
         </div>
