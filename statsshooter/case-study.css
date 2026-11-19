@@ -81,8 +81,8 @@ main.wrap, .is-embedded main.wrap { padding: 0; }
 .card-swap-heading h3 { font-size: clamp(26px, 2.4vw, 36px); letter-spacing: -.025em; }
 .card-swap-heading p { font-size: 16px; margin-block: 12px 24px; }
 .world-layout { gap: 42px; }
-.gauss-figure { width: min(100%, 1160px); margin-inline: auto; border: 0; border-radius: 3px; }
-.gauss-note { max-width: 1160px; margin-inline: auto; }
+.gauss-figure { width: min(100%, 880px); margin-inline: auto; border: 0; border-radius: 3px; }
+.gauss-note { max-width: 880px; margin-inline: auto; }
 .enemy-grid { gap: 30px; }
 .enemy { border: 0; border-radius: 3px; background: transparent; }
 .enemy-copy { padding: 16px 0; border: 0; font-size: 15px; }
