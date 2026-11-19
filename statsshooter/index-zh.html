@@ -8,7 +8,7 @@
   <title>StatsShooter · 游戏设计作品集</title>
   <link rel="alternate" hreflang="en" href="./index.html">
   <link rel="stylesheet" href="./style.css?v=gauss-morph-v1">
-  <link rel="stylesheet" href="./case-study.css?v=statsshooter-gauss-wide">
+  <link rel="stylesheet" href="./case-study.css?v=gauss-normal-curves">
   <script src="./script.js?v=statsshooter-original-v1" defer></script>
 </head>
 <body>
@@ -260,6 +260,23 @@
       <div class="world-layout">
         <div class="gauss" id="gauss-shape">
           <h3>小高斯的形变</h3>
+          <figure class="gauss-distribution" aria-labelledby="gauss-distribution-title">
+            <figcaption>
+              <h4 id="gauss-distribution-title">正态分布的钟形曲线</h4>
+              <p>两条曲线都以 20 为中心。方差越大，数值越分散，曲线越矮、越宽，小高斯也随之变形。</p>
+            </figcaption>
+            <div class="gauss-distribution-layout">
+              <div class="gauss-distribution-plot">
+                <span class="gauss-density-label">概率密度</span>
+                <img src="./assets/gauss-normal-curves.svg" alt="同一坐标系中，两条钟形曲线都在 20 处达到峰值。金色曲线高而窄，绿色曲线矮而宽。" width="480" height="152" loading="lazy">
+                <div class="gauss-value-labels"><span>均值 20</span><span>数值</span></div>
+              </div>
+              <ul class="gauss-curve-key" role="list">
+                <li class="gauss-curve-narrow"><span class="gauss-curve-portrait" aria-hidden="true"></span>方差较小</li>
+                <li class="gauss-curve-wide"><span class="gauss-curve-portrait" aria-hidden="true"></span>方差较大</li>
+              </ul>
+            </div>
+          </figure>
           <figure class="figure gauss-figure">
             <a class="reference-board-image gauss-motion-link" href="./assets/gauss-live-variance.gif?v=wide" target="_blank" rel="noopener" aria-label="在新标签页播放小高斯实战形变动图">
               <picture>
@@ -270,7 +287,7 @@
               <span class="gauss-motion-play" aria-hidden="true">▶</span>
             </a>
           </figure>
-          <p class="note gauss-note">小高斯的造型来自正态分布的钟形曲线。方差越大，身形越矮宽，碰撞范围固定。</p>
+          <p class="note gauss-note">小高斯形变时，碰撞范围固定。</p>
         </div>
         <div class="enemies">
           <h3>天气敌人</h3>

@@ -83,6 +83,51 @@ main.wrap, .is-embedded main.wrap { padding: 0; }
 .world-layout { gap: 42px; }
 .gauss-figure { width: min(100%, 880px); margin-inline: auto; border: 0; border-radius: 3px; }
 .gauss-note { max-width: 880px; margin-inline: auto; }
+.gauss-distribution {
+  width: min(100%, 880px);
+  margin: 0 auto 20px;
+  padding: clamp(16px, 2.4vw, 24px);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--panel);
+}
+.gauss-distribution h4 { color: var(--ink); font-size: 19px; line-height: 1.4; }
+.gauss-distribution figcaption p { margin-top: 6px; color: var(--text); font-size: 15px; line-height: 1.6; }
+.gauss-distribution-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  align-items: center;
+  gap: clamp(12px, 2vw, 24px);
+  margin-top: 16px;
+}
+.gauss-distribution-plot img { width: 100%; height: auto; }
+.gauss-density-label, .gauss-value-labels { display: block; color: var(--muted); font-size: 13px; line-height: 1.4; }
+.gauss-density-label { padding-left: 3.33%; }
+.gauss-value-labels { display: grid; grid-template-columns: repeat(3, 1fr); }
+.gauss-value-labels span:first-child { grid-column: 2; text-align: center; color: var(--ink); }
+.gauss-value-labels span:last-child { text-align: right; padding-right: 2.5%; }
+.gauss-curve-key {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gauss-curve-key li { text-align: center; font-size: 14px; font-weight: 650; line-height: 1.4; }
+.gauss-curve-narrow { color: var(--gold); }
+.gauss-curve-wide { color: #9bd4bd; }
+.gauss-curve-portrait {
+  display: block;
+  width: min(100%, 122px);
+  aspect-ratio: 600 / 340;
+  margin: 0 auto 8px;
+  background: url("./assets/gauss.webp") left center / 300% 100% no-repeat;
+}
+.gauss-curve-wide .gauss-curve-portrait { background-position: right center; }
+@media (max-width: 640px) {
+  .gauss-distribution-layout { grid-template-columns: minmax(0, 1fr); }
+}
 .enemy-grid { gap: 30px; }
 .enemy { border: 0; border-radius: 3px; background: transparent; }
 .enemy-copy { padding: 16px 0; border: 0; font-size: 15px; }
