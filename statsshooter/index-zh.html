@@ -17,11 +17,13 @@
     <div class="site-bar wrap">
       <a class="wordmark" href="#top" aria-label="StatsShooter 首页"><span aria-hidden="true" class="brand-curve"></span>StatsShooter</a>
       <nav aria-label="项目章节" class="main-nav">
+        <a href="#overview">游戏概览</a>
         <a href="#combat">核心机制</a>
         <a href="#world">角色与敌人</a>
         <a href="#builds">武器构筑</a>
         <a href="#progression">成长路线</a>
         <a href="#iteration">设计迭代</a>
+        <a href="#reflection">设计反思</a>
       </nav>
       <nav class="language-switch" aria-label="语言">
         <a href="./index.html" hreflang="en" lang="en" aria-label="English" data-language-link>EN</a>
@@ -44,6 +46,19 @@
           <img src="./assets/start-menu-zh.webp" alt="StatsShooter 开始界面，左侧有开始游戏和设置，右侧是小高斯与风暴 Boss。" width="1440" height="900" fetchpriority="high">
         </button>
       </figure>
+    </section>
+
+    <section id="overview" class="chapter" aria-labelledby="overview-title">
+      <div class="feature-grid">
+        <div class="chapter-head">
+          <h2 id="overview-title">游戏概览</h2>
+          <p>击败天气敌人赚取金币，在波次间升级步枪或霰弹枪，最后挑战风暴 Boss。样本越集中，步枪的贯穿能力越强。样本越分散，霰弹的覆盖范围越广。</p>
+        </div>
+        <div class="chapter-head">
+          <h2 id="inspiration-title">设计灵感</h2>
+          <p>我学过统计，也喜欢在肉鸽游戏里尝试不同构筑。我想让玩家通过换卡和开火，亲眼看到抽样怎样改变武器的表现。</p>
+        </div>
+      </div>
     </section>
 
     <section id="combat" class="chapter">
@@ -162,14 +177,14 @@
         <p>步枪从Ⅲ档开始，四个槽位已经装满。装入「贯穿回响」时，可以牺牲取数稳定性，也可以放弃三连贯穿奖励的金币。</p>
       </header>
       <div class="reference-board-grid">
-        <a class="reference-board" href="./assets/statsshooter-cards-overview-zh-4k.png?v=ricochet-map-v1" target="_blank" rel="noopener" aria-label="在新标签页查看完整强化构筑图">
+        <a class="reference-board" href="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="在新标签页查看完整强化构筑图">
           <span class="reference-board-image">
-            <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=ricochet-map-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
+            <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
           </span>
-          <span class="reference-board-caption"><strong>全部强化卡牌</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+          <span class="reference-board-caption"><strong>全部强化卡牌</strong></span>
         </a>
         <figure class="reference-board">
-          <img class="reference-board-image" src="./assets/statsshooter-data-cards-zh-4k.png" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
+          <img class="reference-board-image" src="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
           <figcaption class="reference-board-caption"><strong>数据卡一览</strong></figcaption>
         </figure>
       </div>
@@ -243,12 +258,15 @@
         <p>小高斯的外形让玩家看见分布的变化。天气敌人分别干扰走位、取样与校准时机。</p>
       </header>
       <div class="world-layout">
-        <div class="gauss">
-          <h3>方差越大，小高斯越矮宽</h3>
+        <div class="gauss" id="gauss-shape">
+          <h3>小高斯的形变</h3>
           <figure class="figure gauss-figure">
-            <img src="./assets/gauss-moving.gif" alt="小高斯持续走位并射击。随着画面右下角的六格方差从 0 升到 400，小高斯由高瘦变为矮宽。" loading="lazy" width="1200" height="675">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
+              <img src="./assets/gauss-combat.gif" alt="实战画面与小高斯近景。随着方差增大，角色从高瘦变得矮宽。" width="960" height="432" loading="lazy" decoding="async">
+            </picture>
           </figure>
-          <p class="note gauss-note">每次命中会更新六格中的一个观测值。小高斯的身形随方差变宽、变矮，碰撞范围保持一致。</p>
+          <p class="note gauss-note">小高斯的造型来自正态分布的钟形曲线。方差越大，身形越矮宽，碰撞范围固定。</p>
         </div>
         <div class="enemies">
           <h3>天气敌人</h3>
@@ -413,11 +431,11 @@
       </div>
       <div class="build-reference">
         <h3>终局设计</h3>
-        <a class="reference-board" href="./assets/statsshooter-fire-build-zh-4k.png" target="_blank" rel="noopener" aria-label="在新标签页查看燃烧构筑终局设计原图">
+        <a class="reference-board" href="./assets/statsshooter-fire-build-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="在新标签页查看燃烧构筑终局设计原图">
           <span class="reference-board-image">
-            <img src="./assets/statsshooter-fire-build-zh-4k.png" alt="燃烧构筑图，展示购买前置、余烬控场与分身燃烧两种终局方案。" width="3840" height="2160" loading="lazy" decoding="async">
+            <img src="./assets/statsshooter-fire-build-zh-4k.png?v=clean-boards-v1" alt="燃烧构筑图，展示购买前置、余烬控场与分身燃烧两种终局方案。" width="3840" height="2160" loading="lazy" decoding="async">
           </span>
-          <span class="reference-board-caption"><strong>燃烧构筑</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+          <span class="reference-board-caption"><strong>燃烧构筑</strong></span>
         </a>
       </div>
     </section>
@@ -512,11 +530,11 @@
       </div>
       <section class="build-reference" id="ricochet-build-design" aria-labelledby="ricochet-build-design-title">
         <h3 id="ricochet-build-design-title">终局设计</h3>
-        <a class="reference-board" href="./assets/statsshooter-ricochet-build-zh-4k.png" target="_blank" rel="noopener" aria-label="在新标签页查看折射构筑终局设计原图">
+        <a class="reference-board" href="./assets/statsshooter-ricochet-build-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="在新标签页查看折射构筑终局设计原图">
           <span class="reference-board-image">
-            <img src="./assets/statsshooter-ricochet-build-zh-4k.png" alt="折射构筑图，展示购买前置，以及双发折射和墙面余辉两套四槽配装。" width="3840" height="2160" loading="lazy" decoding="async">
+            <img src="./assets/statsshooter-ricochet-build-zh-4k.png?v=clean-boards-v1" alt="折射构筑图，展示购买前置，以及双发折射和墙面余辉两套四槽配装。" width="3840" height="2160" loading="lazy" decoding="async">
           </span>
-          <span class="reference-board-caption"><strong>折射构筑</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+          <span class="reference-board-caption"><strong>折射构筑</strong></span>
         </a>
       </section>
       <section class="ignition-stages" aria-labelledby="ricochet-stages-title">
@@ -608,10 +626,14 @@
           </div>
         </section>
       </div>
-      <section class="note">
-        <h3>设计反思</h3>
-        <p>从终局反推帮助我明确成型体验，也容易把成长压成一条预设路线。玩家在开局选定稳定或高方差后，后续多在补齐同一套卡，稳定路线成型较快，调整打法的机会更少。统计学习需要进入选牌、换卡和校准这些具体决策。</p>
-      </section>
+    </section>
+
+    <section class="chapter" id="reflection" aria-labelledby="reflection-title">
+      <div class="chapter-head">
+        <h2 id="reflection-title">设计反思</h2>
+        <p>早期校准原型要求玩家边走位边比较候选槽。我把选槽交给系统，玩家只需要判断什么时候校准、什么时候继续开火。</p>
+      </div>
+      <p class="note">取样卡也要让数字变成战斗里的选择。用六十四次平均替代八次平均，步枪更容易保住贯穿档位，射速约慢 26%。我希望玩家在补给时考虑，下一波更需要稳定贯穿，还是更多开火机会。</p>
     </section>
 
   </main>

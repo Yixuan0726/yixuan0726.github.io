@@ -17,11 +17,13 @@
     <div class="site-bar wrap">
       <a class="wordmark" href="#top" aria-label="StatsShooter home"><span aria-hidden="true" class="brand-curve"></span>StatsShooter</a>
       <nav aria-label="Project sections" class="main-nav">
+        <a href="#overview">Overview</a>
         <a href="#combat">Combat</a>
         <a href="#world">Enemies</a>
         <a href="#builds">Builds</a>
         <a href="#progression">Progression</a>
         <a href="#iteration">Iteration</a>
+        <a href="#reflection">Reflection</a>
       </nav>
       <nav class="language-switch" aria-label="Language">
         <span aria-current="page" aria-label="English">EN</span>
@@ -44,6 +46,19 @@
           <img src="./assets/start-menu-en.webp" alt="StatsShooter's title screen shows the Start Game and Settings buttons beside Gauss and the Storm Boss." width="1440" height="900" fetchpriority="high">
         </button>
       </figure>
+    </section>
+
+    <section id="overview" class="chapter" aria-labelledby="overview-title">
+      <div class="feature-grid">
+        <div class="chapter-head">
+          <h2 id="overview-title">Game Overview</h2>
+          <p>Fight waves of weather enemies, spend the coins you earn on rifle or shotgun upgrades, and face the final boss. Closely grouped samples help the rifle pierce enemies. More spread helps the shotgun cover a wider area.</p>
+        </div>
+        <div class="chapter-head">
+          <h2 id="inspiration-title">Inspiration</h2>
+          <p>StatsShooter grew out of my background in statistics and my love of trying different builds in roguelites. I wanted players to see how sampling changes a weapon by switching a card and taking a shot.</p>
+        </div>
+      </div>
     </section>
 
     <section id="combat" class="chapter">
@@ -162,14 +177,14 @@
         <p>The rifle starts at Tier III with all four slots filled. Equipping Piercing Echo means giving up either steadier samples or the coin reward for piercing three enemies.</p>
       </header>
       <div class="reference-board-grid">
-        <a class="reference-board" href="./assets/statsshooter-cards-overview-en-4k.png?v=ricochet-map-v1" target="_blank" rel="noopener" aria-label="Open the full upgrade map in a new tab">
+        <a class="reference-board" href="./assets/statsshooter-cards-overview-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Open the full upgrade map in a new tab">
           <span class="reference-board-image">
-            <img src="./assets/statsshooter-cards-overview-en-4k.png?v=ricochet-map-v1" alt="Upgrade map with the low-variance rifle and ricochet cards on the left and the high-variance shotgun and ignition cards on the right." width="5040" height="2660" loading="lazy" decoding="async">
+            <img src="./assets/statsshooter-cards-overview-en-4k.png?v=clean-boards-v1" alt="Upgrade map with the low-variance rifle and ricochet cards on the left and the high-variance shotgun and ignition cards on the right." width="5040" height="2660" loading="lazy" decoding="async">
           </span>
-          <span class="reference-board-caption"><strong>All Upgrade Cards</strong><span>Full size <span aria-hidden="true">↗</span></span></span>
+          <span class="reference-board-caption"><strong>All Upgrade Cards</strong></span>
         </a>
         <figure class="reference-board">
-          <img class="reference-board-image" src="./assets/statsshooter-data-cards-en-4k.png" alt="Data cards that change sampling, averaging, and calibration on the low- and high-variance routes." width="3840" height="2160" loading="lazy" decoding="async">
+          <img class="reference-board-image" src="./assets/statsshooter-data-cards-en-4k.png?v=clean-boards-v1" alt="Data cards that change sampling, averaging, and calibration on the low- and high-variance routes." width="3840" height="2160" loading="lazy" decoding="async">
           <figcaption class="reference-board-caption"><strong>Data Cards</strong></figcaption>
         </figure>
       </div>
@@ -243,12 +258,15 @@
         <p>Gauss changes shape as the distribution changes. Weather enemies disrupt movement, sampling, and calibration.</p>
       </header>
       <div class="world-layout">
-        <div class="gauss">
-          <h3>Gauss Gets Wider as Variance Rises</h3>
+        <div class="gauss" id="gauss-shape">
+          <h3>How Gauss Changes Shape</h3>
           <figure class="figure gauss-figure">
-            <img src="./assets/gauss-moving.gif" alt="Gauss moves and fires, growing shorter and wider as the variance rises from 0 to 400 in the lower-right HUD." loading="lazy" width="1200" height="675">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
+              <img src="./assets/gauss-combat.gif" alt="Combat footage and a close-up show Gauss growing shorter and wider as variance rises." width="960" height="432" loading="lazy" decoding="async">
+            </picture>
           </figure>
-          <p class="note gauss-note">Each hit updates one of six observations. As variance rises, Gauss gets wider and shorter while keeping the same hitbox.</p>
+          <p class="note gauss-note">Gauss takes its shape from the bell curve of a normal distribution. Higher variance makes Gauss shorter and wider, with a fixed collision radius.</p>
         </div>
         <div class="enemies">
           <h3>Weather Enemies</h3>
@@ -413,11 +431,11 @@
       </div>
       <div class="build-reference">
         <h3>Endgame Design</h3>
-        <a class="reference-board" href="./assets/statsshooter-fire-build-en-4k.png" target="_blank" rel="noopener" aria-label="Open the full ignition build diagram in a new tab">
+        <a class="reference-board" href="./assets/statsshooter-fire-build-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Open the full ignition build diagram in a new tab">
           <span class="reference-board-image">
-            <img src="./assets/statsshooter-fire-build-en-4k.png" alt="Ignition build prerequisites and two endgame setups, ember-based area control and burn stacking with clones." width="3840" height="2160" loading="lazy" decoding="async">
+            <img src="./assets/statsshooter-fire-build-en-4k.png?v=clean-boards-v1" alt="Ignition build prerequisites and two endgame setups, ember-based area control and burn stacking with clones." width="3840" height="2160" loading="lazy" decoding="async">
           </span>
-          <span class="reference-board-caption"><strong>Ignition Build</strong><span>Full size <span aria-hidden="true">↗</span></span></span>
+          <span class="reference-board-caption"><strong>Ignition Build</strong></span>
         </a>
       </div>
     </section>
@@ -512,11 +530,11 @@
       </div>
       <section class="build-reference" id="ricochet-build-design" aria-labelledby="ricochet-build-design-title">
         <h3 id="ricochet-build-design-title">Endgame Design</h3>
-        <a class="reference-board" href="./assets/statsshooter-ricochet-build-en-4k.png" target="_blank" rel="noopener" aria-label="Open the full ricochet build diagram in a new tab">
+        <a class="reference-board" href="./assets/statsshooter-ricochet-build-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Open the full ricochet build diagram in a new tab">
           <span class="reference-board-image">
-            <img src="./assets/statsshooter-ricochet-build-en-4k.png" alt="Ricochet purchase requirements and two four-slot endgame setups, Dual Ricochet and Wall Afterglow." width="3840" height="2160" loading="lazy" decoding="async">
+            <img src="./assets/statsshooter-ricochet-build-en-4k.png?v=clean-boards-v1" alt="Ricochet purchase requirements and two four-slot endgame setups, Dual Ricochet and Wall Afterglow." width="3840" height="2160" loading="lazy" decoding="async">
           </span>
-          <span class="reference-board-caption"><strong>Ricochet Build</strong><span>Full size <span aria-hidden="true">↗</span></span></span>
+          <span class="reference-board-caption"><strong>Ricochet Build</strong></span>
         </a>
       </section>
       <section class="ignition-stages" aria-labelledby="ricochet-stages-title">
@@ -608,10 +626,14 @@
           </div>
         </section>
       </div>
-      <section class="note">
-        <h3>Design Reflection</h3>
-        <p>Working backward from the endgame helped define how a finished build should feel. It also made progression too predictable. Once players chose the low- or high-variance route, they mostly collected a fixed set of cards. The low-variance route came together sooner and offered fewer chances to change tactics. The statistical concepts need to matter when players pick cards, replace them, and decide when to calibrate.</p>
-      </section>
+    </section>
+
+    <section class="chapter" id="reflection" aria-labelledby="reflection-title">
+      <div class="chapter-head">
+        <h2 id="reflection-title">Design Reflection</h2>
+        <p>In the early calibration prototype, players compared slots while dodging. I gave slot selection to the game so players could focus on when to calibrate and when to keep firing.</p>
+      </div>
+      <p class="note">I wanted sampling cards to turn another calculation into a combat decision. Averaging 64 draws helps the rifle hold its piercing tier and slows fire by about 26% compared with averaging eight. Each shop visit gives the player a chance to weigh steadier piercing against firing more often in the next wave.</p>
     </section>
 
   </main>
