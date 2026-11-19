@@ -133,6 +133,34 @@ window.statsShooterCards = [
     description: '蓄能急停后 0.4 秒内射击命中并造成伤害时，在角色周围产生半径 3 的冲击波，造成普通单发基底的 50% 伤害并击退敌人。Boss 免疫击退。', availability: '稳定路线且拥有急停射击',
   },
   {
+    id: 450, name: '折射弹', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 0,
+    description: '均值在 18–22 且步枪达到Ⅱ档或Ⅲ档时，子弹最多碰墙反弹 1 次，反弹后继续贯穿。一轮命中最多写入一格样本。', availability: '本局步枪曾达到Ⅱ档',
+  },
+  {
+    id: 451, name: '双壁回路', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 1,
+    description: '装备后，Ⅱ档及以上步枪的反弹上限由 1 次增至 2 次。与棱镜回廊共用一个装备位置，换装时互相替换，原卡保留备用。', availability: '拥有折射弹',
+  },
+  {
+    id: 452, name: '回弹标记', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 1,
+    description: '反弹子弹命中普通敌人时，使其减速 25%，持续 1 秒，重复命中刷新时间。Boss 免疫减速。与墙面余辉共用一个装备位置。', availability: '拥有折射弹',
+  },
+  {
+    id: 453, name: '反射聚能', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 1,
+    description: '每发子弹在反弹后首次造成伤害的命中获得 25% 增伤，每发只触发一次。与双发折射共用一个装备位置。', availability: '拥有折射弹',
+  },
+  {
+    id: 454, name: '棱镜回廊', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 1,
+    description: '自动替换双壁回路，当前Ⅲ档最多反弹 5 次，降至Ⅱ档时最多反弹 2 次，重新进入Ⅲ档后恢复 5 次。回弹标记与反射聚能仍需各自装备。一轮命中最多写入一格样本。', availability: '本局步枪曾达到Ⅲ档，拥有双壁回路及回弹标记或反射聚能之一；备用卡也提供购买前置',
+  },
+  {
+    id: 455, name: '墙面余辉', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 1,
+    description: '替换回弹标记，每次反弹在墙面留下半径 1.2、持续 1.2 秒的光点。普通敌人在光点内减速 25%，离开后恢复。Boss 免疫减速。原卡保留备用，可在商店免费换回。', availability: '拥有棱镜回廊和回弹标记；备用卡也提供购买前置',
+  },
+  {
+    id: 456, name: '双发折射', category: '机制卡', route: '稳定步枪', maxLevel: 1, slots: 1,
+    description: '替换反射聚能，同射主弹与顺时针偏 8° 的半伤害副弹。两弹各按当前反弹上限飞行，各自对同一敌人最多命中一次，整轮最多写入一格样本。原卡保留备用，可在商店免费换回。', availability: '拥有棱镜回廊和反射聚能；备用卡也提供购买前置',
+  },
+  {
     id: 402, name: '方差增伤', category: '机制卡', route: '高方差霰弹', maxLevel: 3, slots: 0,
     description: '霰弹直伤随六格实际方差增加。每 60 方差，每级增加 10% 基础伤害。', availability: '霰弹路线商店',
   },

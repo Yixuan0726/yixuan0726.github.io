@@ -162,10 +162,12 @@
         <p>步枪从Ⅲ档开始，四个槽位已经装满。装入「贯穿回响」时，可以牺牲取数稳定性，也可以放弃三连贯穿奖励的金币。</p>
       </header>
       <div class="reference-board-grid">
-        <figure class="reference-board">
-          <img class="reference-board-image" src="./assets/statsshooter-cards-overview-zh-4k.png" alt="强化构筑图，列出通用、低方差和高方差路线的强化与开局武器。" width="3840" height="2160" loading="lazy" decoding="async">
-          <figcaption class="reference-board-caption"><strong>全部强化卡牌</strong></figcaption>
-        </figure>
+        <a class="reference-board" href="./assets/statsshooter-cards-overview-zh-4k.png?v=ricochet-map-v1" target="_blank" rel="noopener" aria-label="在新标签页查看完整强化构筑图">
+          <span class="reference-board-image">
+            <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=ricochet-map-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
+          </span>
+          <span class="reference-board-caption"><strong>全部强化卡牌</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+        </a>
         <figure class="reference-board">
           <img class="reference-board-image" src="./assets/statsshooter-data-cards-zh-4k.png" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
           <figcaption class="reference-board-caption"><strong>数据卡一览</strong></figcaption>
@@ -378,6 +380,7 @@
               <p>其余卡牌相同时，八次平均换成六十四次平均，新取数的理论方差由 <strong>0.188 降至 0.023</strong>，射速约慢 <strong>26%</strong>。若只带六十四次平均和中心收缩，还可留两个槽位给贯穿赏金和贯穿回响。</p>
             </section>
           </div>
+          <a class="text-link" href="#ricochet-progression">查看折射终局实战 <span aria-hidden="true">↓</span></a>
         </section>
         <section class="weapon-route" aria-labelledby="weapon-route-shotgun">
           <h3 id="weapon-route-shotgun">高方差霰弹枪</h3>
@@ -479,6 +482,80 @@
                 <img src="./assets/extreme-clone-growth.gif" alt="三次右键校准，分身从一只变成三只、七只，最后增至十五只。" width="960" height="540" loading="lazy" decoding="async">
               </picture>
               <figcaption><h4>极值分身</h4><p>三次右键校准，分身从 1 个增至 3 个、7 个，再到 15 个。每个分身打中同一敌人时，都能独立叠加燃烧。</p></figcaption>
+            </figure>
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <section class="chapter" id="ricochet-progression" aria-labelledby="ricochet-progression-title">
+      <div class="chapter-head">
+        <h2 id="ricochet-progression-title">低方差步枪的折射终局</h2>
+      </div>
+      <div class="feature-grid ignition-endgame ricochet-build">
+        <figure class="figure">
+          <picture>
+            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-finale-magnet.webp">
+            <img src="./assets/ricochet-finale-magnet.gif" alt="低方差步枪在怪潮中打出跳弹连击，散落的金币从不同方向飞回小高斯。" width="832" height="468" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <div class="note-stack">
+          <section class="note">
+            <h3>沿墙面寻找贯穿角度</h3>
+            <p>样本集中、均值保持在 18–22，步枪就能稳住Ⅲ档。走位把追兵带进跳弹路径，一枪连中多名敌人，落地的金币随后飞回小高斯。</p>
+          </section>
+          <section class="note">
+            <h3>实战演示的四槽配置</h3>
+            <p>六十四次平均、中心收缩、棱镜回廊和双发折射各占一格。演示中还通过商店补给将吸金升到了满级。</p>
+          </section>
+        </div>
+      </div>
+      <section class="build-reference" id="ricochet-build-design" aria-labelledby="ricochet-build-design-title">
+        <h3 id="ricochet-build-design-title">终局设计</h3>
+        <a class="reference-board" href="./assets/statsshooter-ricochet-build-zh-4k.png" target="_blank" rel="noopener" aria-label="在新标签页查看折射构筑终局设计原图">
+          <span class="reference-board-image">
+            <img src="./assets/statsshooter-ricochet-build-zh-4k.png" alt="折射构筑图，展示购买前置，以及双发折射和墙面余辉两套四槽配装。" width="3840" height="2160" loading="lazy" decoding="async">
+          </span>
+          <span class="reference-board-caption"><strong>折射构筑</strong><span>查看原图 <span aria-hidden="true">↗</span></span></span>
+        </a>
+      </section>
+      <section class="ignition-stages" aria-labelledby="ricochet-stages-title">
+        <h3 id="ricochet-stages-title">折射路线的机制演示</h3>
+        <ol class="ignition-track" aria-label="折射路线的四个强化阶段">
+          <li class="ignition-card">
+            <figure class="figure">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-1.webp">
+                <img src="./assets/ricochet-step-1.gif" alt="折射弹机制演示，步枪子弹在墙面反弹一次后贯穿敌人。" width="840" height="472" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><h4>折射弹</h4><p>步枪达到Ⅱ档后解锁，子弹碰墙反弹一次，反弹后仍可贯穿。</p></figcaption>
+            </figure>
+          </li>
+          <li class="ignition-card">
+            <figure class="figure">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-2.webp">
+                <img src="./assets/ricochet-step-2.gif" alt="双壁回路机制演示，步枪子弹连续碰到两面墙并反弹。" width="840" height="472" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><h4>双壁回路</h4><p>拥有折射弹后可购买，装备后将反弹上限提高到两次。</p></figcaption>
+            </figure>
+          </li>
+          <li class="ignition-card">
+            <figure class="figure">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-3.webp">
+                <img src="./assets/ricochet-step-3.gif" alt="棱镜回廊机制演示，Ⅲ档步枪子弹在场内连续反弹五次。" width="840" height="472" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><h4>棱镜回廊</h4><p>步枪Ⅲ档、双壁回路和任一辅助卡（回弹标记或反射聚能）提供购买前置。装备后替代双壁回路的槽位，Ⅲ档最多反弹五次，回到Ⅱ档时退为两次。</p></figcaption>
+            </figure>
+          </li>
+          <li class="ignition-card">
+            <figure class="figure">
+              <picture>
+                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-4.webp">
+                <img src="./assets/ricochet-step-4.gif" alt="后期分支机制演示，双发折射沿两个方向反弹，墙面余辉在碰墙处留下减速光点。" width="840" height="472" loading="lazy" decoding="async">
+              </picture>
+              <figcaption><h4>双发折射与墙面余辉</h4><p>双发折射的副弹造成 50% 伤害，整枪命中最多写一格。墙面余辉在每次碰墙处留下持续 1.2 秒的光点，范围内普通敌人减速 25%。这套配装保留两张数据卡时，两条分支需互相替换。</p></figcaption>
             </figure>
           </li>
         </ol>
