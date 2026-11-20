@@ -4,26 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="StatsShooter 是一款把统计抽样、均值和方差融入战斗与武器构筑的 2D 俯视角射击游戏。">
-  <meta name="theme-color" content="#201d24">
+  <meta name="theme-color" content="#201e25">
   <title>StatsShooter · 游戏设计作品集</title>
   <link rel="alternate" hreflang="en" href="./index.html">
   <link rel="stylesheet" href="./style.css?v=gauss-morph-v1">
-  <link rel="stylesheet" href="./case-study.css?v=gauss-normal-curves">
-  <script src="./script.js?v=statsshooter-original-v1" defer></script>
+  <link rel="stylesheet" href="./case-study.css?v=desktop-topics">
+  <link rel="stylesheet" href="./showcase.css?v=gameplay-photos">
+  <link rel="stylesheet" href="./chapters.css?v=desktop-topics">
+  <link rel="stylesheet" href="./endgame-layout.css?v=desktop-topics">
+  <link rel="stylesheet" href="./project-media.css?v=desktop-topics">
+  <script src="./project-language.js" defer></script>
+  <script src="./script.js?v=inline-builds" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
-  <header class="site-header">
+  <header class="site-header showcase-header">
     <div class="site-bar wrap">
-      <a class="wordmark" href="#top" aria-label="StatsShooter 首页"><span aria-hidden="true" class="brand-curve"></span>StatsShooter</a>
-      <nav aria-label="项目章节" class="main-nav">
-        <a href="#overview">游戏概览</a>
-        <a href="#combat">核心机制</a>
-        <a href="#world">角色与敌人</a>
-        <a href="#builds">武器构筑</a>
-        <a href="#progression">成长路线</a>
-        <a href="#iteration">设计迭代</a>
-        <a href="#reflection">设计反思</a>
+      <a class="portfolio-brand" href="../" aria-label="余奕萱的作品集"><b aria-hidden="true">y.</b> Yixuan Yu</a>
+      <nav aria-label="作品集导航" class="portfolio-links">
+        <a href="../#work">游戏作品</a>
+        <a href="../#about">关于我</a>
+        <a href="../uploads/yixuan-yu-cv.pdf" target="_blank" rel="noopener noreferrer">简历</a>
       </nav>
       <nav class="language-switch" aria-label="语言">
         <a href="./index.html" hreflang="en" lang="en" aria-label="English" data-language-link>EN</a>
@@ -34,232 +35,185 @@
   </header>
 
   <main id="main" class="wrap">
-    <section class="hero" aria-labelledby="project-title">
+    <section id="overview" class="hero project-showcase" aria-labelledby="project-title">
       <div class="hero-copy">
-        <p class="eyebrow"><a class="text-link" href="../?project=statsshooter#project-page"><span aria-hidden="true">←</span> 返回作品集</a></p>
-        <h1 id="project-title">StatsShooter<span>.</span></h1>
-        <p class="hero-tagline">让均值决定开火，让方差塑造武器。</p>
-        <p class="hero-description">在这款 2D 俯视角肉鸽射击游戏里，每次命中都会更新一格数据。玩家一边躲避天气敌人，一边校准均值、用卡牌改变取数方式，逐步构筑出不同的武器。</p>
+        <h1 id="project-title" aria-label="StatsShooter"><span>Stats</span><span>Shooter</span></h1>
+        <p class="showcase-meta">
+          <span class="showcase-credit">独立项目</span>
+          <span class="showcase-credit"><span class="showcase-meta-label">开发周期</span> 5 个月</span>
+        </p>
+        <p class="showcase-pitch">你操控的小高斯，是一条拿着枪的钟形曲线。让样本集中，步枪就能一枪贯穿一列敌人。让样本分散，霰弹就能向四周环射。</p>
+        <nav class="project-actions" aria-label="试玩或观看 StatsShooter">
+          <a data-project-media href="#playable-demo"><span class="showcase-play-icon" aria-hidden="true"></span>试玩 Demo</a>
+          <a data-project-media href="#gameplay-video">观看视频</a>
+        </nav>
       </div>
-      <figure class="hero-figure figure">
-        <button class="zoomable" type="button" aria-label="放大 StatsShooter 开始界面">
-          <img src="./assets/start-menu-zh.webp" alt="StatsShooter 开始界面，左侧有开始游戏和设置，右侧是小高斯与风暴 Boss。" width="1440" height="900" fetchpriority="high">
-        </button>
+      <figure class="showcase-art" role="img" aria-label="三张游戏实机截图，分别是升级商店、点燃构筑形成的火圈，以及小高斯与风暴 Boss 相遇的近景。">
+        <div class="showcase-photo photo-shop"><img src="./assets/hero-shop-zh.webp" alt="" width="880" height="495"></div>
+        <div class="showcase-photo photo-battle">
+          <img src="./assets/ignition-endgame.webp" alt="" width="840" height="472" fetchpriority="high">
+          <img class="showcase-sun" src="./assets/swap-target-sun.webp" alt="" width="88" height="81">
+        </div>
+        <div class="showcase-photo photo-encounter"><img src="./assets/enemy-storm-poster.webp" alt="" width="840" height="472"></div>
       </figure>
     </section>
 
-    <section id="overview" class="chapter" aria-labelledby="overview-title">
-      <div class="feature-grid">
-        <div class="chapter-head">
-          <h2 id="overview-title">游戏概览</h2>
-          <p>击败天气敌人赚取金币，在波次间升级步枪或霰弹枪，最后挑战风暴 Boss。样本越集中，步枪的贯穿能力越强。样本越分散，霰弹的覆盖范围越广。</p>
+    <div class="project-media">
+      <section id="gameplay-video" class="film-card" aria-labelledby="gameplay-video-title">
+        <div class="film-screen" data-film-screen data-player-url="https://player.vimeo.com/video/1246997980?autoplay=1" data-player-title="StatsShooter 实机演示">
+          <a class="film-cover" data-film-play href="https://vimeo.com/1246997980" target="_blank" rel="noopener" aria-label="播放 StatsShooter 实机演示视频">
+            <img src="./assets/combat.webp" width="1800" height="1013" alt="" loading="lazy">
+            <span class="film-play-icon" aria-hidden="true"></span>
+          </a>
         </div>
-        <div class="chapter-head">
-          <h2 id="inspiration-title">设计灵感</h2>
-          <p>我学过统计，也喜欢在肉鸽游戏里尝试不同构筑。我想让玩家通过换卡和开火，亲眼看到抽样怎样改变武器的表现。</p>
+        <div class="film-caption">
+          <h2 id="gameplay-video-title">实机演示</h2>
+          <div><time datetime="PT1M35S">1:35</time><a href="https://vimeo.com/1246997980" target="_blank" rel="noopener">在 Vimeo 观看</a></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="combat" class="chapter">
-      <div class="combat-guide" data-combat-guide>
-        <header class="chapter-head combat-guide-heading">
-          <h2>战斗规则</h2>
-          <p>命中改变样本，均值控制直伤。战斗时，玩家要判断何时继续射击、何时校准。</p>
-        </header>
-        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom" data-target-x=".517" data-target-y=".109">
-          <h3>战斗与补给</h3>
-          <p>击败敌人获得金币。补给倒计时结束后，进入商店购买升级。</p>
-        </section>
-        <figure class="figure combat-guide-shot">
-          <div class="combat-guide-image">
-            <button class="zoomable" type="button" aria-label="放大战斗画面">
-              <img src="./assets/combat.webp" alt="战斗画面中，小高斯在六个观测值旁射击。顶部显示补给倒计时，底部显示步枪、均值和方差。" width="1800" height="1013" loading="lazy">
-            </button>
+      <section id="playable-demo" class="demo-card" aria-labelledby="playable-demo-title" data-demo-player data-web-build="../games/statsshooter/index.html?v=coin-hud" data-game-channel="statsshooter" data-game-name="StatsShooter">
+        <div class="demo-heading">
+          <div>
+            <h2 id="playable-demo-title">试玩 Demo</h2>
+            <p>WASD 移动，鼠标瞄准，按住左键射击，右键校准。</p>
           </div>
-          <figcaption>战斗界面</figcaption>
+          <div class="demo-actions">
+            <div data-game-poster><button class="media-button" type="button" data-game-start hidden>开始试玩</button></div>
+            <a href="https://g00000.itch.io/statsshooter" target="_blank" rel="noopener">在 itch.io 试玩</a>
+          </div>
+        </div>
+        <div class="demo-controls" data-game-controls hidden>
+          <button type="button" data-game-close>关闭游戏</button>
+          <button type="button" data-game-fullscreen hidden>全屏</button>
+        </div>
+        <div class="demo-feedback" data-game-feedback hidden>
+          <p role="status" aria-live="polite" data-game-status></p>
+          <p data-game-error-detail hidden></p>
+          <div data-game-fallback hidden><button type="button" data-game-retry>重新加载</button></div>
+        </div>
+        <div data-game-surface><div class="demo-screen" data-game-frame hidden></div></div>
+      </section>
+    </div>
+
+    <section id="introduction" class="chapter project-introduction" aria-label="游戏概述与设计灵感">
+      <section id="game-overview" class="intro-block" aria-labelledby="game-overview-title">
+        <h2 id="game-overview-title">游戏概述</h2>
+        <p>StatsShooter 是一款类幸存者的 2D 俯视角肉鸽射击游戏。</p>
+        <figure class="gameplay-loop" aria-label="核心玩法循环">
+          <ol class="gameplay-loop-steps">
+            <li>战斗赚金币</li>
+            <li>商店购买升级卡</li>
+            <li>实战检验构筑</li>
+          </ol>
+          <div class="gameplay-loop-return" aria-hidden="true"></div>
         </figure>
-        <div class="combat-guide-side">
-          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left" data-compact-edge="bottom" data-target-x=".583" data-target-y=".25">
-            <h3>六个观测值</h3>
-            <p>每轮命中替换一格观测值，打空时六格保持原样。</p>
-          </section>
-          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left" data-compact-edge="top" data-target-x=".814" data-target-y=".954">
-            <h3>均值维持在 18–22</h3>
-            <p>均值是六格观测值的平均。只有在有效区间内，普通射击才有直伤。</p>
-          </section>
-        </div>
-        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top" data-target-x=".238" data-target-y=".89">
-          <h3>方差决定武器档位</h3>
-          <p>方差衡量数据有多分散。低方差强化步枪贯穿，高方差扩大霰弹覆盖。</p>
-        </section>
-        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
-      </div>
-
-      <div class="combat-controls" id="combat-controls" role="group" aria-label="战斗操作">
-        <section class="note">
-          <div>
-            <h3>移动与射击</h3>
-            <p><kbd>WASD</kbd> 移动，鼠标瞄准，按住<kbd>左键</kbd>射击。</p>
-          </div>
-          <img class="combat-control-gif" src="./assets/control-move-shoot.gif" alt="小高斯在战场上边移动边向敌人开火。" width="480" height="270" loading="lazy" decoding="async">
-        </section>
-        <section class="note">
-          <div>
-            <h3>右键校准</h3>
-            <p>按下<kbd>右键</kbd>，系统修正一格，让均值尽量接近 20。</p>
-          </div>
-          <img class="combat-control-gif" src="./assets/control-calibration.gif" alt="右键校准后，一个观测值由 40 变为 12，均值由 24.67 回到 20，小高斯恢复射击。" width="560" height="315" loading="lazy" decoding="async">
-        </section>
-      </div>
-
-      <section class="calibration" aria-labelledby="calibration-title">
-        <h3 id="calibration-title">校准如何恢复直伤</h3>
-        <p>六格观测值的均值处于 18–22 时，射击可以造成直伤。</p>
-        <ol class="calibration-stages">
-          <li class="calibration-stage">
-            <h4>射击前</h4>
-            <ol class="calibration-samples" aria-label="六格观测值">
-              <li>20</li><li>20</li><li>20</li><li>20</li><li>20</li><li>20</li>
-            </ol>
-            <p class="calibration-mean">均值 <strong>20.0</strong></p>
-            <p class="calibration-status">直伤生效</p>
-          </li>
-          <li class="calibration-stage" data-state="outside">
-            <h4>命中后</h4>
-            <ol class="calibration-samples" aria-label="六格观测值">
-              <li>40</li><li>20</li><li>20</li><li>20</li><li>20</li><li>20</li>
-            </ol>
-            <p class="calibration-mean">均值 <strong>23.3</strong></p>
-            <p class="calibration-status">后续直伤暂停</p>
-            <p class="calibration-note">改变均值的这次命中仍会造成伤害。</p>
-          </li>
-          <li class="calibration-stage" data-state="restored">
-            <h4>右键校准后</h4>
-            <ol class="calibration-samples" aria-label="六格观测值">
-              <li>20</li><li>20</li><li>20</li><li>20</li><li>20</li><li>20</li>
-            </ol>
-            <p class="calibration-mean">均值 <strong>20.0</strong></p>
-            <p class="calibration-status">直伤恢复</p>
-          </li>
-        </ol>
+        <p class="overview-rule">六个样本的<strong>均值</strong>在 18–22 之间时，普通射击才能造成直接伤害。<strong>方差</strong>越低，步枪贯穿越强。方差越高，霰弹覆盖越广。</p>
+      </section>
+      <section id="inspiration" class="intro-block" aria-labelledby="inspiration-title">
+        <h2 id="inspiration-title">设计灵感</h2>
+        <p>我在大学主修统计学，觉得一些知识只停留在公式与计算中时，容易显得抽象。我也喜欢肉鸽中尝试新组合、发现不同玩法的过程。StatsShooter 把这两种兴趣结合起来：改变数据分布，就能改变武器表现。我希望玩家通过选牌与战斗反馈，逐渐建立对均值和方差的直觉。</p>
+        <figure class="inspiration-figure">
+          <img src="./assets/inspiration-concept.webp" alt="概念插画：小高斯一边在笔记本上计算均值与方差，一边持枪面对身后的风暴 Boss。" width="1672" height="941" loading="lazy">
+        </figure>
       </section>
     </section>
 
-    <section id="shop" class="chapter">
-      <header class="chapter-head">
-        <h2>升级商店</h2>
-        <p>击败敌人获得金币。补给倒计时结束后进入商店，购买卡牌、补给或刷新选项。</p>
+    <section id="weapons" class="chapter" aria-labelledby="weapons-title">
+      <header class="chapter-head" id="builds-title">
+        <h2 id="weapons-title">武器</h2>
       </header>
-      <div class="annotated" data-annotations>
-        <figure class="figure annotated-figure">
-          <div class="shot">
-            <button class="zoomable" type="button" aria-label="放大升级商店"><img src="./assets/shop.webp" alt="升级商店画面，显示武器进度、待购卡牌、共享构筑槽与属性预测" width="1360" height="756" loading="lazy"></button>
-            <button class="pin shop-tier" type="button" data-annotation="tier" aria-label="武器进度" aria-pressed="true">1</button>
-            <button class="pin shop-preview" type="button" data-annotation="preview" aria-label="购买预览" aria-pressed="false">2</button>
-            <button class="pin shop-slots" type="button" data-annotation="slots" aria-label="四个共享槽位" aria-pressed="false">3</button>
+      <div id="builds" class="weapon-comparison">
+        <section class="weapon-route" aria-labelledby="weapon-route-rifle">
+          <header class="weapon-route-header">
+            <div>
+              <h3 id="weapon-route-rifle">低方差步枪</h3>
+              <p class="weapon-summary">样本越集中，步枪贯穿越强，适合连续击中排成一线的敌人。</p>
+            </div>
+            <figure class="weapon-forms weapon-forms-rifle">
+              <button type="button" class="zoomable" aria-label="放大查看步枪四种形态">
+                <img src="./assets/crop-12.webp" data-full="./assets/image-12.webp" alt="从基础步枪到三级贯穿步枪的四种形态" width="1800" height="368" loading="lazy" decoding="async">
+              </button>
+              <figcaption class="variance-axis">
+                <div class="variance-ends"><span>高方差</span><span>低方差</span></div>
+                <ol class="variance-ticks" aria-label="方差逐渐降低时的武器档位">
+                  <li>基础档</li>
+                  <li>Ⅰ档 <small>≤60</small></li>
+                  <li>Ⅱ档 <small>≤12</small></li>
+                  <li>Ⅲ档 <small>≤0.30</small></li>
+                </ol>
+              </figcaption>
+            </figure>
+          </header>
+          <div class="weapon-stage-strip">
+            <figure class="weapon-stage" id="weapon-tier-0">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-0.webp" aria-label="低方差步枪 · 基础档 · 命中单个目标" muted loop playsinline preload="none"><source src="./assets/rifle-0.mp4" type="video/mp4"><a href="./assets/rifle-0.mp4">打开动画</a></video></div>
+              <figcaption><strong>基础档</strong><span>方差 100</span></figcaption>
+            </figure>
+            <figure class="weapon-stage" id="weapon-tier-1">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-1.webp" aria-label="低方差步枪 · Ⅰ档 · 贯穿两名敌人" muted loop playsinline preload="none"><source src="./assets/rifle-1.mp4" type="video/mp4"><a href="./assets/rifle-1.mp4">打开动画</a></video></div>
+              <figcaption><strong>Ⅰ档</strong><span>方差 59</span></figcaption>
+            </figure>
+            <figure class="weapon-stage" id="weapon-tier-2">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-2.webp" aria-label="低方差步枪 · Ⅱ档 · 贯穿三名敌人，伤害递减" muted loop playsinline preload="none"><source src="./assets/rifle-2.mp4" type="video/mp4"><a href="./assets/rifle-2.mp4">打开动画</a></video></div>
+              <figcaption><strong>Ⅱ档</strong><span>方差 11</span></figcaption>
+            </figure>
+            <figure class="weapon-stage" id="weapon-tier-3">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-3.webp" aria-label="低方差步枪 · Ⅲ档 · 全额伤害贯穿三名敌人" muted loop playsinline preload="none"><source src="./assets/rifle-3.mp4" type="video/mp4"><a href="./assets/rifle-3.mp4">打开动画</a></video></div>
+              <figcaption><strong>Ⅲ档</strong><span>方差 0</span></figcaption>
+            </figure>
           </div>
-          <figcaption><span>点击标记查看商店说明</span><span>升级界面</span></figcaption>
-        </figure>
-        <div class="note-stack" aria-label="商店说明">
-          <button class="note note-select" type="button" data-annotation="tier" aria-pressed="true"><span class="note-number">1</span><span><strong>先看武器进度</strong><span>均值有效且实际方差 ≤ 12，步枪进入Ⅱ档，最多贯穿三名敌人。</span></span></button>
-          <button class="note note-select" type="button" data-annotation="preview" aria-pressed="false"><span class="note-number">2</span><span><strong>比较购买预览</strong><span>将八次平均换成六十四次平均，新取数的理论方差从 0.188 降至 0.023，射速也慢约 26%。</span></span></button>
-          <button class="note note-select" type="button" data-annotation="slots" aria-pressed="false"><span class="note-number">3</span><span><strong>四个共享槽位</strong><span>改变取数的数据卡和强化攻击的战斗卡共用四格。满格时要选择替换哪一张。</span></span></button>
-          <a class="text-link" href="#card-swap">比较两种换法 <span aria-hidden="true">↓</span></a>
-        </div>
+        </section>
+        <section class="weapon-route" aria-labelledby="weapon-route-shotgun">
+          <header class="weapon-route-header">
+            <div>
+              <h3 id="weapon-route-shotgun">高方差霰弹枪</h3>
+              <p class="weapon-summary">样本越分散，霰弹覆盖越广，逐步从扇射变为环射，应对四周敌人。</p>
+            </div>
+            <figure class="weapon-forms weapon-forms-shotgun">
+              <button type="button" class="zoomable" aria-label="放大查看霰弹枪四种形态">
+                <img src="./assets/crop-14.webp" data-full="./assets/image-14.webp" alt="从基础霰弹枪到三级环形霰弹枪的四种形态" width="1800" height="460" loading="lazy" decoding="async">
+              </button>
+              <figcaption class="variance-axis">
+                <div class="variance-ends"><span>低方差</span><span>高方差</span></div>
+                <ol class="variance-ticks" aria-label="方差逐渐升高时的武器档位">
+                  <li>基础档</li>
+                  <li>Ⅰ档 <small>≥140</small></li>
+                  <li>Ⅱ档 <small>≥240</small></li>
+                  <li>Ⅲ档 <small>≥360</small></li>
+                </ol>
+              </figcaption>
+            </figure>
+          </header>
+          <div class="weapon-stage-strip">
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-0.webp" aria-label="高方差霰弹枪 · 基础档 · 5 弹扇射" muted loop playsinline preload="none"><source src="./assets/shotgun-0.mp4" type="video/mp4"><a href="./assets/shotgun-0.mp4">打开动画</a></video></div>
+              <figcaption><strong>基础档</strong><span>方差 40</span></figcaption>
+            </figure>
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-1.webp" aria-label="高方差霰弹枪 · Ⅰ档 · 7 弹扇射" muted loop playsinline preload="none"><source src="./assets/shotgun-1.mp4" type="video/mp4"><a href="./assets/shotgun-1.mp4">打开动画</a></video></div>
+              <figcaption><strong>Ⅰ档</strong><span>方差 141</span></figcaption>
+            </figure>
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-2.webp" aria-label="高方差霰弹枪 · Ⅱ档 · 9 弹扇射" muted loop playsinline preload="none"><source src="./assets/shotgun-2.mp4" type="video/mp4"><a href="./assets/shotgun-2.mp4">打开动画</a></video></div>
+              <figcaption><strong>Ⅱ档</strong><span>方差 241</span></figcaption>
+            </figure>
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-3.webp" aria-label="高方差霰弹枪 · Ⅲ档 · 25 弹环射" muted loop playsinline preload="none"><source src="./assets/shotgun-3.mp4" type="video/mp4"><a href="./assets/shotgun-3.mp4">打开动画</a></video></div>
+              <figcaption><strong>Ⅲ档</strong><span>方差 400</span></figcaption>
+            </figure>
+          </div>
+        </section>
       </div>
     </section>
 
-    <section id="card-upgrades" class="chapter" aria-labelledby="card-upgrades-title">
+    <section id="world" class="chapter" aria-labelledby="world-title">
       <header class="chapter-head">
-        <p class="eyebrow">统计卡牌</p>
-        <h2 id="card-upgrades-title">四个槽位，换掉哪张？</h2>
-        <p>步枪从Ⅲ档开始，四个槽位已经装满。装入「贯穿回响」时，可以牺牲取数稳定性，也可以放弃三连贯穿奖励的金币。</p>
-      </header>
-      <div class="reference-board-grid">
-        <a class="reference-board" href="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="在新标签页查看完整强化构筑图">
-          <span class="reference-board-image">
-            <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
-          </span>
-          <span class="reference-board-caption"><strong>全部强化卡牌</strong></span>
-        </a>
-        <figure class="reference-board">
-          <img class="reference-board-image" src="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
-          <figcaption class="reference-board-caption"><strong>数据卡一览</strong></figcaption>
-        </figure>
-      </div>
-      <p class="reference-catalog"><a class="catalog-link" href="./cards-zh.html">查看全部强化卡牌 <span aria-hidden="true">→</span></a></p>
-      <section class="card-swap" id="card-swap" aria-labelledby="card-swap-title">
-        <header class="card-swap-heading">
-          <h3 id="card-swap-title">换上贯穿回响</h3>
-          <p>两种换法都从方差为 0.156 的Ⅲ档步枪出发。下方六格数据展示了六次命中后可能出现的结果。</p>
-        </header>
-        <div class="swap-outcomes">
-          <article class="swap-outcome">
-            <header class="swap-outcome-head">
-              <h4>换下八次平均</h4>
-              <p class="swap-tier">步枪 Ⅱ档</p>
-              <p>这一发贯穿三个敌人，伤害依次为 <strong>35 → 21 → 21</strong>，额外掉落 <strong>2 枚金币</strong>。</p>
-            </header>
-            <img class="swap-clip" src="./assets/card-swap-average-zh.gif" alt="Ⅱ档步枪一发贯穿三个敌人，伤害递减并掉落两枚赏金，随后贯穿回响追加一发。" width="544" height="306" loading="lazy" decoding="async">
-            <div class="swap-outcome-data">
-              <dl class="swap-stats">
-                <div class="swap-expected"><dt>预计六格方差</dt><dd>1.25</dd></div>
-                <div><dt>示例方差</dt><dd>1.750</dd></div>
-                <div><dt>示例均值</dt><dd>20.00</dd></div>
-              </dl>
-              <p class="swap-label">六次命中后的六格数据</p>
-              <ol class="swap-samples" aria-label="六次命中后的六格数据">
-                <li>18</li><li>22</li><li>19</li><li>21</li><li>19.5</li><li>20.5</li>
-              </ol>
-              <p class="swap-label">当前装备</p>
-              <ul class="swap-loadout" aria-label="当前装备">
-                <li>精密采样</li>
-                <li class="swap-equipped">贯穿回响</li>
-                <li>中心收缩</li>
-                <li>贯穿赏金</li>
-              </ul>
-            </div>
-          </article>
-          <article class="swap-outcome">
-            <header class="swap-outcome-head">
-              <h4>换下贯穿赏金</h4>
-              <p class="swap-tier">步枪 Ⅲ档</p>
-              <p>这一发贯穿三个敌人，伤害依次为 <strong>40 → 40 → 40</strong>，代价是放弃赏金。</p>
-            </header>
-            <img class="swap-clip" src="./assets/card-swap-bounty-zh.gif" alt="Ⅲ档步枪一发贯穿三个敌人，均造成全额伤害，随后贯穿回响追加一发。" width="544" height="306" loading="lazy" decoding="async">
-            <div class="swap-outcome-data">
-              <dl class="swap-stats">
-                <div class="swap-expected"><dt>预计六格方差</dt><dd>0.156</dd></div>
-                <div><dt>示例方差</dt><dd>0.049</dd></div>
-                <div><dt>示例均值</dt><dd>20.00</dd></div>
-              </dl>
-              <p class="swap-label">六次命中后的六格数据</p>
-              <ol class="swap-samples" aria-label="六次命中后的六格数据">
-                <li>19.6875</li><li>20.3125</li><li>19.875</li><li>20.1875</li><li>19.8125</li><li>20.125</li>
-              </ol>
-              <p class="swap-label">当前装备</p>
-              <ul class="swap-loadout" aria-label="当前装备">
-                <li>精密采样</li>
-                <li>八次平均</li>
-                <li>中心收缩</li>
-                <li class="swap-equipped">贯穿回响</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-        <p class="swap-note">方差超过 0.45 时，步枪退出Ⅲ档。预计方差是反复取六个观测值后得到的方差平均值。</p>
-      </section>
-    </section>
-
-    <section id="world" class="chapter">
-      <header class="chapter-head">
-        <h2>小高斯与天气敌人</h2>
-        <p>小高斯的外形让玩家看见分布的变化。天气敌人分别干扰走位、取样与校准时机。</p>
+        <h2 id="world-title">角色与敌人</h2>
       </header>
       <div class="world-layout">
         <div class="gauss" id="gauss-shape">
-          <h3>小高斯的形变</h3>
+          <h3 id="gauss-title">小高斯的形变</h3>
           <figure class="gauss-distribution" aria-labelledby="gauss-distribution-title">
             <figcaption>
               <h4 id="gauss-distribution-title">正态分布的钟形曲线</h4>
@@ -278,373 +232,338 @@
             </div>
           </figure>
           <figure class="figure gauss-figure">
-            <a class="reference-board-image gauss-motion-link" href="./assets/gauss-live-variance.gif?v=wide" target="_blank" rel="noopener" aria-label="在新标签页播放小高斯实战形变动图">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
-                <source type="image/webp" srcset="./assets/gauss-live-variance-animated.webp?v=wide" width="832" height="468">
-                <img src="./assets/gauss-live-variance.gif?v=wide" alt="小高斯边走位边用霰弹击杀敌人。画面同时显示实时方差，角色随着方差增大由高瘦变成矮宽。" width="720" height="405" loading="lazy" decoding="async">
-              </picture>
-              <span class="gauss-motion-play" aria-hidden="true">▶</span>
-            </a>
+            <div class="motion-clip" data-motion-clip><video class="motion-video" width="720" height="405" style="aspect-ratio: 720 / 405" poster="./assets/gauss-live-variance-poster.webp" aria-label="小高斯边走位边用霰弹击杀敌人。画面同时显示实时方差，角色随着方差增大由高瘦变成矮宽。" muted loop playsinline preload="none"><source src="./assets/gauss-live-variance.mp4" type="video/mp4"><a href="./assets/gauss-live-variance.mp4">打开动画</a></video></div>
           </figure>
-          <p class="note gauss-note">小高斯形变时，碰撞范围固定。</p>
-        </div>
-        <div class="enemies">
+          </div>
+        <div class="enemies" id="weather-enemies">
           <h3>天气敌人</h3>
           <div class="enemy-grid">
             <figure class="enemy">
-              <img src="./assets/enemy-sun.gif" alt="太阳追上小高斯，贴身攻击使生命从 3 降至 2。" width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>太阳</h4><p>持续追击，让均值出界后的火力中断带来生存压力。</p></figcaption>
+              <img class="enemy-portrait" src="./assets/swap-target-sun.webp" width="88" height="81" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-sun-poster.webp?v=clear-enemies-v1" aria-label="太阳追上小高斯，贴身攻击使生命从 3 降至 2。" muted loop playsinline preload="none"><source src="./assets/enemy-sun.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-sun.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+              <figcaption class="enemy-copy"><h4>太阳</h4><p>紧追玩家，贴身扣血。</p></figcaption>
             </figure>
             <figure class="enemy">
-              <img src="./assets/enemy-wind.gif" alt="风射出阵风，命中后六格均值从 20 降至 17。" width="840" height="472" loading="lazy" decoding="async">
+              <img class="enemy-portrait" src="./assets/swap-target-wind.webp" width="73" height="88" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-wind-poster.webp?v=clear-enemies-v1" aria-label="风射出阵风，命中后六格均值从 20 降至 17。" muted loop playsinline preload="none"><source src="./assets/enemy-wind.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-wind.mp4?v=clear-enemies-v1">打开动画</a></video></div>
               <figcaption class="enemy-copy"><h4>风</h4><p>把一格样本推离均值，可能使均值出界，也可能帮助霰弹升档。</p></figcaption>
             </figure>
             <figure class="enemy">
-              <img src="./assets/enemy-cloud.gif" alt="雷云向小高斯落雷，短暂封锁右键校准。" width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>雷云</h4><p>短暂锁住校准，玩家需要提前安排修复数据的时机。</p></figcaption>
+              <img class="enemy-portrait" src="./assets/swap-target-cloud.webp" width="88" height="52" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-cloud-poster.webp?v=clear-enemies-v1" aria-label="雷云向小高斯落雷，短暂封锁右键校准。" muted loop playsinline preload="none"><source src="./assets/enemy-cloud.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-cloud.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+              <figcaption class="enemy-copy"><h4>雷云</h4><p>落雷暂时锁住校准，最好在雷击前修正均值。</p></figcaption>
             </figure>
             <figure class="enemy">
-              <img src="./assets/enemy-storm.gif" alt="风暴 Boss 改写一格样本，六格均值从 20 升至 23。" width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>风暴 Boss</h4><p>改写一格数据。玩家要救回均值，同时维持构筑所需的方差。</p></figcaption>
+              <img class="enemy-portrait" src="./assets/enemy-storm-portrait.webp" width="151" height="154" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-storm-poster.webp?v=clear-enemies-v1" aria-label="风暴 Boss 改写一格样本，六格均值从 20 升至 23。" muted loop playsinline preload="none"><source src="./assets/enemy-storm.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-storm.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+              <figcaption class="enemy-copy"><h4>风暴 Boss</h4><p>改写一格样本。校准时还要保住武器档位。</p></figcaption>
             </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="chapter" id="builds" aria-labelledby="builds-title">
-      <div class="chapter-head">
-        <h2 id="builds-title">低方差与高方差构筑</h2>
-        <p>均值维持在 18–22 时，六格的实际方差决定武器档位。步枪靠集中取数获得贯穿，霰弹枪靠分散取数扩大火力覆盖。</p>
-      </div>
-      <div class="weapon-tiers">
-        <section class="weapon-tier" aria-labelledby="weapon-tier-0">
-          <h3 id="weapon-tier-0">基础档</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-0.webp">
-                <img src="./assets/rifle-0.gif" alt="低方差步枪 · 基础档 · 命中单个目标" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>低方差步枪</strong><span>命中单个目标</span><span>示例方差 <b>100</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-0.webp">
-                <img src="./assets/shotgun-0.gif" alt="高方差霰弹枪 · 基础档 · 5 弹扇射" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>高方差霰弹枪</strong><span>5 弹扇射</span><span>示例方差 <b>40</b></span></figcaption>
-            </figure>
-          </div>
+    <section id="combat" class="chapter">
+      <div class="combat-guide" data-combat-guide>
+        <header class="chapter-head combat-guide-heading">
+          <h2>战斗规则</h2>
+        </header>
+        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom" data-target-x=".517" data-target-y=".109">
+          <h3>战斗与补给</h3>
+          <p>击败敌人赚金币，倒计时结束后进商店。</p>
         </section>
-        <section class="weapon-tier" aria-labelledby="weapon-tier-1">
-          <h3 id="weapon-tier-1">Ⅰ档</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-1.webp">
-                <img src="./assets/rifle-1.gif" alt="低方差步枪 · Ⅰ档 · 贯穿两名敌人" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>低方差步枪</strong><span>贯穿两名敌人</span><span>示例方差 <b>59</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-1.webp">
-                <img src="./assets/shotgun-1.gif" alt="高方差霰弹枪 · Ⅰ档 · 7 弹扇射" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>高方差霰弹枪</strong><span>7 弹扇射</span><span>示例方差 <b>141</b></span></figcaption>
-            </figure>
-          </div>
-        </section>
-        <section class="weapon-tier" aria-labelledby="weapon-tier-2">
-          <h3 id="weapon-tier-2">Ⅱ档</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-2.webp">
-                <img src="./assets/rifle-2.gif" alt="低方差步枪 · Ⅱ档 · 贯穿三名敌人，伤害递减" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>低方差步枪</strong><span>贯穿三名敌人，伤害递减</span><span>示例方差 <b>11</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-2.webp">
-                <img src="./assets/shotgun-2.gif" alt="高方差霰弹枪 · Ⅱ档 · 9 弹扇射" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>高方差霰弹枪</strong><span>9 弹扇射</span><span>示例方差 <b>241</b></span></figcaption>
-            </figure>
-          </div>
-        </section>
-        <section class="weapon-tier" aria-labelledby="weapon-tier-3">
-          <h3 id="weapon-tier-3">Ⅲ档</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-3.webp">
-                <img src="./assets/rifle-3.gif" alt="低方差步枪 · Ⅲ档 · 全额伤害贯穿三名敌人" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>低方差步枪</strong><span>全额伤害贯穿三名敌人</span><span>示例方差 <b>0</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-3.webp">
-                <img src="./assets/shotgun-3.gif" alt="高方差霰弹枪 · Ⅲ档 · 25 弹环射" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>高方差霰弹枪</strong><span>25 弹环射</span><span>示例方差 <b>400</b></span></figcaption>
-            </figure>
-          </div>
-        </section>
-      </div>
-      <div class="weapon-tier-grid weapon-build-details">
-        <section class="weapon-route" aria-labelledby="weapon-route-rifle">
-          <h3 id="weapon-route-rifle">低方差步枪</h3>
-          <figure class="figure">
-            <button type="button" class="zoomable" aria-label="放大查看步枪四种形态">
-              <img src="./assets/crop-12.webp" data-full="./assets/image-12.webp" alt="从基础步枪到三级贯穿步枪的四种形态" width="1800" height="368" loading="lazy" decoding="async">
+        <figure class="figure combat-guide-shot">
+          <div class="combat-guide-image">
+            <button class="zoomable" type="button" aria-label="放大战斗画面">
+              <img src="./assets/combat.webp" alt="战斗画面中，小高斯在六个观测值旁射击。顶部显示补给倒计时，底部显示步枪、均值和方差。" width="1800" height="1013" loading="lazy">
             </button>
-            <figcaption>基础步枪与Ⅰ、Ⅱ、Ⅲ档形态</figcaption>
-          </figure>
-          <div class="note-stack">
-            <section class="note">
-              <h4>方差降低，贯穿增加</h4>
-              <p>方差降至 <strong>60、12、0.30</strong> 时依次升档。Ⅰ档能打穿两名敌人，Ⅱ档增至三名，Ⅲ档让三名敌人都受到全额伤害。</p>
-            </section>
-            <section class="note">
-              <h4>让取数集中在 20 附近</h4>
-              <p>精密采样收窄范围，八次平均将八个取数合为一个观测，中心收缩将结果到 20 的距离减半。集中校准可在战斗中修复均值并压低当前方差。</p>
-            </section>
-            <section class="note">
-              <h4>稳定性、射速与卡槽</h4>
-              <p>其余卡牌相同时，八次平均换成六十四次平均，新取数的理论方差由 <strong>0.188 降至 0.023</strong>，射速约慢 <strong>26%</strong>。若只带六十四次平均和中心收缩，还可留两个槽位给贯穿赏金和贯穿回响。</p>
-            </section>
           </div>
-          <a class="text-link" href="#ricochet-progression">查看折射终局实战 <span aria-hidden="true">↓</span></a>
-        </section>
-        <section class="weapon-route" aria-labelledby="weapon-route-shotgun">
-          <h3 id="weapon-route-shotgun">高方差霰弹枪</h3>
-          <figure class="figure">
-            <button type="button" class="zoomable" aria-label="放大查看霰弹枪四种形态">
-              <img src="./assets/crop-14.webp" data-full="./assets/image-14.webp" alt="从基础霰弹枪到三级环形霰弹枪的四种形态" width="1800" height="460" loading="lazy" decoding="async">
-            </button>
-            <figcaption>基础霰弹枪与Ⅰ、Ⅱ、Ⅲ档形态</figcaption>
-          </figure>
-          <div class="note-stack">
-            <section class="note">
-              <h4>从扇射到环射</h4>
-              <p>基础为五弹扇射。方差达到 <strong>140、240、360</strong> 时依次升为七弹、九弹、二十五弹，Ⅲ档可向四周环射。</p>
-            </section>
-            <section class="note">
-              <h4>让样本分布在两端</h4>
-              <p>两端采样让观测靠近 0 或 40，尾部概率提高取到端点的机会。保差校准可修复出界的均值，也可在均值有效时拉大方差。</p>
-            </section>
-            <section class="note">
-              <h4>覆盖与集中命中</h4>
-              <p>重心震爆要求一轮命中至少三名敌人，集中重击要求同一目标吃到至少 <strong>60%</strong> 的弹丸。广域散射使Ⅲ档由 <strong>25 增至 37 弹</strong>，集中重击所需命中数随之由 15 增至 23。</p>
-              <p>固定两端采样Ⅱ和尾部概率Ⅲ时，将极值筛选换成广域散射，会使新取数的理论方差由 <strong>399.2 降至 384.7</strong>，Ⅲ档同时多出 12 颗弹丸。</p>
-            </section>
-            <section class="note">
-              <h4>校准触发分身</h4>
-              <p>本局达到过Ⅲ档即可购买同步分身。均值从界外回到有效区间，且方差仍至少为 <strong>350</strong> 时，本体和已有分身各生成一只分身，受容量限制。</p>
-            </section>
-          </div>
-        </section>
-      </div>
-      <div class="build-reference">
-        <h3>终局设计</h3>
-        <a class="reference-board" href="./assets/statsshooter-fire-build-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="在新标签页查看燃烧构筑终局设计原图">
-          <span class="reference-board-image">
-            <img src="./assets/statsshooter-fire-build-zh-4k.png?v=clean-boards-v1" alt="燃烧构筑图，展示购买前置、余烬控场与分身燃烧两种终局方案。" width="3840" height="2160" loading="lazy" decoding="async">
-          </span>
-          <span class="reference-board-caption"><strong>燃烧构筑</strong></span>
-        </a>
-      </div>
-    </section>
-
-    <section class="chapter" id="progression" aria-labelledby="progression-title">
-      <div class="chapter-head">
-        <h2 id="progression-title">点燃构筑的成型终局</h2>
-        <p>高斯边走位边躲避天气敌人，抓住空档校准，带着不断壮大的分身军团用环形霰弹点燃敌群。</p>
-      </div>
-      <div class="feature-grid ignition-endgame">
-        <figure class="figure">
-          <picture>
-            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-finale-combat-zh.webp">
-            <img src="./assets/ignition-finale-combat-zh.gif" alt="高斯在敌群追击中走位、校准，带着增加的分身用霰弹点燃敌群。" width="832" height="468" loading="lazy" decoding="async">
-          </picture>
         </figure>
-        <div class="note-stack">
-          <section class="note">
-            <h3>成型后的打法</h3>
-            <p>把均值校准回有效区间，就能生成更多分身。分身齐射能扩大点燃范围，也能对同一个敌人叠加燃烧。高斯本体一轮直伤命中至少三个敌人时，还会触发重心震爆。</p>
+        <div class="combat-guide-side">
+          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left" data-compact-edge="bottom" data-target-x=".583" data-target-y=".25">
+            <h3>六个观测值</h3>
+            <p>命中替换一格，打空保留原值。</p>
           </section>
-          <section class="note">
-            <h3>终局演示的四槽配置</h3>
-            <p>火花、余烬播撒、重心震爆和烈性火种各占一格。极值分身单独升级。</p>
+          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left" data-compact-edge="top" data-target-x=".814" data-target-y=".954">
+            <h3>均值维持在 18–22</h3>
+            <p>六格的平均值在这个范围内，普通射击才有基础直伤。</p>
           </section>
         </div>
+        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top" data-target-x=".238" data-target-y=".89">
+          <h3>方差决定武器档位</h3>
+          <p>取值越集中，步枪贯穿越强。越分散，霰弹覆盖越广。</p>
+        </section>
+        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
       </div>
-      <section class="ignition-stages" aria-labelledby="ignition-title">
-        <h3 id="ignition-title">点燃构筑的四个强化阶段</h3>
-        <ol class="ignition-track" aria-label="点燃路线的四个阶段">
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-sparks.webp">
-                <img src="./assets/ignition-sparks.gif" alt="霰弹命中后，敌人身上起火并受到持续伤害" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>火花</h4><p>霰弹命中会点燃敌人。均值出界时，已有燃烧继续生效。</p></figcaption>
-            </figure>
+
+      <div class="combat-controls" id="combat-controls" role="group" aria-label="战斗操作">
+        <section class="note">
+          <div>
+            <h3>右键校准</h3>
+            <p>系统自动选一格调整，让均值尽量接近 20。</p>
+          </div>
+          <div class="motion-clip combat-control-gif" data-motion-clip><video class="motion-video" width="560" height="315" style="aspect-ratio: 560 / 315" poster="./assets/control-calibration-poster.webp" aria-label="右键校准后，一个观测值由 40 变为 12，均值由 24.67 回到 20，小高斯恢复射击。" muted loop playsinline preload="none"><source src="./assets/control-calibration.mp4" type="video/mp4"><a href="./assets/control-calibration.mp4">打开动画</a></video></div>
+        </section>
+      </div>
+
+      <section class="calibration-evidence" aria-labelledby="calibration-title">
+        <h3 id="calibration-title">一格变化与校准</h3>
+        <p class="calibration-context">其余五格始终为 20。</p>
+        <ol class="calibration-sequence">
+          <li class="calibration-step">
+            <h4>射击前</h4>
+            <dl class="calibration-values">
+              <div><dt>该格</dt><dd>20</dd></div>
+              <div><dt>均值</dt><dd>20.0</dd></div>
+            </dl>
+            <p class="calibration-status">直伤生效</p>
           </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-scatter.webp">
-                <img src="./assets/ignition-scatter.gif" alt="余烬留在战场上，经过的敌人接触地火" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>余烬播撒</h4><p>落地弹丸和移动中的燃烧敌人留下地火，经过的敌人也会被点燃。</p></figcaption>
-            </figure>
+          <li class="calibration-step" data-state="outside">
+            <h4>命中后</h4>
+            <dl class="calibration-values">
+              <div><dt>该格</dt><dd>40</dd></div>
+              <div><dt>均值</dt><dd>23.3</dd></div>
+            </dl>
+            <p class="calibration-status">后续直伤暂停</p>
           </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-rekindle.webp">
-                <img src="./assets/ignition-rekindle.gif" alt="装备余烬复燃后，战场上的地火范围更大并持续更久" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>余烬复燃</h4><p>地火半径从 0.8 扩大到 1.2，持续时间从 2.2 秒延长到 4 秒。</p></figcaption>
-            </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/extreme-clone-growth.webp">
-                <img src="./assets/extreme-clone-growth.gif" alt="三次右键校准，分身从一只变成三只、七只，最后增至十五只。" width="960" height="540" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>极值分身</h4><p>三次右键校准，分身从 1 个增至 3 个、7 个，再到 15 个。每个分身打中同一敌人时，都能独立叠加燃烧。</p></figcaption>
-            </figure>
+          <li class="calibration-step" data-state="restored">
+            <h4>右键校准后</h4>
+            <dl class="calibration-values">
+              <div><dt>该格</dt><dd>20</dd></div>
+              <div><dt>均值</dt><dd>20.0</dd></div>
+            </dl>
+            <p class="calibration-status">直伤恢复</p>
           </li>
         </ol>
+        <p class="calibration-note">改变均值的这次命中仍会造成伤害。</p>
       </section>
     </section>
 
-    <section class="chapter" id="ricochet-progression" aria-labelledby="ricochet-progression-title">
-      <div class="chapter-head">
-        <h2 id="ricochet-progression-title">低方差步枪的折射终局</h2>
-      </div>
-      <div class="feature-grid ignition-endgame ricochet-build">
-        <figure class="figure">
-          <picture>
-            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-finale-magnet.webp">
-            <img src="./assets/ricochet-finale-magnet.gif" alt="低方差步枪在怪潮中打出跳弹连击，散落的金币从不同方向飞回小高斯。" width="832" height="468" loading="lazy" decoding="async">
-          </picture>
+    <section id="shop" class="chapter" aria-labelledby="shop-title">
+      <header class="chapter-head">
+        <h2 id="shop-title">商店与选牌</h2>
+      </header>
+      <div class="annotated shop-annotations">
+        <figure class="figure annotated-figure">
+          <div class="shot">
+            <button class="zoomable" type="button" aria-label="放大升级商店"><img src="./assets/shop.webp" alt="升级商店画面，显示武器进度、待购卡牌、共享构筑槽与属性预测" width="1360" height="756" loading="lazy"></button>
+            <span class="pin shop-pin shop-tier" aria-hidden="true">1</span>
+            <span class="pin shop-pin shop-preview" aria-hidden="true">2</span>
+            <span class="pin shop-pin shop-slots" aria-hidden="true">3</span>
+          </div>
         </figure>
-        <div class="note-stack">
-          <section class="note">
-            <h3>沿墙面寻找贯穿角度</h3>
-            <p>样本集中、均值保持在 18–22，步枪就能稳住Ⅲ档。走位把追兵带进跳弹路径，一枪连中多名敌人，落地的金币随后飞回小高斯。</p>
-          </section>
-          <section class="note">
-            <h3>实战演示的四槽配置</h3>
-            <p>六十四次平均、中心收缩、棱镜回廊和双发折射各占一格。演示中还通过商店补给将吸金升到了满级。</p>
-          </section>
+        <div class="shop-note-column">
+          <ol class="note-stack shop-notes" aria-label="商店说明">
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">1</span><span><strong>先看武器进度</strong><span>更稳定的样本能强化贯穿。换数据卡前，先看当前武器档位。</span></span></li>
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">2</span><span><strong>比较购买预览</strong><span>增加平均次数能让新取数更稳定，代价是射速变慢。要判断这份稳定性是否值得少开几枪。</span></span></li>
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">3</span><span><strong>四个共享槽位</strong><span>数据卡改变取数，战斗卡强化攻击。满格时，新增卡牌需要替换一张。</span></span></li>
+          </ol>
         </div>
       </div>
-      <section class="build-reference" id="ricochet-build-design" aria-labelledby="ricochet-build-design-title">
-        <h3 id="ricochet-build-design-title">终局设计</h3>
-        <a class="reference-board" href="./assets/statsshooter-ricochet-build-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="在新标签页查看折射构筑终局设计原图">
-          <span class="reference-board-image">
-            <img src="./assets/statsshooter-ricochet-build-zh-4k.png?v=clean-boards-v1" alt="折射构筑图，展示购买前置，以及双发折射和墙面余辉两套四槽配装。" width="3840" height="2160" loading="lazy" decoding="async">
-          </span>
-          <span class="reference-board-caption"><strong>折射构筑</strong></span>
-        </a>
+
+      <section class="shop-card-atlas" aria-labelledby="loadout-catalog-title">
+        <h3 id="loadout-catalog-title">卡牌强化</h3>
+        <div class="shop-card-boards">
+          <figure class="build-board" aria-labelledby="all-upgrades-diagram-title">
+            <figcaption><strong id="all-upgrades-diagram-title">全部强化卡牌</strong><span>数据卡可以搭配两种武器的战斗卡。治疗、护盾等通用升级也能支持两条路线。</span></figcaption>
+            <a href="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大全部强化卡牌">
+              <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <figure class="build-board" aria-labelledby="data-cards-diagram-title">
+            <figcaption><strong id="data-cards-diagram-title">数据卡</strong><span>精准采样收窄取值范围，适合步枪。两端采样偏向极端数值，能扩大霰弹覆盖。</span></figcaption>
+            <a href="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大数据卡">
+              <img src="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+        </div>
+        <a class="text-link" href="./cards-zh.html" data-card-catalog>检索单张卡牌 <span aria-hidden="true">→</span></a>
       </section>
-      <section class="ignition-stages" aria-labelledby="ricochet-stages-title">
-        <h3 id="ricochet-stages-title">折射路线的机制演示</h3>
-        <ol class="ignition-track" aria-label="折射路线的四个强化阶段">
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-1.webp">
-                <img src="./assets/ricochet-step-1.gif" alt="折射弹机制演示，步枪子弹在墙面反弹一次后贯穿敌人。" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>折射弹</h4><p>步枪达到Ⅱ档后解锁，子弹碰墙反弹一次，反弹后仍可贯穿。</p></figcaption>
+
+      <section id="card-upgrades" class="card-swap" aria-labelledby="card-upgrades-title">
+        <header id="card-swap" class="card-swap-heading">
+          <h3 id="card-upgrades-title"><span id="card-swap-title">赏金还是贯穿伤害？</span></h3>
+          <p>同样一枪贯穿三名敌人，留贯穿赏金能多赚 2 金币，留八次平均能让后两名敌人也吃满伤害。</p>
+        </header>
+        <div class="loadout-comparison">
+          <article class="loadout-example">
+            <header><h4>保留贯穿赏金</h4><span>Ⅱ 档步枪</span></header>
+            <dl class="loadout-result">
+              <div><dt>本枪赏金</dt><dd>+2</dd></div>
+            </dl>
+            <figure>
+              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-average-zh.webp" aria-label="主弹贯穿三个敌人，在第三个敌人处掉下两枚赏金。" muted loop playsinline preload="none"><source src="./assets/card-swap-average-zh.mp4" type="video/mp4"><a href="./assets/card-swap-average-zh.mp4">打开动画</a></video></div>
+              <figcaption class="hit-breakdown"><span>主弹伤害</span><ol aria-label="按命中顺序排列">
+                <li><img src="./assets/swap-target-sun.webp" alt="太阳" width="32" height="32"><b>−35</b></li>
+                <li><img src="./assets/swap-target-wind.webp" alt="风" width="32" height="32"><b>−21</b></li>
+                <li><img src="./assets/swap-target-cloud.webp" alt="雷云" width="32" height="32"><b>−21</b></li>
+              </ol></figcaption>
             </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-2.webp">
-                <img src="./assets/ricochet-step-2.gif" alt="双壁回路机制演示，步枪子弹连续碰到两面墙并反弹。" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>双壁回路</h4><p>拥有折射弹后可购买，装备后将反弹上限提高到两次。</p></figcaption>
+          </article>
+          <article class="loadout-example">
+            <header><h4>保留八次平均</h4><span>Ⅲ 档步枪</span></header>
+            <dl class="loadout-result">
+              <div><dt>本枪赏金</dt><dd>0</dd></div>
+            </dl>
+            <figure>
+              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-bounty-zh.webp" aria-label="主弹贯穿三个敌人，对每个目标造成全额伤害。" muted loop playsinline preload="none"><source src="./assets/card-swap-bounty-zh.mp4" type="video/mp4"><a href="./assets/card-swap-bounty-zh.mp4">打开动画</a></video></div>
+              <figcaption class="hit-breakdown"><span>主弹伤害</span><ol aria-label="按命中顺序排列">
+                <li><img src="./assets/swap-target-sun.webp" alt="太阳" width="32" height="32"><b>−40</b></li>
+                <li><img src="./assets/swap-target-wind.webp" alt="风" width="32" height="32"><b>−40</b></li>
+                <li><img src="./assets/swap-target-cloud.webp" alt="雷云" width="32" height="32"><b>−40</b></li>
+              </ol></figcaption>
             </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-3.webp">
-                <img src="./assets/ricochet-step-3.gif" alt="棱镜回廊机制演示，Ⅲ档步枪子弹在场内连续反弹五次。" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>棱镜回廊</h4><p>步枪Ⅲ档、双壁回路和任一辅助卡（回弹标记或反射聚能）提供购买前置。装备后替代双壁回路的槽位，Ⅲ档最多反弹五次，回到Ⅱ档时退为两次。</p></figcaption>
-            </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-4.webp">
-                <img src="./assets/ricochet-step-4.gif" alt="后期分支机制演示，双发折射沿两个方向反弹，墙面余辉在碰墙处留下减速光点。" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>双发折射与墙面余辉</h4><p>双发折射的副弹造成 50% 伤害，整枪命中最多写一格。墙面余辉在每次碰墙处留下持续 1.2 秒的光点，范围内普通敌人减速 25%。这套配装保留两张数据卡时，两条分支需互相替换。</p></figcaption>
-            </figure>
-          </li>
-        </ol>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="chapter endgame-builds" id="endgame-builds" aria-labelledby="endgame-builds-title">
+      <header class="chapter-head">
+        <h2 id="endgame-builds-title">终局构筑</h2>
+      </header>
+      <section class="build-route" id="progression" aria-labelledby="progression-title">
+        <div class="route-finale">
+          <header>
+            <h3 id="progression-title">高方差构筑 · 点燃</h3>
+            <p>用高方差霰弹点燃追兵。均值出界时，校准能召来分身，和你一起朝敌群开火。</p>
+          </header>
+          <div class="motion-clip" data-motion-clip><video class="motion-video" width="832" height="468" style="aspect-ratio: 832 / 468" poster="./assets/ignition-finale-combat-zh.webp" aria-label="高斯在敌群追击中走位、校准，带着增加的分身用霰弹点燃敌群。" muted loop playsinline preload="none"><source src="./assets/ignition-finale-combat-zh.mp4" type="video/mp4"><a href="./assets/ignition-finale-combat-zh.mp4">打开动画</a></video></div>
+        </div>
+        <div class="route-development">
+          <figure class="build-board route-map" aria-labelledby="ignition-build-design-title">
+            <figcaption><strong id="ignition-build-design-title">点燃构筑图</strong><span>用余烬封住走位路线，或集中分身火力，在一个目标身上叠加燃烧。</span></figcaption>
+            <a href="./assets/statsshooter-fire-build-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大点燃构筑图">
+              <img src="./assets/statsshooter-fire-build-zh-4k.png?v=clean-boards-v1" alt="燃烧构筑图，展示余烬控场与分身燃烧两种终局方案及卡牌关系。" width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <section class="build-stages" aria-labelledby="ignition-title">
+            <h4 id="ignition-title">点燃进阶</h4>
+            <ol class="build-stage-strip" role="list">
+              <li>
+                <img src="./assets/ignition-sparks.gif" width="840" height="472" alt="霰弹命中后，敌人身上的火焰继续造成伤害。" loading="lazy" decoding="async">
+                <strong>火花</strong>
+                <p>命中点燃敌人，均值出界后燃烧仍会持续。</p>
+              </li>
+              <li>
+                <img src="./assets/ignition-scatter.gif" width="840" height="472" alt="弹丸留下地火，后来经过的敌人被点燃。" loading="lazy" decoding="async">
+                <strong>余烬播撒</strong>
+                <p>霰弹和燃烧的敌人沿途留下地火。</p>
+              </li>
+              <li>
+                <img src="./assets/ignition-rekindle.gif" width="840" height="472" alt="强化后的地火覆盖更大范围，在地面上持续燃烧。" loading="lazy" decoding="async">
+                <strong>余烬复燃</strong>
+                <p>地火更宽、持续更久，能封住追兵的路线。</p>
+              </li>
+              <li>
+                <img src="./assets/extreme-clone-growth.gif" width="960" height="540" alt="小高斯连续校准，场上的分身随之增多。" loading="lazy" decoding="async">
+                <strong>极值分身</strong>
+                <p>校准增加分身，集火同一目标可叠加燃烧。</p>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </section>
+      <section class="build-route" id="ricochet-progression" aria-labelledby="ricochet-progression-title">
+        <div class="route-finale">
+          <header>
+            <h3 id="ricochet-progression-title">低方差构筑 · 折射</h3>
+            <p>让六个样本保持集中，稳住步枪的贯穿档位。把追兵引到反弹路径上，让同一发子弹再次穿过敌群。</p>
+          </header>
+          <div class="motion-clip" data-motion-clip><video class="motion-video" width="832" height="468" style="aspect-ratio: 832 / 468" poster="./assets/ricochet-finale-magnet.webp" aria-label="低方差步枪在怪潮中打出跳弹连击，散落的金币从不同方向飞回小高斯。" muted loop playsinline preload="none"><source src="./assets/ricochet-finale-magnet.mp4" type="video/mp4"><a href="./assets/ricochet-finale-magnet.mp4">打开动画</a></video></div>
+        </div>
+        <div class="route-development">
+          <figure class="build-board route-map" aria-labelledby="ricochet-build-design-title" id="ricochet-build-design">
+            <figcaption><strong id="ricochet-build-design-title">折射构筑图</strong><span>双发折射扩大了射击覆盖。墙面余辉让敌人在反弹点附近减速。</span></figcaption>
+            <a href="./assets/statsshooter-ricochet-build-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大折射构筑图">
+              <img src="./assets/statsshooter-ricochet-build-zh-4k.png?v=clean-boards-v1" alt="折射构筑图，展示双发折射和墙面余辉两套配装及卡牌关系。" width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <section class="build-stages" aria-labelledby="ricochet-stages-title">
+            <h4 id="ricochet-stages-title">折射进阶</h4>
+            <ol class="build-stage-strip" role="list">
+              <li>
+                <img src="./assets/ricochet-step-1.gif" width="840" height="472" alt="步枪子弹碰到墙面后折回场内。" loading="lazy" decoding="async">
+                <strong>折射弹</strong>
+                <p>子弹碰墙后反弹一次。</p>
+              </li>
+              <li>
+                <img src="./assets/ricochet-step-2.gif" width="840" height="472" alt="同一发子弹连续碰到两面墙，再次穿过场内。" loading="lazy" decoding="async">
+                <strong>双壁回路</strong>
+                <p>可连续反弹两次。</p>
+              </li>
+              <li>
+                <img src="./assets/ricochet-step-3.gif" width="840" height="472" alt="同一发子弹在墙面间多次反弹，来回穿过场内。" loading="lazy" decoding="async">
+                <strong>棱镜回廊</strong>
+                <p>连续反弹让贯穿弹横穿更大的区域。</p>
+              </li>
+              <li>
+                <img src="./assets/ricochet-step-4.gif" width="840" height="472" alt="双发折射增加一条弹道，墙面余辉在子弹碰墙的位置留下减速区域。" loading="lazy" decoding="async">
+                <strong>双发折射或墙面余辉</strong>
+                <p>最后一槽可增加反弹弹道，或让墙边的敌人减速。</p>
+              </li>
+            </ol>
+          </section>
+        </div>
       </section>
     </section>
 
     <section class="chapter" id="iteration" aria-labelledby="iteration-title">
       <div class="chapter-head">
-        <span class="eyebrow">设计迭代</span>
-        <h2 id="iteration-title">校准、卡槽与玩家选择</h2>
+        <h2 id="iteration-title">设计迭代</h2>
       </div>
       <div class="iteration-cases">
         <section class="iteration-case" id="iteration-calibration" aria-labelledby="iteration-calibration-title">
-          <h3 id="iteration-calibration-title">校准时机</h3>
+          <h3 id="iteration-calibration-title"><span class="iteration-number">01</span> 校准时机</h3>
+          <dl class="iteration-findings">
+            <div>
+              <dt>问题</dt>
+              <dd>首轮试玩时，敌人一多，玩家就很难兼顾走位、瞄准和手动校准。</dd>
+            </div>
+            <div>
+              <dt>原因</dt>
+              <dd>每次校准都有三个候选方案。玩家要在敌人逼近时读完三个预计均值，才能决定换哪一格。</dd>
+            </div>
+            <div>
+              <dt>修改</dt>
+              <dd>我让系统负责选槽，玩家决定何时按右键。第二轮试玩仍有人反复校准，我便加入下一发的均值和伤害预览，供玩家开火前判断。</dd>
+            </div>
+          </dl>
           <div class="image-pair">
             <figure class="figure iteration-prototype">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/early-manual-calibration.webp">
-                <img src="./assets/early-manual-calibration.gif" alt="V01 原型中，小高斯在战斗里移动，玩家依次切换三个手动校准候选，再发射校准弹。" width="960" height="540" loading="lazy" decoding="async">
-              </picture>
-              <figcaption>早期原型 · 需要从三个校准候选中手动选槽</figcaption>
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="960" height="540" style="aspect-ratio: 960 / 540" poster="./assets/early-manual-calibration.webp" aria-label="V01 原型中，小高斯在战斗里移动，玩家依次切换三个手动校准候选，再发射校准弹。" muted loop playsinline preload="none"><source src="./assets/early-manual-calibration.mp4" type="video/mp4"><a href="./assets/early-manual-calibration.mp4">打开动画</a></video></div>
+              <figcaption>早期原型 · 手动比较三个校准方案</figcaption>
             </figure>
             <figure class="figure">
               <button type="button" class="zoomable" aria-label="放大查看下一发预览界面">
                 <img src="./assets/crop-18.webp" data-full="./assets/image-18.webp" alt="迭代后的界面展示下一发预计写入值、均值与伤害" width="755" height="277" loading="lazy" decoding="async">
               </button>
-              <figcaption>迭代后 · 射击前可查看预计均值和伤害</figcaption>
+              <figcaption>改版 · 下一发的均值与伤害预览</figcaption>
             </figure>
           </div>
-          <section class="note">
-            <h4>系统选槽，玩家决定时机</h4>
-            <p>首轮试玩中，敌人一多，玩家忙于走位和连射，来不及比较候选。改为自动选槽后，仍有人反复按右键。我加入下一发的预计均值和伤害。自动测试已确认预览与结算一致，玩家能否据此判断校准时机仍待试玩检验。</p>
-          </section>
+          <p class="iteration-evidence">自动测试已核对预览与结算。玩家能否据此选准校准时机，仍待试玩验证。</p>
         </section>
         <section class="iteration-case" id="iteration-slots" aria-labelledby="iteration-slots-title">
-          <h3 id="iteration-slots-title">四个共享槽位</h3>
-          <div class="feature-grid">
-            <figure class="figure">
-              <button type="button" class="zoomable" aria-label="放大查看卡槽替换界面">
-                <img src="./assets/crop-19.webp" data-full="./assets/image-19.webp" alt="共享卡槽已满，商店展示装入贯穿回响的四种替换选项" width="928" height="584" loading="lazy" decoding="async">
-              </button>
-              <figcaption>四个槽位已满时，玩家需决定替换哪张卡。</figcaption>
-            </figure>
-            <div class="note-stack">
-              <section class="note">
-                <h4>数据卡和战斗卡共享四槽</h4>
-                <p>装入贯穿回响时，换掉八次平均会让预计六格方差由 <strong>0.156 升至 1.25</strong>。换掉贯穿赏金可以维持原有方差预测，但会失去贯穿返金币的效果。</p>
-              </section>
+          <h3 id="iteration-slots-title"><span class="iteration-number">02</span> 卡槽取舍</h3>
+          <dl class="iteration-findings">
+            <div>
+              <dt>问题</dt>
+              <dd>在早期原型里，均值主要关系到普通射击能否造成直伤。到了商店，选升级时很少需要判断样本的分布。</dd>
             </div>
-          </div>
+            <div>
+              <dt>原因</dt>
+              <dd>升级可以一直叠加。玩家拿到额外攻击时，原先用来稳定取样的数据卡也能全部保留。</dd>
+            </div>
+            <div>
+              <dt>修改</dt>
+              <dd>我让数据卡与战斗卡共用四个槽。满槽时用「贯穿回响」替换「八次平均」，贯穿后能追加一发回响弹，代价是新样本更容易波动。</dd>
+            </div>
+          </dl>
+          <figure class="figure iteration-slot-image">
+            <button type="button" class="zoomable" aria-label="放大查看卡槽替换界面">
+              <img src="./assets/crop-19.webp" data-full="./assets/image-19.webp" alt="共享卡槽已满，商店展示装入贯穿回响的四种替换选项" width="928" height="584" loading="lazy" decoding="async">
+            </button>
+          </figure>
         </section>
       </div>
     </section>
@@ -652,9 +571,11 @@
     <section class="chapter" id="reflection" aria-labelledby="reflection-title">
       <div class="chapter-head">
         <h2 id="reflection-title">设计反思</h2>
-        <p>早期校准原型要求玩家边走位边比较候选槽。我把选槽交给系统，玩家只需要判断什么时候校准、什么时候继续开火。</p>
       </div>
-      <p class="note">取样卡也要让数字变成战斗里的选择。用六十四次平均替代八次平均，步枪更容易保住贯穿档位，射速约慢 26%。我希望玩家在补给时考虑，下一波更需要稳定贯穿，还是更多开火机会。</p>
+      <div class="note">
+        <p>回顾整个游戏，我认为我对构筑成型后的效果考虑得比较充分，却把成长路线安排得过于明确。清晰的目标帮助我组织了设计，也限制了随机内容对玩法方向的影响。作为一款肉鸽游戏，局与局之间的变化仍然不足，玩家中途调整策略、尝试新组合的空间有限，探索构筑的乐趣没有得到充分发挥。</p>
+        <p>统计元素的融合也存在不足。我更关注统计概念与战斗表现之间的对应，对玩家为什么需要理解这些概念、如何利用它们作出选择，考虑得还不够。这让我意识到，统计知识在规则中发挥作用，并不等于它已经充分融入游玩体验。我对“寓教于乐”的理解，也从呈现知识，进一步转向了让知识参与玩家的判断、取舍和探索。</p>
+      </div>
     </section>
 
   </main>
@@ -662,6 +583,7 @@
     <div class="wrap footer-bar">
       <span>StatsShooter · Yixuan Yu</span>
       <nav class="footer-links" aria-label="页面末尾导航">
+        <a class="text-link" href="../?project=eyedle">下一个项目 · EyeDle</a>
         <a class="text-link" href="#top">返回顶部 <span aria-hidden="true">↑</span></a>
       </nav>
     </div>

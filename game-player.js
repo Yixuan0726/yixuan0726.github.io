@@ -61,6 +61,7 @@ export function mountGamePlayer(host) {
   if (!host) return () => {};
   const doc = host.ownerDocument;
   const win = doc.defaultView;
+  const chinese = doc.documentElement.lang.startsWith('zh');
   const build = webBuildURL(host.dataset.webBuild, win.location.href);
   if (!build) return () => {};
   const channel = host.dataset.gameChannel;
@@ -128,7 +129,7 @@ export function mountGamePlayer(host) {
     reset({ restoreFocus: false });
     feedback.hidden = false;
     fallback.hidden = false;
-    status.textContent = 'The browser game could not start.';
+    status.textContent = chinese ? '浏览器未能启动游戏。' : 'The browser game could not start.';
     detail.textContent = typeof message === 'string' ? message.slice(0, 300) : '';
     detail.hidden = !detail.textContent;
     if (shouldRestoreFocus) retry.focus({ preventScroll: true });
@@ -146,11 +147,11 @@ export function mountGamePlayer(host) {
     feedback.hidden = false;
     fallback.hidden = true;
     detail.hidden = true;
-    status.textContent = 'Loading game… The first load may take a little while.';
+    status.textContent = chinese ? '正在加载游戏，首次打开可能需要一点时间。' : 'Loading game… The first load may take a little while.';
     surface.setAttribute('aria-busy', 'true');
 
     frame = doc.createElement('iframe');
-    frame.title = `${host.dataset.gameName || 'KeepDribbling'} — playable browser game`;
+    frame.title = `${host.dataset.gameName || 'KeepDribbling'} — ${chinese ? '网页版试玩' : 'playable browser game'}`;
     frame.allow = 'fullscreen; autoplay; gamepad';
     frame.allowFullscreen = true;
     frame.setAttribute('tabindex', '0');
@@ -161,7 +162,7 @@ export function mountGamePlayer(host) {
     close.focus({ preventScroll: true });
     slowTimer = win.setTimeout(() => {
       if (disposed || !frame || ready) return;
-      status.textContent = 'Still loading. You can keep waiting or try again.';
+      status.textContent = chinese ? '游戏仍在加载。可以继续等待，也可以重新加载。' : 'Still loading. You can keep waiting or try again.';
       fallback.hidden = false;
     }, 120000);
   }
@@ -178,11 +179,12 @@ export function mountGamePlayer(host) {
     } catch {
       if (disposed) return;
       feedback.hidden = false;
-      status.textContent = 'Fullscreen is unavailable. You can keep playing here.';
+      status.textContent = chinese ? '全屏暂不可用，可以继续在页面内游玩。' : 'Fullscreen is unavailable. You can keep playing here.';
     }
   }, { signal });
   doc.addEventListener('fullscreenchange', () => {
-    fullscreen.textContent = doc.fullscreenElement === host ? 'Exit fullscreen' : 'Fullscreen';
+    if (doc.fullscreenElement === host) fullscreen.textContent = chinese ? '退出全屏' : 'Exit fullscreen';
+    else fullscreen.textContent = chinese ? '全屏' : 'Fullscreen';
   }, { signal });
   win.addEventListener('message', event => {
     if (disposed || !frame || event.source !== frame.contentWindow || event.origin !== win.location.origin) return;

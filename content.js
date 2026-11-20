@@ -15,8 +15,7 @@ export const portfolio = {
     "Beyond making games, basketball is a big part of my life. I’ve served as captain and starting center of my university’s women’s basketball team. I’ve also spent four summers volunteering in rural schools and children’s programs, teaching lessons and helping organize activities."
   ],
   email: null,
-  resume: null, // Optional PDF preview; keep the source Word download below.
-  resumeWord: 'uploads/yixuan-yu-cv.docx',
+  resume: 'uploads/yixuan-yu-cv.pdf',
   projects: [
     {
       id: 'statsshooter', number: '01', name: 'StatsShooter',
@@ -30,24 +29,7 @@ export const portfolio = {
       coverCaption: 'StatsShooter title screen.',
       tags: ['Systems design', 'Solo project'],
       documentation: null, video: null, playable: null, gallery: [],
-      caseStudy: [
-        {
-          id: 'project-page', nav: 'Project Page', title: 'Project Page',
-          designPage: 'statsshooter/?embed=1'
-        },
-        { id: 'gameplay-video', nav: 'Gameplay Video', title: 'Gameplay Video', kicker: '1 min 35 sec', vimeoId: '1246997980' },
-        {
-          id: 'playable-demo', nav: 'Playable Demo', title: 'Playable Demo',
-          kicker: 'Desktop · Keyboard & mouse',
-          browserGame: {
-            id: 'statsshooter', name: 'StatsShooter',
-            webBuild: 'games/statsshooter/index.html',
-            cover: 'games/statsshooter/poster.png', coverWidth: 1672, coverHeight: 941,
-            playUrl: 'https://g00000.itch.io/statsshooter',
-            controls: 'WASD to move · Mouse to aim · Left click to fire · Right click to calibrate'
-          }
-        }
-      ]
+      standalonePage: 'statsshooter/index.html'
     },
     {
       id: 'eyedle', number: '02', name: 'EyeDle',

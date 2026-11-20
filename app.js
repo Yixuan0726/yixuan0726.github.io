@@ -1,8 +1,8 @@
-import { portfolio } from './content.js?v=eyedle-playable-69034122';
+import { portfolio } from './content.js?v=statsshooter-cv-20261121';
 import { aboutMarkup, mountAbout } from './about.js?v=6f3d6a6af7e6';
 import { mountPdfReader } from './pdf-reader.js?v=6f3d6a6af7e6';
 import { keepDribblingPagesMarkup, mountKeepDribblingPages } from './keepdribbling-pages.js?v=6f3d6a6af7e6';
-import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=statsshooter-inline';
+import { gamePlayerMarkup, mountGamePlayer } from './game-player.js?v=statsshooter-cv-20261121';
 import { eyedlePage, mountEyeDle } from './eyedle.js?v=eyedle-playable-69034122';
 import { mountCoverMotion } from './cover-motion.js?v=6f3d6a6af7e6';
 
@@ -15,7 +15,9 @@ const safeURL = value => {
     return ['http:', 'https:'].includes(url.protocol) ? url.href : null;
   } catch { return null; }
 };
-const projectURL = project => '?project=' + encodeURIComponent(project.id);
+const projectLinkAttributes = project => project.standalonePage
+  ? 'href="' + escapeHTML(project.standalonePage) + '"'
+  : 'href="?project=' + encodeURIComponent(project.id) + '" data-route';
 const projectMeta = project => '<div class="project-meta">' + project.tags.map(tag => '<span>' + escapeHTML(tag) + '</span>').join('') + '</div>';
 const validEmail = portfolio.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(portfolio.email);
 const resourceLink = (url, label) => '<a class="text-link" href="' + escapeHTML(safeURL(url)) + '" target="_blank" rel="noopener noreferrer">' + escapeHTML(label) + '<span aria-hidden="true">↗</span></a>';
@@ -23,17 +25,17 @@ const resourceLink = (url, label) => '<a class="text-link" href="' + escapeHTML(
 function projectCard(project) {
   const coverVideo = safeURL(project.coverVideo);
   return `<article class="project-card" data-color="${escapeHTML(project.color)}" data-cover="${escapeHTML(project.coverType || 'illustration')}" aria-labelledby="title-${escapeHTML(project.id)}">
-    <a class="project-art" href="${projectURL(project)}" data-route aria-label="View ${escapeHTML(project.name)}" ${coverVideo ? 'data-cover-motion' : ''}>
+    <a class="project-art" ${projectLinkAttributes(project)} aria-label="View ${escapeHTML(project.name)}" ${coverVideo ? 'data-cover-motion' : ''}>
       <img src="${escapeHTML(safeURL(project.cover))}" alt="${escapeHTML(project.coverAlt)}" width="${project.coverWidth || 640}" height="${project.coverHeight || 420}" loading="lazy">
       ${coverVideo ? '<video data-cover-video data-src="' + escapeHTML(coverVideo) + '" poster="' + escapeHTML(safeURL(project.cover)) + '" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>' : ''}
       ${project.coverType === 'screenshot' ? '' : '<span class="cover-label">Concept illustration</span>'}<span class="art-arrow" aria-hidden="true">↗</span>
     </a>
     <div class="project-copy">
       <p class="project-category"><span class="project-number">${escapeHTML(project.number)}</span>${escapeHTML(project.category)}</p>
-      <h3 class="project-title" id="title-${escapeHTML(project.id)}"><a href="${projectURL(project)}" data-route>${escapeHTML(project.name)}</a></h3>
+      <h3 class="project-title" id="title-${escapeHTML(project.id)}"><a ${projectLinkAttributes(project)}>${escapeHTML(project.name)}</a></h3>
       ${project.role && project.collaboration === 'team' ? '<p class="role-label">My role</p><p class="project-role">' + escapeHTML(project.role) + '</p>' : ''}
       <p class="project-description">${escapeHTML(project.description)}</p>${projectMeta(project)}
-      <a class="text-link" href="${projectURL(project)}" data-route aria-label="Explore ${escapeHTML(project.name)}">Explore project <span aria-hidden="true">↗</span></a>
+      <a class="text-link" ${projectLinkAttributes(project)} aria-label="Explore ${escapeHTML(project.name)}">Explore project <span aria-hidden="true">↗</span></a>
     </div>
   </article>`;
 }
@@ -126,11 +128,7 @@ function detailPage(project) {
     return eyedlePage(project, portfolio.projects[(portfolio.projects.indexOf(project) + 1) % portfolio.projects.length]);
   }
   const next = portfolio.projects[(portfolio.projects.indexOf(project) + 1) % portfolio.projects.length];
-  const nextLink = '<a class="next-project" href="' + projectURL(next) + '" data-route><div><small>Next project</small><strong>' + escapeHTML(next.name) + '</strong></div><span aria-hidden="true">→</span></a>';
-  if (project.id === 'statsshooter') {
-    return '<article><h1 class="visually-hidden">' + escapeHTML(project.name) + '</h1>' +
-      project.caseStudy.map(caseStudySection).join('') + nextLink + '</article>';
-  }
+  const nextLink = '<a class="next-project" ' + projectLinkAttributes(next) + '><div><small>Next project</small><strong>' + escapeHTML(next.name) + '</strong></div><span aria-hidden="true">→</span></a>';
   const resources = [
     { url: project.projectPage, label: project.projectPageLabel || 'Project page' },
     { url: project.documentPreview ? null : project.documentation, label: 'Project document' },
@@ -223,7 +221,12 @@ function render({ navigate = false } = {}) {
   disposeDesignFrame();
   const id = new URLSearchParams(location.search).get('project');
   const project = portfolio.projects.find(item => item.id === id);
-  document.body.classList.toggle('statsshooter-project', project?.id === 'statsshooter');
+  if (project?.standalonePage) {
+    const destination = new URL(project.standalonePage, location.href);
+    destination.hash = location.hash === '#project-page' ? '#overview' : location.hash;
+    location.replace(destination.href);
+    return;
+  }
   if (id && !project) {
     $('#page-content').innerHTML = '<section class="not-found"><h1>Project not found.</h1><p>Browse the portfolio to find the current projects.</p><a class="text-link" href="./#work" data-route>View all projects <span aria-hidden="true">↗</span></a></section>';
     document.title = 'Project not found — ' + portfolio.name;

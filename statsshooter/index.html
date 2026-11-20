@@ -4,26 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="StatsShooter is a 2D top-down shooter where sampling, mean, and variance shape combat and weapon builds.">
-  <meta name="theme-color" content="#201d24">
+  <meta name="theme-color" content="#201e25">
   <title>StatsShooter · Game Design Portfolio</title>
   <link rel="alternate" hreflang="zh-CN" href="./index-zh.html">
   <link rel="stylesheet" href="./style.css?v=gauss-morph-v1">
-  <link rel="stylesheet" href="./case-study.css?v=gauss-normal-curves">
-  <script src="./script.js?v=statsshooter-original-v1" defer></script>
+  <link rel="stylesheet" href="./case-study.css?v=desktop-topics">
+  <link rel="stylesheet" href="./showcase.css?v=gameplay-photos">
+  <link rel="stylesheet" href="./chapters.css?v=desktop-topics">
+  <link rel="stylesheet" href="./endgame-layout.css?v=desktop-topics">
+  <link rel="stylesheet" href="./project-media.css?v=desktop-topics">
+  <script src="./project-language.js" defer></script>
+  <script src="./script.js?v=inline-builds" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header class="site-header showcase-header">
     <div class="site-bar wrap">
-      <a class="wordmark" href="#top" aria-label="StatsShooter home"><span aria-hidden="true" class="brand-curve"></span>StatsShooter</a>
-      <nav aria-label="Project sections" class="main-nav">
-        <a href="#overview">Overview</a>
-        <a href="#combat">Combat</a>
-        <a href="#world">Enemies</a>
-        <a href="#builds">Builds</a>
-        <a href="#progression">Progression</a>
-        <a href="#iteration">Iteration</a>
-        <a href="#reflection">Reflection</a>
+      <a class="portfolio-brand" href="../" aria-label="Yixuan Yu portfolio"><b aria-hidden="true">y.</b> Yixuan Yu</a>
+      <nav aria-label="Portfolio navigation" class="portfolio-links">
+        <a href="../#work">My games</a>
+        <a href="../#about">About</a>
+        <a href="../uploads/yixuan-yu-cv.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
       </nav>
       <nav class="language-switch" aria-label="Language">
         <span aria-current="page" aria-label="English">EN</span>
@@ -34,232 +35,185 @@
   </header>
 
   <main id="main" class="wrap">
-    <section class="hero" aria-labelledby="project-title">
+    <section id="overview" class="hero project-showcase" aria-labelledby="project-title">
       <div class="hero-copy">
-        <p class="eyebrow"><a class="text-link" href="../?project=statsshooter#project-page"><span aria-hidden="true">←</span> Back to portfolio</a></p>
-        <h1 id="project-title">StatsShooter<span>.</span></h1>
-        <p class="hero-tagline">The mean controls damage. Variance shapes your weapon.</p>
-        <p class="hero-description">In this 2D top-down roguelike shooter, every shot that hits updates one of six data values. Dodge weather enemies, calibrate the mean, and use cards to change how you sample and build your weapon.</p>
+        <h1 id="project-title" aria-label="StatsShooter"><span>Stats</span><span>Shooter</span></h1>
+        <p class="showcase-meta">
+          <span class="showcase-credit">Solo project</span>
+          <span class="showcase-credit"><span class="showcase-meta-label">Development period</span> 5 months</span>
+        </p>
+        <p class="showcase-pitch">Play as Gauss, a bell curve with a gun. Cluster your samples to pierce a line of enemies with a rifle, or spread them out for a shotgun blast in every direction.</p>
+        <nav class="project-actions" aria-label="Play or watch StatsShooter">
+          <a data-project-media href="#playable-demo"><span class="showcase-play-icon" aria-hidden="true"></span>Play demo</a>
+          <a data-project-media href="#gameplay-video">Watch video</a>
+        </nav>
       </div>
-      <figure class="hero-figure figure">
-        <button class="zoomable" type="button" aria-label="Enlarge StatsShooter title screen">
-          <img src="./assets/start-menu-en.webp" alt="StatsShooter's title screen shows the Start Game and Settings buttons beside Gauss and the Storm Boss." width="1440" height="900" fetchpriority="high">
-        </button>
+      <figure class="showcase-art" role="img" aria-label="The upgrade shop, the Ignition build in combat, and a close encounter between Gauss and the Storm Boss.">
+        <div class="showcase-photo photo-shop"><img src="./assets/shop.webp" alt="" width="1360" height="756"></div>
+        <div class="showcase-photo photo-battle">
+          <img src="./assets/ignition-endgame-en.webp" alt="" width="840" height="472" fetchpriority="high">
+          <img class="showcase-sun" src="./assets/swap-target-sun.webp" alt="" width="88" height="81">
+        </div>
+        <div class="showcase-photo photo-encounter"><img src="./assets/enemy-storm-en-poster.webp" alt="" width="840" height="472"></div>
       </figure>
     </section>
 
-    <section id="overview" class="chapter" aria-labelledby="overview-title">
-      <div class="feature-grid">
-        <div class="chapter-head">
-          <h2 id="overview-title">Game Overview</h2>
-          <p>Fight waves of weather enemies, spend the coins you earn on rifle or shotgun upgrades, and face the final boss. Closely grouped samples help the rifle pierce enemies. More spread helps the shotgun cover a wider area.</p>
+    <div class="project-media">
+      <section id="gameplay-video" class="film-card" aria-labelledby="gameplay-video-title">
+        <div class="film-screen" data-film-screen data-player-url="https://player.vimeo.com/video/1246997980?autoplay=1" data-player-title="StatsShooter gameplay video">
+          <a class="film-cover" data-film-play href="https://vimeo.com/1246997980" target="_blank" rel="noopener" aria-label="Play the StatsShooter gameplay video">
+            <img src="./assets/combat.webp" width="1800" height="1013" alt="" loading="lazy">
+            <span class="film-play-icon" aria-hidden="true"></span>
+          </a>
         </div>
-        <div class="chapter-head">
-          <h2 id="inspiration-title">Inspiration</h2>
-          <p>StatsShooter grew out of my background in statistics and my love of trying different builds in roguelites. I wanted players to see how sampling changes a weapon by switching a card and taking a shot.</p>
+        <div class="film-caption">
+          <h2 id="gameplay-video-title">Gameplay Video</h2>
+          <div><time datetime="PT1M35S">1:35</time><a href="https://vimeo.com/1246997980" target="_blank" rel="noopener">Watch on Vimeo</a></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="combat" class="chapter">
-      <div class="combat-guide" data-combat-guide>
-        <header class="chapter-head combat-guide-heading">
-          <h2>Combat Rules</h2>
-          <p>Hits update your data, and the mean determines whether shots deal direct damage. Decide when to keep firing and when to calibrate.</p>
-        </header>
-        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom" data-target-x=".517" data-target-y=".109">
-          <h3>Combat and Resupply</h3>
-          <p>Defeat enemies to earn coins. When the countdown ends, spend them on upgrades in the shop.</p>
-        </section>
-        <figure class="figure combat-guide-shot">
-          <div class="combat-guide-image">
-            <button class="zoomable" type="button" aria-label="Enlarge combat interface">
-              <img src="./assets/combat.webp" alt="Gauss fires beside six observations. The shop countdown is at the top, and the weapon, mean, and variance are at the bottom." width="1800" height="1013" loading="lazy">
-            </button>
+      <section id="playable-demo" class="demo-card" aria-labelledby="playable-demo-title" data-demo-player data-web-build="../games/statsshooter/index.html?v=coin-hud" data-game-channel="statsshooter" data-game-name="StatsShooter">
+        <div class="demo-heading">
+          <div>
+            <h2 id="playable-demo-title">Playable Demo</h2>
+            <p>Move with WASD, aim with the mouse, hold left click to fire, and right-click to calibrate.</p>
           </div>
-          <figcaption>Combat interface</figcaption>
+          <div class="demo-actions">
+            <div data-game-poster><button class="media-button" type="button" data-game-start hidden>Launch demo</button></div>
+            <a href="https://g00000.itch.io/statsshooter" target="_blank" rel="noopener">Play on itch.io</a>
+          </div>
+        </div>
+        <div class="demo-controls" data-game-controls hidden>
+          <button type="button" data-game-close>Close game</button>
+          <button type="button" data-game-fullscreen hidden>Fullscreen</button>
+        </div>
+        <div class="demo-feedback" data-game-feedback hidden>
+          <p role="status" aria-live="polite" data-game-status></p>
+          <p data-game-error-detail hidden></p>
+          <div data-game-fallback hidden><button type="button" data-game-retry>Try again</button></div>
+        </div>
+        <div data-game-surface><div class="demo-screen" data-game-frame hidden></div></div>
+      </section>
+    </div>
+
+    <section id="introduction" class="chapter project-introduction" aria-label="Game overview and inspiration">
+      <section id="game-overview" class="intro-block" aria-labelledby="game-overview-title">
+        <h2 id="game-overview-title">Game Overview</h2>
+        <p>StatsShooter is a survivor-style, 2D top-down roguelike shooter.</p>
+        <figure class="gameplay-loop" aria-label="Core gameplay loop">
+          <ol class="gameplay-loop-steps">
+            <li>Fight for coins</li>
+            <li>Buy upgrade cards</li>
+            <li>Test your build</li>
+          </ol>
+          <div class="gameplay-loop-return" aria-hidden="true"></div>
         </figure>
-        <div class="combat-guide-side">
-          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left" data-compact-edge="bottom" data-target-x=".583" data-target-y=".25">
-            <h3>Six Observations</h3>
-            <p>A shot that hits replaces one value. A miss leaves all six values as they are.</p>
-          </section>
-          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left" data-compact-edge="top" data-target-x=".814" data-target-y=".954">
-            <h3>Keep the Mean at 18–22</h3>
-            <p>Average the six values to get the mean. Shots deal direct damage only within this range.</p>
-          </section>
-        </div>
-        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top" data-target-x=".238" data-target-y=".89">
-          <h3>Variance Sets the Weapon Tier</h3>
-          <p>Variance measures how spread out the values are. Low variance adds rifle piercing. High variance widens shotgun coverage.</p>
-        </section>
-        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
-      </div>
-
-      <div class="combat-controls" id="combat-controls" role="group" aria-label="Combat controls">
-        <section class="note">
-          <div>
-            <h3>Move and Shoot</h3>
-            <p>Move with <kbd>WASD</kbd>, aim with the mouse, and hold <kbd>left click</kbd> to shoot.</p>
-          </div>
-          <img class="combat-control-gif" src="./assets/control-move-shoot.gif" alt="Gauss moves across the arena while firing at enemies." width="480" height="270" loading="lazy" decoding="async">
-        </section>
-        <section class="note">
-          <div>
-            <h3>Right-click to Calibrate</h3>
-            <p><kbd>Right-click</kbd> to adjust one value and bring the mean as close to 20 as possible.</p>
-          </div>
-          <img class="combat-control-gif" src="./assets/control-calibration.gif" alt="Calibration changes one observation from 40 to 12, returns the mean from 24.67 to 20, and lets Gauss fire again." width="560" height="315" loading="lazy" decoding="async">
-        </section>
-      </div>
-
-      <section class="calibration" aria-labelledby="calibration-title">
-        <h3 id="calibration-title">How Calibration Restores Damage</h3>
-        <p>Shots deal direct damage when the mean of the six observations is between 18 and 22.</p>
-        <ol class="calibration-stages">
-          <li class="calibration-stage">
-            <h4>Before the shot</h4>
-            <ol class="calibration-samples" aria-label="Six observations">
-              <li>20</li><li>20</li><li>20</li><li>20</li><li>20</li><li>20</li>
-            </ol>
-            <p class="calibration-mean">Mean <strong>20.0</strong></p>
-            <p class="calibration-status">Direct damage active</p>
-          </li>
-          <li class="calibration-stage" data-state="outside">
-            <h4>After the hit</h4>
-            <ol class="calibration-samples" aria-label="Six observations">
-              <li>40</li><li>20</li><li>20</li><li>20</li><li>20</li><li>20</li>
-            </ol>
-            <p class="calibration-mean">Mean <strong>23.3</strong></p>
-            <p class="calibration-status">Direct damage paused</p>
-            <p class="calibration-note">The hit that changed the mean still dealt damage.</p>
-          </li>
-          <li class="calibration-stage" data-state="restored">
-            <h4>After right-click calibration</h4>
-            <ol class="calibration-samples" aria-label="Six observations">
-              <li>20</li><li>20</li><li>20</li><li>20</li><li>20</li><li>20</li>
-            </ol>
-            <p class="calibration-mean">Mean <strong>20.0</strong></p>
-            <p class="calibration-status">Direct damage restored</p>
-          </li>
-        </ol>
+        <p class="overview-rule">Basic shots deal direct damage only when the <strong>mean</strong> of the six samples is between 18 and 22. Lower <strong>variance</strong> gives the rifle more piercing power. Higher variance widens the shotgun’s spread.</p>
+      </section>
+      <section id="inspiration" class="intro-block" aria-labelledby="inspiration-title">
+        <h2 id="inspiration-title">Inspiration</h2>
+        <p>As a statistics major, I found some concepts abstract when they stayed within formulas and calculations. I also enjoy experimenting with combinations in roguelikes. StatsShooter brings those interests together: changing a distribution changes a weapon. I wanted players to build an intuition for mean and variance through upgrade choices and combat feedback.</p>
+        <figure class="inspiration-figure">
+          <img src="./assets/inspiration-concept.webp" alt="Concept illustration of Gauss calculating mean and variance in a notebook while holding a gun, with the Storm Boss behind." width="1672" height="941" loading="lazy">
+        </figure>
       </section>
     </section>
 
-    <section id="shop" class="chapter">
-      <header class="chapter-head">
-        <h2>Upgrade Shop</h2>
-        <p>Defeat enemies to earn coins. When the countdown ends, spend them on cards and supplies or reroll the shop.</p>
+    <section id="weapons" class="chapter" aria-labelledby="weapons-title">
+      <header class="chapter-head" id="builds-title">
+        <h2 id="weapons-title">Weapons</h2>
       </header>
-      <div class="annotated" data-annotations>
-        <figure class="figure annotated-figure">
-          <div class="shot">
-            <button class="zoomable" type="button" aria-label="Enlarge upgrade shop"><img src="./assets/shop.webp" alt="The upgrade shop shows weapon progress, cards for sale, shared loadout slots, and a stats preview." width="1360" height="756" loading="lazy"></button>
-            <button class="pin shop-tier" type="button" data-annotation="tier" aria-label="Weapon progress" aria-pressed="true">1</button>
-            <button class="pin shop-preview" type="button" data-annotation="preview" aria-label="Purchase preview" aria-pressed="false">2</button>
-            <button class="pin shop-slots" type="button" data-annotation="slots" aria-label="Four shared slots" aria-pressed="false">3</button>
+      <div id="builds" class="weapon-comparison">
+        <section class="weapon-route" aria-labelledby="weapon-route-rifle">
+          <header class="weapon-route-header">
+            <div>
+              <h3 id="weapon-route-rifle">Low-Variance Rifle</h3>
+              <p class="weapon-summary">Cluster samples to strengthen piercing and hit enemies lined up behind one another.</p>
+            </div>
+            <figure class="weapon-forms weapon-forms-rifle">
+              <button type="button" class="zoomable" aria-label="Enlarge the four rifle forms">
+                <img src="./assets/crop-12.webp" data-full="./assets/image-12.webp" alt="Four rifle forms, from the base rifle to the Tier III piercing rifle." width="1800" height="368" loading="lazy" decoding="async">
+              </button>
+              <figcaption class="variance-axis">
+                <div class="variance-ends"><span>Higher variance</span><span>Lower variance</span></div>
+                <ol class="variance-ticks" aria-label="Weapon tiers as variance decreases">
+                  <li>Base</li>
+                  <li>Tier I <small>≤60</small></li>
+                  <li>Tier II <small>≤12</small></li>
+                  <li>Tier III <small>≤0.30</small></li>
+                </ol>
+              </figcaption>
+            </figure>
+          </header>
+          <div class="weapon-stage-strip">
+            <figure class="weapon-stage" id="weapon-tier-0">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-0-en.webp" aria-label="Low-Variance Rifle · Base tier · Hits one target" muted loop playsinline preload="none"><source src="./assets/rifle-0-en.mp4" type="video/mp4"><a href="./assets/rifle-0-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Base tier</strong><span>Variance 100</span></figcaption>
+            </figure>
+            <figure class="weapon-stage" id="weapon-tier-1">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-1-en.webp" aria-label="Low-Variance Rifle · Tier I · Pierces two targets" muted loop playsinline preload="none"><source src="./assets/rifle-1-en.mp4" type="video/mp4"><a href="./assets/rifle-1-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Tier I</strong><span>Variance 59</span></figcaption>
+            </figure>
+            <figure class="weapon-stage" id="weapon-tier-2">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-2-en.webp" aria-label="Low-Variance Rifle · Tier II · Pierces three with damage falloff" muted loop playsinline preload="none"><source src="./assets/rifle-2-en.mp4" type="video/mp4"><a href="./assets/rifle-2-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Tier II</strong><span>Variance 11</span></figcaption>
+            </figure>
+            <figure class="weapon-stage" id="weapon-tier-3">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/rifle-3-en.webp" aria-label="Low-Variance Rifle · Tier III · Pierces three at full damage" muted loop playsinline preload="none"><source src="./assets/rifle-3-en.mp4" type="video/mp4"><a href="./assets/rifle-3-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Tier III</strong><span>Variance 0</span></figcaption>
+            </figure>
           </div>
-          <figcaption><span>Select a marker to learn more</span><span>Shop interface</span></figcaption>
-        </figure>
-        <div class="note-stack" aria-label="Shop annotations">
-          <button class="note note-select" type="button" data-annotation="tier" aria-pressed="true"><span class="note-number">1</span><span><strong>Check weapon progress</strong><span>With the mean in range and live variance at 12 or below, the rifle reaches Tier II and can pierce up to three enemies.</span></span></button>
-          <button class="note note-select" type="button" data-annotation="preview" aria-pressed="false"><span class="note-number">2</span><span><strong>Compare the purchase preview</strong><span>Swapping Eight-measurement Average for 64-measurement Average reduces the theoretical variance of new observations from 0.188 to 0.023 and slows the fire rate by about 26%.</span></span></button>
-          <button class="note note-select" type="button" data-annotation="slots" aria-pressed="false"><span class="note-number">3</span><span><strong>Four shared slots</strong><span>Data cards change sampling, and combat cards enhance attacks. They share four slots, so adding a card to a full loadout means replacing one.</span></span></button>
-          <a class="text-link" href="#card-swap">Compare the two swaps <span aria-hidden="true">↓</span></a>
-        </div>
+        </section>
+        <section class="weapon-route" aria-labelledby="weapon-route-shotgun">
+          <header class="weapon-route-header">
+            <div>
+              <h3 id="weapon-route-shotgun">High-Variance Shotgun</h3>
+              <p class="weapon-summary">Spread samples out to widen the blast, eventually firing a ring at enemies on every side.</p>
+            </div>
+            <figure class="weapon-forms weapon-forms-shotgun">
+              <button type="button" class="zoomable" aria-label="Enlarge the four shotgun forms">
+                <img src="./assets/crop-14.webp" data-full="./assets/image-14.webp" alt="Four shotgun forms, from the base shotgun to the Tier III ring shotgun." width="1800" height="460" loading="lazy" decoding="async">
+              </button>
+              <figcaption class="variance-axis">
+                <div class="variance-ends"><span>Lower variance</span><span>Higher variance</span></div>
+                <ol class="variance-ticks" aria-label="Weapon tiers as variance increases">
+                  <li>Base</li>
+                  <li>Tier I <small>≥140</small></li>
+                  <li>Tier II <small>≥240</small></li>
+                  <li>Tier III <small>≥360</small></li>
+                </ol>
+              </figcaption>
+            </figure>
+          </header>
+          <div class="weapon-stage-strip">
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-0-en.webp" aria-label="High-Variance Shotgun · Base tier · 5-pellet spread" muted loop playsinline preload="none"><source src="./assets/shotgun-0-en.mp4" type="video/mp4"><a href="./assets/shotgun-0-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Base tier</strong><span>Variance 40</span></figcaption>
+            </figure>
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-1-en.webp" aria-label="High-Variance Shotgun · Tier I · 7-pellet spread" muted loop playsinline preload="none"><source src="./assets/shotgun-1-en.mp4" type="video/mp4"><a href="./assets/shotgun-1-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Tier I</strong><span>Variance 141</span></figcaption>
+            </figure>
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-2-en.webp" aria-label="High-Variance Shotgun · Tier II · 9-pellet spread" muted loop playsinline preload="none"><source src="./assets/shotgun-2-en.mp4" type="video/mp4"><a href="./assets/shotgun-2-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Tier II</strong><span>Variance 241</span></figcaption>
+            </figure>
+            <figure class="weapon-stage">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/shotgun-3-en.webp" aria-label="High-Variance Shotgun · Tier III · 25-pellet ring" muted loop playsinline preload="none"><source src="./assets/shotgun-3-en.mp4" type="video/mp4"><a href="./assets/shotgun-3-en.mp4">Open animation</a></video></div>
+              <figcaption><strong>Tier III</strong><span>Variance 400</span></figcaption>
+            </figure>
+          </div>
+        </section>
       </div>
     </section>
 
-    <section id="card-upgrades" class="chapter" aria-labelledby="card-upgrades-title">
+    <section id="world" class="chapter" aria-labelledby="world-title">
       <header class="chapter-head">
-        <p class="eyebrow">Statistical Cards</p>
-        <h2 id="card-upgrades-title">Four Slots. Which Card Goes?</h2>
-        <p>The rifle starts at Tier III with all four slots filled. Equipping Piercing Echo means giving up either steadier samples or the coin reward for piercing three enemies.</p>
-      </header>
-      <div class="reference-board-grid">
-        <a class="reference-board" href="./assets/statsshooter-cards-overview-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Open the full upgrade map in a new tab">
-          <span class="reference-board-image">
-            <img src="./assets/statsshooter-cards-overview-en-4k.png?v=clean-boards-v1" alt="Upgrade map with the low-variance rifle and ricochet cards on the left and the high-variance shotgun and ignition cards on the right." width="5040" height="2660" loading="lazy" decoding="async">
-          </span>
-          <span class="reference-board-caption"><strong>All Upgrade Cards</strong></span>
-        </a>
-        <figure class="reference-board">
-          <img class="reference-board-image" src="./assets/statsshooter-data-cards-en-4k.png?v=clean-boards-v1" alt="Data cards that change sampling, averaging, and calibration on the low- and high-variance routes." width="3840" height="2160" loading="lazy" decoding="async">
-          <figcaption class="reference-board-caption"><strong>Data Cards</strong></figcaption>
-        </figure>
-      </div>
-      <p class="reference-catalog"><a class="catalog-link" href="./cards.html">View All Upgrade Cards <span aria-hidden="true">→</span></a></p>
-      <section class="card-swap" id="card-swap" aria-labelledby="card-swap-title">
-        <header class="card-swap-heading">
-          <h3 id="card-swap-title">Equipping Piercing Echo</h3>
-          <p>Both builds start with a Tier III rifle and a variance of 0.156. The six values below show what can happen after six shots land.</p>
-        </header>
-        <div class="swap-outcomes">
-          <article class="swap-outcome">
-            <header class="swap-outcome-head">
-              <h4>Replace Eight-measurement Average</h4>
-              <p class="swap-tier">Tier II rifle</p>
-              <p>This shot deals <strong>35 → 21 → 21</strong> damage across three enemies and drops <strong>2 extra coins</strong>.</p>
-            </header>
-            <img class="swap-clip" src="./assets/card-swap-average.gif" alt="The Tier II shot pierces three enemies with damage falloff, dropping two bounty coins. A delayed Piercing Echo shot follows." width="544" height="306" loading="lazy" decoding="async">
-            <div class="swap-outcome-data">
-              <dl class="swap-stats">
-                <div class="swap-expected"><dt>Expected variance</dt><dd>1.25</dd></div>
-                <div><dt>Example variance</dt><dd>1.750</dd></div>
-                <div><dt>Example mean</dt><dd>20.00</dd></div>
-              </dl>
-              <p class="swap-label">Six values after six hits</p>
-              <ol class="swap-samples" aria-label="Six values after six hits">
-                <li>18</li><li>22</li><li>19</li><li>21</li><li>19.5</li><li>20.5</li>
-              </ol>
-              <p class="swap-label">Equipped cards</p>
-              <ul class="swap-loadout" aria-label="Equipped cards">
-                <li>Precision Sampling</li>
-                <li class="swap-equipped">Piercing Echo</li>
-                <li>Center Compression</li>
-                <li>Piercing Bounty</li>
-              </ul>
-            </div>
-          </article>
-          <article class="swap-outcome">
-            <header class="swap-outcome-head">
-              <h4>Replace Piercing Bounty</h4>
-              <p class="swap-tier">Tier III rifle</p>
-              <p>This shot deals <strong>40 → 40 → 40</strong> damage across three enemies. This build trades away the bounty reward.</p>
-            </header>
-            <img class="swap-clip" src="./assets/card-swap-bounty.gif" alt="The Tier III shot pierces three enemies for full damage. A delayed Piercing Echo shot follows." width="544" height="306" loading="lazy" decoding="async">
-            <div class="swap-outcome-data">
-              <dl class="swap-stats">
-                <div class="swap-expected"><dt>Expected variance</dt><dd>0.156</dd></div>
-                <div><dt>Example variance</dt><dd>0.049</dd></div>
-                <div><dt>Example mean</dt><dd>20.00</dd></div>
-              </dl>
-              <p class="swap-label">Six values after six hits</p>
-              <ol class="swap-samples" aria-label="Six values after six hits">
-                <li>19.6875</li><li>20.3125</li><li>19.875</li><li>20.1875</li><li>19.8125</li><li>20.125</li>
-              </ol>
-              <p class="swap-label">Equipped cards</p>
-              <ul class="swap-loadout" aria-label="Equipped cards">
-                <li>Precision Sampling</li>
-                <li>Eight-measurement Average</li>
-                <li>Center Compression</li>
-                <li class="swap-equipped">Piercing Echo</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-        <p class="swap-note">Tier III drops when variance exceeds 0.45. Expected variance is the average variance across repeated sets of six observations.</p>
-      </section>
-    </section>
-
-    <section id="world" class="chapter">
-      <header class="chapter-head">
-        <h2>Gauss and the Weather Enemies</h2>
-        <p>Gauss changes shape as the distribution changes. Weather enemies disrupt movement, sampling, and calibration.</p>
+        <h2 id="world-title">Characters and Enemies</h2>
       </header>
       <div class="world-layout">
         <div class="gauss" id="gauss-shape">
-          <h3>How Gauss Changes Shape</h3>
+          <h3 id="gauss-title">How Gauss Changes Shape</h3>
           <figure class="gauss-distribution" aria-labelledby="gauss-distribution-title">
             <figcaption>
               <h4 id="gauss-distribution-title">The Normal Distribution</h4>
@@ -278,373 +232,338 @@
             </div>
           </figure>
           <figure class="figure gauss-figure">
-            <a class="reference-board-image gauss-motion-link" href="./assets/gauss-live-variance.gif?v=wide" target="_blank" rel="noopener" aria-label="Play Gauss’s combat transformation in a new tab">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/gauss.webp" width="1800" height="340">
-                <source type="image/webp" srcset="./assets/gauss-live-variance-animated.webp?v=wide" width="832" height="468">
-                <img src="./assets/gauss-live-variance.gif?v=wide" alt="Gauss defeats enemies with a shotgun while moving. The live variance readout rises as Gauss becomes shorter and wider." width="720" height="405" loading="lazy" decoding="async">
-              </picture>
-              <span class="gauss-motion-play" aria-hidden="true">▶</span>
-            </a>
+            <div class="motion-clip" data-motion-clip><video class="motion-video" width="720" height="405" style="aspect-ratio: 720 / 405" poster="./assets/gauss-live-variance-poster.webp" aria-label="Gauss defeats enemies with a shotgun while moving. The live variance readout rises as Gauss becomes shorter and wider." muted loop playsinline preload="none"><source src="./assets/gauss-live-variance.mp4" type="video/mp4"><a href="./assets/gauss-live-variance.mp4">Open animation</a></video></div>
           </figure>
-          <p class="note gauss-note">Gauss’s collision radius stays fixed during the transformation.</p>
-        </div>
-        <div class="enemies">
+          </div>
+        <div class="enemies" id="weather-enemies">
           <h3>Weather Enemies</h3>
           <div class="enemy-grid">
             <figure class="enemy">
-              <img src="./assets/enemy-sun-en.gif" alt="The Sun catches Gauss and deals one point of contact damage, leaving Gauss at 2 health." width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>Sun</h4><p>Chases you down, making it harder to survive when the mean drifts out of range and your shots lose direct damage.</p></figcaption>
+              <img class="enemy-portrait" src="./assets/swap-target-sun.webp" width="88" height="81" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-sun-en-poster.webp?v=clear-enemies-v1" aria-label="The Sun catches Gauss and deals one point of contact damage, leaving Gauss at 2 health." muted loop playsinline preload="none"><source src="./assets/enemy-sun-en.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-sun-en.mp4?v=clear-enemies-v1">Open animation</a></video></div>
+              <figcaption class="enemy-copy"><h4>Sun</h4><p>Chases you and deals damage on contact.</p></figcaption>
             </figure>
             <figure class="enemy">
-              <img src="./assets/enemy-wind-en.gif" alt="A gust hits Gauss and lowers the mean from 20 to 17." width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>Wind</h4><p>Pushes one observation away from the mean. It can knock the mean out of range or raise variance enough to upgrade your shotgun.</p></figcaption>
+              <img class="enemy-portrait" src="./assets/swap-target-wind.webp" width="73" height="88" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-wind-en-poster.webp?v=clear-enemies-v1" aria-label="A gust hits Gauss and lowers the mean from 20 to 17." muted loop playsinline preload="none"><source src="./assets/enemy-wind-en.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-wind-en.mp4?v=clear-enemies-v1">Open animation</a></video></div>
+              <figcaption class="enemy-copy"><h4>Wind</h4><p>Pushes one sample outward. The mean can leave its range, or your shotgun can gain a tier.</p></figcaption>
             </figure>
             <figure class="enemy">
-              <img src="./assets/enemy-cloud-en.gif" alt="A thundercloud strikes Gauss with lightning and temporarily disables calibration." width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>Thundercloud</h4><p>Briefly disables calibration, forcing you to plan when to repair your data.</p></figcaption>
+              <img class="enemy-portrait" src="./assets/swap-target-cloud.webp" width="88" height="52" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-cloud-en-poster.webp?v=clear-enemies-v1" aria-label="A thundercloud strikes Gauss with lightning and temporarily disables calibration." muted loop playsinline preload="none"><source src="./assets/enemy-cloud-en.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-cloud-en.mp4?v=clear-enemies-v1">Open animation</a></video></div>
+              <figcaption class="enemy-copy"><h4>Thundercloud</h4><p>Lightning briefly disables calibration. Correct the mean before it strikes.</p></figcaption>
             </figure>
             <figure class="enemy">
-              <img src="./assets/enemy-storm-en.gif" alt="The Storm Boss rewrites one observation, raising the mean from 20 to 23." width="840" height="472" loading="lazy" decoding="async">
-              <figcaption class="enemy-copy"><h4>Storm Boss</h4><p>Rewrites an observation. Bring the mean back in range while keeping the variance your build needs.</p></figcaption>
+              <img class="enemy-portrait" src="./assets/enemy-storm-portrait.webp" width="151" height="154" alt="" loading="lazy">
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-storm-en-poster.webp?v=clear-enemies-v1" aria-label="The Storm Boss rewrites one observation, raising the mean from 20 to 23." muted loop playsinline preload="none"><source src="./assets/enemy-storm-en.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-storm-en.mp4?v=clear-enemies-v1">Open animation</a></video></div>
+              <figcaption class="enemy-copy"><h4>Storm Boss</h4><p>Rewrites one sample. Recover the mean while protecting your weapon tier.</p></figcaption>
             </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="chapter" id="builds" aria-labelledby="builds-title">
-      <div class="chapter-head">
-        <h2 id="builds-title">Low- and High-Variance Builds</h2>
-        <p>With the mean at 18–22, the variance of the six live values sets the weapon tier. Closely grouped observations improve rifle piercing. A wider spread extends shotgun coverage.</p>
-      </div>
-      <div class="weapon-tiers">
-        <section class="weapon-tier" aria-labelledby="weapon-tier-0">
-          <h3 id="weapon-tier-0">Base tier</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-0-en.webp">
-                <img src="./assets/rifle-0-en.gif" alt="Low-Variance Rifle · Base tier · Hits one target" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>Low-Variance Rifle</strong><span>Hits one target</span><span>Example variance <b>100</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-0-en.webp">
-                <img src="./assets/shotgun-0-en.gif" alt="High-Variance Shotgun · Base tier · 5-pellet spread" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>High-Variance Shotgun</strong><span>5-pellet spread</span><span>Example variance <b>40</b></span></figcaption>
-            </figure>
-          </div>
+    <section id="combat" class="chapter">
+      <div class="combat-guide" data-combat-guide>
+        <header class="chapter-head combat-guide-heading">
+          <h2>Combat Rules</h2>
+        </header>
+        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom" data-target-x=".517" data-target-y=".109">
+          <h3>Combat and Resupply</h3>
+          <p>Defeat enemies for coins. The shop opens when the timer runs out.</p>
         </section>
-        <section class="weapon-tier" aria-labelledby="weapon-tier-1">
-          <h3 id="weapon-tier-1">Tier I</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-1-en.webp">
-                <img src="./assets/rifle-1-en.gif" alt="Low-Variance Rifle · Tier I · Pierces two targets" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>Low-Variance Rifle</strong><span>Pierces two targets</span><span>Example variance <b>59</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-1-en.webp">
-                <img src="./assets/shotgun-1-en.gif" alt="High-Variance Shotgun · Tier I · 7-pellet spread" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>High-Variance Shotgun</strong><span>7-pellet spread</span><span>Example variance <b>141</b></span></figcaption>
-            </figure>
-          </div>
-        </section>
-        <section class="weapon-tier" aria-labelledby="weapon-tier-2">
-          <h3 id="weapon-tier-2">Tier II</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-2-en.webp">
-                <img src="./assets/rifle-2-en.gif" alt="Low-Variance Rifle · Tier II · Pierces three with damage falloff" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>Low-Variance Rifle</strong><span>Pierces three with damage falloff</span><span>Example variance <b>11</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-2-en.webp">
-                <img src="./assets/shotgun-2-en.gif" alt="High-Variance Shotgun · Tier II · 9-pellet spread" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>High-Variance Shotgun</strong><span>9-pellet spread</span><span>Example variance <b>241</b></span></figcaption>
-            </figure>
-          </div>
-        </section>
-        <section class="weapon-tier" aria-labelledby="weapon-tier-3">
-          <h3 id="weapon-tier-3">Tier III</h3>
-          <div class="weapon-tier-grid">
-            <figure class="weapon-tier-clip weapon-tier-rifle">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/rifle-3-en.webp">
-                <img src="./assets/rifle-3-en.gif" alt="Low-Variance Rifle · Tier III · Pierces three at full damage" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>Low-Variance Rifle</strong><span>Pierces three at full damage</span><span>Example variance <b>0</b></span></figcaption>
-            </figure>
-            <figure class="weapon-tier-clip weapon-tier-shotgun">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/shotgun-3-en.webp">
-                <img src="./assets/shotgun-3-en.gif" alt="High-Variance Shotgun · Tier III · 25-pellet ring" width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><strong>High-Variance Shotgun</strong><span>25-pellet ring</span><span>Example variance <b>400</b></span></figcaption>
-            </figure>
-          </div>
-        </section>
-      </div>
-      <div class="weapon-tier-grid weapon-build-details">
-        <section class="weapon-route" aria-labelledby="weapon-route-rifle">
-          <h3 id="weapon-route-rifle">Low-Variance Rifle</h3>
-          <figure class="figure">
-            <button type="button" class="zoomable" aria-label="Enlarge the four rifle forms">
-              <img src="./assets/crop-12.webp" data-full="./assets/image-12.webp" alt="Four rifle forms, from the base rifle to the Tier III piercing rifle." width="1800" height="368" loading="lazy" decoding="async">
+        <figure class="figure combat-guide-shot">
+          <div class="combat-guide-image">
+            <button class="zoomable" type="button" aria-label="Enlarge combat interface">
+              <img src="./assets/combat.webp" alt="Gauss fires beside six observations. The shop countdown is at the top, and the weapon, mean, and variance are at the bottom." width="1800" height="1013" loading="lazy">
             </button>
-            <figcaption>Rifle forms from base to Tier III</figcaption>
-          </figure>
-          <div class="note-stack">
-            <section class="note">
-              <h4>Lower Variance Adds Piercing</h4>
-              <p>The rifle upgrades as variance falls to <strong>60, 12, and 0.30</strong>. Tier I pierces up to two enemies, Tier II up to three, and Tier III deals full damage to all three.</p>
-            </section>
-            <section class="note">
-              <h4>Keep Observations Near 20</h4>
-              <p>Precision Sampling narrows the draw range. Eight-measurement Average turns eight draws into one observation. Center Compression halves its distance from 20. Concentrated Calibration can restore the mean and lower live variance during combat.</p>
-            </section>
-            <section class="note">
-              <h4>Stability, Fire Rate, and Card Slots</h4>
-              <p>With the rest of the loadout fixed, switching to 64-measurement Average reduces the theoretical variance of new observations from <strong>0.188 to 0.023</strong> and slows the fire rate by about <strong>26%</strong>. Equipping just 64-measurement Average and Center Compression leaves room for Piercing Bounty and Piercing Echo.</p>
-            </section>
           </div>
-          <a class="text-link" href="#ricochet-progression">See the Ricochet Endgame <span aria-hidden="true">↓</span></a>
-        </section>
-        <section class="weapon-route" aria-labelledby="weapon-route-shotgun">
-          <h3 id="weapon-route-shotgun">High-Variance Shotgun</h3>
-          <figure class="figure">
-            <button type="button" class="zoomable" aria-label="Enlarge the four shotgun forms">
-              <img src="./assets/crop-14.webp" data-full="./assets/image-14.webp" alt="Four shotgun forms, from the base shotgun to the Tier III ring shotgun." width="1800" height="460" loading="lazy" decoding="async">
-            </button>
-            <figcaption>Shotgun forms from base to Tier III</figcaption>
-          </figure>
-          <div class="note-stack">
-            <section class="note">
-              <h4>From a Spread to a Full Ring</h4>
-              <p>The base shotgun fires a five-pellet spread. At variance <strong>140, 240, and 360</strong>, it upgrades to seven, nine, and 25 pellets. At Tier III, it fires in every direction.</p>
-            </section>
-            <section class="note">
-              <h4>Sample Near Both Extremes</h4>
-              <p>Tail Sampling draws values near 0 or 40. Tail Probability makes the endpoints more likely. Variance-preserving Calibration can restore an out-of-range mean or increase variance while the mean is in range.</p>
-            </section>
-            <section class="note">
-              <h4>Coverage and Focused Hits</h4>
-              <p>Centroid Burst requires hitting at least three enemies in one shot. Focus Strike requires landing at least <strong>60%</strong> of the pellets on one target. Wide Scatter raises the Tier III pellet count from <strong>25 to 37</strong>, so Focus Strike takes 23 hits instead of 15.</p>
-              <p>With Tail Sampling II and Tail Probability III equipped, swapping Extreme Selection for Wide Scatter reduces the theoretical variance of new observations from <strong>399.2 to 384.7</strong> and adds 12 pellets at Tier III.</p>
-            </section>
-            <section class="note">
-              <h4>Calibration Spawns Clones</h4>
-              <p>Reaching Tier III during a run unlocks Extreme Clone in the shop. When the mean returns to the safe range with variance still at least <strong>350</strong>, Gauss and each existing clone spawn one clone, up to the clone limit.</p>
-            </section>
-          </div>
-        </section>
-      </div>
-      <div class="build-reference">
-        <h3>Endgame Design</h3>
-        <a class="reference-board" href="./assets/statsshooter-fire-build-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Open the full ignition build diagram in a new tab">
-          <span class="reference-board-image">
-            <img src="./assets/statsshooter-fire-build-en-4k.png?v=clean-boards-v1" alt="Ignition build prerequisites and two endgame setups, ember-based area control and burn stacking with clones." width="3840" height="2160" loading="lazy" decoding="async">
-          </span>
-          <span class="reference-board-caption"><strong>Ignition Build</strong></span>
-        </a>
-      </div>
-    </section>
-
-    <section class="chapter" id="progression" aria-labelledby="progression-title">
-      <div class="chapter-head">
-        <h2 id="progression-title">The Ignition Build in the Endgame</h2>
-        <p>Gauss dodges through waves of weather enemies, builds up the clone army through calibration, and hits the crowd with rings of shotgun fire.</p>
-      </div>
-      <div class="feature-grid ignition-endgame">
-        <figure class="figure">
-          <picture>
-            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-finale-combat-en.webp">
-            <img src="./assets/ignition-finale-combat-en.gif" alt="Gauss dodges pursuing enemies, calibrates to grow the clone army, and sets enemies ablaze with shotgun volleys." width="832" height="468" loading="lazy" decoding="async">
-          </picture>
         </figure>
-        <div class="note-stack">
-          <section class="note">
-            <h3>How the Build Plays</h3>
-            <p>Calibrate the mean back into range to spawn more clones. Their volleys spread and stack burns. When Gauss directly hits at least three enemies in one volley, Centroid Burst adds a shockwave.</p>
+        <div class="combat-guide-side">
+          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left" data-compact-edge="bottom" data-target-x=".583" data-target-y=".25">
+            <h3>Six Observations</h3>
+            <p>Each hit replaces one value. A miss keeps the current six.</p>
           </section>
-          <section class="note">
-            <h3>Four Cards in the Endgame Demo</h3>
-            <p>Sparks, Ember Sowing, Centroid Burst, and Intense Embers fill the four slots. Extreme Clone upgrades separately.</p>
+          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left" data-compact-edge="top" data-target-x=".814" data-target-y=".954">
+            <h3>Keep the Mean at 18–22</h3>
+            <p>Regular shots deal base damage when the mean falls within this range.</p>
           </section>
         </div>
+        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top" data-target-x=".238" data-target-y=".89">
+          <h3>Variance Sets the Weapon Tier</h3>
+          <p>Clustered values increase rifle piercing. Spread-out values widen the shotgun blast.</p>
+        </section>
+        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
       </div>
-      <section class="ignition-stages" aria-labelledby="ignition-title">
-        <h3 id="ignition-title">Four Stages of the Ignition Build</h3>
-        <ol class="ignition-track" aria-label="Four ignition stages">
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-sparks-en.webp">
-                <img src="./assets/ignition-sparks-en.gif" alt="An enemy catches fire after a shotgun hit and takes damage over time." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Sparks</h4><p>Shotgun hits ignite enemies. Burns already applied keep dealing damage when the mean goes out of range.</p></figcaption>
-            </figure>
+
+      <div class="combat-controls" id="combat-controls" role="group" aria-label="Combat controls">
+        <section class="note">
+          <div>
+            <h3>Right-click to Calibrate</h3>
+            <p>The game picks one value to adjust, bringing the mean as close to 20 as possible.</p>
+          </div>
+          <div class="motion-clip combat-control-gif" data-motion-clip><video class="motion-video" width="560" height="315" style="aspect-ratio: 560 / 315" poster="./assets/control-calibration-poster.webp" aria-label="Calibration changes one observation from 40 to 12, returns the mean from 24.67 to 20, and lets Gauss fire again." muted loop playsinline preload="none"><source src="./assets/control-calibration.mp4" type="video/mp4"><a href="./assets/control-calibration.mp4">Open animation</a></video></div>
+        </section>
+      </div>
+
+      <section class="calibration-evidence" aria-labelledby="calibration-title">
+        <h3 id="calibration-title">One-slot Calibration Example</h3>
+        <p class="calibration-context">The other five observations stay at 20.</p>
+        <ol class="calibration-sequence">
+          <li class="calibration-step">
+            <h4>Before the shot</h4>
+            <dl class="calibration-values">
+              <div><dt>Sample slot</dt><dd>20</dd></div>
+              <div><dt>Mean</dt><dd>20.0</dd></div>
+            </dl>
+            <p class="calibration-status">Direct damage active</p>
           </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-scatter-en.webp">
-                <img src="./assets/ignition-scatter-en.gif" alt="Enemies cross patches of embers on the battlefield." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Ember Sowing</h4><p>Spent pellets and moving enemies on fire leave embers. Other enemies ignite when they cross the embers.</p></figcaption>
-            </figure>
+          <li class="calibration-step" data-state="outside">
+            <h4>After the hit</h4>
+            <dl class="calibration-values">
+              <div><dt>Sample slot</dt><dd>40</dd></div>
+              <div><dt>Mean</dt><dd>23.3</dd></div>
+            </dl>
+            <p class="calibration-status">Direct damage paused</p>
           </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ignition-rekindle-en.webp">
-                <img src="./assets/ignition-rekindle-en.gif" alt="Ember Revival makes ember patches larger and longer-lasting." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Ember Revival</h4><p>Each ember patch grows from a radius of 0.8 to 1.2 and lasts 4 seconds, up from 2.2.</p></figcaption>
-            </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/extreme-clone-growth.webp">
-                <img src="./assets/extreme-clone-growth.gif" alt="Three right-click calibrations grow the army from one clone to three, then seven, then fifteen." width="960" height="540" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Extreme Clone</h4><p>Three right-click calibrations grow the army from 1 to 3, then 7, then 15 clones. Each can apply its own burn to the same enemy.</p></figcaption>
-            </figure>
+          <li class="calibration-step" data-state="restored">
+            <h4>After right-click calibration</h4>
+            <dl class="calibration-values">
+              <div><dt>Sample slot</dt><dd>20</dd></div>
+              <div><dt>Mean</dt><dd>20.0</dd></div>
+            </dl>
+            <p class="calibration-status">Direct damage restored</p>
           </li>
         </ol>
+        <p class="calibration-note">The hit that changed the mean still dealt damage.</p>
       </section>
     </section>
 
-    <section class="chapter ricochet-build" id="ricochet-progression" aria-labelledby="ricochet-progression-title">
-      <div class="chapter-head">
-        <h2 id="ricochet-progression-title">The Ricochet Build in the Endgame</h2>
-      </div>
-      <div class="feature-grid ignition-endgame">
-        <figure class="figure">
-          <picture>
-            <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-finale-magnet.webp">
-            <img src="./assets/ricochet-finale-magnet.gif" alt="Gauss lands ricochet chains in a live horde as dropped coins fly in from across the arena." width="832" height="468" loading="lazy" decoding="async">
-          </picture>
+    <section id="shop" class="chapter" aria-labelledby="shop-title">
+      <header class="chapter-head">
+        <h2 id="shop-title">Shop and Card Choices</h2>
+      </header>
+      <div class="annotated shop-annotations">
+        <figure class="figure annotated-figure">
+          <div class="shot">
+            <button class="zoomable" type="button" aria-label="Enlarge upgrade shop"><img src="./assets/shop.webp" alt="The upgrade shop shows weapon progress, cards for sale, shared loadout slots, and a stats preview." width="1360" height="756" loading="lazy"></button>
+            <span class="pin shop-pin shop-tier" aria-hidden="true">1</span>
+            <span class="pin shop-pin shop-preview" aria-hidden="true">2</span>
+            <span class="pin shop-pin shop-slots" aria-hidden="true">3</span>
+          </div>
         </figure>
-        <div class="note-stack">
-          <section class="note">
-            <h3>How the Build Plays</h3>
-            <p>Keep the six samples close together and the mean in the 18–22 range to sustain Tier III. Lead enemies into the path of reflected shots and keep moving as their dropped coins fly to Gauss.</p>
-          </section>
-          <section class="note">
-            <h3>Four Cards in the Endgame Demo</h3>
-            <p>64-Draw Average, Center Compression, Prism Corridor, and Dual Ricochet fill the four slots. The demo also uses a Coin Magnet maxed out through separate shop upgrades.</p>
-          </section>
+        <div class="shop-note-column">
+          <ol class="note-stack shop-notes" aria-label="Shop annotations">
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">1</span><span><strong>Check weapon progress</strong><span>Steadier samples unlock stronger piercing. Check the current weapon tier before changing data cards.</span></span></li>
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">2</span><span><strong>Compare the purchase preview</strong><span>Averaging more draws makes new samples steadier but slows firing. Decide whether the added stability is worth fewer shots.</span></span></li>
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">3</span><span><strong>Four shared slots</strong><span>Data cards change sampling and combat cards enhance attacks. With four slots filled, adding a card requires a swap.</span></span></li>
+          </ol>
         </div>
       </div>
-      <section class="build-reference" id="ricochet-build-design" aria-labelledby="ricochet-build-design-title">
-        <h3 id="ricochet-build-design-title">Endgame Design</h3>
-        <a class="reference-board" href="./assets/statsshooter-ricochet-build-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Open the full ricochet build diagram in a new tab">
-          <span class="reference-board-image">
-            <img src="./assets/statsshooter-ricochet-build-en-4k.png?v=clean-boards-v1" alt="Ricochet purchase requirements and two four-slot endgame setups, Dual Ricochet and Wall Afterglow." width="3840" height="2160" loading="lazy" decoding="async">
-          </span>
-          <span class="reference-board-caption"><strong>Ricochet Build</strong></span>
-        </a>
+
+      <section class="shop-card-atlas" aria-labelledby="loadout-catalog-title">
+        <h3 id="loadout-catalog-title">Card Upgrades</h3>
+        <div class="shop-card-boards">
+          <figure class="build-board" aria-labelledby="all-upgrades-diagram-title">
+            <figcaption><strong id="all-upgrades-diagram-title">All upgrade cards</strong><span>Combine data cards with either weapon’s combat cards. General upgrades such as healing and shields support both routes.</span></figcaption>
+            <a href="./assets/statsshooter-cards-overview-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Enlarge All upgrade cards">
+              <img src="./assets/statsshooter-cards-overview-en-4k.png?v=clean-boards-v1" alt="Upgrade map with the low-variance rifle and ricochet cards on the left and the high-variance shotgun and ignition cards on the right." width="5040" height="2660" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <figure class="build-board" aria-labelledby="data-cards-diagram-title">
+            <figcaption><strong id="data-cards-diagram-title">Data cards</strong><span>Precision Sampling narrows the range for the rifle. Tail Sampling favors extreme values for a wider shotgun blast.</span></figcaption>
+            <a href="./assets/statsshooter-data-cards-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Enlarge Data cards">
+              <img src="./assets/statsshooter-data-cards-en-4k.png?v=clean-boards-v1" alt="Data cards that change sampling, averaging, and calibration on the low- and high-variance routes." width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+        </div>
+        <a class="text-link" href="./cards.html" data-card-catalog>Search individual cards <span aria-hidden="true">→</span></a>
       </section>
-      <section class="ignition-stages" aria-labelledby="ricochet-stages-title">
-        <h3 id="ricochet-stages-title">Four Stages of the Ricochet Build</h3>
-        <ol class="ignition-track" aria-label="Four ricochet stages shown in separate mechanic demonstrations">
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-1.webp">
-                <img src="./assets/ricochet-step-1.gif" alt="A Tier II rifle bolt hits the arena wall, reflects once, and continues toward an enemy." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Ricochet</h4><p>Reaching rifle Tier II unlocks this slot-free upgrade. A bolt can bounce once and keep piercing along the reflected path.</p></figcaption>
+
+      <section id="card-upgrades" class="card-swap" aria-labelledby="card-upgrades-title">
+        <header id="card-swap" class="card-swap-heading">
+          <h3 id="card-upgrades-title"><span id="card-swap-title">Coins or piercing damage?</span></h3>
+          <p>Both rifles pierce three enemies. Keep Piercing Bounty to earn two coins on the third hit, or keep Eight-measurement Average to deal full damage to all three.</p>
+        </header>
+        <div class="loadout-comparison">
+          <article class="loadout-example">
+            <header><h4>Keep Piercing Bounty</h4><span>Tier II rifle</span></header>
+            <dl class="loadout-result">
+              <div><dt>Bounty this shot</dt><dd>+2</dd></div>
+            </dl>
+            <figure>
+              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-average.webp" aria-label="The rifle pierces three enemies and drops two coins at the third." muted loop playsinline preload="none"><source src="./assets/card-swap-average.mp4" type="video/mp4"><a href="./assets/card-swap-average.mp4">Open animation</a></video></div>
+              <figcaption class="hit-breakdown"><span>Main-shot damage</span><ol aria-label="Targets in hit order">
+                <li><img src="./assets/swap-target-sun.webp" alt="Sun" width="32" height="32"><b>−35</b></li>
+                <li><img src="./assets/swap-target-wind.webp" alt="Wind" width="32" height="32"><b>−21</b></li>
+                <li><img src="./assets/swap-target-cloud.webp" alt="Thundercloud" width="32" height="32"><b>−21</b></li>
+              </ol></figcaption>
             </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-2.webp">
-                <img src="./assets/ricochet-step-2.gif" alt="Double Wall Circuit sends a rifle bolt across two wall reflections, following the aim guide." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Double Wall Circuit</h4><p>One equipped card raises the limit to two bounces, adding another angle through the crowd.</p></figcaption>
+          </article>
+          <article class="loadout-example">
+            <header><h4>Keep Eight-measurement Average</h4><span>Tier III rifle</span></header>
+            <dl class="loadout-result">
+              <div><dt>Bounty this shot</dt><dd>0</dd></div>
+            </dl>
+            <figure>
+              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-bounty.webp" aria-label="The rifle pierces all three enemies for full damage." muted loop playsinline preload="none"><source src="./assets/card-swap-bounty.mp4" type="video/mp4"><a href="./assets/card-swap-bounty.mp4">Open animation</a></video></div>
+              <figcaption class="hit-breakdown"><span>Main-shot damage</span><ol aria-label="Targets in hit order">
+                <li><img src="./assets/swap-target-sun.webp" alt="Sun" width="32" height="32"><b>−40</b></li>
+                <li><img src="./assets/swap-target-wind.webp" alt="Wind" width="32" height="32"><b>−40</b></li>
+                <li><img src="./assets/swap-target-cloud.webp" alt="Thundercloud" width="32" height="32"><b>−40</b></li>
+              </ol></figcaption>
             </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-3.webp">
-                <img src="./assets/ricochet-step-3.gif" alt="Prism Corridor extends the Tier III rifle path to five wall bounces." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Prism Corridor</h4><p>Reach Tier III and own Double Wall Circuit plus Ricochet Mark or Reflection Focus to buy it. It replaces Circuit in the same slot, allowing up to five bounces at Tier III and two at Tier II.</p></figcaption>
-            </figure>
-          </li>
-          <li class="ignition-card">
-            <figure class="figure">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/ricochet-step-4.webp">
-                <img src="./assets/ricochet-step-4.gif" alt="Dual Ricochet fires two angled bolts, while Wall Afterglow leaves slowing spots at wall contacts." width="840" height="472" loading="lazy" decoding="async">
-              </picture>
-              <figcaption><h4>Two Branches</h4><p>With two data cards and Prism Corridor equipped, the fourth slot can hold Dual Ricochet or Wall Afterglow. Dual adds a half-damage bolt angled 8° clockwise, sharing one sample write. Afterglow leaves spots for 1.2 seconds that slow ordinary enemies inside by 25%.</p></figcaption>
-            </figure>
-          </li>
-        </ol>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="chapter endgame-builds" id="endgame-builds" aria-labelledby="endgame-builds-title">
+      <header class="chapter-head">
+        <h2 id="endgame-builds-title">Endgame Builds</h2>
+      </header>
+      <section class="build-route" id="progression" aria-labelledby="progression-title">
+        <div class="route-finale">
+          <header>
+            <h3 id="progression-title">High-Variance Build · Ignition</h3>
+            <p>Ignite pursuing enemies with the high-variance shotgun. When the mean slips out of range, calibrate to summon a clone that fires alongside you.</p>
+          </header>
+          <div class="motion-clip" data-motion-clip><video class="motion-video" width="832" height="468" style="aspect-ratio: 832 / 468" poster="./assets/ignition-finale-combat-en.webp" aria-label="Gauss dodges pursuing enemies, calibrates to grow the clone army, and sets enemies ablaze with shotgun volleys." muted loop playsinline preload="none"><source src="./assets/ignition-finale-combat-en.mp4" type="video/mp4"><a href="./assets/ignition-finale-combat-en.mp4">Open animation</a></video></div>
+        </div>
+        <div class="route-development">
+          <figure class="build-board route-map" aria-labelledby="ignition-build-design-title">
+            <figcaption><strong id="ignition-build-design-title">Ignition build diagram</strong><span>Use embers to block a route, or focus the clones on one target to stack burns.</span></figcaption>
+            <a href="./assets/statsshooter-fire-build-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Enlarge Ignition build diagram">
+              <img src="./assets/statsshooter-fire-build-en-4k.png?v=clean-boards-v1" alt="Ignition build prerequisites and two endgame setups, ember-based area control and burn stacking with clones." width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <section class="build-stages" aria-labelledby="ignition-title">
+            <h4 id="ignition-title">Ignition progression</h4>
+            <ol class="build-stage-strip" role="list">
+              <li>
+                <img src="./assets/ignition-sparks-en.gif" width="840" height="472" alt="A shotgun hit ignites an enemy, and burn damage continues after the hit." loading="lazy" decoding="async">
+                <strong>Sparks</strong>
+                <p>Hits ignite enemies. Burns continue if the mean drifts out of range.</p>
+              </li>
+              <li>
+                <img src="./assets/ignition-scatter-en.gif" width="840" height="472" alt="Embers stay on the ground and ignite an enemy that crosses them." loading="lazy" decoding="async">
+                <strong>Ember Sowing</strong>
+                <p>Pellets and burning enemies leave embers in their wake.</p>
+              </li>
+              <li>
+                <img src="./assets/ignition-rekindle-en.gif" width="840" height="472" alt="The ember patch covers a wider area and persists on the battlefield." loading="lazy" decoding="async">
+                <strong>Ember Revival</strong>
+                <p>Wider, longer-lasting embers block the horde’s path.</p>
+              </li>
+              <li>
+                <img src="./assets/extreme-clone-growth.gif" width="960" height="540" alt="Successive calibrations increase the number of Gauss clones on screen." loading="lazy" decoding="async">
+                <strong>Extreme Clone</strong>
+                <p>Calibration adds clones. Focus their fire to stack burns on one target.</p>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </section>
+      <section class="build-route" id="ricochet-progression" aria-labelledby="ricochet-progression-title">
+        <div class="route-finale">
+          <header>
+            <h3 id="ricochet-progression-title">Low-Variance Build · Ricochet</h3>
+            <p>Keep the six samples clustered to hold the rifle’s piercing tier. Lead pursuers into a shot’s return path so the same bullet cuts through the crowd again.</p>
+          </header>
+          <div class="motion-clip" data-motion-clip><video class="motion-video" width="832" height="468" style="aspect-ratio: 832 / 468" poster="./assets/ricochet-finale-magnet-en.webp" aria-label="Gauss lands ricochet chains in a live horde as dropped coins fly in from across the arena." muted loop playsinline preload="none"><source src="./assets/ricochet-finale-magnet-en.mp4" type="video/mp4"><a href="./assets/ricochet-finale-magnet-en.mp4">Open animation</a></video></div>
+        </div>
+        <div class="route-development">
+          <figure class="build-board route-map" aria-labelledby="ricochet-build-design-title" id="ricochet-build-design">
+            <figcaption><strong id="ricochet-build-design-title">Ricochet build diagram</strong><span>Dual Ricochet widens coverage. Wall Afterglow slows enemies near a bounce point.</span></figcaption>
+            <a href="./assets/statsshooter-ricochet-build-en-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="Enlarge Ricochet build diagram">
+              <img src="./assets/statsshooter-ricochet-build-en-4k.png?v=clean-boards-v1" alt="Ricochet purchase requirements and two four-slot endgame setups, Dual Ricochet and Wall Afterglow." width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <section class="build-stages" aria-labelledby="ricochet-stages-title">
+            <h4 id="ricochet-stages-title">Ricochet progression</h4>
+            <ol class="build-stage-strip" role="list">
+              <li>
+                <img src="./assets/ricochet-step-1-en.gif" width="840" height="472" alt="A rifle shot hits a wall and bounces back into the arena." loading="lazy" decoding="async">
+                <strong>Ricochet</strong>
+                <p>Bullets bounce off one wall.</p>
+              </li>
+              <li>
+                <img src="./assets/ricochet-step-2-en.gif" width="840" height="472" alt="A rifle shot follows a second wall bounce and crosses the arena again." loading="lazy" decoding="async">
+                <strong>Double Wall Circuit</strong>
+                <p>Bullets can bounce twice.</p>
+              </li>
+              <li>
+                <img src="./assets/ricochet-step-3-en.gif" width="840" height="472" alt="One bolt zigzags across the arena through a series of wall bounces." loading="lazy" decoding="async">
+                <strong>Prism Corridor</strong>
+                <p>A chain of bounces carries a piercing shot farther across the arena.</p>
+              </li>
+              <li>
+                <img src="./assets/ricochet-step-4-en.gif" width="840" height="472" alt="The final upgrades show a second angled bolt and a slowing patch at a wall impact." loading="lazy" decoding="async">
+                <strong>Dual Ricochet or Wall Afterglow</strong>
+                <p>Use the last slot for a second bolt or a slowing patch at the wall.</p>
+              </li>
+            </ol>
+          </section>
+        </div>
       </section>
     </section>
 
     <section class="chapter" id="iteration" aria-labelledby="iteration-title">
       <div class="chapter-head">
-        <span class="eyebrow">Design Iteration</span>
-        <h2 id="iteration-title">Calibration, Card Slots, and Player Choice</h2>
+        <h2 id="iteration-title">Design Iteration</h2>
       </div>
       <div class="iteration-cases">
         <section class="iteration-case" id="iteration-calibration" aria-labelledby="iteration-calibration-title">
-          <h3 id="iteration-calibration-title">Calibration Timing</h3>
+          <h3 id="iteration-calibration-title"><span class="iteration-number">01</span> Calibration Timing</h3>
+          <dl class="iteration-findings">
+            <div>
+              <dt>Problem</dt>
+              <dd>In the first playtest, players struggled to dodge, aim, and calibrate by hand as the crowd grew.</dd>
+            </div>
+            <div>
+              <dt>Cause</dt>
+              <dd>Each calibration offered three possible swaps. Players had to read all three and compare the resulting means while enemies closed in.</dd>
+            </div>
+            <div>
+              <dt>Change</dt>
+              <dd>I let the system choose the slot and left the timing to the player. In the second playtest, some players still pressed calibrate repeatedly, so I added a mean and damage preview they could read before taking the next shot.</dd>
+            </div>
+          </dl>
           <div class="image-pair">
             <figure class="figure iteration-prototype">
-              <picture>
-                <source media="(prefers-reduced-motion: reduce)" srcset="./assets/early-manual-calibration.webp">
-                <img src="./assets/early-manual-calibration.gif" alt="In the V01 prototype, Gauss keeps moving as the player cycles through three manual calibration choices and fires the calibration shot." width="960" height="540" loading="lazy" decoding="async">
-              </picture>
-              <figcaption>Early prototype · Manually choose from three slots to calibrate</figcaption>
+              <div class="motion-clip" data-motion-clip><video class="motion-video" width="960" height="540" style="aspect-ratio: 960 / 540" poster="./assets/early-manual-calibration.webp" aria-label="In the V01 prototype, Gauss keeps moving as the player cycles through three manual calibration choices and fires the calibration shot." muted loop playsinline preload="none"><source src="./assets/early-manual-calibration.mp4" type="video/mp4"><a href="./assets/early-manual-calibration.mp4">Open animation</a></video></div>
+              <figcaption>Early prototype · Three manual calibration options</figcaption>
             </figure>
             <figure class="figure">
               <button type="button" class="zoomable" aria-label="Enlarge next-shot preview interface">
                 <img src="./assets/crop-18.webp" data-full="./assets/image-18.webp" alt="The revised interface shows the next shot's predicted observation, mean, and damage." width="755" height="277" loading="lazy" decoding="async">
               </button>
-              <figcaption>Revised interface · Preview the mean and damage before firing</figcaption>
+              <figcaption>Revised interface · Next-shot mean and damage</figcaption>
             </figure>
           </div>
-          <section class="note">
-            <h4>The Game Picks the Slot. You Pick the Moment.</h4>
-            <p>In the first playtest, players were too busy dodging and firing to compare calibration options under pressure. After I automated slot selection, some players still right-clicked repeatedly. I added a preview of the next shot’s mean and damage. Automated tests confirm that it matches the outcome. A follow-up playtest will check whether it helps players time calibration.</p>
-          </section>
+          <p class="iteration-evidence">Automated tests checked the preview against the outcome. Whether it helps players time calibration still needs a playtest.</p>
         </section>
         <section class="iteration-case" id="iteration-slots" aria-labelledby="iteration-slots-title">
-          <h3 id="iteration-slots-title">Four Shared Slots</h3>
-          <div class="feature-grid">
-            <figure class="figure">
-              <button type="button" class="zoomable" aria-label="Enlarge card replacement interface">
-                <img src="./assets/crop-19.webp" alt="With all shared slots full, the shop shows four cards that could be replaced by Piercing Echo." width="928" height="584" loading="lazy" decoding="async">
-              </button>
-              <figcaption>When all four slots are full, choose which card to replace.</figcaption>
-            </figure>
-            <div class="note-stack">
-              <section class="note">
-                <h4>Data and Combat Cards Share Four Slots</h4>
-                <p>To equip Piercing Echo, replacing Eight-measurement Average raises the expected variance across six values from <strong>0.156 to 1.25</strong>. Replacing Piercing Bounty keeps the variance forecast steady and gives up the coin reward for piercing.</p>
-              </section>
+          <h3 id="iteration-slots-title"><span class="iteration-number">02</span> Card Slot Decisions</h3>
+          <dl class="iteration-findings">
+            <div>
+              <dt>Problem</dt>
+              <dd>In the early prototype, the mean mattered mainly when players needed to restore direct damage. Reading the sample spread rarely helped them choose an upgrade.</dd>
             </div>
-          </div>
+            <div>
+              <dt>Cause</dt>
+              <dd>Upgrades stacked freely. Players could add an extra attack and keep every card that made their samples steadier.</dd>
+            </div>
+            <div>
+              <dt>Change</dt>
+              <dd>I gave data and combat cards four shared slots. With all four full, replacing Eight-measurement Average with Piercing Echo adds a follow-up shot after a piercing hit, at the cost of less consistent samples.</dd>
+            </div>
+          </dl>
+          <figure class="figure iteration-slot-image">
+            <button type="button" class="zoomable" aria-label="Enlarge card replacement interface">
+              <img src="./assets/crop-19.webp" alt="With all shared slots full, the shop shows four cards that could be replaced by Piercing Echo." width="928" height="584" loading="lazy" decoding="async">
+            </button>
+          </figure>
         </section>
       </div>
     </section>
@@ -652,9 +571,11 @@
     <section class="chapter" id="reflection" aria-labelledby="reflection-title">
       <div class="chapter-head">
         <h2 id="reflection-title">Design Reflection</h2>
-        <p>In the early calibration prototype, players compared slots while dodging. I gave slot selection to the game so players could focus on when to calibrate and when to keep firing.</p>
       </div>
-      <p class="note">I wanted sampling cards to turn another calculation into a combat decision. Averaging 64 draws helps the rifle hold its piercing tier and slows fire by about 26% compared with averaging eight. Each shop visit gives the player a chance to weigh steadier piercing against firing more often in the next wave.</p>
+      <div class="note">
+        <p>Looking back, I had a clear idea of how each build should feel once it came together. Working backward from those endgames helped me design the upgrades, but I ended up planning too much of the player’s path. Even when the shop offered different cards, runs tended to play out in similar ways. Players had little room to change course midway through a run or discover a combination for themselves.</p>
+        <p>I also spent more time thinking about how mean and variance would show up in combat than about when players would need to understand them. Players could see their shotgun’s spread change and still have little reason to think about variance when choosing the next card. That changed how I think about learning through play. I used to ask how clearly the game showed a concept. Now I ask what understanding it helps a player decide, what they might give up, and what they might try next.</p>
+      </div>
     </section>
 
   </main>
@@ -662,6 +583,7 @@
     <div class="wrap footer-bar">
       <span>StatsShooter · Yixuan Yu</span>
       <nav class="footer-links" aria-label="Footer navigation">
+        <a class="text-link" href="../?project=eyedle">Next project · EyeDle</a>
         <a class="text-link" href="#top">Back to top <span aria-hidden="true">↑</span></a>
       </nav>
     </div>
