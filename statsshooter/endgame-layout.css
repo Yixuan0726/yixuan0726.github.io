@@ -7,7 +7,7 @@
 .build-route + .build-route {
   margin-top: clamp(40px, 5vw, 72px);
 }
-.route-finale, .route-map {
+.route-finale {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
   align-items: start;
@@ -25,6 +25,11 @@
   line-height: 1.65;
 }
 .route-finale p { margin-top: 10px; }
+.route-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
 .route-map figcaption span { display: block; margin-top: 6px; }
 .route-development {
   display: grid;
@@ -95,8 +100,9 @@
     min-block-size: 88svh;
     padding-block: clamp(20px, 3svh, 36px);
   }
-  .route-map > a {
-    width: min(100%, 77svh);
+  .route-map {
+    width: min(100%, 146svh);
+    margin-inline: auto;
   }
   .shop-card-boards > figure {
     width: min(100%, 142svh);
@@ -184,6 +190,6 @@
 }
 
 @media (max-width: 690px) {
-  .route-finale, .route-map { grid-template-columns: minmax(0, 1fr); }
+  .route-finale { grid-template-columns: minmax(0, 1fr); }
   .endgame-steps ol { grid-template-columns: minmax(0, 1fr); }
 }
