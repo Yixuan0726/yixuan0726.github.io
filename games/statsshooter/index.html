@@ -54,9 +54,9 @@
 
     const config = {
       arguments: [],
-      dataUrl: 'Build/FinalWebGL.data.unityweb',
-      frameworkUrl: 'Build/FinalWebGL.framework.js.unityweb',
-      codeUrl: 'Build/FinalWebGL.wasm.unityweb',
+      dataUrl: 'Build/FinalWebGL.data.unityweb?v=prism-b80d6dfe70c9',
+      frameworkUrl: 'Build/FinalWebGL.framework.js.unityweb?v=prism-b80d6dfe70c9',
+      codeUrl: 'Build/FinalWebGL.wasm.unityweb?v=prism-b80d6dfe70c9',
       streamingAssetsUrl: 'StreamingAssets',
       companyName: 'DefaultCompany',
       productName: 'StatsShooter',
@@ -65,7 +65,7 @@
     };
 
     const loader = document.createElement('script');
-    loader.src = 'Build/FinalWebGL.loader.js';
+    loader.src = 'Build/FinalWebGL.loader.js?v=prism-b80d6dfe70c9';
     loader.onerror = () => showBanner('Could not download the game loader.', 'error');
     loader.onload = async () => {
       try {

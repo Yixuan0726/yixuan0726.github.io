@@ -71,7 +71,7 @@ document.querySelector('.project-actions [href="#gameplay-video"]').addEventList
 
 const demo = document.querySelector('[data-demo-player]');
 const launchDemo = demo.querySelector('[data-game-start]');
-// The portfolio hosts the shared Unity player; standalone exports also offer itch.io.
+// The standalone game link remains available without the embedded player.
 import('../game-player.js?v=showcase-v1').then(({ mountGamePlayer }) => {
   mountGamePlayer(demo);
   launchDemo.hidden = false;
