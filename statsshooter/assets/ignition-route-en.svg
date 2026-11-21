@@ -30,7 +30,6 @@
   <text x="1830" y="755" fill="#d1c3c2" font-size="22" font-weight="400" text-anchor="end" dominant-baseline="central" textLength="118.5" lengthAdjust="spacingAndGlyphs">4 build slots</text>
   <rect x="89" y="175" width="4" height="22" rx="2" fill="#f1c78e" />
   <text x="102" y="186" fill="#f1c78e" font-size="23" font-weight="700" text-anchor="start" dominant-baseline="central" textLength="247.5" lengthAdjust="spacingAndGlyphs">Purchase requirements</text>
-  <text x="1830" y="186" fill="#dbbce9" font-size="20" font-weight="400" text-anchor="end" dominant-baseline="central" textLength="363.469" lengthAdjust="spacingAndGlyphs">Purple arrows also require Extreme Clone</text>
   <polyline points="394,423 427,423 427,328 461,328" fill="none" stroke="#f1c78e" stroke-width="2.75" stroke-linejoin="round" stroke-linecap="round" />
   <polygon points="461,328 451.095,332.785 451.095,323.215" fill="#f1c78e" />
   <polyline points="394,423 427,423 427,577 461,577" fill="none" stroke="#f1c78e" stroke-width="2.75" stroke-linejoin="round" stroke-linecap="round" />
