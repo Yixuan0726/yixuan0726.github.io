@@ -1,9 +1,9 @@
-.project-introduction,
-.project-introduction ~ .chapter {
+main > .chapter {
   padding-block: clamp(34px, 4vw, 64px);
+  counter-increment: design-chapter;
 }
 
-.project-introduction {
+#game-overview {
   border-top: 1px solid var(--line);
 }
 
@@ -29,7 +29,6 @@
 main { counter-reset: design-chapter; }
 
 .chapter :is(.intro-block, .chapter-head) h2 {
-  counter-increment: design-chapter;
   letter-spacing: -.037em;
 }
 
@@ -150,6 +149,34 @@ main { counter-reset: design-chapter; }
   border-inline-start: 3px solid var(--gold);
 }
 
+.overview-weapons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: clamp(12px, 1.5vw, 24px);
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.overview-weapons li {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+.overview-weapons img {
+  flex: none;
+  width: clamp(52px, 4.9vw, 76px);
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: contain;
+}
+
+.gauss-distribution h3 { color: var(--ink); font-size: 19px; line-height: 1.4; }
+.enemy-copy h3 { margin-bottom: 3px; color: var(--ink); font-size: 21px; line-height: 1.3; }
+
 .chapter .endgame-details {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -185,25 +212,18 @@ main { counter-reset: design-chapter; }
 }
 
 @media (min-width: 1000px) {
-  .project-introduction {
-    grid-template-columns: 1fr;
-    gap: clamp(30px, 5svh, 56px);
-  }
-  .project-introduction .intro-block {
+  .intro-chapter .intro-block {
     display: grid;
     grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-    align-content: center;
     align-items: start;
     gap: 12px clamp(28px, 4vw, 68px);
   }
-  .intro-block + .intro-block {
-    border-top: 1px solid var(--line);
-    padding-top: clamp(30px, 5svh, 56px);
-  }
-  .intro-block h2 { grid-column: 1; grid-row: 1; }
+  #game-overview .intro-block { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .intro-block h2 { grid-column: 1; grid-row: 1; align-self: end; margin: 0; }
   .intro-block > p:first-of-type { grid-column: 1; grid-row: 2; }
   .intro-block .gameplay-loop { grid-column: 2; grid-row: 1; align-self: end; margin: 0; }
-  .intro-block .overview-rule { grid-column: 2; grid-row: 2; margin: 0; }
+  .intro-block .overview-rule { grid-column: 2; grid-row: 2 / span 2; margin: 0; }
+  .overview-weapons { grid-column: 1; grid-row: 3; margin-top: 2px; }
   .intro-block .inspiration-figure {
     grid-column: 2;
     grid-row: 1 / span 2;
@@ -227,11 +247,10 @@ main { counter-reset: design-chapter; }
     gap: 12px clamp(24px, 3vw, 48px);
     align-items: center;
   }
-  .gauss > h3 { grid-column: 1 / -1; }
   .gauss .gauss-distribution, .gauss .gauss-figure { margin: 0; }
   .gauss-distribution-layout { grid-template-columns: 1fr; }
   .gauss-curve-key { justify-self: center; width: min(100%, 18rem); }
-  .enemies { margin-inline: 0; border-top: 1px solid var(--line); padding-top: 24px; }
+  .enemies { margin-inline: 0; }
   .enemy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 32px; }
   .enemy-grid .enemy {
     display: grid;
@@ -277,7 +296,7 @@ main { counter-reset: design-chapter; }
 }
 
 @media (max-width: 600px) {
-  .project-introduction, .project-introduction ~ .chapter {
+  main > .chapter {
     padding-block: 30px 36px;
   }
 }

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./style.css?v=gauss-morph-v1">
   <link rel="stylesheet" href="./case-study.css?v=desktop-topics">
   <link rel="stylesheet" href="./showcase.css?v=gameplay-photos">
-  <link rel="stylesheet" href="./chapters.css?v=desktop-topics">
+  <link rel="stylesheet" href="./chapters.css?v=ten-chapters">
   <link rel="stylesheet" href="./endgame-layout.css?v=desktop-topics">
   <link rel="stylesheet" href="./project-media.css?v=desktop-topics">
   <script src="./project-language.js" defer></script>
@@ -96,8 +96,8 @@
       </section>
     </div>
 
-    <section id="introduction" class="chapter project-introduction" aria-label="游戏概述与设计灵感">
-      <section id="game-overview" class="intro-block" aria-labelledby="game-overview-title">
+    <section id="game-overview" class="chapter intro-chapter" aria-labelledby="game-overview-title">
+      <div class="intro-block" id="introduction">
         <h2 id="game-overview-title">游戏概述</h2>
         <p>StatsShooter 是一款类幸存者的 2D 俯视角肉鸽射击游戏。</p>
         <figure class="gameplay-loop" aria-label="核心玩法循环">
@@ -109,19 +109,239 @@
           <div class="gameplay-loop-return" aria-hidden="true"></div>
         </figure>
         <p class="overview-rule">六个样本的<strong>均值</strong>在 18–22 之间时，普通射击才能造成直接伤害。<strong>方差</strong>越低，步枪贯穿越强。方差越高，霰弹覆盖越广。</p>
-      </section>
-      <section id="inspiration" class="intro-block" aria-labelledby="inspiration-title">
+        <ul class="overview-weapons" role="list">
+          <li><img src="./assets/overview-rifle.webp" width="228" height="240" alt="" loading="lazy"><span>低方差步枪</span></li>
+          <li><img src="./assets/overview-shotgun.webp" width="240" height="234" alt="" loading="lazy"><span>高方差霰弹枪</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="inspiration" class="chapter intro-chapter" aria-labelledby="inspiration-title">
+      <div class="intro-block">
         <h2 id="inspiration-title">设计灵感</h2>
         <p>我在大学主修统计学，觉得一些知识只停留在公式与计算中时，容易显得抽象。我也喜欢肉鸽中尝试新组合、发现不同玩法的过程。StatsShooter 把这两种兴趣结合起来：改变数据分布，就能改变武器表现。我希望玩家通过选牌与战斗反馈，逐渐建立对均值和方差的直觉。</p>
         <figure class="inspiration-figure">
           <img src="./assets/inspiration-concept.webp" alt="概念插画：小高斯一边在笔记本上计算均值与方差，一边持枪面对身后的风暴 Boss。" width="1672" height="941" loading="lazy">
         </figure>
+      </div>
+    </section>
+
+    <section id="gauss" class="chapter" aria-labelledby="gauss-title">
+      <header class="chapter-head" id="world">
+        <h2 id="gauss-title"><span id="world-title">主角 Gauss</span></h2>
+      </header>
+      <div class="gauss" id="gauss-shape">
+        <figure class="gauss-distribution" aria-labelledby="gauss-distribution-title">
+          <figcaption>
+            <h3 id="gauss-distribution-title">正态分布的钟形曲线</h3>
+            <p>两条曲线都以 20 为中心。方差越大，数值越分散，曲线越矮、越宽，小高斯也随之变形。</p>
+          </figcaption>
+          <div class="gauss-distribution-layout">
+            <div class="gauss-distribution-plot">
+              <span class="gauss-density-label">概率密度</span>
+              <img src="./assets/gauss-normal-curves.svg" alt="同一坐标系中，两条钟形曲线都在 20 处达到峰值。金色曲线高而窄，绿色曲线矮而宽。" width="480" height="152" loading="lazy">
+              <div class="gauss-value-labels"><span>均值 20</span><span>数值</span></div>
+            </div>
+            <ul class="gauss-curve-key" role="list">
+              <li class="gauss-curve-narrow"><span class="gauss-curve-portrait" aria-hidden="true"></span>方差较小</li>
+              <li class="gauss-curve-wide"><span class="gauss-curve-portrait" aria-hidden="true"></span>方差较大</li>
+            </ul>
+          </div>
+        </figure>
+        <figure class="figure gauss-figure">
+          <div class="motion-clip" data-motion-clip><video class="motion-video" width="720" height="405" style="aspect-ratio: 720 / 405" poster="./assets/gauss-live-variance-poster.webp" aria-label="小高斯边走位边用霰弹击杀敌人。画面同时显示实时方差，角色随着方差增大由高瘦变成矮宽。" muted loop playsinline preload="none"><source src="./assets/gauss-live-variance.mp4" type="video/mp4"><a href="./assets/gauss-live-variance.mp4">打开动画</a></video></div>
+        </figure>
+      </div>
+    </section>
+
+    <section id="combat" class="chapter" aria-labelledby="combat-title">
+      <div class="combat-guide" data-combat-guide>
+        <header class="chapter-head combat-guide-heading">
+          <h2 id="combat-title">战斗规则</h2>
+        </header>
+        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom" data-target-x=".517" data-target-y=".109">
+          <h3>战斗与补给</h3>
+          <p>击败敌人赚金币，倒计时结束后进商店。</p>
+        </section>
+        <figure class="figure combat-guide-shot">
+          <div class="combat-guide-image">
+            <button class="zoomable" type="button" aria-label="放大战斗画面">
+              <img src="./assets/combat.webp" alt="战斗画面中，小高斯在六个观测值旁射击。顶部显示补给倒计时，底部显示步枪、均值和方差。" width="1800" height="1013" loading="lazy">
+            </button>
+          </div>
+        </figure>
+        <div class="combat-guide-side">
+          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left" data-compact-edge="bottom" data-target-x=".583" data-target-y=".25">
+            <h3>六个观测值</h3>
+            <p>命中替换一格，打空保留原值。</p>
+          </section>
+          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left" data-compact-edge="top" data-target-x=".814" data-target-y=".954">
+            <h3>均值维持在 18–22</h3>
+            <p>六格的平均值在这个范围内，普通射击才有基础直伤。</p>
+          </section>
+        </div>
+        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top" data-target-x=".238" data-target-y=".89">
+          <h3>方差决定武器档位</h3>
+          <p>取值越集中，步枪贯穿越强。越分散，霰弹覆盖越广。</p>
+        </section>
+        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="combat-controls" id="combat-controls" role="group" aria-label="战斗操作">
+        <section class="note">
+          <div>
+            <h3>右键校准</h3>
+            <p>系统自动选一格调整，让均值尽量接近 20。</p>
+          </div>
+          <div class="motion-clip combat-control-gif" data-motion-clip><video class="motion-video" width="560" height="315" style="aspect-ratio: 560 / 315" poster="./assets/control-calibration-poster.webp" aria-label="右键校准后，一个观测值由 40 变为 12，均值由 24.67 回到 20，小高斯恢复射击。" muted loop playsinline preload="none"><source src="./assets/control-calibration.mp4" type="video/mp4"><a href="./assets/control-calibration.mp4">打开动画</a></video></div>
+        </section>
+      </div>
+
+      <section class="calibration-evidence" aria-labelledby="calibration-title">
+        <h3 id="calibration-title">一格变化与校准</h3>
+        <p class="calibration-context">其余五格始终为 20。</p>
+        <ol class="calibration-sequence">
+          <li class="calibration-step">
+            <h4>射击前</h4>
+            <dl class="calibration-values">
+              <div><dt>该格</dt><dd>20</dd></div>
+              <div><dt>均值</dt><dd>20.0</dd></div>
+            </dl>
+            <p class="calibration-status">直伤生效</p>
+          </li>
+          <li class="calibration-step" data-state="outside">
+            <h4>命中后</h4>
+            <dl class="calibration-values">
+              <div><dt>该格</dt><dd>40</dd></div>
+              <div><dt>均值</dt><dd>23.3</dd></div>
+            </dl>
+            <p class="calibration-status">后续直伤暂停</p>
+          </li>
+          <li class="calibration-step" data-state="restored">
+            <h4>右键校准后</h4>
+            <dl class="calibration-values">
+              <div><dt>该格</dt><dd>20</dd></div>
+              <div><dt>均值</dt><dd>20.0</dd></div>
+            </dl>
+            <p class="calibration-status">直伤恢复</p>
+          </li>
+        </ol>
+        <p class="calibration-note">改变均值的这次命中仍会造成伤害。</p>
+      </section>
+    </section>
+
+    <section id="weather-enemies" class="chapter" aria-labelledby="weather-enemies-title">
+      <header class="chapter-head">
+        <h2 id="weather-enemies-title">天气敌人</h2>
+      </header>
+      <div class="enemies">
+        <div class="enemy-grid">
+          <figure class="enemy">
+            <img class="enemy-portrait" src="./assets/swap-target-sun.webp" width="88" height="81" alt="" loading="lazy">
+            <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-sun-poster.webp?v=clear-enemies-v1" aria-label="太阳追上小高斯，贴身攻击使生命从 3 降至 2。" muted loop playsinline preload="none"><source src="./assets/enemy-sun.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-sun.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+            <figcaption class="enemy-copy"><h3>太阳</h3><p>紧追玩家，贴身扣血。</p></figcaption>
+          </figure>
+          <figure class="enemy">
+            <img class="enemy-portrait" src="./assets/swap-target-wind.webp" width="73" height="88" alt="" loading="lazy">
+            <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-wind-poster.webp?v=clear-enemies-v1" aria-label="风射出阵风，命中后六格均值从 20 降至 17。" muted loop playsinline preload="none"><source src="./assets/enemy-wind.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-wind.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+            <figcaption class="enemy-copy"><h3>风</h3><p>把一格样本推离均值，可能使均值出界，也可能帮助霰弹升档。</p></figcaption>
+          </figure>
+          <figure class="enemy">
+            <img class="enemy-portrait" src="./assets/swap-target-cloud.webp" width="88" height="52" alt="" loading="lazy">
+            <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-cloud-poster.webp?v=clear-enemies-v1" aria-label="雷云向小高斯落雷，短暂封锁右键校准。" muted loop playsinline preload="none"><source src="./assets/enemy-cloud.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-cloud.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+            <figcaption class="enemy-copy"><h3>雷云</h3><p>落雷暂时锁住校准，最好在雷击前修正均值。</p></figcaption>
+          </figure>
+          <figure class="enemy">
+            <img class="enemy-portrait" src="./assets/enemy-storm-portrait.webp" width="151" height="154" alt="" loading="lazy">
+            <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-storm-poster.webp?v=clear-enemies-v1" aria-label="风暴 Boss 改写一格样本，六格均值从 20 升至 23。" muted loop playsinline preload="none"><source src="./assets/enemy-storm.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-storm.mp4?v=clear-enemies-v1">打开动画</a></video></div>
+            <figcaption class="enemy-copy"><h3>风暴 Boss</h3><p>改写一格样本。校准时还要保住武器档位。</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop" class="chapter" aria-labelledby="shop-title">
+      <header class="chapter-head">
+        <h2 id="shop-title">商店与卡牌</h2>
+      </header>
+      <div class="annotated shop-annotations">
+        <figure class="figure annotated-figure">
+          <div class="shot">
+            <button class="zoomable" type="button" aria-label="放大升级商店"><img src="./assets/shop.webp" alt="升级商店画面，显示武器进度、待购卡牌、共享构筑槽与属性预测" width="1360" height="756" loading="lazy"></button>
+            <span class="pin shop-pin shop-tier" aria-hidden="true">1</span>
+            <span class="pin shop-pin shop-preview" aria-hidden="true">2</span>
+            <span class="pin shop-pin shop-slots" aria-hidden="true">3</span>
+          </div>
+        </figure>
+        <div class="shop-note-column">
+          <ol class="note-stack shop-notes" aria-label="商店说明">
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">1</span><span><strong>先看武器进度</strong><span>更稳定的样本能强化贯穿。换数据卡前，先看当前武器档位。</span></span></li>
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">2</span><span><strong>比较购买预览</strong><span>增加平均次数能让新取数更稳定，代价是射速变慢。要判断这份稳定性是否值得少开几枪。</span></span></li>
+            <li class="note shop-note"><span class="note-number" aria-hidden="true">3</span><span><strong>四个共享槽位</strong><span>数据卡改变取数，战斗卡强化攻击。满格时，新增卡牌需要替换一张。</span></span></li>
+          </ol>
+        </div>
+      </div>
+
+      <section class="shop-card-atlas" aria-labelledby="loadout-catalog-title">
+        <h3 id="loadout-catalog-title">卡牌强化</h3>
+        <div class="shop-card-boards">
+          <figure class="build-board" aria-labelledby="all-upgrades-diagram-title">
+            <figcaption><strong id="all-upgrades-diagram-title">全部强化卡牌</strong><span>数据卡可以搭配两种武器的战斗卡。治疗、护盾等通用升级也能支持两条路线。</span></figcaption>
+            <a href="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大全部强化卡牌">
+              <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
+            </a>
+          </figure>
+          <figure class="build-board" aria-labelledby="data-cards-diagram-title">
+            <figcaption><strong id="data-cards-diagram-title">数据卡</strong><span>精准采样收窄取值范围，适合步枪。两端采样偏向极端数值，能扩大霰弹覆盖。</span></figcaption>
+            <a href="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大数据卡">
+              <img src="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
+            </a>
+          </figure>
+        </div>
+        <a class="text-link" href="./cards-zh.html" data-card-catalog>检索单张卡牌 <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section id="card-upgrades" class="card-swap" aria-labelledby="card-upgrades-title">
+        <header id="card-swap" class="card-swap-heading">
+          <h3 id="card-upgrades-title"><span id="card-swap-title">赏金还是贯穿伤害？</span></h3>
+          <p>同样一枪贯穿三名敌人，留贯穿赏金能多赚 2 金币，留八次平均能让后两名敌人也吃满伤害。</p>
+        </header>
+        <div class="loadout-comparison">
+          <article class="loadout-example">
+            <header><h4>保留贯穿赏金</h4><span>Ⅱ 档步枪</span></header>
+            <dl class="loadout-result">
+              <div><dt>本枪赏金</dt><dd>+2</dd></div>
+            </dl>
+            <figure>
+              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-average-zh.webp" aria-label="主弹贯穿三个敌人，在第三个敌人处掉下两枚赏金。" muted loop playsinline preload="none"><source src="./assets/card-swap-average-zh.mp4" type="video/mp4"><a href="./assets/card-swap-average-zh.mp4">打开动画</a></video></div>
+              <figcaption class="hit-breakdown"><span>主弹伤害</span><ol aria-label="按命中顺序排列">
+                <li><img src="./assets/swap-target-sun.webp" alt="太阳" width="32" height="32"><b>−35</b></li>
+                <li><img src="./assets/swap-target-wind.webp" alt="风" width="32" height="32"><b>−21</b></li>
+                <li><img src="./assets/swap-target-cloud.webp" alt="雷云" width="32" height="32"><b>−21</b></li>
+              </ol></figcaption>
+            </figure>
+          </article>
+          <article class="loadout-example">
+            <header><h4>保留八次平均</h4><span>Ⅲ 档步枪</span></header>
+            <dl class="loadout-result">
+              <div><dt>本枪赏金</dt><dd>0</dd></div>
+            </dl>
+            <figure>
+              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-bounty-zh.webp" aria-label="主弹贯穿三个敌人，对每个目标造成全额伤害。" muted loop playsinline preload="none"><source src="./assets/card-swap-bounty-zh.mp4" type="video/mp4"><a href="./assets/card-swap-bounty-zh.mp4">打开动画</a></video></div>
+              <figcaption class="hit-breakdown"><span>主弹伤害</span><ol aria-label="按命中顺序排列">
+                <li><img src="./assets/swap-target-sun.webp" alt="太阳" width="32" height="32"><b>−40</b></li>
+                <li><img src="./assets/swap-target-wind.webp" alt="风" width="32" height="32"><b>−40</b></li>
+                <li><img src="./assets/swap-target-cloud.webp" alt="雷云" width="32" height="32"><b>−40</b></li>
+              </ol></figcaption>
+            </figure>
+          </article>
+        </div>
       </section>
     </section>
 
     <section id="weapons" class="chapter" aria-labelledby="weapons-title">
       <header class="chapter-head" id="builds-title">
-        <h2 id="weapons-title">武器</h2>
+        <h2 id="weapons-title">武器与档位</h2>
       </header>
       <div id="builds" class="weapon-comparison">
         <section class="weapon-route" aria-labelledby="weapon-route-rifle">
@@ -205,217 +425,6 @@
           </div>
         </section>
       </div>
-    </section>
-
-    <section id="world" class="chapter" aria-labelledby="world-title">
-      <header class="chapter-head">
-        <h2 id="world-title">角色与敌人</h2>
-      </header>
-      <div class="world-layout">
-        <div class="gauss" id="gauss-shape">
-          <h3 id="gauss-title">小高斯的形变</h3>
-          <figure class="gauss-distribution" aria-labelledby="gauss-distribution-title">
-            <figcaption>
-              <h4 id="gauss-distribution-title">正态分布的钟形曲线</h4>
-              <p>两条曲线都以 20 为中心。方差越大，数值越分散，曲线越矮、越宽，小高斯也随之变形。</p>
-            </figcaption>
-            <div class="gauss-distribution-layout">
-              <div class="gauss-distribution-plot">
-                <span class="gauss-density-label">概率密度</span>
-                <img src="./assets/gauss-normal-curves.svg" alt="同一坐标系中，两条钟形曲线都在 20 处达到峰值。金色曲线高而窄，绿色曲线矮而宽。" width="480" height="152" loading="lazy">
-                <div class="gauss-value-labels"><span>均值 20</span><span>数值</span></div>
-              </div>
-              <ul class="gauss-curve-key" role="list">
-                <li class="gauss-curve-narrow"><span class="gauss-curve-portrait" aria-hidden="true"></span>方差较小</li>
-                <li class="gauss-curve-wide"><span class="gauss-curve-portrait" aria-hidden="true"></span>方差较大</li>
-              </ul>
-            </div>
-          </figure>
-          <figure class="figure gauss-figure">
-            <div class="motion-clip" data-motion-clip><video class="motion-video" width="720" height="405" style="aspect-ratio: 720 / 405" poster="./assets/gauss-live-variance-poster.webp" aria-label="小高斯边走位边用霰弹击杀敌人。画面同时显示实时方差，角色随着方差增大由高瘦变成矮宽。" muted loop playsinline preload="none"><source src="./assets/gauss-live-variance.mp4" type="video/mp4"><a href="./assets/gauss-live-variance.mp4">打开动画</a></video></div>
-          </figure>
-          </div>
-        <div class="enemies" id="weather-enemies">
-          <h3>天气敌人</h3>
-          <div class="enemy-grid">
-            <figure class="enemy">
-              <img class="enemy-portrait" src="./assets/swap-target-sun.webp" width="88" height="81" alt="" loading="lazy">
-              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-sun-poster.webp?v=clear-enemies-v1" aria-label="太阳追上小高斯，贴身攻击使生命从 3 降至 2。" muted loop playsinline preload="none"><source src="./assets/enemy-sun.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-sun.mp4?v=clear-enemies-v1">打开动画</a></video></div>
-              <figcaption class="enemy-copy"><h4>太阳</h4><p>紧追玩家，贴身扣血。</p></figcaption>
-            </figure>
-            <figure class="enemy">
-              <img class="enemy-portrait" src="./assets/swap-target-wind.webp" width="73" height="88" alt="" loading="lazy">
-              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-wind-poster.webp?v=clear-enemies-v1" aria-label="风射出阵风，命中后六格均值从 20 降至 17。" muted loop playsinline preload="none"><source src="./assets/enemy-wind.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-wind.mp4?v=clear-enemies-v1">打开动画</a></video></div>
-              <figcaption class="enemy-copy"><h4>风</h4><p>把一格样本推离均值，可能使均值出界，也可能帮助霰弹升档。</p></figcaption>
-            </figure>
-            <figure class="enemy">
-              <img class="enemy-portrait" src="./assets/swap-target-cloud.webp" width="88" height="52" alt="" loading="lazy">
-              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-cloud-poster.webp?v=clear-enemies-v1" aria-label="雷云向小高斯落雷，短暂封锁右键校准。" muted loop playsinline preload="none"><source src="./assets/enemy-cloud.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-cloud.mp4?v=clear-enemies-v1">打开动画</a></video></div>
-              <figcaption class="enemy-copy"><h4>雷云</h4><p>落雷暂时锁住校准，最好在雷击前修正均值。</p></figcaption>
-            </figure>
-            <figure class="enemy">
-              <img class="enemy-portrait" src="./assets/enemy-storm-portrait.webp" width="151" height="154" alt="" loading="lazy">
-              <div class="motion-clip" data-motion-clip><video class="motion-video" width="840" height="472" style="aspect-ratio: 840 / 472" poster="./assets/enemy-storm-poster.webp?v=clear-enemies-v1" aria-label="风暴 Boss 改写一格样本，六格均值从 20 升至 23。" muted loop playsinline preload="none"><source src="./assets/enemy-storm.mp4?v=clear-enemies-v1" type="video/mp4"><a href="./assets/enemy-storm.mp4?v=clear-enemies-v1">打开动画</a></video></div>
-              <figcaption class="enemy-copy"><h4>风暴 Boss</h4><p>改写一格样本。校准时还要保住武器档位。</p></figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="combat" class="chapter">
-      <div class="combat-guide" data-combat-guide>
-        <header class="chapter-head combat-guide-heading">
-          <h2>战斗规则</h2>
-        </header>
-        <section class="note combat-guide-note combat-guide-flow" data-callout="flow" data-edge="bottom" data-target-x=".517" data-target-y=".109">
-          <h3>战斗与补给</h3>
-          <p>击败敌人赚金币，倒计时结束后进商店。</p>
-        </section>
-        <figure class="figure combat-guide-shot">
-          <div class="combat-guide-image">
-            <button class="zoomable" type="button" aria-label="放大战斗画面">
-              <img src="./assets/combat.webp" alt="战斗画面中，小高斯在六个观测值旁射击。顶部显示补给倒计时，底部显示步枪、均值和方差。" width="1800" height="1013" loading="lazy">
-            </button>
-          </div>
-        </figure>
-        <div class="combat-guide-side">
-          <section class="note combat-guide-note combat-guide-samples" data-callout="samples" data-edge="left" data-compact-edge="bottom" data-target-x=".583" data-target-y=".25">
-            <h3>六个观测值</h3>
-            <p>命中替换一格，打空保留原值。</p>
-          </section>
-          <section class="note combat-guide-note combat-guide-mean" data-callout="mean" data-edge="left" data-compact-edge="top" data-target-x=".814" data-target-y=".954">
-            <h3>均值维持在 18–22</h3>
-            <p>六格的平均值在这个范围内，普通射击才有基础直伤。</p>
-          </section>
-        </div>
-        <section class="note combat-guide-note combat-guide-variance" data-callout="variance" data-edge="top" data-target-x=".238" data-target-y=".89">
-          <h3>方差决定武器档位</h3>
-          <p>取值越集中，步枪贯穿越强。越分散，霰弹覆盖越广。</p>
-        </section>
-        <canvas class="combat-guide-leaders" aria-hidden="true"></canvas>
-      </div>
-
-      <div class="combat-controls" id="combat-controls" role="group" aria-label="战斗操作">
-        <section class="note">
-          <div>
-            <h3>右键校准</h3>
-            <p>系统自动选一格调整，让均值尽量接近 20。</p>
-          </div>
-          <div class="motion-clip combat-control-gif" data-motion-clip><video class="motion-video" width="560" height="315" style="aspect-ratio: 560 / 315" poster="./assets/control-calibration-poster.webp" aria-label="右键校准后，一个观测值由 40 变为 12，均值由 24.67 回到 20，小高斯恢复射击。" muted loop playsinline preload="none"><source src="./assets/control-calibration.mp4" type="video/mp4"><a href="./assets/control-calibration.mp4">打开动画</a></video></div>
-        </section>
-      </div>
-
-      <section class="calibration-evidence" aria-labelledby="calibration-title">
-        <h3 id="calibration-title">一格变化与校准</h3>
-        <p class="calibration-context">其余五格始终为 20。</p>
-        <ol class="calibration-sequence">
-          <li class="calibration-step">
-            <h4>射击前</h4>
-            <dl class="calibration-values">
-              <div><dt>该格</dt><dd>20</dd></div>
-              <div><dt>均值</dt><dd>20.0</dd></div>
-            </dl>
-            <p class="calibration-status">直伤生效</p>
-          </li>
-          <li class="calibration-step" data-state="outside">
-            <h4>命中后</h4>
-            <dl class="calibration-values">
-              <div><dt>该格</dt><dd>40</dd></div>
-              <div><dt>均值</dt><dd>23.3</dd></div>
-            </dl>
-            <p class="calibration-status">后续直伤暂停</p>
-          </li>
-          <li class="calibration-step" data-state="restored">
-            <h4>右键校准后</h4>
-            <dl class="calibration-values">
-              <div><dt>该格</dt><dd>20</dd></div>
-              <div><dt>均值</dt><dd>20.0</dd></div>
-            </dl>
-            <p class="calibration-status">直伤恢复</p>
-          </li>
-        </ol>
-        <p class="calibration-note">改变均值的这次命中仍会造成伤害。</p>
-      </section>
-    </section>
-
-    <section id="shop" class="chapter" aria-labelledby="shop-title">
-      <header class="chapter-head">
-        <h2 id="shop-title">商店与选牌</h2>
-      </header>
-      <div class="annotated shop-annotations">
-        <figure class="figure annotated-figure">
-          <div class="shot">
-            <button class="zoomable" type="button" aria-label="放大升级商店"><img src="./assets/shop.webp" alt="升级商店画面，显示武器进度、待购卡牌、共享构筑槽与属性预测" width="1360" height="756" loading="lazy"></button>
-            <span class="pin shop-pin shop-tier" aria-hidden="true">1</span>
-            <span class="pin shop-pin shop-preview" aria-hidden="true">2</span>
-            <span class="pin shop-pin shop-slots" aria-hidden="true">3</span>
-          </div>
-        </figure>
-        <div class="shop-note-column">
-          <ol class="note-stack shop-notes" aria-label="商店说明">
-            <li class="note shop-note"><span class="note-number" aria-hidden="true">1</span><span><strong>先看武器进度</strong><span>更稳定的样本能强化贯穿。换数据卡前，先看当前武器档位。</span></span></li>
-            <li class="note shop-note"><span class="note-number" aria-hidden="true">2</span><span><strong>比较购买预览</strong><span>增加平均次数能让新取数更稳定，代价是射速变慢。要判断这份稳定性是否值得少开几枪。</span></span></li>
-            <li class="note shop-note"><span class="note-number" aria-hidden="true">3</span><span><strong>四个共享槽位</strong><span>数据卡改变取数，战斗卡强化攻击。满格时，新增卡牌需要替换一张。</span></span></li>
-          </ol>
-        </div>
-      </div>
-
-      <section class="shop-card-atlas" aria-labelledby="loadout-catalog-title">
-        <h3 id="loadout-catalog-title">卡牌强化</h3>
-        <div class="shop-card-boards">
-          <figure class="build-board" aria-labelledby="all-upgrades-diagram-title">
-            <figcaption><strong id="all-upgrades-diagram-title">全部强化卡牌</strong><span>数据卡可以搭配两种武器的战斗卡。治疗、护盾等通用升级也能支持两条路线。</span></figcaption>
-            <a href="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大全部强化卡牌">
-              <img src="./assets/statsshooter-cards-overview-zh-4k.png?v=clean-boards-v1" alt="强化构筑图，左侧是低方差步枪与折射路线，右侧是高方差霰弹枪与燃烧路线。" width="5040" height="2660" loading="lazy" decoding="async">
-            </a>
-          </figure>
-          <figure class="build-board" aria-labelledby="data-cards-diagram-title">
-            <figcaption><strong id="data-cards-diagram-title">数据卡</strong><span>精准采样收窄取值范围，适合步枪。两端采样偏向极端数值，能扩大霰弹覆盖。</span></figcaption>
-            <a href="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大数据卡">
-              <img src="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
-            </a>
-          </figure>
-        </div>
-        <a class="text-link" href="./cards-zh.html" data-card-catalog>检索单张卡牌 <span aria-hidden="true">→</span></a>
-      </section>
-
-      <section id="card-upgrades" class="card-swap" aria-labelledby="card-upgrades-title">
-        <header id="card-swap" class="card-swap-heading">
-          <h3 id="card-upgrades-title"><span id="card-swap-title">赏金还是贯穿伤害？</span></h3>
-          <p>同样一枪贯穿三名敌人，留贯穿赏金能多赚 2 金币，留八次平均能让后两名敌人也吃满伤害。</p>
-        </header>
-        <div class="loadout-comparison">
-          <article class="loadout-example">
-            <header><h4>保留贯穿赏金</h4><span>Ⅱ 档步枪</span></header>
-            <dl class="loadout-result">
-              <div><dt>本枪赏金</dt><dd>+2</dd></div>
-            </dl>
-            <figure>
-              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-average-zh.webp" aria-label="主弹贯穿三个敌人，在第三个敌人处掉下两枚赏金。" muted loop playsinline preload="none"><source src="./assets/card-swap-average-zh.mp4" type="video/mp4"><a href="./assets/card-swap-average-zh.mp4">打开动画</a></video></div>
-              <figcaption class="hit-breakdown"><span>主弹伤害</span><ol aria-label="按命中顺序排列">
-                <li><img src="./assets/swap-target-sun.webp" alt="太阳" width="32" height="32"><b>−35</b></li>
-                <li><img src="./assets/swap-target-wind.webp" alt="风" width="32" height="32"><b>−21</b></li>
-                <li><img src="./assets/swap-target-cloud.webp" alt="雷云" width="32" height="32"><b>−21</b></li>
-              </ol></figcaption>
-            </figure>
-          </article>
-          <article class="loadout-example">
-            <header><h4>保留八次平均</h4><span>Ⅲ 档步枪</span></header>
-            <dl class="loadout-result">
-              <div><dt>本枪赏金</dt><dd>0</dd></div>
-            </dl>
-            <figure>
-              <div class="motion-clip swap-clip" data-motion-clip><video class="motion-video" width="544" height="306" style="aspect-ratio: 544 / 306" poster="./assets/card-swap-bounty-zh.webp" aria-label="主弹贯穿三个敌人，对每个目标造成全额伤害。" muted loop playsinline preload="none"><source src="./assets/card-swap-bounty-zh.mp4" type="video/mp4"><a href="./assets/card-swap-bounty-zh.mp4">打开动画</a></video></div>
-              <figcaption class="hit-breakdown"><span>主弹伤害</span><ol aria-label="按命中顺序排列">
-                <li><img src="./assets/swap-target-sun.webp" alt="太阳" width="32" height="32"><b>−40</b></li>
-                <li><img src="./assets/swap-target-wind.webp" alt="风" width="32" height="32"><b>−40</b></li>
-                <li><img src="./assets/swap-target-cloud.webp" alt="雷云" width="32" height="32"><b>−40</b></li>
-              </ol></figcaption>
-            </figure>
-          </article>
-        </div>
-      </section>
     </section>
 
     <section class="chapter endgame-builds" id="endgame-builds" aria-labelledby="endgame-builds-title">
