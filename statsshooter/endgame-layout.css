@@ -87,7 +87,7 @@
 .build-board a { display: block; cursor: zoom-in; }
 .build-board figcaption { padding: 0; }
 .shop-card-boards figcaption { margin-bottom: 10px; }
-.route-map img { margin-bottom: 0; }
+.route-map img { margin-bottom: 0; border: 0; border-radius: 0; }
 .shop-card-atlas > .text-link { display: inline-block; margin-top: 16px; }
 @media (min-width: 960px) {
   #endgame-builds .chapter-head { margin-bottom: clamp(16px, 2svh, 24px); }
@@ -183,7 +183,7 @@
   font-weight: 650;
 }
 .endgame-map a { cursor: zoom-in; }
-.endgame-map img { width: 100%; height: auto; border-radius: 8px; }
+.endgame-map img { display: block; width: 100%; height: auto; }
 
 @media (min-width: 1880px) {
   .endgame-steps ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
