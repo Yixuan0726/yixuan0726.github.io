@@ -133,6 +133,34 @@ window.statsShooterCards = [
     description: 'Landing a damaging shot within 0.4 seconds of a charged stop creates a shockwave of radius 3. It deals 50% of the ordinary shot’s base damage and knocks back enemies. The boss is immune to knockback.', availability: 'Own Stop Shot on the rifle route',
   },
   {
+    id: 450, name: 'Ricochet', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 0,
+    description: 'At rifle tier II or III with the mean in 18–22, shots bounce off one wall and keep piercing. Each volley writes up to one sample.', availability: 'Reach rifle tier II this run',
+  },
+  {
+    id: 451, name: 'Double-wall Circuit', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 1,
+    description: 'Raises the bounce limit from one to two at rifle tier II or above. Shares one equipped slot with Prism Corridor. Switching between them puts the other card in reserve.', availability: 'Own Ricochet',
+  },
+  {
+    id: 452, name: 'Ricochet Mark', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 1,
+    description: 'Bounced hits slow ordinary enemies by 25% for 1 second. Further hits refresh the duration. Bosses are immune. Shares one equipped slot with Wall Afterglow.', availability: 'Own Ricochet',
+  },
+  {
+    id: 453, name: 'Reflection Focus', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 1,
+    description: 'The first damaging hit after a bounce gains 25% damage, once per shot. Shares one equipped slot with Dual Ricochet.', availability: 'Own Ricochet',
+  },
+  {
+    id: 454, name: 'Prism Corridor', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 1,
+    description: 'Automatically replaces Double-wall Circuit in its slot. Shots bounce up to five times at live tier III and twice at tier II, returning to five on reaching tier III again. Mark and Focus need their own equipped slots. Each volley writes up to one sample.', availability: 'Reach rifle tier III this run and own Double-wall Circuit and at least one of Ricochet Mark or Reflection Focus. Reserve cards count toward purchase requirements',
+  },
+  {
+    id: 455, name: 'Wall Afterglow', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 1,
+    description: 'Replaces Ricochet Mark. Each bounce leaves a radius-1.2 light spot for 1.2 seconds. Ordinary enemies move 25% slower while inside and recover on leaving. Bosses are immune. The replaced card stays in reserve and can be equipped again for free in the shop.', availability: 'Own Prism Corridor and Ricochet Mark. Reserve cards count toward purchase requirements',
+  },
+  {
+    id: 456, name: 'Dual Ricochet', category: 'Mechanism Card', route: 'Low-variance Rifle', maxLevel: 1, slots: 1,
+    description: 'Replaces Reflection Focus. Fire a main bolt and a half-damage secondary bolt angled 8° clockwise. Both use the current bounce limit. Each bolt can hit each enemy once, and the combined volley writes up to one sample. The replaced card stays in reserve and can be equipped again for free in the shop.', availability: 'Own Prism Corridor and Reflection Focus. Reserve cards count toward purchase requirements',
+  },
+  {
     id: 402, name: 'Variance Damage', category: 'Mechanism Card', route: 'High-variance Shotgun', maxLevel: 3, slots: 0,
     description: 'Increases direct shotgun damage as live variance rises. Each level adds 10% of base damage per 60 variance.', availability: 'Shotgun route shop stock',
   },

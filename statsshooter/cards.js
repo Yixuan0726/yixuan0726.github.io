@@ -46,17 +46,26 @@ function makeCard(card) {
   return article;
 }
 
+function normalizeSearch(text) {
+  return text.normalize('NFKC').toLowerCase().replace(/[-‐‑]/g, ' ').trim().replace(/\s+/g, ' ');
+}
+
 function render() {
   const category = categories.find(button => button.getAttribute('aria-pressed') === 'true').dataset.category;
   const route = routeFilter.value;
-  const query = search.value.normalize('NFKC').toLowerCase().trim();
+  const query = normalizeSearch(search.value);
   const words = query ? query.split(/\s+/) : [];
   const visible = allCards.filter(card => {
     if (category && card.category !== category) return false;
     if (route && card.route !== route) return false;
-    const text = `${card.name} ${card.description} ${card.route} ${card.availability}`.normalize('NFKC').toLowerCase();
+    const text = normalizeSearch(`${card.name} ${card.description} ${card.route} ${card.availability}`);
     return words.every(word => text.includes(word));
   });
+  const exactIndex = query ? visible.findIndex(card => normalizeSearch(card.name) === query) : -1;
+  if (exactIndex > 0) {
+    const [exactMatch] = visible.splice(exactIndex, 1);
+    visible.unshift(exactMatch);
+  }
   grid.replaceChildren(...visible.map(makeCard));
   count.textContent = locale.shown(visible.length, allCards.length);
   empty.textContent = locale.noMatches;
