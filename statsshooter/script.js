@@ -40,32 +40,34 @@ function revealLinkedDetail() {
 revealLinkedDetail();
 window.addEventListener('hashchange', revealLinkedDetail);
 
-const filmScreen = document.querySelector('[data-film-screen]');
-const filmCover = filmScreen.querySelector('[data-film-play]');
+const mediaActions = document.querySelector('.project-actions');
+const watchLink = mediaActions.querySelector('[href="#gameplay-video"]');
+const demoLink = mediaActions.querySelector('[href="#playable-demo"]');
+const compactControls = matchMedia('(max-width: 760px), (pointer: coarse)');
+function orderMediaLinks() {
+  mediaActions.prepend(compactControls.matches ? watchLink : demoLink);
+}
+orderMediaLinks();
+compactControls.addEventListener('change', orderMediaLinks);
+
+const filmPlayer = document.querySelector('.film-player');
+const filmCover = document.querySelector('[data-film-play]');
+filmPlayer.controls = false;
+filmCover.hidden = false;
 
 function primaryActivation(event) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
 function playFilm() {
-  if (filmScreen.querySelector('iframe')) return;
-  const player = document.createElement('iframe');
-  player.title = filmScreen.dataset.playerTitle;
-  player.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-  player.allowFullscreen = true;
-  player.src = filmScreen.dataset.playerUrl;
-  filmScreen.append(player);
-  const moveFocus = document.activeElement === filmCover;
   filmCover.hidden = true;
-  if (moveFocus) player.focus({ preventScroll: true });
+  filmPlayer.controls = true;
+  filmPlayer.focus({ preventScroll: true });
+  filmPlayer.play().catch(() => { /* Native controls allow another play attempt. */ });
 }
 
-filmCover.addEventListener('click', event => {
-  if (!primaryActivation(event)) return;
-  event.preventDefault();
-  playFilm();
-});
-document.querySelector('.project-actions [href="#gameplay-video"]').addEventListener('click', event => {
+filmCover.addEventListener('click', playFilm);
+watchLink.addEventListener('click', event => {
   if (primaryActivation(event)) playFilm();
 });
 
@@ -75,11 +77,8 @@ const launchDemo = demo.querySelector('[data-game-start]');
 import('../game-player.js?v=showcase-v1').then(({ mountGamePlayer }) => {
   mountGamePlayer(demo);
   launchDemo.hidden = false;
-  launchDemo.addEventListener('click', () => {
-    filmScreen.querySelector('iframe')?.remove();
-    filmCover.hidden = false;
-  });
-  document.querySelector('.project-actions [href="#playable-demo"]').addEventListener('click', event => {
+  launchDemo.addEventListener('click', () => filmPlayer.pause());
+  demoLink.addEventListener('click', event => {
     if (primaryActivation(event) && !demo.querySelector('[data-game-poster]').hidden) launchDemo.click();
   });
 }).catch(() => { /* The link to the hosted demo remains usable. */ });

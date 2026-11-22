@@ -178,7 +178,7 @@ window.statsShooterCards = [
   },
   {
     id: 405, name: 'Extreme Clone', category: 'Mechanism Card', route: 'High-variance Shotgun', maxLevel: 3, slots: 0,
-    description: 'The first purchase grants one clone. The three levels allow up to 1, 10, or 100 clones. Clones copy the current shotgun form at 50% of its direct pellet damage. When the mean returns to 18–22 with variance at least 350, each existing body spawns one clone, up to capacity.', availability: 'Guaranteed in each new shop’s first stock after reaching shotgun tier III, until fully upgraded',
+    description: 'The first purchase grants one clone. The three levels allow up to 1, 10, or 100 clones. Clones copy the current shotgun form at 50% of its direct pellet damage. When right-click calibration brings an out-of-range mean back to 18–22, Gauss and each existing clone spawn one clone, up to capacity. A regular shot that hits and brings the mean back into range also triggers this effect if the resulting variance is at least 350.', availability: 'Guaranteed in each new shop’s first stock after reaching shotgun tier III, until fully upgraded',
   },
   {
     id: 444, name: 'Sparks', category: 'Mechanism Card', route: 'High-variance Shotgun', maxLevel: 1, slots: 1,

@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="./showcase.css?v=gameplay-photos">
   <link rel="stylesheet" href="./chapters.css?v=ten-chapters">
   <link rel="stylesheet" href="./endgame-layout.css?v=transparent-route-diagrams">
-  <link rel="stylesheet" href="./project-media.css?v=desktop-topics">
+  <link rel="stylesheet" href="./project-media.css?v=hosted-film">
   <script src="./project-language.js" defer></script>
-  <script src="./script.js?v=inline-builds" defer></script>
+  <script src="./script.js?v=hosted-film" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -44,8 +44,8 @@
         </p>
         <p class="showcase-pitch">Play as Gauss, a bell curve with a gun. Cluster your samples to pierce a line of enemies with a rifle, or spread them out for a shotgun blast in every direction.</p>
         <nav class="project-actions" aria-label="Play or watch StatsShooter">
-          <a data-project-media href="#playable-demo"><span class="showcase-play-icon" aria-hidden="true"></span>Play demo</a>
           <a data-project-media href="#gameplay-video">Watch video</a>
+          <a data-project-media href="#playable-demo"><span class="showcase-play-icon" aria-hidden="true"></span><span>Play demo<small class="demo-input-hint">Keyboard and mouse required</small></span></a>
         </nav>
       </div>
       <figure class="showcase-art" role="img" aria-label="The upgrade shop, the Ignition build in combat, and a close encounter between Gauss and the Storm Boss.">
@@ -60,11 +60,11 @@
 
     <div class="project-media">
       <section id="gameplay-video" class="film-card" aria-labelledby="gameplay-video-title">
-        <div class="film-screen" data-film-screen data-player-url="https://player.vimeo.com/video/1246997980?autoplay=1" data-player-title="StatsShooter gameplay video">
-          <a class="film-cover" data-film-play href="https://vimeo.com/1246997980" target="_blank" rel="noopener" aria-label="Play the StatsShooter gameplay video">
-            <img src="./assets/combat.webp" width="1800" height="1013" alt="" loading="lazy">
+        <div class="film-screen">
+          <video class="film-player" src="./assets/statsshooter-gameplay.mp4" poster="./assets/combat.webp" preload="none" controls playsinline aria-label="StatsShooter gameplay video"></video>
+          <button class="film-cover" type="button" data-film-play aria-label="Play the StatsShooter gameplay video" hidden>
             <span class="film-play-icon" aria-hidden="true"></span>
-          </a>
+          </button>
         </div>
         <div class="film-caption">
           <h2 id="gameplay-video-title">Gameplay Video</h2>

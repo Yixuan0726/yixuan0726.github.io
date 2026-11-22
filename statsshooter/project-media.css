@@ -21,19 +21,22 @@
   background: #231e23;
   border-radius: 8px;
 }
-.film-screen iframe, .film-cover img {
+.film-player {
   display: block;
   width: 100%;
   height: 100%;
-  border: 0;
   object-fit: contain;
 }
-.film-cover img { position: absolute; inset: 0; }
 .film-cover {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
 .film-play-icon {
   position: relative;
@@ -104,6 +107,11 @@
 .demo-feedback { color: var(--text); font-size: 1rem; padding-block: 10px; overflow-wrap: anywhere; }
 .demo-screen { margin-top: 16px; aspect-ratio: 8 / 5; overflow: hidden; background: #1f1b1e; border-radius: 8px; }
 .demo-screen iframe { display: block; border: 0; width: 100%; height: 100%; }
+.demo-input-hint { display: none; }
+@media (max-width: 760px), (pointer: coarse) {
+  .demo-input-hint { display: block; font-size: .75rem; font-weight: 500; }
+  .project-actions .showcase-play-icon { display: none; }
+}
 .demo-card:fullscreen { display: flex; flex-direction: column; color: var(--ink); background: var(--bg); width: 100%; height: 100%; border: 0; border-radius: 0; }
 .demo-card:fullscreen .demo-heading { display: none; }
 .demo-card:fullscreen .demo-controls { margin: 0 0 12px; }

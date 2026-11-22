@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="./showcase.css?v=gameplay-photos">
   <link rel="stylesheet" href="./chapters.css?v=ten-chapters">
   <link rel="stylesheet" href="./endgame-layout.css?v=transparent-route-diagrams">
-  <link rel="stylesheet" href="./project-media.css?v=desktop-topics">
+  <link rel="stylesheet" href="./project-media.css?v=hosted-film">
   <script src="./project-language.js" defer></script>
-  <script src="./script.js?v=inline-builds" defer></script>
+  <script src="./script.js?v=hosted-film" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到正文</a>
@@ -44,8 +44,8 @@
         </p>
         <p class="showcase-pitch">你操控的小高斯，是一条拿着枪的钟形曲线。让样本集中，步枪就能一枪贯穿一列敌人。让样本分散，霰弹就能向四周环射。</p>
         <nav class="project-actions" aria-label="试玩或观看 StatsShooter">
-          <a data-project-media href="#playable-demo"><span class="showcase-play-icon" aria-hidden="true"></span>试玩 Demo</a>
           <a data-project-media href="#gameplay-video">观看视频</a>
+          <a data-project-media href="#playable-demo"><span class="showcase-play-icon" aria-hidden="true"></span><span>试玩 Demo<small class="demo-input-hint">需键盘和鼠标</small></span></a>
         </nav>
       </div>
       <figure class="showcase-art" role="img" aria-label="三张游戏实机截图，分别是升级商店、点燃构筑形成的火圈，以及小高斯与风暴 Boss 相遇的近景。">
@@ -60,11 +60,11 @@
 
     <div class="project-media">
       <section id="gameplay-video" class="film-card" aria-labelledby="gameplay-video-title">
-        <div class="film-screen" data-film-screen data-player-url="https://player.vimeo.com/video/1246997980?autoplay=1" data-player-title="StatsShooter 实机演示">
-          <a class="film-cover" data-film-play href="https://vimeo.com/1246997980" target="_blank" rel="noopener" aria-label="播放 StatsShooter 实机演示视频">
-            <img src="./assets/combat.webp" width="1800" height="1013" alt="" loading="lazy">
+        <div class="film-screen">
+          <video class="film-player" src="./assets/statsshooter-gameplay.mp4" poster="./assets/combat.webp" preload="none" controls playsinline aria-label="StatsShooter 实机演示"></video>
+          <button class="film-cover" type="button" data-film-play aria-label="播放 StatsShooter 实机演示视频" hidden>
             <span class="film-play-icon" aria-hidden="true"></span>
-          </a>
+          </button>
         </div>
         <div class="film-caption">
           <h2 id="gameplay-video-title">实机演示</h2>
@@ -292,7 +292,7 @@
             </a>
           </figure>
           <figure class="build-board" aria-labelledby="data-cards-diagram-title">
-            <figcaption><strong id="data-cards-diagram-title">数据卡</strong><span>精准采样收窄取值范围，适合步枪。两端采样偏向极端数值，能扩大霰弹覆盖。</span></figcaption>
+            <figcaption><strong id="data-cards-diagram-title">数据卡</strong><span>精密采样收窄取值范围，适合步枪。两端采样偏向极端数值，能扩大霰弹覆盖。</span></figcaption>
             <a href="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" target="_blank" rel="noopener" aria-label="放大数据卡">
               <img src="./assets/statsshooter-data-cards-zh-4k.png?v=clean-boards-v1" alt="数据卡一览，按低方差和高方差路线展示改变抽样、平均和校准的卡牌。" width="3840" height="2160" loading="lazy" decoding="async">
             </a>
